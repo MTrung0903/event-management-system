@@ -13,6 +13,7 @@ import java.util.Date;
 @NoArgsConstructor
 public class Event {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "event_id")
     private int evetID;
     @Column(name = "event_name")

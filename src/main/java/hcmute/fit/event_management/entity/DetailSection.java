@@ -11,6 +11,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class DetailSection {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name ="detail_section_id")
     private int id;
 

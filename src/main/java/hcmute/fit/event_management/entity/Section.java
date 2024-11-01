@@ -13,6 +13,7 @@ import java.util.Date;
 @NoArgsConstructor
 public class Section {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "section_id")
     private int id;
     @Column(name = "start_time")

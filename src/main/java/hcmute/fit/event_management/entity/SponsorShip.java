@@ -13,6 +13,7 @@ import java.util.List;
 @NoArgsConstructor
 public class SponsorShip {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "sponsor_ship_id")
     private int sponsorShipID;
 
