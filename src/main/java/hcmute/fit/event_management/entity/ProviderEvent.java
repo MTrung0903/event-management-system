@@ -6,7 +6,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity(name = "provider_event")
-
 @Data
 @AllArgsConstructor
 @NoArgsConstructor

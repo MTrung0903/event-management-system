@@ -3,6 +3,8 @@ package hcmute.fit.event_management.service;
 import hcmute.fit.event_management.entity.Account;
 import org.springframework.data.domain.Example;
 import org.springframework.data.domain.Sort;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 
 import java.util.List;
 import java.util.Optional;
@@ -25,4 +27,6 @@ public interface IAccountService {
     List<Account> findAll(Sort sort);
 
     <S extends Account> Optional<S> findOne(Example<S> example);
+    boolean checkLogin(String email, String password);
+
 }

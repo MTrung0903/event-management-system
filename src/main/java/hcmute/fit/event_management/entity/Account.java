@@ -17,16 +17,19 @@ public class Account {
     private String email;
     @Column(name = "password")
     private String password;
-    @Column(name = "role")
-    private String role;
     @Column(name = "is_active")
     private boolean isActive;
+
+    @ManyToOne
+    @JoinColumn(name = "role_id")
+    private Role role;
 
     @OneToOne(mappedBy = "account", cascade = CascadeType.ALL)
     @PrimaryKeyJoinColumn
     private Employee employee;
-
     @OneToOne(mappedBy = "account", cascade = CascadeType.ALL)
     @PrimaryKeyJoinColumn
     private Manager manager;
+
+
 }

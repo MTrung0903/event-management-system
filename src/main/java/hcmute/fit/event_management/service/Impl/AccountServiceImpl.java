@@ -6,15 +6,20 @@ import hcmute.fit.event_management.service.IAccountService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Example;
 import org.springframework.data.domain.Sort;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
 import java.util.Optional;
 
+
 @Service
 public class AccountServiceImpl implements IAccountService {
+
     @Autowired
     private AccountRepository accountRepository;
+
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
     public AccountServiceImpl(AccountRepository accountRepository) {
         this.accountRepository = accountRepository;
@@ -64,4 +69,18 @@ public class AccountServiceImpl implements IAccountService {
     public <S extends Account> Optional<S> findOne(Example<S> example) {
         return accountRepository.findOne(example);
     }
+
+    @Override
+    public boolean checkLogin(String email, String password) {
+        Optional<Account> opt = accountRepository.findByEmail(email);
+        if (opt.isPresent()) {
+            Account account = opt.get();
+            if (passwordEncoder.matches(password, account.getPassword())) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+
 }
