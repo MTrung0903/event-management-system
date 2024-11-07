@@ -27,5 +27,4 @@ public class SponsorEvent {
     @JoinColumn(name = "event_id", referencedColumnName = "event_id", nullable = false)
     private Event event;
 
-
 }

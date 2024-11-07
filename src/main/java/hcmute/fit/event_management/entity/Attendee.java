@@ -21,6 +21,7 @@ public class Attendee {
     private String attendeeStatus;
 
     @OneToOne
+    @MapsId
     @JoinColumn(name = "attendee_id")
     private Invite invite;
 }

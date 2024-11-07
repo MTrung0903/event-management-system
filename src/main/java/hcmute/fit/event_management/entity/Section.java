@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.Date;
+import java.util.Set;
 
 @Entity(name = "section")
 @Data
@@ -24,4 +25,7 @@ public class Section {
     @ManyToOne
     @JoinColumn(name = "event_id")
     private Event event;
+
+    @OneToMany(mappedBy = "section", cascade = CascadeType.ALL)
+    private Set<DetailSection> listDetailSections;
 }

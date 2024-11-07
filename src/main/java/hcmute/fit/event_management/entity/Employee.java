@@ -5,6 +5,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.Set;
+
 @Entity(name = "employee")
 @Data
 @AllArgsConstructor
@@ -23,14 +25,17 @@ public class Employee {
     private String email;
 
     @OneToOne
-    @JoinColumn(name = "account_id")
+    @MapsId
+    @JoinColumn(name = "employee_id")
     private Account account;
 
     @ManyToOne
     @JoinColumn(name = "team_id")
     private Team team;
-
     @ManyToOne
     @JoinColumn(name = "man_id")
     private Manager manager;
+
+    @OneToMany(mappedBy = "employee")
+    private Set<SubTask> listSubTasks;
 }

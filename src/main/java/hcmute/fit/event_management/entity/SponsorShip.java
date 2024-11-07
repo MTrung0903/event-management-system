@@ -4,8 +4,7 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
-import java.util.List;
+import java.util.Set;
 
 @Entity(name = "sponsorship")
 @Data
@@ -23,7 +22,7 @@ public class SponsorShip {
     @Column(name = "sponsor_benefit")
     private String benefit;
 
-    @OneToMany(mappedBy = "sponsorship")
-    private List<Sponsor> sponsors;
+    @OneToMany(mappedBy = "sponsorship", cascade = CascadeType.ALL)
+    private Set<Sponsor> listSponsors;
 
 }

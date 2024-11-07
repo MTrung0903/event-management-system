@@ -5,6 +5,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.Set;
+
 @Entity(name = "sponsor")
 @Data
 @AllArgsConstructor
@@ -30,4 +32,7 @@ public class Sponsor {
     @ManyToOne
     @JoinColumn(name = "sponsor_ship_id", referencedColumnName = "sponsor_ship_id")
     private SponsorShip sponsorship;
+
+    @OneToMany(mappedBy = "sponsor")
+    private Set<SponsorEvent> listSponsorEvents;
 }

@@ -5,6 +5,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.Set;
+
 @Entity(name = "task")
 @Data
 @AllArgsConstructor
@@ -22,10 +24,14 @@ public class Task {
     private String taskDl;
     @Column(name = "task_status")
     private String taskStatus;
+
     @ManyToOne
     @JoinColumn(name = "event_id")
     private Event event;
     @ManyToOne
     @JoinColumn(name = "team_id")
     private Team team;
+
+    @OneToMany(mappedBy = "task")
+    private Set<SubTask> listSubTasks;
 }

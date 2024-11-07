@@ -27,7 +27,6 @@ public class SubTask {
     @ManyToOne
     @JoinColumn(name = "task_id")
     private Task task;
-
     @ManyToOne
     @JoinColumn(name = "employee_id")
     private Employee employee;

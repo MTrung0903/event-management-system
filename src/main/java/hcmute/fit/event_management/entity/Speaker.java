@@ -5,6 +5,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.Set;
+
 @Entity(name = "speaker")
 @Data
 @AllArgsConstructor
@@ -26,4 +28,7 @@ public class Speaker {
     private String address;
     @Column(name = "speaker_esc")
     private String description;
+
+    @OneToMany(mappedBy = "speaker")
+    private Set<DetailSection> listDetailSections;
 }

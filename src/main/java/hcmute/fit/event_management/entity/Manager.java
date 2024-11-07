@@ -5,6 +5,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.Set;
+
 @Entity(name ="manager")
 @Data
 @AllArgsConstructor
@@ -21,7 +23,15 @@ public class Manager {
     private String phone;
     @Column(name = "email")
     private String email;
+
     @OneToOne
+    @MapsId
     @JoinColumn(name = "man_id")
     private Account account;
+
+    @OneToMany(mappedBy = "manager", cascade = CascadeType.ALL)
+    private Set<Event> listEvents;
+
+    @OneToMany(mappedBy = "manager", cascade = CascadeType.ALL)
+    private Set<Employee> listEmployees;
 }

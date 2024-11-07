@@ -15,7 +15,6 @@ public class ProviderEvent {
     @Id
     @Column(name = "provider_id")
     private int providerID;
-
     @Id
     @Column(name = "event_id")
     private int eventID;

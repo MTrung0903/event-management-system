@@ -25,7 +25,8 @@ public class Invite {
     @Column(name = "invite_status")
     private String status;
 
-    @OneToOne(mappedBy = "invite")
+    @OneToOne(mappedBy = "invite", cascade = CascadeType.ALL)
+    @PrimaryKeyJoinColumn
     private Attendee attendee;
 
     @ManyToOne

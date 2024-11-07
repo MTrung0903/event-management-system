@@ -5,6 +5,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.Set;
+
 @Entity(name = "team")
 @Data
 @AllArgsConstructor
@@ -20,4 +22,11 @@ public class Team {
     @ManyToOne
     @JoinColumn(name = "event_id")
     private Event event;
+
+    @OneToMany(mappedBy = "team")
+    private Set<Employee> listEmployees;
+
+    @OneToMany(mappedBy = "team")
+    private Set<Task> listTasks;
 }
+
