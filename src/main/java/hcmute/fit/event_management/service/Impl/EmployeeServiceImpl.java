@@ -1,7 +1,8 @@
-package hcmute.fit.event_management.service;
+package hcmute.fit.event_management.service.Impl;
 
 import hcmute.fit.event_management.entity.Employee;
 import hcmute.fit.event_management.repository.EmployeeRepository;
+import hcmute.fit.event_management.service.IEmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Example;
 import org.springframework.data.domain.Sort;
@@ -11,7 +12,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class EmployeeServiceImpl implements IEmployeeService{
+public class EmployeeServiceImpl implements IEmployeeService {
     @Autowired
     private EmployeeRepository employeeRepository;
 
