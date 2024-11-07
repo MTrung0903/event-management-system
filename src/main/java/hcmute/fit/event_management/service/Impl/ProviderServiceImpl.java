@@ -1,7 +1,8 @@
-package hcmute.fit.event_management.service;
+package hcmute.fit.event_management.service.Impl;
 
 import hcmute.fit.event_management.entity.ProviderService;
 import hcmute.fit.event_management.repository.ProviderServiceRepository;
+import hcmute.fit.event_management.service.IProviderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Example;
 import org.springframework.data.domain.Sort;
