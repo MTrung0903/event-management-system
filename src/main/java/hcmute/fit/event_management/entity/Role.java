@@ -5,7 +5,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.Set;
+import java.util.List;
+
 
 @Entity(name = "Role")
 @Data
@@ -15,11 +16,11 @@ public class Role {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "role_id")
-    private Integer role_id;
+    private Integer roleID;
 
     @Column(name = "name")
     private String name;
 
     @OneToMany(mappedBy = "role")
-    Set<Account> listAccounts;
+    private List<AccountRole> listAccountRoles;
 }

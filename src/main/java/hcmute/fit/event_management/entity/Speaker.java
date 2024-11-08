@@ -5,7 +5,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.Set;
+import java.util.List;
+
 
 @Entity(name = "speaker")
 @Data
@@ -30,5 +31,5 @@ public class Speaker {
     private String description;
 
     @OneToMany(mappedBy = "speaker")
-    private Set<DetailSection> listDetailSections;
+    private List<DetailSection> listDetailSections;
 }

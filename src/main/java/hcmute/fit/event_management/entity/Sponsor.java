@@ -5,7 +5,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.Set;
+import java.util.List;
+
 
 @Entity(name = "sponsor")
 @Data
@@ -34,5 +35,5 @@ public class Sponsor {
     private SponsorShip sponsorship;
 
     @OneToMany(mappedBy = "sponsor")
-    private Set<SponsorEvent> listSponsorEvents;
+    private List<SponsorEvent> listSponsorEvents;
 }

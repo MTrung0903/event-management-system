@@ -1,38 +1,26 @@
 package hcmute.fit.event_management.controller.guest;
 
-import hcmute.fit.event_management.entity.Account;
+import hcmute.fit.event_management.dto.AccountDTO;
 import hcmute.fit.event_management.service.Impl.AccountServiceImpl;
-import hcmute.fit.event_management.util.JwtHepler;
+import hcmute.fit.event_management.service.Impl.AuthServiceImpl;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.io.Encoders;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import payload.Response;
-
 import javax.crypto.SecretKey;
+import java.io.Console;
+
 
 @RestController
 public class LoginController {
 
     @Autowired
-    AccountServiceImpl accountServiceImpl;
-
-    @Autowired
-    JwtHepler jwtHepler;
+    AuthServiceImpl authServiceImpl;
 
     @PostMapping("/login")
-    public ResponseEntity<?> login(@RequestBody Account account) {
-        Response response;
-        if (accountServiceImpl.checkLogin(account.getEmail(), account.getPassword())){
-            String token = jwtHepler.generateToken(account.getEmail());
-            response = new Response(200,"Succesfully",token);
-        }
-        else {
-            response = new Response(401,"Unsuccessful","False");
-        }
-        return new ResponseEntity<>(response, HttpStatus.OK);
+    public ResponseEntity<?> login(@RequestBody AccountDTO account) {
+        return authServiceImpl.signIn(account);
     }
     @GetMapping("/test")
     public String test() {

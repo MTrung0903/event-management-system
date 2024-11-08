@@ -5,7 +5,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.Set;
+import java.util.List;
+
 
 @Entity(name ="provider")
 @Data
@@ -30,8 +31,8 @@ public class Provider {
     private String website;
 
     @OneToMany(mappedBy = "provider", cascade = CascadeType.ALL)
-    private Set<ProviderEvent> listProviderEvents;
+    private List<ProviderEvent> listProviderEvents;
 
     @OneToMany(mappedBy = "provider")
-    private Set<ProviderService> listProviderServices;
+    private List<ProviderService> listProviderServices;
 }
