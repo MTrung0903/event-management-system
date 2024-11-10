@@ -5,12 +5,14 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
 import java.util.Set;
 
-@Entity(name = "team")
+@Entity
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@Table(name = "team")
 public class Team {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -24,9 +26,9 @@ public class Team {
     private Event event;
 
     @OneToMany(mappedBy = "team")
-    private Set<Employee> listEmployees;
+    private List<Employee> listEmployees;
 
     @OneToMany(mappedBy = "team")
-    private Set<Task> listTasks;
+    private List<Task> listTasks;
 }
 

@@ -1,26 +1,26 @@
 package hcmute.fit.event_management.service;
 
+import hcmute.fit.event_management.dto.InviteDTO;
 import hcmute.fit.event_management.entity.Invite;
 import org.springframework.data.domain.Example;
 import org.springframework.data.domain.Sort;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
 public interface IInviteService {
-    <S extends Invite> S save(S entity);
+    List<InviteDTO> getListInvitesByEventId(int eventId);
 
-    List<Invite> findAll(Sort sort);
+    InviteDTO findInviteByNameOrEmail(String inviteInfor);
 
-    List<Invite> findAll();
+    InviteDTO findInvite(int inviteId);
 
-    List<Invite> findAllById(Iterable<Integer> integers);
+    boolean addInvite(String name, String email, String inviteDate, String status,int eventId);
 
-    long count();
+    boolean updateInvite(Integer inviteId, String name, String email, String inviteDate, String status);
 
-    void delete(Invite entity);
+    boolean updateInviteStatus(Integer inviteId, String status);
 
-    void deleteById(Integer integer);
-
-    <S extends Invite> Optional<S> findOne(Example<S> example);
+    boolean deleteInvite(Integer inviteId);
 }

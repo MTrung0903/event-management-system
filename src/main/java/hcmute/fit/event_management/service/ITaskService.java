@@ -1,5 +1,6 @@
 package hcmute.fit.event_management.service;
 
+import hcmute.fit.event_management.dto.TaskDTO;
 import hcmute.fit.event_management.entity.Task;
 import org.springframework.data.domain.Example;
 import org.springframework.data.domain.Sort;
@@ -8,23 +9,16 @@ import java.util.List;
 import java.util.Optional;
 
 public interface ITaskService {
-    List<Task> findAll();
 
-    List<Task> findAllById(Iterable<Integer> integers);
+    List<TaskDTO> getTasksOfEvent(int eventId);
 
-    <S extends Task> List<S> saveAll(Iterable<S> entities);
+    TaskDTO findTaskById(int subTaskId);
 
-    long count();
+    boolean addTask(int eventId, int teamId, String taskName, String taskDesc,
+                    String taskDl, String taskStatus);
 
-    void delete(Task entity);
+    boolean updateTask(int taskId, int eventId, int teamId, String taskName, String taskDesc,
+                       String taskDl, String taskStatus);
 
-    void deleteById(Integer integer);
-
-    Optional<Task> findById(Integer integer);
-
-    <S extends Task> S save(S entity);
-
-    List<Task> findAll(Sort sort);
-
-    <S extends Task> Optional<S> findOne(Example<S> example);
+    boolean deleteTask(int taskId);
 }

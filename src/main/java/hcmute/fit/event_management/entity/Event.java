@@ -6,17 +6,19 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.Date;
+import java.util.List;
 import java.util.Set;
 
-@Entity(name = "event")
+@Entity
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@Table(name = "event")
 public class Event {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "event_id")
-    private int evetID;
+    private int eventID;
     @Column(name = "event_name")
     private String eventName;
     @Column(name = "event_desc")
@@ -38,17 +40,17 @@ public class Event {
     private Mc mc;
 
     @OneToMany(mappedBy = "event", cascade = CascadeType.ALL)
-    private Set<DetailSection> listDetailSections;
+    private List<DetailSection> listDetailSections;
     @OneToMany(mappedBy = "event", cascade = CascadeType.ALL)
-    private Set<Invite> listInvites;
+    private List<Invite> listInvites;
     @OneToMany(mappedBy = "event", cascade = CascadeType.ALL)
-    private Set<ProviderEvent> listProviderEvents;
+    private List<ProviderEvent> listProviderEvents;
     @OneToMany(mappedBy = "event", cascade = CascadeType.ALL)
-    private Set<Section> listSections;
+    private List<Section> listSections;
     @OneToMany(mappedBy = "event", cascade = CascadeType.ALL)
-    private Set<SponsorEvent> listSponsorEvents;
+    private List<SponsorEvent> listSponsorEvents;
     @OneToMany(mappedBy = "event", cascade = CascadeType.ALL)
-    private Set<Task> listTasks;
+    private List<Task> listTasks;
     @OneToMany(mappedBy = "event", cascade = CascadeType.ALL)
-    private Set<Team> listTeams;
+    private List<Team> listTeams;
 }

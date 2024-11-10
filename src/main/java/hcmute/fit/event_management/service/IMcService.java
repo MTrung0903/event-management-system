@@ -1,5 +1,6 @@
 package hcmute.fit.event_management.service;
 
+import hcmute.fit.event_management.dto.McDTO;
 import hcmute.fit.event_management.entity.Mc;
 import org.springframework.data.domain.Example;
 import org.springframework.data.domain.Sort;
@@ -8,23 +9,14 @@ import java.util.List;
 import java.util.Optional;
 
 public interface IMcService {
-    List<Mc> findAll();
 
-    List<Mc> findAllById(Iterable<Integer> integers);
+    List<McDTO> getListMc();
 
-    <S extends Mc> List<S> saveAll(Iterable<S> entities);
+    boolean addMc(String name, String email);
 
-    long count();
+    boolean updateMc(Integer mcId, String name, String email);
 
-    void deleteAllById(Iterable<? extends Integer> integers);
+    boolean deleteMc(Integer mcId);
 
-    void deleteById(Integer integer);
-
-    <S extends Mc> S save(S entity);
-
-    Optional<Mc> findById(Integer integer);
-
-    List<Mc> findAll(Sort sort);
-
-    <S extends Mc> Optional<S> findOne(Example<S> example);
+    McDTO findMcById(Integer mcId);
 }

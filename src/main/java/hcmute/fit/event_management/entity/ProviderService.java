@@ -5,10 +5,11 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Entity(name = "provider_service")
+@Entity
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@Table(name = "provider_service")
 public class ProviderService {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -26,6 +27,6 @@ public class ProviderService {
     private String duration;
 
     @ManyToOne
-    @JoinColumn(name = "provider_id", referencedColumnName = "provider_id")
+    @JoinColumn(name = "provider_id")
     private Provider provider;
 }

@@ -5,12 +5,14 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
 import java.util.Set;
 
-@Entity(name ="provider")
+@Entity
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@Table(name ="provider")
 public class Provider {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -30,8 +32,8 @@ public class Provider {
     private String website;
 
     @OneToMany(mappedBy = "provider", cascade = CascadeType.ALL)
-    private Set<ProviderEvent> listProviderEvents;
+    private List<ProviderEvent> listProviderEvents;
 
     @OneToMany(mappedBy = "provider")
-    private Set<ProviderService> listProviderServices;
+    private List<ProviderService> listProviderServices;
 }

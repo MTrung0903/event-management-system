@@ -5,10 +5,13 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Entity(name = "subtask")
+import java.util.Date;
+
+@Entity
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@Table(name = "subtask")
 public class SubTask {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,7 +23,7 @@ public class SubTask {
     @Column(name = "subtask_desc")
     private String subTaskDesc;
     @Column(name = "subtask_deadline")
-    private String subTaskDeadline;
+    private Date subTaskDeadline;
     @Column(name = "subtask_status")
     private String status;
 

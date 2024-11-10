@@ -1,5 +1,6 @@
 package hcmute.fit.event_management.service;
 
+import hcmute.fit.event_management.dto.SubTaskDTO;
 import hcmute.fit.event_management.entity.SubTask;
 import org.springframework.data.domain.Example;
 import org.springframework.data.domain.Sort;
@@ -8,19 +9,16 @@ import java.util.List;
 import java.util.Optional;
 
 public interface ISubtaskService {
-    List<SubTask> findAll();
 
-    List<SubTask> findAllById(Iterable<Integer> integers);
+    List<SubTaskDTO> getAllSubtasksOfTask(int taskId);
 
-    <S extends SubTask> List<S> saveAll(Iterable<S> entities);
+    SubTaskDTO getSubtaskById(int subtaskId);
 
-    void deleteById(Integer integer);
+    boolean addSubtask(int taskId, int employeeId, String subtaskName,
+                       String subtaskDesc, String subtaskDl, String subtaskStatus);
 
-    Optional<SubTask> findById(Integer integer);
+    boolean updateSubtask(int subtaskId, int taskId, int employeeId, String subtaskName,
+                          String subtaskDesc, String subtaskDl, String subtaskStatus);
 
-    <S extends SubTask> S save(S entity);
-
-    List<SubTask> findAll(Sort sort);
-
-    <S extends SubTask> Optional<S> findOne(Example<S> example);
+    boolean deleteSubtask(int subtaskId);
 }

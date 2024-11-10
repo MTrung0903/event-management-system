@@ -5,11 +5,11 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Entity(name = "provider_event")
-
+@Entity
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@Table(name = "provider_event")
 public class ProviderEvent {
 
     @Id
