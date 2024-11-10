@@ -1,6 +1,7 @@
 package hcmute.fit.event_management.controller.guest;
 
 import hcmute.fit.event_management.dto.AccountDTO;
+import hcmute.fit.event_management.dto.ResetPasswordDTO;
 import hcmute.fit.event_management.service.Impl.AccountServiceImpl;
 import hcmute.fit.event_management.service.Impl.AuthServiceImpl;
 import io.jsonwebtoken.Jwts;
@@ -22,9 +23,13 @@ public class LoginController {
     public ResponseEntity<?> login(@RequestBody AccountDTO account) {
         return authServiceImpl.signIn(account);
     }
-    @GetMapping("/test")
-    public String test() {
-        SecretKey key = Jwts.SIG.HS512.key().build();
-        return Encoders.BASE64.encode(key.getEncoded());
+    @GetMapping("/forgot")
+    public ResponseEntity<?> forgot(@RequestParam String email) {
+        return authServiceImpl.sendResetPassword(email);
+    }
+    @PostMapping("/reset-password")
+    public ResponseEntity<?> resetPassword(@RequestBody ResetPasswordDTO resetPasswordDTO) {
+        System.out.println(resetPasswordDTO);
+        return authServiceImpl.resetPassword(resetPasswordDTO);
     }
 }

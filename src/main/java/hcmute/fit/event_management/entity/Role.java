@@ -16,11 +16,16 @@ public class Role {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "role_id")
-    private Integer roleID;
+    private int roleID;
 
     @Column(name = "name")
     private String name;
 
     @OneToMany(mappedBy = "role")
     private List<AccountRole> listAccountRoles;
+
+    public Role(int roleID, String name) {
+        this.roleID = roleID;
+        this.name = name;
+    }
 }

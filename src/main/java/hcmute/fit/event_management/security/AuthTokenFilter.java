@@ -42,8 +42,6 @@ public class AuthTokenFilter extends OncePerRequestFilter {
                         .map(SimpleGrantedAuthority::new)
                         .collect(Collectors.toList());
                 AccountDetail accountDetail = new AccountDetail(email, null, authorities);
-                System.out.println(accountDetail.getAuthorities());
-                System.out.println(token + " " + accountDetail.getUsername());
                 UsernamePasswordAuthenticationToken usernamePasswordAuthenticationToken =
                         new UsernamePasswordAuthenticationToken(accountDetail, null, accountDetail.getAuthorities());
                 SecurityContext securityContext = SecurityContextHolder.getContext();

@@ -18,13 +18,32 @@ import java.util.List;
 public class JwtTokenUtil {
     @Value("${jwt.privateKey}")
     private String privateKey;
+    @Value("${jwt.expirationMs}")
+    private Long expirationMs;
+    @Value("${jwt.expirationLoginMs}")
+    private Long expirationLoginMs;
 
     public String generateToken(Authentication authentication, List<String> roles){
         AccountDetail accountPrincipal = (AccountDetail) authentication.getPrincipal();
         SecretKey key = Keys.hmacShaKeyFor(Decoders.BASE64.decode(privateKey));
+        Date now = new Date();
+        Date expiration = new Date(now.getTime() + expirationLoginMs);
         return Jwts.builder()
                 .subject(accountPrincipal.getUsername())
+                .issuedAt(now)
+                .expiration(expiration)
                 .claim("roles", roles)
+                .signWith(key)
+                .compact();
+    }
+    public String generateResetToken(String email){
+        SecretKey key = Keys.hmacShaKeyFor(Decoders.BASE64.decode(privateKey));
+        Date now = new Date();
+        Date expiration = new Date(now.getTime() + expirationMs);
+        return Jwts.builder()
+                .subject(email)
+                .issuedAt(now)
+                .expiration(expiration)
                 .signWith(key)
                 .compact();
     }

@@ -29,6 +29,9 @@ public class Account {
     @OneToOne(mappedBy = "account", cascade = CascadeType.ALL)
     @PrimaryKeyJoinColumn
     private Manager manager;
+    @OneToOne(mappedBy = "account", cascade = CascadeType.ALL)
+    @PrimaryKeyJoinColumn
+    private PasswordResetToken token;
 
     @OneToMany(mappedBy = "account", cascade = CascadeType.ALL)
     private List<AccountRole> listAccountRoles;
