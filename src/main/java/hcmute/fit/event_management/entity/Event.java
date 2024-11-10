@@ -6,7 +6,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.Date;
-import java.util.Set;
+import java.util.List;
+
 
 @Entity(name = "event")
 @Data
@@ -38,17 +39,17 @@ public class Event {
     private Mc mc;
 
     @OneToMany(mappedBy = "event", cascade = CascadeType.ALL)
-    private Set<DetailSection> listDetailSections;
+    private List<DetailSection> listDetailSections;
     @OneToMany(mappedBy = "event", cascade = CascadeType.ALL)
-    private Set<Invite> listInvites;
+    private List<Invite> listInvites;
     @OneToMany(mappedBy = "event", cascade = CascadeType.ALL)
-    private Set<ProviderEvent> listProviderEvents;
+    private List<ProviderEvent> listProviderEvents;
     @OneToMany(mappedBy = "event", cascade = CascadeType.ALL)
-    private Set<Section> listSections;
+    private List<Section> listSections;
     @OneToMany(mappedBy = "event", cascade = CascadeType.ALL)
-    private Set<SponsorEvent> listSponsorEvents;
+    private List<SponsorEvent> listSponsorEvents;
     @OneToMany(mappedBy = "event", cascade = CascadeType.ALL)
-    private Set<Task> listTasks;
+    private List<Task> listTasks;
     @OneToMany(mappedBy = "event", cascade = CascadeType.ALL)
-    private Set<Team> listTeams;
+    private List<Team> listTeams;
 }

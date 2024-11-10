@@ -4,6 +4,9 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
+
 @Entity(name = "account")
 @Data
 @AllArgsConstructor
@@ -20,16 +23,17 @@ public class Account {
     @Column(name = "is_active")
     private boolean isActive;
 
-    @ManyToOne
-    @JoinColumn(name = "role_id")
-    private Role role;
-
     @OneToOne(mappedBy = "account", cascade = CascadeType.ALL)
     @PrimaryKeyJoinColumn
     private Employee employee;
     @OneToOne(mappedBy = "account", cascade = CascadeType.ALL)
     @PrimaryKeyJoinColumn
     private Manager manager;
+    @OneToOne(mappedBy = "account", cascade = CascadeType.ALL)
+    @PrimaryKeyJoinColumn
+    private PasswordResetToken token;
 
+    @OneToMany(mappedBy = "account", cascade = CascadeType.ALL)
+    private List<AccountRole> listAccountRoles;
 
 }

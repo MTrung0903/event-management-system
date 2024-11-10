@@ -5,7 +5,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.Set;
+import java.util.List;
+
 
 @Entity(name ="mc")
 @Data
@@ -22,5 +23,5 @@ public class Mc {
     private String email;
 
     @OneToMany(mappedBy = "mc")
-    private Set<Event> listEvents;
+    private List<Event> listEvents;
 }

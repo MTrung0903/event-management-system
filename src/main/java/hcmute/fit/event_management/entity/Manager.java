@@ -5,7 +5,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.Set;
+import java.util.List;
+
 
 @Entity(name ="manager")
 @Data
@@ -30,8 +31,8 @@ public class Manager {
     private Account account;
 
     @OneToMany(mappedBy = "manager", cascade = CascadeType.ALL)
-    private Set<Event> listEvents;
+    private List<Event> listEvents;
 
     @OneToMany(mappedBy = "manager", cascade = CascadeType.ALL)
-    private Set<Employee> listEmployees;
+    private List<Employee> listEmployees;
 }

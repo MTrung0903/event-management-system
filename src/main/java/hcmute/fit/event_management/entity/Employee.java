@@ -5,7 +5,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.Set;
+import java.util.List;
+
 
 @Entity(name = "employee")
 @Data
@@ -37,5 +38,5 @@ public class Employee {
     private Manager manager;
 
     @OneToMany(mappedBy = "employee")
-    private Set<SubTask> listSubTasks;
+    private List<SubTask> listSubTasks;
 }
