@@ -9,6 +9,8 @@ import hcmute.fit.event_management.repository.PasswordResetTokenRepository;
 import hcmute.fit.event_management.service.AuthService;
 import hcmute.fit.event_management.util.JwtTokenUtil;
 import jakarta.transaction.Transactional;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -40,9 +42,10 @@ public class AuthServiceImpl implements AuthService {
     EmailServiceImpl emailService;
     @Autowired
     private JwtTokenUtil jwtTokenUtil;
-
+    Logger logger = LoggerFactory.getLogger(this.getClass());
     @Override
     public ResponseEntity<Response> signIn(AccountDTO account) {
+        Response response;
         Authentication authentication = authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(account.getEmail(), account.getPassword()));
         if (authentication.isAuthenticated()) {
@@ -51,11 +54,11 @@ public class AuthServiceImpl implements AuthService {
                     .map(GrantedAuthority::getAuthority)
                     .toList();
             String token = jwtTokenUtil.generateToken(authentication, roles);
-            Response response = new Response(200, "Succesfully", token);
+            response = new Response(200, "Success", token);
             return new ResponseEntity<>(response, HttpStatus.OK);
         } else {
-            Response response = new Response(401, "Unsuccessful", "False");
-            return new ResponseEntity<>(response, HttpStatus.OK);
+            response = new Response(401, "Unauthorized", "Invalid credentials");
+            return new ResponseEntity<>(response, HttpStatus.UNAUTHORIZED);
         }
     }
     @Override
@@ -63,8 +66,9 @@ public class AuthServiceImpl implements AuthService {
         Response response;
         Optional<Account> account = accountRepository.findByEmail(email);
         if (account.isEmpty()) {
-            response = new Response(401, "Unsuccessful", "False");
-            return new ResponseEntity<>(response, HttpStatus.OK);
+            logger.warn("Account not found with password reset request");
+            response = new Response(404, "Not Found", "Account with this email does not exist");
+            return new ResponseEntity<>(response, HttpStatus.NOT_FOUND);
         }
         else {
             String token = jwtTokenUtil.generateResetToken(email);
@@ -73,10 +77,10 @@ public class AuthServiceImpl implements AuthService {
             resetToken.setToken(token);
             passwordResetTokenRepository.save(resetToken);
             emailService.sendResetEmail(email, token);
-            response = new Response(200, "Succesfully", token);
+            response = new Response(200, "Success", "Password reset link has been sent to your email");
+            logger.info("Password reset request email sent successfully");
             return new ResponseEntity<>(response, HttpStatus.OK);
         }
-
     }
     @Transactional
     @Override
@@ -93,15 +97,18 @@ public class AuthServiceImpl implements AuthService {
                 // Remove the relationship to the deleted token to avoid cascade persistence
                 account.setToken(null);
                 accountRepository.save(account);
-                response = new Response(200, "Successfully", "True");
+                response = new Response(200, "Password successfully reset", "True");
+                logger.info("The account's password has been reset successfully");
                 return new ResponseEntity<>(response, HttpStatus.OK);
             } else {
-                response = new Response(401, "Unsuccessful", "False");
-                return new ResponseEntity<>(response, HttpStatus.OK);
+                response = new Response(404, "Token not found", "False");
+                logger.warn("Password reset token not foundt");
+                return new ResponseEntity<>(response, HttpStatus.NOT_FOUND);
             }
         } else {
-            response = new Response(401, "Unsuccessful", "False");
-            return new ResponseEntity<>(response, HttpStatus.OK);
+            response = new Response(400, "Invalid token", "False");
+            logger.warn("Invalid reset token");
+            return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);
         }
     }
 

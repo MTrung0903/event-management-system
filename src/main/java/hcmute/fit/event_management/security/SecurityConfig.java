@@ -21,6 +21,11 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig {
+    @Autowired
+    private AuthEntryPointJwt unauthorizedHandler;
+
+    @Autowired
+    private CustomAccessDeniedHandler accessDeniedHandler;
 
     @Autowired
     AccountDetailService accountDetailService;
@@ -47,7 +52,7 @@ public class SecurityConfig {
         return new BCryptPasswordEncoder();
     }
 
-        @Bean
+    @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
                 .cors(AbstractHttpConfigurer::disable)
@@ -57,10 +62,13 @@ public class SecurityConfig {
                         .requestMatchers("/login","/forgot","/reset-password").permitAll()
                         .requestMatchers("/admin/**").hasRole("ADMIN")
                         .requestMatchers("/manager/**").hasAnyRole("MANAGER", "ADMIN")
-                        .requestMatchers("/user/**").hasAnyRole("USER","MANAGER", "ADMIN")
+                        .requestMatchers("/employee/**").hasAnyRole("USER","MANAGER", "ADMIN")
                         .anyRequest().authenticated()
+                ).addFilterBefore(authTokenFilter, UsernamePasswordAuthenticationFilter.class)
+                .exceptionHandling(configurer -> configurer
+                                .accessDeniedHandler(accessDeniedHandler) // Xử lý lỗi 403;
+                                .authenticationEntryPoint(unauthorizedHandler)  // Xử lý lỗi 401
                 );
-        http.addFilterBefore(authTokenFilter, UsernamePasswordAuthenticationFilter.class);
         return http.build();
     }
 }

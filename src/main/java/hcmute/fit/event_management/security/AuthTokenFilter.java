@@ -1,7 +1,6 @@
 package hcmute.fit.event_management.security;
 
 import hcmute.fit.event_management.dto.AccountDetail;
-import hcmute.fit.event_management.service.Impl.AccountDetailService;
 import hcmute.fit.event_management.util.JwtTokenUtil;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
@@ -27,8 +26,6 @@ public class AuthTokenFilter extends OncePerRequestFilter {
     @Autowired
     JwtTokenUtil jwtTokenUtil;
 
-    @Autowired
-    AccountDetailService accountDetailService;
 
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
@@ -47,7 +44,6 @@ public class AuthTokenFilter extends OncePerRequestFilter {
                 SecurityContext securityContext = SecurityContextHolder.getContext();
                 securityContext.setAuthentication(usernamePasswordAuthenticationToken);
             }
-
         } catch (Exception e) {
             System.out.println("Error" + e.getMessage());
         }

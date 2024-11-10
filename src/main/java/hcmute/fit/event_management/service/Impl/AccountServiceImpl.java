@@ -11,6 +11,8 @@ import hcmute.fit.event_management.repository.AccountRoleRepository;
 import hcmute.fit.event_management.repository.RoleRepository;
 import hcmute.fit.event_management.service.IAccountService;
 import jakarta.transaction.Transactional;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Example;
@@ -39,6 +41,7 @@ public class AccountServiceImpl implements IAccountService {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
+    Logger logger = LoggerFactory.getLogger(this.getClass());
     public AccountServiceImpl(AccountRepository accountRepository) {
         this.accountRepository = accountRepository;
     }
@@ -108,39 +111,66 @@ public class AccountServiceImpl implements IAccountService {
                 .toList();
     }
     @Transactional
-    public boolean addOrUpdateAccount(boolean isUpdate,AccountDTO accountDTO) {
+    public int addOrUpdateAccount(boolean isUpdate, AccountDTO accountDTO) {
         Optional<Account> existingAccount = findbyEmail(accountDTO.getEmail());
+
         if (!isUpdate) {
             if (existingAccount.isPresent()) {
-                return false;
+                logger.warn("Account creation failed: Account already exists");
+                return 409;
             }
+            return createAccount(accountDTO);
         }
-        else {
-            if (existingAccount.isEmpty()) {
-                return false;
-            }
-            Account accountEntity = existingAccount.get();
-            accountDTO.setAccountID(accountEntity.getAccountID());
-            accountRoleRepository.deleteAllByAccount(accountEntity);
+
+        if (existingAccount.isEmpty()) {
+            logger.warn("Account update failed: Account not found");
+            return 404;
         }
+        return updateAccount(existingAccount.get(), accountDTO);
+    }
+
+    private int createAccount(AccountDTO accountDTO) {
         Account account = new Account();
         accountDTO.setPassword(passwordEncoder.encode(accountDTO.getPassword()));
         BeanUtils.copyProperties(accountDTO, account);
         account.setActive(accountDTO.isActive());
         save(account);
+
+        createAccountRoles(accountDTO, account);
+
+        logger.info("Account created successfully");
+        return 201;
+    }
+
+    private int updateAccount(Account existingAccount, AccountDTO accountDTO) {
+        accountDTO.setAccountID(existingAccount.getAccountID());
+        accountRoleRepository.deleteAllByAccount(existingAccount);
+
+        Account updatedAccount = new Account();
+        BeanUtils.copyProperties(accountDTO, updatedAccount);
+        updatedAccount.setPassword(passwordEncoder.encode(accountDTO.getPassword()));
+        updatedAccount.setActive(accountDTO.isActive());
+        save(updatedAccount);
+
+        createAccountRoles(accountDTO, updatedAccount);
+
+        logger.info("Account updated successfully");
+        return 200;
+    }
+
+    private void createAccountRoles(AccountDTO accountDTO, Account account) {
         List<AccountRole> accountRoles = new ArrayList<>();
         for (String role : accountDTO.getRoles()) {
             Optional<Role> roleOptional = roleRepository.findByName(role);
-            if (roleOptional.isPresent()) {
-                Role roleEntity = roleOptional.get();
+            roleOptional.ifPresent(roleEntity -> {
                 AccountRoleId accountRoleId = new AccountRoleId(account.getAccountID(), roleEntity.getRoleID());
                 AccountRole accountRole = new AccountRole(accountRoleId, account, new Role(roleEntity.getRoleID(), roleEntity.getName()));
                 accountRoles.add(accountRole);
-                accountRoleRepository.saveAll(accountRoles);
-            }
+            });
         }
-        return true;
+        accountRoleRepository.saveAll(accountRoles);
     }
+
     @Override
     public Optional<Account> findbyEmail(String email) {
         return accountRepository.findByEmail(email);
