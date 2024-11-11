@@ -4,7 +4,6 @@ import hcmute.fit.event_management.dto.EmployeeDTO;
 import hcmute.fit.event_management.entity.Employee;
 import hcmute.fit.event_management.repository.EmployeeRepository;
 import hcmute.fit.event_management.service.IEmployeeService;
-import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
