@@ -1699,3 +1699,33 @@ Action:
 
 Consider defining a bean of type 'org.springframework.security.config.annotation.web.builders.HttpSecurity' in your configuration.
 
+2024-11-11 14:22:22 INFO  h.f.e.EventManagementApplication : Starting EventManagementApplication using Java 21.0.2 with PID 80516 (D:\JAVA\event-management-system\target\classes started by TungNT in D:\JAVA\event-management-system)
+2024-11-11 14:22:22 INFO  h.f.e.EventManagementApplication : No active profile set, falling back to 1 default profile: "default"
+2024-11-11 14:22:22 INFO  o.s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-11-11 14:22:23 INFO  o.s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 251 ms. Found 21 JPA repository interfaces.
+2024-11-11 14:22:23 INFO  o.s.b.w.embedded.tomcat.TomcatWebServer : Tomcat initialized with port 8080 (http)
+2024-11-11 14:22:23 INFO  o.apache.catalina.core.StandardService : Starting service [Tomcat]
+2024-11-11 14:22:23 INFO  org.apache.catalina.core.StandardEngine : Starting Servlet engine: [Apache Tomcat/10.1.31]
+2024-11-11 14:22:23 INFO  o.a.c.c.C.[Tomcat].[localhost].[/] : Initializing Spring embedded WebApplicationContext
+2024-11-11 14:22:23 INFO  o.s.b.w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1244 ms
+2024-11-11 14:22:23 INFO  com.zaxxer.hikari.HikariDataSource : HikariPool-2 - Starting...
+2024-11-11 14:22:23 INFO  com.zaxxer.hikari.pool.HikariPool : HikariPool-2 - Added connection com.mysql.cj.jdbc.ConnectionImpl@6a4cc104
+2024-11-11 14:22:23 INFO  com.zaxxer.hikari.HikariDataSource : HikariPool-2 - Start completed.
+2024-11-11 14:22:23 INFO  o.s.b.a.h2.H2ConsoleAutoConfiguration : H2 console available at '/h2-console'. Database available at 'jdbc:mysql://localhost/event'
+2024-11-11 14:22:23 INFO  o.hibernate.jpa.internal.util.LogHelper : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-11-11 14:22:23 INFO  o.h.c.internal.RegionFactoryInitiator : HHH000026: Second-level cache disabled
+2024-11-11 14:22:23 INFO  o.s.o.j.p.SpringPersistenceUnitInfo : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-11-11 14:22:24 INFO  o.h.e.t.j.p.i.JtaPlatformInitiator : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-11-11 14:22:24 INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-11-11 14:22:24 WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-11-11 14:22:24 INFO  o.s.s.c.a.a.c.InitializeAuthenticationProviderBeanManagerConfigurer$InitializeAuthenticationProviderManagerConfigurer : Global AuthenticationManager configured with AuthenticationProvider bean with name authenticationProvider
+2024-11-11 14:22:24 WARN  o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with an AuthenticationProvider bean. UserDetailsService beans will not be used for username/password login. Consider removing the AuthenticationProvider bean. Alternatively, consider using the UserDetailsService in a manually instantiated DaoAuthenticationProvider.
+2024-11-11 14:22:25 WARN  o.s.b.a.t.ThymeleafAutoConfiguration$DefaultTemplateResolverConfiguration : Cannot find template location: classpath:/templates/ (please add some templates, check your Thymeleaf configuration, or set spring.thymeleaf.check-template-location=false)
+2024-11-11 14:22:25 INFO  o.s.b.d.a.OptionalLiveReloadServer : LiveReload server is running on port 35729
+2024-11-11 14:22:25 INFO  o.s.b.w.embedded.tomcat.TomcatWebServer : Tomcat started on port 8080 (http) with context path '/'
+2024-11-11 14:22:25 INFO  h.f.e.EventManagementApplication : Started EventManagementApplication in 3.76 seconds (process running for 226.618)
+2024-11-11 14:22:25 INFO  o.s.b.d.a.ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2024-11-11 14:25:02 INFO  o.a.c.c.C.[Tomcat].[localhost].[/] : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-11-11 14:25:02 INFO  o.s.web.servlet.DispatcherServlet : Initializing Servlet 'dispatcherServlet'
+2024-11-11 14:25:02 INFO  o.s.web.servlet.DispatcherServlet : Completed initialization in 1 ms
+2024-11-11 14:25:02 ERROR h.f.e.security.CustomAccessDeniedHandler : Forbidden error: /admin/account
