@@ -1601,3 +1601,101 @@ Consider defining a bean of type 'hcmute.fit.event_management.security.CustomAcc
 2024-11-11 02:37:24 INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
 2024-11-11 02:37:24 INFO  com.zaxxer.hikari.HikariDataSource : HikariPool-3 - Shutdown initiated...
 2024-11-11 02:37:24 INFO  com.zaxxer.hikari.HikariDataSource : HikariPool-3 - Shutdown completed.
+2024-11-11 14:07:31 INFO  o.h.validator.internal.util.Version : HV000001: Hibernate Validator 8.0.1.Final
+2024-11-11 14:07:31 INFO  h.f.e.EventManagementApplication : Starting EventManagementApplication using Java 21.0.2 with PID 71204 (D:\JAVA\event-management-system\target\classes started by TungNT in D:\JAVA\event-management-system)
+2024-11-11 14:07:31 INFO  h.f.e.EventManagementApplication : No active profile set, falling back to 1 default profile: "default"
+2024-11-11 14:07:31 INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2024-11-11 14:07:31 INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2024-11-11 14:07:32 INFO  o.s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-11-11 14:07:32 INFO  o.s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 243 ms. Found 21 JPA repository interfaces.
+2024-11-11 14:07:34 INFO  o.s.b.w.embedded.tomcat.TomcatWebServer : Tomcat initialized with port 8080 (http)
+2024-11-11 14:07:34 INFO  o.apache.coyote.http11.Http11NioProtocol : Initializing ProtocolHandler ["http-nio-8080"]
+2024-11-11 14:07:34 INFO  o.apache.catalina.core.StandardService : Starting service [Tomcat]
+2024-11-11 14:07:34 INFO  org.apache.catalina.core.StandardEngine : Starting Servlet engine: [Apache Tomcat/10.1.31]
+2024-11-11 14:07:34 INFO  o.a.c.c.C.[Tomcat].[localhost].[/] : Initializing Spring embedded WebApplicationContext
+2024-11-11 14:07:34 INFO  o.s.b.w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 3134 ms
+2024-11-11 14:07:34 INFO  com.zaxxer.hikari.HikariDataSource : HikariPool-1 - Starting...
+2024-11-11 14:07:34 INFO  com.zaxxer.hikari.pool.HikariPool : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@21b40f34
+2024-11-11 14:07:34 INFO  com.zaxxer.hikari.HikariDataSource : HikariPool-1 - Start completed.
+2024-11-11 14:07:34 INFO  o.s.b.a.h2.H2ConsoleAutoConfiguration : H2 console available at '/h2-console'. Database available at 'jdbc:mysql://localhost/event'
+2024-11-11 14:07:35 INFO  o.hibernate.jpa.internal.util.LogHelper : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-11-11 14:07:35 INFO  org.hibernate.Version : HHH000412: Hibernate ORM core version 6.5.3.Final
+2024-11-11 14:07:35 INFO  o.h.c.internal.RegionFactoryInitiator : HHH000026: Second-level cache disabled
+2024-11-11 14:07:35 INFO  o.s.o.j.p.SpringPersistenceUnitInfo : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-11-11 14:07:38 INFO  o.h.e.t.j.p.i.JtaPlatformInitiator : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-11-11 14:07:39 INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-11-11 14:07:39 WARN  o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'loginController': Unsatisfied dependency expressed through field 'authServiceImpl': Error creating bean with name 'authServiceImpl': Unsatisfied dependency expressed through field 'authenticationManager': Error creating bean with name 'authenticationManager' defined in class path resource [hcmute/fit/event_management/security/SecurityConfig.class]: Unsatisfied dependency expressed through method 'authenticationManager' parameter 0: No qualifying bean of type 'org.springframework.security.config.annotation.web.builders.HttpSecurity' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {}
+2024-11-11 14:07:39 INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-11-11 14:07:39 INFO  com.zaxxer.hikari.HikariDataSource : HikariPool-1 - Shutdown initiated...
+2024-11-11 14:07:39 INFO  com.zaxxer.hikari.HikariDataSource : HikariPool-1 - Shutdown completed.
+2024-11-11 14:07:39 INFO  o.apache.catalina.core.StandardService : Stopping service [Tomcat]
+2024-11-11 14:07:39 INFO  o.s.b.a.l.ConditionEvaluationReportLogger : 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2024-11-11 14:07:39 ERROR o.s.b.d.LoggingFailureAnalysisReporter : 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Parameter 0 of method authenticationManager in hcmute.fit.event_management.security.SecurityConfig required a bean of type 'org.springframework.security.config.annotation.web.builders.HttpSecurity' that could not be found.
+
+The injection point has the following annotations:
+	- @org.springframework.beans.factory.annotation.Autowired(required=true)
+
+
+Action:
+
+Consider defining a bean of type 'org.springframework.security.config.annotation.web.builders.HttpSecurity' in your configuration.
+
+2024-11-11 14:08:42 INFO  o.h.validator.internal.util.Version : HV000001: Hibernate Validator 8.0.1.Final
+2024-11-11 14:08:42 INFO  h.f.e.EventManagementApplication : Starting EventManagementApplication using Java 21.0.2 with PID 75808 (D:\JAVA\event-management-system\target\classes started by TungNT in D:\JAVA\event-management-system)
+2024-11-11 14:08:42 INFO  h.f.e.EventManagementApplication : No active profile set, falling back to 1 default profile: "default"
+2024-11-11 14:08:42 INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2024-11-11 14:08:42 INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2024-11-11 14:08:44 INFO  o.s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-11-11 14:08:44 INFO  o.s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 186 ms. Found 21 JPA repository interfaces.
+2024-11-11 14:08:45 INFO  o.s.b.w.embedded.tomcat.TomcatWebServer : Tomcat initialized with port 8080 (http)
+2024-11-11 14:08:45 INFO  o.apache.coyote.http11.Http11NioProtocol : Initializing ProtocolHandler ["http-nio-8080"]
+2024-11-11 14:08:45 INFO  o.apache.catalina.core.StandardService : Starting service [Tomcat]
+2024-11-11 14:08:45 INFO  org.apache.catalina.core.StandardEngine : Starting Servlet engine: [Apache Tomcat/10.1.31]
+2024-11-11 14:08:45 INFO  o.a.c.c.C.[Tomcat].[localhost].[/] : Initializing Spring embedded WebApplicationContext
+2024-11-11 14:08:45 INFO  o.s.b.w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2831 ms
+2024-11-11 14:08:45 INFO  com.zaxxer.hikari.HikariDataSource : HikariPool-1 - Starting...
+2024-11-11 14:08:46 INFO  com.zaxxer.hikari.pool.HikariPool : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@10c3a7ca
+2024-11-11 14:08:46 INFO  com.zaxxer.hikari.HikariDataSource : HikariPool-1 - Start completed.
+2024-11-11 14:08:46 INFO  o.s.b.a.h2.H2ConsoleAutoConfiguration : H2 console available at '/h2-console'. Database available at 'jdbc:mysql://localhost/event'
+2024-11-11 14:08:46 INFO  o.hibernate.jpa.internal.util.LogHelper : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-11-11 14:08:46 INFO  org.hibernate.Version : HHH000412: Hibernate ORM core version 6.5.3.Final
+2024-11-11 14:08:46 INFO  o.h.c.internal.RegionFactoryInitiator : HHH000026: Second-level cache disabled
+2024-11-11 14:08:47 INFO  o.s.o.j.p.SpringPersistenceUnitInfo : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-11-11 14:08:49 INFO  o.h.e.t.j.p.i.JtaPlatformInitiator : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-11-11 14:08:49 INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-11-11 14:08:50 WARN  o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'loginController': Unsatisfied dependency expressed through field 'authServiceImpl': Error creating bean with name 'authServiceImpl': Unsatisfied dependency expressed through field 'authenticationManager': Error creating bean with name 'authenticationManager' defined in class path resource [hcmute/fit/event_management/security/SecurityConfig.class]: Unsatisfied dependency expressed through method 'authenticationManager' parameter 0: No qualifying bean of type 'org.springframework.security.config.annotation.web.builders.HttpSecurity' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {}
+2024-11-11 14:08:50 INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-11-11 14:08:50 INFO  com.zaxxer.hikari.HikariDataSource : HikariPool-1 - Shutdown initiated...
+2024-11-11 14:08:50 INFO  com.zaxxer.hikari.HikariDataSource : HikariPool-1 - Shutdown completed.
+2024-11-11 14:08:50 INFO  o.apache.catalina.core.StandardService : Stopping service [Tomcat]
+2024-11-11 14:08:50 INFO  o.s.b.a.l.ConditionEvaluationReportLogger : 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2024-11-11 14:08:50 ERROR o.s.b.d.LoggingFailureAnalysisReporter : 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Parameter 0 of method authenticationManager in hcmute.fit.event_management.security.SecurityConfig required a bean of type 'org.springframework.security.config.annotation.web.builders.HttpSecurity' that could not be found.
+
+The injection point has the following annotations:
+	- @org.springframework.beans.factory.annotation.Autowired(required=true)
+
+
+Action:
+
+Consider defining a bean of type 'org.springframework.security.config.annotation.web.builders.HttpSecurity' in your configuration.
+

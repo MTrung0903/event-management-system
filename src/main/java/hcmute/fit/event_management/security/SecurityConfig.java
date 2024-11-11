@@ -19,7 +19,7 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 
 
 @Configuration
-
+@EnableWebSecurity
 public class SecurityConfig {
     @Autowired
     private AuthEntryPointJwt unauthorizedHandler;
@@ -61,8 +61,8 @@ public class SecurityConfig {
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/login","/forgot","/reset-password").permitAll()
                         .requestMatchers("/admin/**").hasRole("ADMIN")
-                        .requestMatchers("/manager/**").hasAnyRole("MANAGER", "ADMIN")
-                        .requestMatchers("/employee/**").hasAnyRole("USER","MANAGER", "ADMIN")
+                        .requestMatchers("/man/**").hasAnyRole("MANAGER", "ADMIN")
+                        .requestMatchers("/emp/**").hasAnyRole("USER","MANAGER", "ADMIN")
                         .anyRequest().authenticated()
                 ).addFilterBefore(authTokenFilter, UsernamePasswordAuthenticationFilter.class)
                 .exceptionHandling(configurer -> configurer
