@@ -7,10 +7,11 @@ import lombok.NoArgsConstructor;
 
 import java.util.Date;
 
-@Entity(name = "invite")
+@Entity
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@Table(name = "invite")
 public class Invite {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -21,6 +22,7 @@ public class Invite {
     @Column(name = "invite_email")
     private String email;
     @Column(name = "invite_date")
+    @Temporal(TemporalType.TIMESTAMP)
     private Date inviteDate;
     @Column(name = "invite_status")
     private String status;

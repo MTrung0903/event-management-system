@@ -1,13 +1,14 @@
 package hcmute.fit.event_management.service.Impl;
 
+import hcmute.fit.event_management.dto.AttendeeDTO;
 import hcmute.fit.event_management.entity.Attendee;
 import hcmute.fit.event_management.repository.AttendeeRepository;
 import hcmute.fit.event_management.service.IAttendeeService;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Example;
-import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -21,52 +22,38 @@ public class AttendeeServiceImpl implements IAttendeeService {
     }
 
     @Override
-    public List<Attendee> findAll() {
-        return attendeeRepository.findAll();
+    public List<AttendeeDTO> gettListAttendeeByEventId(Integer eventId) {
+        List<AttendeeDTO> dtoList =new ArrayList<>();
+        List<Attendee> attendees = attendeeRepository.findAttendeesByEventId(eventId);
+        for(Attendee attendee : attendees){
+            AttendeeDTO dto = new AttendeeDTO();
+            BeanUtils.copyProperties(attendee,dto);
+            dtoList.add(dto);
+        }
+        return dtoList;
+    }
+
+
+    @Override
+    public AttendeeDTO findAttendee(Integer id) {
+        AttendeeDTO dto = new AttendeeDTO();
+        Attendee attendee = attendeeRepository.findById(id).get();
+        if(attendee != null){
+            BeanUtils.copyProperties(attendee,dto);
+        }
+        return dto;
     }
 
     @Override
-    public List<Attendee> findAllById(Iterable<Integer> integers) {
-        return attendeeRepository.findAllById(integers);
-    }
-
-    @Override
-    public long count() {
-        return attendeeRepository.count();
-    }
-
-    @Override
-    public void delete(Attendee entity) {
-        attendeeRepository.delete(entity);
-    }
-
-    @Override
-    public void deleteAllById(Iterable<? extends Integer> integers) {
-        attendeeRepository.deleteAllById(integers);
-    }
-
-    @Override
-    public void deleteById(Integer integer) {
-        attendeeRepository.deleteById(integer);
-    }
-
-    @Override
-    public Optional<Attendee> findById(Integer integer) {
-        return attendeeRepository.findById(integer);
-    }
-
-    @Override
-    public <S extends Attendee> S save(S entity) {
-        return attendeeRepository.save(entity);
-    }
-
-    @Override
-    public List<Attendee> findAll(Sort sort) {
-        return attendeeRepository.findAll(sort);
-    }
-
-    @Override
-    public <S extends Attendee> Optional<S> findOne(Example<S> example) {
-        return attendeeRepository.findOne(example);
+    public boolean updateStatus(Integer attendeeId,String status) {
+        boolean isUpdated = false;
+        Optional<Attendee> attendee = attendeeRepository.findById(attendeeId);
+        if(attendee.isPresent()){
+            Attendee updateAttendee = attendee.get();
+            updateAttendee.setAttendeeStatus(status);
+            attendeeRepository.save(updateAttendee);
+            isUpdated = true;
+        }
+        return isUpdated;
     }
 }

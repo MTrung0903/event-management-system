@@ -6,12 +6,13 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.List;
+import java.util.Set;
 
-
-@Entity(name ="mc")
+@Entity
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@Table(name ="mc")
 public class Mc {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

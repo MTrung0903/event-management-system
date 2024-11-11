@@ -6,12 +6,13 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.List;
+import java.util.Set;
 
-
-@Entity(name ="manager")
+@Entity
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@Table(name ="manager")
 public class Manager {
     @Id
     @Column(name = "man_id")

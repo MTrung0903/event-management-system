@@ -6,12 +6,13 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.List;
+import java.util.Set;
 
-
-@Entity(name = "speaker")
+@Entity
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@Table(name = "speaker")
 public class Speaker {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -27,7 +28,7 @@ public class Speaker {
     private String phone;
     @Column(name = "speaker_address")
     private String address;
-    @Column(name = "speaker_esc")
+    @Column(name = "speaker_desc")
     private String description;
 
     @OneToMany(mappedBy = "speaker")

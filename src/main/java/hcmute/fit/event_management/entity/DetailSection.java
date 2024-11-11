@@ -5,10 +5,11 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Entity(name = "detail_section")
+@Entity
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@Table(name = "detail_section")
 public class DetailSection {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

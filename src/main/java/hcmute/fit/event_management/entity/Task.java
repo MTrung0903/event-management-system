@@ -5,13 +5,15 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.Date;
 import java.util.List;
+import java.util.Set;
 
-
-@Entity(name = "task")
+@Entity
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@Table(name = "task")
 public class Task {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,7 +24,7 @@ public class Task {
     @Column(name = "task_desc")
     private String taskDesc;
     @Column(name = "task_deadline")
-    private String taskDl;
+    private Date taskDl;
     @Column(name = "task_status")
     private String taskStatus;
 

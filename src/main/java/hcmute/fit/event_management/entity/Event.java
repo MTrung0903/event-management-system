@@ -7,17 +7,18 @@ import lombok.NoArgsConstructor;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Set;
 
-
-@Entity(name = "event")
+@Entity
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@Table(name = "event")
 public class Event {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "event_id")
-    private int evetID;
+    private int eventID;
     @Column(name = "event_name")
     private String eventName;
     @Column(name = "event_desc")

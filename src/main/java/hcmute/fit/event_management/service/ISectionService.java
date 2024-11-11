@@ -1,30 +1,23 @@
 package hcmute.fit.event_management.service;
 
+import hcmute.fit.event_management.dto.SectionDTO;
 import hcmute.fit.event_management.entity.Section;
 import org.springframework.data.domain.Example;
 import org.springframework.data.domain.Sort;
 
+import java.text.ParseException;
 import java.util.List;
 import java.util.Optional;
 
 public interface ISectionService {
-    List<Section> findAll();
 
-    List<Section> findAllById(Iterable<Integer> integers);
+    List<SectionDTO> getSectionOfEvent(int eventId);
 
-    <S extends Section> List<S> saveAll(Iterable<S> entities);
+    SectionDTO getSectionById(int sectionId);
 
-    long count();
+    boolean addSection(int eventId, String startTimte, String endTimte) ;
 
-    void deleteAllById(Iterable<? extends Integer> integers);
+    boolean updateSection(int sectionId, int eventId, String startTimte, String endTimte) ;
 
-    void deleteById(Integer integer);
-
-    Optional<Section> findById(Integer integer);
-
-    <S extends Section> S save(S entity);
-
-    List<Section> findAll(Sort sort);
-
-    <S extends Section> Optional<S> findOne(Example<S> example);
+    boolean deleteSection(int sectionId);
 }

@@ -1,13 +1,16 @@
 package hcmute.fit.event_management.service.Impl;
 
+import hcmute.fit.event_management.dto.DetailSectionDTO;
+import hcmute.fit.event_management.dto.SpeakerDTO;
+import hcmute.fit.event_management.entity.DetailSection;
 import hcmute.fit.event_management.entity.Speaker;
 import hcmute.fit.event_management.repository.SpeakerRepository;
 import hcmute.fit.event_management.service.ISpeakerService;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Example;
-import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -21,52 +24,86 @@ public class SpeakerServiceImpl implements ISpeakerService {
     }
 
     @Override
-    public List<Speaker> findAll() {
-        return speakerRepository.findAll();
+    public List<SpeakerDTO> getAllSpeakers() {
+        List<Speaker> speakers = speakerRepository.findAll();
+        List<SpeakerDTO> speakerDTOs = new ArrayList<>();
+        for (Speaker speaker : speakers) {
+            SpeakerDTO speakerDTO = new SpeakerDTO();
+            BeanUtils.copyProperties(speaker, speakerDTO);
+            List<DetailSectionDTO> detailSectionDTOs = new ArrayList<>();
+            for (DetailSection dt : speaker.getListDetailSections()){
+                DetailSectionDTO dto = new DetailSectionDTO();
+                BeanUtils.copyProperties(dt, dto);
+            }
+            speakerDTO.setListDetailSections(detailSectionDTOs);
+            speakerDTOs.add(speakerDTO);
+        }
+        return speakerDTOs;
     }
-
     @Override
-    public List<Speaker> findAllById(Iterable<Integer> integers) {
-        return speakerRepository.findAllById(integers);
+    public SpeakerDTO getSpeakerById(int id) {
+        Optional<Speaker> speaker = speakerRepository.findById(id);
+        SpeakerDTO speakerDTO = new SpeakerDTO();
+        if (speaker.isPresent()) {
+            BeanUtils.copyProperties(speaker.get(), speakerDTO);
+            return speakerDTO;
+        }
+        return null;
     }
-
     @Override
-    public <S extends Speaker> List<S> saveAll(Iterable<S> entities) {
-        return speakerRepository.saveAll(entities);
+    public boolean addSpeaker(String name, String email, String title,
+                              String phone, String address, String description){
+        boolean isSuccess = false;
+        try{
+            Speaker speaker = new Speaker();
+            speaker.setName(name);
+            speaker.setEmail(email);
+            speaker.setTitle(title);
+            speaker.setPhone(phone);
+            speaker.setAddress(address);
+            speaker.setDescription(description);
+            speakerRepository.save(speaker);
+            isSuccess = true;
+        } catch (Exception e) {
+            System.out.println("add speaker failed" + e.getMessage());
+        }
+        return isSuccess;
     }
-
     @Override
-    public void delete(Speaker entity) {
-        speakerRepository.delete(entity);
+    public boolean updateSpeaker(int id, String name, String email, String title,
+                                 String phone, String address, String description){
+        boolean isSuccess = false;
+        try{
+            if(speakerRepository.findById(id).isPresent()){
+                Speaker speaker = speakerRepository.findById(id).get();
+                speaker.setName(name);
+                speaker.setEmail(email);
+                speaker.setTitle(title);
+                speaker.setPhone(phone);
+                speaker.setAddress(address);
+                speaker.setDescription(description);
+                speakerRepository.save(speaker);
+                isSuccess = true;
+            }else
+                throw new Exception("Speaker not found");
+
+        } catch (Exception e) {
+            System.out.println("add speaker failed" + e.getMessage());
+        }
+        return isSuccess;
     }
-
     @Override
-    public long count() {
-        return speakerRepository.count();
-    }
-
-    @Override
-    public void deleteById(Integer integer) {
-        speakerRepository.deleteById(integer);
-    }
-
-    @Override
-    public <S extends Speaker> S save(S entity) {
-        return speakerRepository.save(entity);
-    }
-
-    @Override
-    public Optional<Speaker> findById(Integer integer) {
-        return speakerRepository.findById(integer);
-    }
-
-    @Override
-    public List<Speaker> findAll(Sort sort) {
-        return speakerRepository.findAll(sort);
-    }
-
-    @Override
-    public <S extends Speaker> Optional<S> findOne(Example<S> example) {
-        return speakerRepository.findOne(example);
+    public boolean deleteSpeaker(int id){
+        boolean isSuccess = false;
+        try
+        {
+            if(speakerRepository.findById(id).isPresent()){
+                speakerRepository.deleteById(id);
+                isSuccess = true;
+            }
+        } catch (Exception e) {
+            System.out.println("Delete speaker failed" + e.getMessage());
+        }
+        return isSuccess;
     }
 }

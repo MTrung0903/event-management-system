@@ -1,5 +1,6 @@
 package hcmute.fit.event_management.service;
 
+import hcmute.fit.event_management.dto.EventDTO;
 import hcmute.fit.event_management.entity.Event;
 import org.springframework.data.domain.Example;
 import org.springframework.data.domain.Sort;
@@ -8,19 +9,20 @@ import java.util.List;
 import java.util.Optional;
 
 public interface IEventService {
-    List<Event> findAll();
 
-    List<Event> findAllById(Iterable<Integer> integers);
-
-    <S extends Event> List<S> saveAll(Iterable<S> entities);
-
-    long count();
+    List<EventDTO> findAll();
 
     void deleteById(Integer integer);
 
     <S extends Event> S save(S entity);
 
-    List<Event> findAll(Sort sort);
+    Optional<Event> findById(Integer integer);
 
-    <S extends Event> Optional<S> findOne(Example<S> example);
+    List<EventDTO> findAllByManId(int manId);
+
+    List<EventDTO> findAllByMcId(int mcId);
+
+    List<EventDTO> fingEventInLocation(String location);
+
+    EventDTO convertToEventDTO(Event event);
 }
