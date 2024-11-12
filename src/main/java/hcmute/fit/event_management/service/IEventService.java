@@ -4,25 +4,21 @@ import hcmute.fit.event_management.dto.EventDTO;
 import hcmute.fit.event_management.entity.Event;
 import org.springframework.data.domain.Example;
 import org.springframework.data.domain.Sort;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 import java.util.Optional;
 
 public interface IEventService {
 
-    List<EventDTO> findAll();
 
-    void deleteById(Integer integer);
+    List<EventDTO> getAllEvents();
 
-    <S extends Event> S save(S entity);
+    EventDTO getEventById(int id);
 
-    Optional<Event> findById(Integer integer);
+    boolean addEvent(MultipartFile image, EventDTO eventDTO);
 
-    List<EventDTO> findAllByManId(int manId);
+    boolean updateEvent(MultipartFile image, EventDTO eventDTO);
 
-    List<EventDTO> findAllByMcId(int mcId);
-
-    List<EventDTO> fingEventInLocation(String location);
-
-    EventDTO convertToEventDTO(Event event);
+    boolean addMc(int eventId, int mcId);
 }

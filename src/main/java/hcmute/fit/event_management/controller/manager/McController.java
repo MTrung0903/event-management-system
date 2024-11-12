@@ -32,19 +32,16 @@ public class McController {
         return ResponseEntity.ok(response);
     }
     @PostMapping("/add")
-    public ResponseEntity<?> addMc(@RequestParam String mcName,
-                                   @RequestParam String email){
+    public ResponseEntity<?> addMc(@RequestBody McDTO mcDto){
         Response response = new Response();
-        response.setData(mcService.addMc(mcName, email));
+        response.setData(mcService.addMc(mcDto));
         return ResponseEntity.ok(response);
     }
 
     @PutMapping("/update")
-    public ResponseEntity<?> updateMc(@RequestParam int mcId,
-                                      @RequestParam String mcName,
-                                      @RequestParam String email){
+    public ResponseEntity<?> updateMc(@RequestBody McDTO mcDto){
         Response response = new Response();
-        response.setData(mcService.updateMc(mcId, mcName, email));
+        response.setData(mcService.updateMc(mcDto));
         return ResponseEntity.ok(response);
     }
 

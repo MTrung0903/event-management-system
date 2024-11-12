@@ -12,9 +12,9 @@ public interface IDetailSectionService {
 
     DetailSectionDTO getDetailSectionById(int id);
 
-    boolean addDetailSection(int speakerId, String speakerTitle, int eventId, int sectionId);
+    boolean addDetailSection(DetailSectionDTO detail);
 
-    boolean updateDetailSection(int detailId, int speakerId, String speakerTitle, int eventId, int sectionId);
+    boolean updateDetailSection(DetailSectionDTO detail);
 
     boolean deleteDetailSection(int detailId);
 }

@@ -42,12 +42,12 @@ public class McServiceImpl implements IMcService {
         return listMc;
     }
     @Override
-    public boolean addMc(String name, String email){
+    public boolean addMc(McDTO mcDto){
         boolean isSucess = false;
         try{
             Mc mc = new Mc();
-            mc.setMcName(name);
-            mc.setEmail(email);
+            mc.setMcName(mcDto.getMcName());
+            mc.setEmail(mcDto.getEmail());
             mcRepository.save(mc);
             isSucess = true;
         } catch (Exception e) {
@@ -56,14 +56,14 @@ public class McServiceImpl implements IMcService {
         return isSucess;
     }
     @Override
-    public boolean updateMc(Integer mcId, String name, String email){
+    public boolean updateMc(McDTO mcDto){
         boolean isSucess = false;
         try{
-            Optional<Mc> mc = mcRepository.findById(mcId);
+            Optional<Mc> mc = mcRepository.findById(mcDto.getMcID());
             if(mc.isPresent()){
                 Mc newMc = mc.get();
-                newMc.setMcName(name);
-                newMc.setEmail(email);
+                newMc.setMcName(mcDto.getMcName());
+                newMc.setEmail(mcDto.getEmail());
                 mcRepository.save(newMc);
                 isSucess = true;
             }

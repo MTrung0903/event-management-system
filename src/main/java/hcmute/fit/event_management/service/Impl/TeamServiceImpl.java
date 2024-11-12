@@ -44,7 +44,7 @@ public class TeamServiceImpl implements ITeamService {
                 taskDTO.setTaskName(task.getTaskName());
                 taskDTO.setTaskStatus(task.getTaskStatus());
                 taskDTO.setTaskDesc(task.getTaskDesc());
-                taskDTO.setTaskDl(task.getTaskDl());
+                taskDTO.setTaskDl(task.getTaskDl().toString());
                 taskDTOs.add(taskDTO);
             }
             List<Employee> employees = team.getListEmployees();
@@ -92,12 +92,12 @@ public class TeamServiceImpl implements ITeamService {
         return teamDTO;
     }
     @Override
-    public boolean addTeam(int eventId, String teamName){
+    public boolean addTeam(TeamDTO teamDTO){
         boolean isSuccess = false;
         try{
             Team team = new Team();
-            team.setTeamName(teamName);
-            team.setEvent(eventRepository.findById(eventId).get());
+            team.setTeamName(teamDTO.getTeamName());
+            team.setEvent(eventRepository.findById(teamDTO.getEventId()).get());
             teamRepository.save(team);
             isSuccess = true;
         } catch (Exception e) {
@@ -106,13 +106,13 @@ public class TeamServiceImpl implements ITeamService {
         return isSuccess;
     }
     @Override
-    public boolean updateTeam(int teamId, int eventId, String teamName){
+    public boolean updateTeam(TeamDTO teamDTO){
         boolean isSuccess = false;
         try{
-           if(teamRepository.findById(teamId).isPresent()) {
-               Team team = teamRepository.findById(teamId).get();
-               team.setTeamName(teamName);
-               team.setEvent(eventRepository.findById(eventId).get());
+           if(teamRepository.findById(teamDTO.getTeamId()).isPresent()) {
+               Team team = teamRepository.findById(teamDTO.getTeamId()).get();
+               team.setTeamName(teamDTO.getTeamName());
+               team.setEvent(eventRepository.findById(teamDTO.getEventId()).get());
                teamRepository.save(team);
                isSuccess = true;
            }

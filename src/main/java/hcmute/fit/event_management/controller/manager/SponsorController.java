@@ -1,6 +1,7 @@
 package hcmute.fit.event_management.controller.manager;
 
 import hcmute.fit.event_management.dto.SponsorDTO;
+import hcmute.fit.event_management.dto.SponsorShipDTO;
 import hcmute.fit.event_management.entity.Sponsor;
 import hcmute.fit.event_management.service.ISponsorService;
 import hcmute.fit.event_management.service.ISponsorShipService;
@@ -35,29 +36,16 @@ public class SponsorController {
     }
 
     @PostMapping("/add")
-    public ResponseEntity<?> addSponsor(@RequestParam String name,
-                                           @RequestParam String contact,
-                                           @RequestParam String email,
-                                           @RequestParam String phone,
-                                           @RequestParam String website,
-                                           @RequestParam String address,
-                                           @RequestParam int sponsorShipId) {
+    public ResponseEntity<?> addSponsor(@RequestBody SponsorDTO sponsorDTO) {
         Response response = new Response();
-        response.setData(sponsorService.addSponsor(name, contact, email, phone, website, address, sponsorShipId));
+        response.setData(sponsorService.addSponsor(sponsorDTO));
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
     @PutMapping("update")
-    public ResponseEntity<?> updateSponsor(@RequestParam int id,
-                                           @RequestParam String name,
-                                           @RequestParam String contact,
-                                           @RequestParam String email,
-                                           @RequestParam String phone,
-                                           @RequestParam String website,
-                                           @RequestParam String address,
-                                           @RequestParam int sponsorShipId){
+    public ResponseEntity<?> updateSponsor(@RequestBody SponsorDTO sponsorDTO) {
         Response response = new Response();
-        response.setData(sponsorService.updatSponsor(id, name, contact, email, phone, website, address, sponsorShipId));
+        response.setData(sponsorService.updatSponsor(sponsorDTO));
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
@@ -65,6 +53,12 @@ public class SponsorController {
     public ResponseEntity<?> deleteSponsor(@RequestParam int id) {
         Response response = new Response();
         response.setData(sponsorService.deleteSponsor(id));
+        return new ResponseEntity<>(response, HttpStatus.OK);
+    }
+    @PostMapping("addEvent")
+    public ResponseEntity<?> addSponsorShip(@RequestParam int sponsorId,@RequestParam int eventID) {
+        Response response = new Response();
+        response.setData(sponsorService.addSponsorForEvent(sponsorId,eventID));
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 }

@@ -14,11 +14,11 @@ public interface ISponsorService {
 
     SponsorDTO getSponsorById(int id);
 
-    boolean addSponsor(String name, String contact,
-                       String email, String phone, String website, String address, int sponsorShipId);
+    boolean addSponsor(SponsorDTO sponsorDTO);
 
-    boolean updatSponsor(int id, String name, String contact,
-                         String email, String phone, String website, String address, int sponsorShipId);
+    boolean updatSponsor(SponsorDTO sponsorDTO);
 
     boolean deleteSponsor(int id);
+
+    boolean addSponsorForEvent(int sponsorId, int eventId);
 }

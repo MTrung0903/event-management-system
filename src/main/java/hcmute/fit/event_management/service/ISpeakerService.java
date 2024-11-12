@@ -14,11 +14,9 @@ public interface ISpeakerService {
 
     SpeakerDTO getSpeakerById(int id);
 
-    boolean addSpeaker(String name, String email, String title,
-                       String phone, String address, String description);
+    boolean addSpeaker(SpeakerDTO speakerDTO);
 
-    boolean updateSpeaker(int id, String name, String email, String title,
-                          String phone, String address, String description);
+    boolean updateSpeaker(SpeakerDTO speakerDTO);
 
     boolean deleteSpeaker(int id);
 }

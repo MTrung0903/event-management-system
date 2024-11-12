@@ -15,5 +15,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class SponsorEventDTO {
     private int eventId;
+    private int sponsorId;
     private String eventName;
 }

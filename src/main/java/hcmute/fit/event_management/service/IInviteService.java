@@ -16,9 +16,9 @@ public interface IInviteService {
 
     InviteDTO findInvite(int inviteId);
 
-    boolean addInvite(String name, String email, String inviteDate, String status,int eventId);
+    boolean addInvite(InviteDTO invite);
 
-    boolean updateInvite(Integer inviteId, String name, String email, String inviteDate, String status);
+    boolean updateInvite(InviteDTO invite);
 
     boolean updateInviteStatus(Integer inviteId, String status);
 

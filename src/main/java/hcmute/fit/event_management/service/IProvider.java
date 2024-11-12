@@ -12,11 +12,13 @@ public interface IProvider {
 
     List<ProviderDTO> getAllProviders();
 
-    boolean updateProvider(Integer providerId, String name, String contact, String email, String phone, String address, String website);
+    boolean updateProvider(ProviderDTO providerDTO);
 
-    boolean addProvider(String name, String contact, String email, String phone, String address, String website);
+    boolean addProvider(ProviderDTO providerDTO);
 
     ProviderDTO findProviderById(Integer providerId);
 
     boolean deleteProvider(Integer providerId);
+
+    boolean addProviderForEvent(int proId, int eventId);
 }

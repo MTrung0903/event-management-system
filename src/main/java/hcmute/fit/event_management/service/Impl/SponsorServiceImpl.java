@@ -4,6 +4,8 @@ import hcmute.fit.event_management.dto.SponsorDTO;
 import hcmute.fit.event_management.dto.SponsorEventDTO;
 import hcmute.fit.event_management.entity.Sponsor;
 import hcmute.fit.event_management.entity.SponsorEvent;
+import hcmute.fit.event_management.repository.EventRepository;
+import hcmute.fit.event_management.repository.SponsorEventRepository;
 import hcmute.fit.event_management.repository.SponsorRepository;
 import hcmute.fit.event_management.repository.SponsorShipRepository;
 import hcmute.fit.event_management.service.ISponsorService;
@@ -22,6 +24,12 @@ public class SponsorServiceImpl implements ISponsorService {
 
     @Autowired
     private SponsorShipRepository sponsorShipRepository;
+
+    @Autowired
+    private SponsorEventRepository sponsorEventRepository;
+
+    @Autowired
+    private EventRepository eventRepository;
 
     public SponsorServiceImpl(SponsorRepository sponsorRepository) {
         this.sponsorRepository = sponsorRepository;
@@ -66,19 +74,18 @@ public class SponsorServiceImpl implements ISponsorService {
         return sponsorDTO;
     }
     @Override
-    public boolean addSponsor(String name, String contact,
-                              String email, String phone, String website, String address, int sponsorShipId) {
+    public boolean addSponsor(SponsorDTO sponsorDTO) {
         boolean isSuccess = false;
         try{
-            if(sponsorShipRepository.findById(sponsorShipId).isPresent()){
+            if(sponsorShipRepository.findById(sponsorDTO.getSponsorshipId()).isPresent()){
                 Sponsor sponsor = new Sponsor();
-                sponsor.setName(name);
-                sponsor.setContact(contact);
-                sponsor.setEmail(email);
-                sponsor.setPhone(phone);
-                sponsor.setWebsite(website);
-                sponsor.setAddress(address);
-                sponsor.setSponsorship(sponsorShipRepository.findById(sponsorShipId).get());
+                sponsor.setName(sponsorDTO.getName());
+                sponsor.setContact(sponsorDTO.getContact());
+                sponsor.setEmail(sponsorDTO.getEmail());
+                sponsor.setPhone(sponsorDTO.getPhone());
+                sponsor.setWebsite(sponsorDTO.getWebsite());
+                sponsor.setAddress(sponsorDTO.getAddress());
+                sponsor.setSponsorship(sponsorShipRepository.findById(sponsorDTO.getSponsorshipId()).get());
                 sponsorRepository.save(sponsor);
                 isSuccess = true;
             }
@@ -89,20 +96,19 @@ public class SponsorServiceImpl implements ISponsorService {
         return isSuccess;
     }
     @Override
-    public boolean updatSponsor(int id, String name, String contact,
-                                String email, String phone, String website, String address, int sponsorShipId) {
+    public boolean updatSponsor(SponsorDTO sponsorDTO) {
         boolean isSuccess = false;
         try{
-            if(sponsorShipRepository.findById(sponsorShipId).isPresent()){
-                Sponsor sponsor = sponsorRepository.findById(id).get();
-                sponsor.setId(id);
-                sponsor.setName(name);
-                sponsor.setContact(contact);
-                sponsor.setEmail(email);
-                sponsor.setPhone(phone);
-                sponsor.setWebsite(website);
-                sponsor.setAddress(address);
-                sponsor.setSponsorship(sponsorShipRepository.findById(sponsorShipId).get());
+            if(sponsorRepository.findById(sponsorDTO.getId()).isPresent()
+                    &&sponsorShipRepository.findById(sponsorDTO.getSponsorshipId()).isPresent()){
+                Sponsor sponsor = sponsorRepository.findById(sponsorDTO.getId()).get();
+                sponsor.setName(sponsorDTO.getName());
+                sponsor.setContact(sponsorDTO.getContact());
+                sponsor.setEmail(sponsorDTO.getEmail());
+                sponsor.setPhone(sponsorDTO.getPhone());
+                sponsor.setWebsite(sponsorDTO.getWebsite());
+                sponsor.setAddress(sponsorDTO.getAddress());
+                sponsor.setSponsorship(sponsorShipRepository.findById(sponsorDTO.getSponsorshipId()).get());
                 sponsorRepository.save(sponsor);
                 isSuccess = true;
             }
@@ -118,6 +124,24 @@ public class SponsorServiceImpl implements ISponsorService {
         if(sponsorRepository.findById(id).isPresent()){
             sponsorRepository.deleteById(id);
             isSuccess = true;
+        }
+        return isSuccess;
+    }
+
+    @Override
+    public boolean addSponsorForEvent(int sponsorId, int eventId) {
+        boolean isSuccess = false;
+        try{
+            if(sponsorRepository.findById(sponsorId).isPresent()
+                    && eventRepository.findById(eventId).isPresent()){
+                SponsorEvent sponsorEvent = new SponsorEvent();
+                sponsorEvent.setEvent(eventRepository.findById(eventId).get());
+                sponsorEvent.setSponsor(sponsorRepository.findById(sponsorId).get());
+                sponsorEventRepository.save(sponsorEvent);
+                isSuccess = true;
+            }
+        } catch (Exception e) {
+            System.out.println("add sponsor failed"+ e.getMessage());
         }
         return isSuccess;
     }

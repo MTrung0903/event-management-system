@@ -16,9 +16,7 @@ public class InviteDTO {
     private int id;
     private String name;
     private String email;
-    private Date inviteDate;
+    private String inviteDate;
     private String status;
     private int eventId;
-    private EventDTO event;
-
 }

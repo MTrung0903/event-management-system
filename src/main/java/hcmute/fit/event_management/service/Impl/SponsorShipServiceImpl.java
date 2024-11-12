@@ -63,12 +63,12 @@ public class SponsorShipServiceImpl implements ISponsorShipService {
         return null;
     }
     @Override
-    public boolean addSponsorShip(String level, String benefit) {
+    public boolean addSponsorShip(SponsorShipDTO sponsorShipDTO) {
         boolean isSuccess = false;
         try {
             SponsorShip sponsorShip = new SponsorShip();
-            sponsorShip.setLevel(level);
-            sponsorShip.setBenefit(benefit);
+            sponsorShip.setLevel(sponsorShipDTO.getLevel());
+            sponsorShip.setBenefit(sponsorShipDTO.getBenefit());
             sponsorShipRepository.save(sponsorShip);
             isSuccess = true;
         }catch (Exception e){
@@ -77,13 +77,13 @@ public class SponsorShipServiceImpl implements ISponsorShipService {
         return isSuccess;
     }
     @Override
-    public boolean updateSponsorShip(int id, String level, String benefit) {
+    public boolean updateSponsorShip(SponsorShipDTO sponsorShipDTO) {
         boolean isSuccess = false;
         try {
-            if(sponsorShipRepository.findById(id).isPresent()){
-                SponsorShip sponsorShip = sponsorShipRepository.findById(id).get();
-                sponsorShip.setLevel(level);
-                sponsorShip.setBenefit(benefit);
+            if(sponsorShipRepository.findById(sponsorShipDTO.getSponsorShipID()).isPresent()){
+                SponsorShip sponsorShip = sponsorShipRepository.findById(sponsorShipDTO.getSponsorShipID()).get();
+                sponsorShip.setLevel(sponsorShipDTO.getLevel());
+                sponsorShip.setBenefit(sponsorShipDTO.getBenefit());
                 sponsorShipRepository.save(sponsorShip);
                 isSuccess = true;
             }

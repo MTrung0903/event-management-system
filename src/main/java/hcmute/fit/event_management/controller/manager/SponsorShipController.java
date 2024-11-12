@@ -33,16 +33,16 @@ public class SponsorShipController {
     }
 
     @PostMapping("/add")
-    public ResponseEntity<?> addSponsorShip(@RequestParam String level, @RequestParam String benefit){
+    public ResponseEntity<?> addSponsorShip(@RequestBody SponsorShipDTO sponsorShipDTO){
         Response response = new Response();
-        response.setData(sponsorShipService.addSponsorShip(level, benefit));
+        response.setData(sponsorShipService.addSponsorShip(sponsorShipDTO));
         return ResponseEntity.ok(response);
     }
 
     @PutMapping("/update")
-    public ResponseEntity<?> updateSponsorShip(@RequestParam int id,@RequestParam String level, @RequestParam String benefit){
+    public ResponseEntity<?> updateSponsorShip(@RequestBody SponsorShipDTO sponsorShipDTO){
         Response response = new Response();
-        response.setData(sponsorShipService.updateSponsorShip(id,level,benefit));
+        response.setData(sponsorShipService.updateSponsorShip(sponsorShipDTO));
         return ResponseEntity.ok(response);
     }
     @DeleteMapping("/delete")

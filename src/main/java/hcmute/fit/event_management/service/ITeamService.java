@@ -14,9 +14,9 @@ public interface ITeamService {
 
     TeamDTO getTeamById(int teamId);
 
-    boolean addTeam(int eventId, String teamName);
+    boolean addTeam(TeamDTO teamDTO);
 
-    boolean updateTeam(int teamId, int eventId, String teamName);
+    boolean updateTeam(TeamDTO teamDTO);
 
     boolean deleteTeam(int teamId);
 }

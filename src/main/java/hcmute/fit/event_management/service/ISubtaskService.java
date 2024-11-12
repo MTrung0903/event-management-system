@@ -14,11 +14,9 @@ public interface ISubtaskService {
 
     SubTaskDTO getSubtaskById(int subtaskId);
 
-    boolean addSubtask(int taskId, int employeeId, String subtaskName,
-                       String subtaskDesc, String subtaskDl, String subtaskStatus);
+    boolean addSubtask(int taskId, SubTaskDTO subtaskDTO);
 
-    boolean updateSubtask(int subtaskId, int taskId, int employeeId, String subtaskName,
-                          String subtaskDesc, String subtaskDl, String subtaskStatus);
+    boolean updateSubtask(int taskId, SubTaskDTO subtaskDTO);
 
     boolean deleteSubtask(int subtaskId);
 }

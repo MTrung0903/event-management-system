@@ -49,18 +49,17 @@ public class ProviderServiceImpl implements IProviderService {
         return null;
     }
     @Override
-    public boolean addServiceProvider(int providerId, String serviceType, String serviceName,
-                                      String serviceDesc, String price, String duration) {
+    public boolean addServiceProvider(ProviderServiceDTO serviceDTO) {
         boolean isSuccess = false;
         try{
-            if(providerRepository.findById(providerId).isPresent()){
+            if(providerRepository.findById(serviceDTO.getProviderId()).isPresent()){
                 ProviderService providerService = new ProviderService();
-                providerService.setServiceName(serviceName);
-                providerService.setServiceType(serviceType);
-                providerService.setServiceDesc(serviceDesc);
-                providerService.setPrice(price);
-                providerService.setDuration(duration);
-                providerService.setProvider(providerRepository.findById(providerId).get());
+                providerService.setServiceName(serviceDTO.getServiceName());
+                providerService.setServiceType(serviceDTO.getServiceType());
+                providerService.setServiceDesc(serviceDTO.getServiceDesc());
+                providerService.setPrice(serviceDTO.getPrice());
+                providerService.setDuration(serviceDTO.getDuration());
+                providerService.setProvider(providerRepository.findById(serviceDTO.getProviderId()).get());
                 providerServiceRepository.save(providerService);
                 isSuccess = true;
             }else{
@@ -72,18 +71,17 @@ public class ProviderServiceImpl implements IProviderService {
         return isSuccess;
     }
     @Override
-    public boolean updateServiceProvider(int serviceId, String serviceType, String serviceName,
-                                         String serviceDesc, String price, String duration, int providerId) {
+    public boolean updateServiceProvider(ProviderServiceDTO serviceDTO) {
         boolean isSuccess = false;
         try{
-            if(providerServiceRepository.findById(serviceId).isPresent()){
-                ProviderService providerService = providerServiceRepository.findById(serviceId).get();
-                providerService.setServiceName(serviceName);
-                providerService.setServiceType(serviceType);
-                providerService.setServiceDesc(serviceDesc);
-                providerService.setPrice(price);
-                providerService.setDuration(duration);
-                providerService.setProvider(providerRepository.findById(providerId).get());
+            if(providerServiceRepository.findById(serviceDTO.getId()).isPresent()){
+                ProviderService providerService = providerServiceRepository.findById(serviceDTO.getId()).get();
+                providerService.setServiceName(serviceDTO.getServiceName());
+                providerService.setServiceType(serviceDTO.getServiceType());
+                providerService.setServiceDesc(serviceDTO.getServiceDesc());
+                providerService.setPrice(serviceDTO.getPrice());
+                providerService.setDuration(serviceDTO.getDuration());
+                providerService.setProvider(providerRepository.findById(serviceDTO.getProviderId()).get());
                 providerServiceRepository.save(providerService);
                 isSuccess = true;
             }else{

@@ -34,21 +34,16 @@ public class SectionController {
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
     @PostMapping("/add")
-    public ResponseEntity<?> addSection(@RequestParam int eventId,
-                                        @RequestParam String startTimte,
-                                        @RequestParam String endTimte){
+    public ResponseEntity<?> addSection(@RequestBody SectionDTO sectionDTO) {
         Response response = new Response();
-        response.setData(sectionService.addSection(eventId, startTimte, endTimte));
+        response.setData(sectionService.addSection(sectionDTO));
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
     @PutMapping("update")
-    public ResponseEntity<?> addSection(@RequestParam int sectionId,
-                                        @RequestParam int eventId,
-                                        @RequestParam String startTimte,
-                                        @RequestParam String endTimte){
+    public ResponseEntity<?> updateSection(@RequestBody SectionDTO sectionDTO){
         Response response = new Response();
-        response.setData(sectionService.updateSection(sectionId, eventId, startTimte, endTimte));
+        response.setData(sectionService.updateSection(sectionDTO));
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 

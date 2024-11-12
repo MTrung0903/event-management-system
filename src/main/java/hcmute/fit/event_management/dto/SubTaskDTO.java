@@ -18,7 +18,7 @@ public class SubTaskDTO {
     private int subTaskId;
     private String subTaskName;
     private String subTaskDesc;
-    private Date subTaskDeadline;
+    private String subTaskDeadline;
     private String status;
     private int employeeId;
 }

@@ -33,27 +33,16 @@ public class ProviderController {
     }
 
     @PostMapping("/add")
-    public ResponseEntity<?> addProvider(@RequestParam String name,
-                                         @RequestParam String contact,
-                                         @RequestParam String email,
-                                         @RequestParam String phone,
-                                         @RequestParam String address,
-                                         @RequestParam String website) {
+    public ResponseEntity<?> addProvider(@RequestBody ProviderDTO provider) {
         Response response = new Response();
-        response.setData(providerImpl.addProvider(name, contact, email, phone, address, website));
+        response.setData(providerImpl.addProvider(provider));
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
     @PutMapping("/update")
-    public ResponseEntity<?> updateProvider(@RequestParam int providerId,
-                                            @RequestParam String name,
-                                         @RequestParam String contact,
-                                         @RequestParam String email,
-                                         @RequestParam String phone,
-                                         @RequestParam String address,
-                                         @RequestParam String website) {
+    public ResponseEntity<?> updateProvider(@RequestBody ProviderDTO provider) {
         Response response = new Response();
-        response.setData(providerImpl.updateProvider(providerId, name, contact, email, phone, address, website));
+        response.setData(providerImpl.updateProvider(provider));
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
@@ -61,6 +50,12 @@ public class ProviderController {
     public ResponseEntity<?> deleteProvider(@RequestParam int providerId) {
         Response response = new Response();
         response.setData(providerImpl.deleteProvider(providerId));
+        return new ResponseEntity<>(response, HttpStatus.OK);
+    }
+    @PostMapping("/addEvent")
+    public ResponseEntity<?> addEvent(@RequestParam int providerId, @RequestParam int eventId) {
+        Response response = new Response();
+        response.setData(providerImpl.addProviderForEvent(providerId, eventId));
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 }

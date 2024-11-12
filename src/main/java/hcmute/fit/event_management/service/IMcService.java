@@ -12,9 +12,9 @@ public interface IMcService {
 
     List<McDTO> getListMc();
 
-    boolean addMc(String name, String email);
+    boolean addMc(McDTO mcDto);
 
-    boolean updateMc(Integer mcId, String name, String email);
+    boolean updateMc(McDTO mcDto);
 
     boolean deleteMc(Integer mcId);
 

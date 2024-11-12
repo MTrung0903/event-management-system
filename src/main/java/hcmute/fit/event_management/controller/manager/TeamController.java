@@ -35,16 +35,15 @@ public class TeamController {
     }
 
     @PostMapping("/add")
-    public ResponseEntity<?> addTeam(@RequestParam int eventId, @RequestParam String teamName){
+    public ResponseEntity<?> addTeam(@RequestBody TeamDTO team){
         Response response  = new Response();
-        response.setData(teamService.addTeam(eventId, teamName));
+        response.setData(teamService.addTeam(team));
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
     @PutMapping("/update")
-    public ResponseEntity<?> updateTeam(@RequestParam int teamId,@RequestParam int eventId,
-                                        @RequestParam String teamName ){
+    public ResponseEntity<?> updateTeam(@RequestBody TeamDTO team){
         Response response  = new Response();
-        response.setData(teamService.updateTeam(teamId, eventId, teamName));
+        response.setData(teamService.updateTeam(team));
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 

@@ -59,16 +59,16 @@ public class DetailSectionServiceImpl implements IDetailSectionService {
     }
 
     @Override
-    public boolean addDetailSection(int speakerId, String speakerTitle, int eventId, int sectionId) {
+    public boolean addDetailSection(DetailSectionDTO detail) {
         boolean isSuccess = false;
         try{
-            if(speakerRepository.findById(speakerId).isPresent() && sectionRepository.findById(sectionId).isPresent()
-                    && speakerRepository.findById(speakerId).isPresent() && eventRepository.findById(eventId).isPresent()) {
+            if(speakerRepository.findById(detail.getSpeakerId()).isPresent() && sectionRepository.findById(detail.getSectionId()).isPresent()
+                    &&  eventRepository.findById(detail.getEventId()).isPresent()) {
                 DetailSection detailSection = new DetailSection();
-                detailSection.setSpeaker(speakerRepository.findById(speakerId).get());
-                detailSection.setSpeakerTitle(speakerTitle);
-                detailSection.setEvent(eventRepository.findById(eventId).get());
-                detailSection.setSection(sectionRepository.findById(sectionId).get());
+                detailSection.setSpeaker(speakerRepository.findById(detail.getSpeakerId()).get());
+                detailSection.setSpeakerTitle(detail.getSpeakerTitle());
+                detailSection.setEvent(eventRepository.findById(detail.getEventId()).get());
+                detailSection.setSection(sectionRepository.findById(detail.getSectionId()).get());
                 detailSecyionRepository.save(detailSection);
                 isSuccess = true;
             }
@@ -78,17 +78,17 @@ public class DetailSectionServiceImpl implements IDetailSectionService {
         return isSuccess;
     }
     @Override
-    public boolean updateDetailSection(int detailId, int speakerId, String speakerTitle, int eventId, int sectionId) {
+    public boolean updateDetailSection(DetailSectionDTO detail) {
         boolean isSuccess = false;
         try{
-            if(detailSecyionRepository.findById(detailId).isPresent()){
-                if(speakerRepository.findById(speakerId).isPresent() && sectionRepository.findById(sectionId).isPresent()
-                        && speakerRepository.findById(speakerId).isPresent() && eventRepository.findById(eventId).isPresent()) {
-                    DetailSection detailSection = detailSecyionRepository.findById(detailId).get();
-                    detailSection.setSpeaker(speakerRepository.findById(speakerId).get());
-                    detailSection.setSpeakerTitle(speakerTitle);
-                    detailSection.setEvent(eventRepository.findById(eventId).get());
-                    detailSection.setSection(sectionRepository.findById(sectionId).get());
+            if(detailSecyionRepository.findById(detail.getId()).isPresent()){
+                if(speakerRepository.findById(detail.getSpeakerId()).isPresent() && sectionRepository.findById(detail.getSectionId()).isPresent()
+                        && speakerRepository.findById(detail.getSpeakerId()).isPresent() && eventRepository.findById(detail.getEventId()).isPresent()) {
+                    DetailSection detailSection = detailSecyionRepository.findById(detail.getId()).get();
+                    detailSection.setSpeaker(speakerRepository.findById(detail.getSpeakerId()).get());
+                    detailSection.setSpeakerTitle(detail.getSpeakerTitle());
+                    detailSection.setEvent(eventRepository.findById(detail.getEventId()).get());
+                    detailSection.setSection(sectionRepository.findById(detail.getSectionId()).get());
                     detailSecyionRepository.save(detailSection);
                     isSuccess = true;
                 }

@@ -51,17 +51,16 @@ public class SpeakerServiceImpl implements ISpeakerService {
         return null;
     }
     @Override
-    public boolean addSpeaker(String name, String email, String title,
-                              String phone, String address, String description){
+    public boolean addSpeaker(SpeakerDTO speakerDTO){
         boolean isSuccess = false;
         try{
             Speaker speaker = new Speaker();
-            speaker.setName(name);
-            speaker.setEmail(email);
-            speaker.setTitle(title);
-            speaker.setPhone(phone);
-            speaker.setAddress(address);
-            speaker.setDescription(description);
+            speaker.setName(speakerDTO.getName());
+            speaker.setEmail(speakerDTO.getEmail());
+            speaker.setTitle(speakerDTO.getTitle());
+            speaker.setPhone(speakerDTO.getPhone());
+            speaker.setAddress(speakerDTO.getAddress());
+            speaker.setDescription(speakerDTO.getDescription());
             speakerRepository.save(speaker);
             isSuccess = true;
         } catch (Exception e) {
@@ -70,18 +69,17 @@ public class SpeakerServiceImpl implements ISpeakerService {
         return isSuccess;
     }
     @Override
-    public boolean updateSpeaker(int id, String name, String email, String title,
-                                 String phone, String address, String description){
+    public boolean updateSpeaker(SpeakerDTO speakerDTO){
         boolean isSuccess = false;
         try{
-            if(speakerRepository.findById(id).isPresent()){
-                Speaker speaker = speakerRepository.findById(id).get();
-                speaker.setName(name);
-                speaker.setEmail(email);
-                speaker.setTitle(title);
-                speaker.setPhone(phone);
-                speaker.setAddress(address);
-                speaker.setDescription(description);
+            if(speakerRepository.findById(speakerDTO.getId()).isPresent()){
+                Speaker speaker = speakerRepository.findById(speakerDTO.getId()).get();
+                speaker.setName(speakerDTO.getName());
+                speaker.setEmail(speakerDTO.getEmail());
+                speaker.setTitle(speakerDTO.getTitle());
+                speaker.setPhone(speakerDTO.getPhone());
+                speaker.setAddress(speakerDTO.getAddress());
+                speaker.setDescription(speakerDTO.getDescription());
                 speakerRepository.save(speaker);
                 isSuccess = true;
             }else

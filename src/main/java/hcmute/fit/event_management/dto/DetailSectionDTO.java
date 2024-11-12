@@ -16,5 +16,6 @@ public class DetailSectionDTO {
     private int id;
     private String speakerTitle;
     private int speakerId;
-
+    private int eventId;
+    private int sectionId;
 }

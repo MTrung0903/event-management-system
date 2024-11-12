@@ -32,27 +32,16 @@ public class ProviderServiceController {
     }
 
     @PostMapping("/add")
-    public ResponseEntity<?> addService(@RequestParam int providerId,
-                                        @RequestParam String serviceType,
-                                        @RequestParam String serviceName,
-                                        @RequestParam String serviceDesc,
-                                        @RequestParam String price,
-                                        @RequestParam String duration){
+    public ResponseEntity<?> addService(@RequestBody ProviderServiceDTO serviceDTO) {
         Response response = new Response();
-        response.setData(providerService.addServiceProvider(providerId, serviceType, serviceName, serviceDesc, price, duration));
+        response.setData(providerService.addServiceProvider(serviceDTO));
         return ResponseEntity.ok(response);
     }
 
     @PutMapping("update")
-    public ResponseEntity<?> updateService(@RequestParam int serviceId,
-                                        @RequestParam String serviceType,
-                                        @RequestParam String serviceName,
-                                        @RequestParam String serviceDesc,
-                                        @RequestParam String price,
-                                        @RequestParam String duration,
-                                           @RequestParam int providerId){
+    public ResponseEntity<?> updateService(@RequestBody ProviderServiceDTO serviceDTO) {
         Response response = new Response();
-        response.setData(providerService.updateServiceProvider(serviceId, serviceType, serviceName, serviceDesc, price, duration,providerId));
+        response.setData(providerService.updateServiceProvider(serviceDTO));
         return ResponseEntity.ok(response);
     }
 

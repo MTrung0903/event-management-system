@@ -14,9 +14,9 @@ public interface ISponsorShipService {
 
     SponsorShipDTO getSponsorShipByID(int sponsorShipID);
 
-    boolean addSponsorShip(String level, String benefit);
+    boolean addSponsorShip(SponsorShipDTO sponsorShipDTO);
 
-    boolean updateSponsorShip(int id, String level, String benefit);
+    boolean updateSponsorShip(SponsorShipDTO sponsorShipDTO);
 
     boolean deleteSponsorShip(int id);
 }

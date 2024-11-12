@@ -14,11 +14,9 @@ public interface IProviderService {
 
     ProviderServiceDTO findServiceById(int serviceId);
 
-    boolean addServiceProvider(int providerId, String serviceType, String serviceName,
-                               String serviceDesc, String price, String duration);
+    boolean addServiceProvider(ProviderServiceDTO serviceDTO);
 
-    public boolean updateServiceProvider(int serviceId, String serviceType, String serviceName,
-                                         String serviceDesc, String price, String duration, int providerId);
+    public boolean updateServiceProvider(ProviderServiceDTO serviceDTO);
 
     boolean deleteServiceProvider(int serviceId);
 }

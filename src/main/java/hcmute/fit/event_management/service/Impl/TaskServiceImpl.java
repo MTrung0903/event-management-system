@@ -38,22 +38,13 @@ public class TaskServiceImpl implements ITaskService {
         List<TaskDTO> taskDTOs = new ArrayList<>();
         for (Task task : tasks) {
             TaskDTO taskDTO = new TaskDTO();
-//            taskDTO.setTaskId(task.getTaskId());
-//            taskDTO.setTaskName(task.getTaskName());
-//            taskDTO.setTaskDesc(task.getTaskDesc());
-//            taskDTO.setTaskStatus(task.getTaskStatus());
-//            taskDTO.setTaskDl(task.getTaskDl());
+
             BeanUtils.copyProperties(task, taskDTO);
             taskDTO.setEventId(eventId);
             List<SubTaskDTO> subTaskDTOS = new ArrayList<>();
             List<SubTask>  subTasks = task.getListSubTasks();
             for(SubTask subTask : subTasks){
                 SubTaskDTO subTaskDTO = new SubTaskDTO();
-//                subTaskDTO.setSubTaskId(subTask.getSubTaskId());
-//                subTaskDTO.setSubTaskName(subTask.getSubTaskName());
-//                subTaskDTO.setSubTaskDesc(subTask.getSubTaskDesc());
-//                subTaskDTO.setStatus(subTask.getStatus());
-//                subTaskDTO.setSubTaskDeadline(subTask.getSubTaskDeadline());
                 BeanUtils.copyProperties(subTask, subTaskDTO);
                 subTaskDTO.setEmployeeId(subTask.getEmployee().getId());
                 subTaskDTOS.add(subTaskDTO);
@@ -84,20 +75,19 @@ public class TaskServiceImpl implements ITaskService {
         return taskDTO;
     }
     @Override
-    public boolean addTask(int eventId, int teamId, String taskName, String taskDesc,
-                           String taskDl, String taskStatus) {
+    public boolean addTask(TaskDTO taskDTO) {
         boolean isSuccess = false;
         try{
-            if(eventRepository.findById(eventId).isPresent() && teamRepository.findById(teamId).isPresent()){
+            if(eventRepository.findById(taskDTO.getEventId()).isPresent() && teamRepository.findById(taskDTO.getTeamId()).isPresent()){
                 Task task = new Task();
-                task.setTaskName(taskName);
-                task.setTaskDesc(taskDesc);
+                task.setTaskName(taskDTO.getTaskName());
+                task.setTaskDesc(taskDTO.getTaskDesc());
                 SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-                Date date = formatter.parse(taskDl.trim());
+                Date date = formatter.parse(taskDTO.getTaskDl().trim());
                 task.setTaskDl(date);
-                task.setTaskStatus(taskStatus);
-                task.setTeam(teamRepository.findById(teamId).get());
-                task.setEvent(eventRepository.findById(eventId).get());
+                task.setTaskStatus(taskDTO.getTaskStatus());
+                task.setTeam(teamRepository.findById(taskDTO.getTeamId()).get());
+                task.setEvent(eventRepository.findById(taskDTO.getEventId()).get());
                 taskRepository.save(task);
                 isSuccess = true;
             }
@@ -107,21 +97,20 @@ public class TaskServiceImpl implements ITaskService {
         return isSuccess;
     }
     @Override
-    public boolean updateTask(int taskId, int eventId, int teamId, String taskName, String taskDesc,
-                              String taskDl, String taskStatus) {
+    public boolean updateTask(TaskDTO taskDTO) {
         boolean isSuccess = false;
         try{
-            if(taskRepository.findById(taskId).isPresent()){
-                if(eventRepository.findById(eventId).isPresent() && teamRepository.findById(teamId).isPresent()){
-                    Task task = taskRepository.findById(taskId).get();
-                    task.setTaskName(taskName);
-                    task.setTaskDesc(taskDesc);
+            if(taskRepository.findById(taskDTO.getTaskId()).isPresent()){
+                if(eventRepository.findById(taskDTO.getEventId()).isPresent() && teamRepository.findById(taskDTO.getEventId()).isPresent()){
+                    Task task = taskRepository.findById(taskDTO.getTaskId()).get();
+                    task.setTaskName(taskDTO.getTaskName());
+                    task.setTaskDesc(taskDTO.getTaskDesc());
                     SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-                    Date date = formatter.parse(taskDl.trim());
+                    Date date = formatter.parse(taskDTO.getTaskDl().trim());
                     task.setTaskDl(date);
-                    task.setTaskStatus(taskStatus);
-                    task.setTeam(teamRepository.findById(teamId).get());
-                    task.setEvent(eventRepository.findById(eventId).get());
+                    task.setTaskStatus(taskDTO.getTaskStatus());
+                    task.setTeam(teamRepository.findById(taskDTO.getTeamId()).get());
+                    task.setEvent(eventRepository.findById(taskDTO.getEventId()).get());
                     taskRepository.save(task);
                     isSuccess = true;
                 }

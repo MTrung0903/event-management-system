@@ -53,19 +53,18 @@ public class SubtaskServiceImpl implements ISubtaskService {
         return subtaskDTO;
     }
     @Override
-    public boolean addSubtask(int taskId, int employeeId, String subtaskName,
-                              String subtaskDesc, String subtaskDl, String subtaskStatus) {
+    public boolean addSubtask(int taskId, SubTaskDTO subtaskDTO) {
         boolean isSuccess = false;
         try {
-            if(taskRepository.findById(taskId).isPresent() && employeeRepository.findById(employeeId).isPresent()) {
+            if(taskRepository.findById(taskId).isPresent() && employeeRepository.findById(subtaskDTO.getEmployeeId()).isPresent()) {
                 SubTask subtask = new SubTask();
-                subtask.setSubTaskName(subtaskName);
-                subtask.setSubTaskDesc(subtaskDesc);
+                subtask.setSubTaskName(subtaskDTO.getSubTaskName());
+                subtask.setSubTaskDesc(subtaskDTO.getSubTaskDesc());
                 SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-                Date date = formatter.parse(subtaskDl.trim());
+                Date date = formatter.parse(subtaskDTO.getSubTaskDeadline().trim());
                 subtask.setSubTaskDeadline(date);
-                subtask.setStatus(subtaskStatus);
-                subtask.setEmployee(employeeRepository.findById(employeeId).get());
+                subtask.setStatus(subtaskDTO.getStatus());
+                subtask.setEmployee(employeeRepository.findById(subtaskDTO.getEmployeeId()).get());
                 subtask.setTask(taskRepository.findById(taskId).get());
                 subtaskRepository.save(subtask);
                 isSuccess = true;
@@ -77,20 +76,19 @@ public class SubtaskServiceImpl implements ISubtaskService {
     }
 
     @Override
-    public boolean updateSubtask(int subtaskId, int taskId, int employeeId, String subtaskName,
-                                 String subtaskDesc, String subtaskDl, String subtaskStatus) {
+    public boolean updateSubtask(int taskId, SubTaskDTO subtaskDTO) {
         boolean isSuccess = false;
         try {
-            if(subtaskRepository.findById(subtaskId).isPresent()) {
-                if(taskRepository.findById(taskId).isPresent() && employeeRepository.findById(employeeId).isPresent()) {
-                    SubTask subtask = subtaskRepository.findById(subtaskId).get();
-                    subtask.setSubTaskName(subtaskName);
-                    subtask.setSubTaskDesc(subtaskDesc);
+            if(subtaskRepository.findById(subtaskDTO.getSubTaskId()).isPresent()) {
+                if(taskRepository.findById(taskId).isPresent() && employeeRepository.findById(subtaskDTO.getEmployeeId()).isPresent()) {
+                    SubTask subtask = subtaskRepository.findById(subtaskDTO.getSubTaskId()).get();
+                    subtask.setSubTaskName(subtaskDTO.getSubTaskName());
+                    subtask.setSubTaskDesc(subtaskDTO.getSubTaskDesc());
                     SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-                    Date date = formatter.parse(subtaskDl.trim());
+                    Date date = formatter.parse(subtaskDTO.getSubTaskDeadline().trim());
                     subtask.setSubTaskDeadline(date);
-                    subtask.setStatus(subtaskStatus);
-                    subtask.setEmployee(employeeRepository.findById(employeeId).get());
+                    subtask.setStatus(subtaskDTO.getStatus());
+                    subtask.setEmployee(employeeRepository.findById(subtaskDTO.getEmployeeId()).get());
                     subtask.setTask(taskRepository.findById(taskId).get());
                     subtaskRepository.save(subtask);
                     isSuccess = true;

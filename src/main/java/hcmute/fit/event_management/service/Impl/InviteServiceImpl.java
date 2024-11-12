@@ -56,25 +56,25 @@ public class InviteServiceImpl implements IInviteService {
         return inviteDTO;
     }
     @Override
-    public boolean addInvite(String name, String email, String inviteDate, String status,int eventId) {
+    public boolean addInvite(InviteDTO invite) {
 
         boolean isSuccess = false;
         try {
-            Optional<Event> eventOpt = eventRepository.findById(eventId);
+            Optional<Event> eventOpt = eventRepository.findById(invite.getEventId());
             if (eventOpt.isPresent()) {
                 Event event = eventOpt.get();
                 Invite newInvite = new Invite();
-                newInvite.setName(name);
-                newInvite.setEmail(email);
+                newInvite.setName(invite.getName());
+                newInvite.setEmail(invite.getEmail());
                 SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-                Date date = formatter.parse(inviteDate.trim());
+                Date date = formatter.parse(invite.getInviteDate().trim());
                 newInvite.setInviteDate(date);
-                newInvite.setStatus(status);
+                newInvite.setStatus(invite.getStatus());
                 newInvite.setEvent(event);
                 inviteRepository.save(newInvite);
                 isSuccess = true;
             } else {
-                throw new Exception("Event with ID " + eventId + " not found.");
+                throw new Exception("Event with ID " + invite.getEventId() + " not found.");
             }
         } catch (Exception e) {
             System.out.println("Add invite failed: " + e.getMessage());
@@ -83,18 +83,18 @@ public class InviteServiceImpl implements IInviteService {
         return isSuccess;
     }
     @Override
-    public boolean updateInvite(Integer inviteId, String name, String email, String inviteDate, String status) {
-        Optional<Invite> invite = inviteRepository.findById(inviteId);
+    public boolean updateInvite(InviteDTO invite) {
+        Optional<Invite> cmp = inviteRepository.findById(invite.getId());
         boolean isUpdated = false;
         try{
-            if(invite.isPresent()) {
-                Invite updateInvite = invite.get();
-                updateInvite.setName(name);
-                updateInvite.setEmail(email);
+            if(cmp.isPresent()) {
+                Invite updateInvite = cmp.get();
+                updateInvite.setName(invite.getName());
+                updateInvite.setEmail(invite.getEmail());
                 SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-                Date date = formatter.parse(inviteDate.trim());
+                Date date = formatter.parse(invite.getInviteDate().trim());
                 updateInvite.setInviteDate(date);
-                updateInvite.setStatus(status);
+                updateInvite.setStatus(invite.getStatus());
                 inviteRepository.save(updateInvite);
                 isUpdated = true;
             }

@@ -18,8 +18,9 @@ public class TaskDTO {
     private int taskId;
     private String taskName;
     private String taskDesc;
-    private Date taskDl;
+    private String taskDl;
     private String taskStatus;
     private int eventId;
+    private int teamId;
     private List<SubTaskDTO> listSubTasks;
 }

@@ -34,27 +34,16 @@ public class SubtaskController {
     }
     @PostMapping("/add")
     public ResponseEntity<?> addSubtask(@RequestParam int taskId,
-                                        @RequestParam int employeeId,
-                                        @RequestParam String subtaskName,
-                                        @RequestParam String subtaskDesc,
-                                        @RequestParam String subtaskDl,
-                                        @RequestParam String subtaskStatus){
+                                        @RequestBody SubTaskDTO subtaskDTO){
         Response response = new Response();
-        response.setData(subtaskService.addSubtask(taskId, employeeId, subtaskName,
-                subtaskDesc, subtaskDl, subtaskStatus));
+        response.setData(subtaskService.addSubtask(taskId,subtaskDTO));
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
     @PutMapping("/update")
-    public ResponseEntity<?> updateSubtask(@RequestParam int subtaskId,
-                                           @RequestParam int taskId,
-                                           @RequestParam int employeeId,
-                                           @RequestParam String subtaskName,
-                                           @RequestParam String subtaskDesc,
-                                           @RequestParam String subtaskDl,
-                                           @RequestParam String subtaskStatus){
+    public ResponseEntity<?> updateSubtask(@RequestParam int taskId,
+                                           @RequestBody SubTaskDTO subtaskDTO){
         Response response = new Response();
-        response.setData(subtaskService.updateSubtask(subtaskId,taskId,employeeId,
-                subtaskName,subtaskDesc,subtaskDl,subtaskStatus));
+        response.setData(subtaskService.updateSubtask(taskId,subtaskDTO));
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
     @DeleteMapping("/delete")

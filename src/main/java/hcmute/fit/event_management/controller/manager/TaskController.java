@@ -34,26 +34,15 @@ public class TaskController {
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
     @PostMapping("add")
-    public ResponseEntity<?> addTask(@RequestParam int eventId,
-                                     @RequestParam int teamId,
-                                     @RequestParam String taskName,
-                                     @RequestParam String taskDesc,
-                                     @RequestParam String taskDl,
-                                     @RequestParam String taskStatus){
+    public ResponseEntity<?> addTask(@RequestBody TaskDTO taskDTO){
         Response response = new Response();
-        response.setData(taskService.addTask(eventId, teamId, taskName, taskDesc, taskDl, taskStatus));
+        response.setData(taskService.addTask(taskDTO));
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
     @PutMapping("/update")
-    public ResponseEntity<?> updateTask(@RequestParam int taskId,
-                                        @RequestParam int eventId,
-                                        @RequestParam int teamId,
-                                        @RequestParam String taskName,
-                                        @RequestParam String taskDesc,
-                                        @RequestParam String taskDl,
-                                        @RequestParam String taskStatus){
+    public ResponseEntity<?> updateTask(@RequestBody TaskDTO taskDTO){
         Response response = new Response();
-        response.setData(taskService.updateTask(taskId, eventId, teamId, taskName, taskDesc, taskDl, taskStatus));
+        response.setData(taskService.updateTask(taskDTO));
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 

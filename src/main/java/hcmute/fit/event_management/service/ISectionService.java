@@ -15,9 +15,9 @@ public interface ISectionService {
 
     SectionDTO getSectionById(int sectionId);
 
-    boolean addSection(int eventId, String startTimte, String endTimte) ;
+    boolean addSection(SectionDTO sectionDTO) ;
 
-    boolean updateSection(int sectionId, int eventId, String startTimte, String endTimte) ;
+    boolean updateSection(SectionDTO sectionDTO) ;
 
     boolean deleteSection(int sectionId);
 }

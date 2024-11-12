@@ -15,8 +15,8 @@ import java.util.List;
 @NoArgsConstructor
 public class SectionDTO {
     private int id;
-    private Date startTime;
-    private Date endTime;
+    private String startTime;
+    private String endTime;
     private int eventId;
 
     private List<DetailSectionDTO> listDetailSections;

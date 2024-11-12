@@ -35,22 +35,15 @@ public class DetailSectionController {
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
     @PostMapping("/add")
-    public ResponseEntity<?> addDetailSection(@RequestParam int speakerId,
-                                              @RequestParam String speakerTitle,
-                                              @RequestParam int eventId,
-                                              @RequestParam int sectionId){
+    public ResponseEntity<?> addDetailSection(@RequestBody DetailSectionDTO detail){
         Response response = new Response();
-        response.setData(detailSectionService.addDetailSection(speakerId, speakerTitle, eventId, sectionId));
+        response.setData(detailSectionService.addDetailSection(detail));
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
     @PutMapping("/update")
-    public ResponseEntity<?> updateDetailSection(@RequestParam int detailSectionId,
-                                                 @RequestParam int speakerId,
-                                                 @RequestParam String speakerTitle,
-                                                 @RequestParam int eventId,
-                                                 @RequestParam int sectionId){
+    public ResponseEntity<?> updateDetailSection(@RequestBody DetailSectionDTO detail){
         Response response = new Response();
-        response.setData(detailSectionService.updateDetailSection(detailSectionId, speakerId, speakerTitle, eventId, sectionId));
+        response.setData(detailSectionService.updateDetailSection(detail));
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
     @DeleteMapping("/delete")

@@ -34,24 +34,16 @@ public class InviteController {
     }
 
     @PostMapping("/add")
-    public ResponseEntity<?> addInvite(@RequestParam String name,
-                                       @RequestParam String email,
-                                       @RequestParam String inviteDate,
-                                       @RequestParam String status,
-                                       @RequestParam int eventId) {
+    public ResponseEntity<?> addInvite(@RequestBody InviteDTO invite) {
         Response response = new Response();
-        response.setData(inviteService.addInvite(name, email, inviteDate, status,eventId));
+        response.setData(inviteService.addInvite(invite));
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
     @PutMapping("/update")
-    public ResponseEntity<?> updateInvite(@RequestParam int inviteId,
-                                          @RequestParam String name,
-                                          @RequestParam String email,
-                                          @RequestParam String inviteDate,
-                                          @RequestParam String status) {
+    public ResponseEntity<?> updateInvite(@RequestBody InviteDTO invite) {
         Response response = new Response();
-        response.setData(inviteService.updateInvite(inviteId,name, email, inviteDate, status));
+        response.setData(inviteService.updateInvite(invite));
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 

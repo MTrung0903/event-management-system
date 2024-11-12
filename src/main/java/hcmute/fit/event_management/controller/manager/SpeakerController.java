@@ -35,26 +35,15 @@ public class SpeakerController {
     }
 
     @PostMapping("/add")
-    public ResponseEntity<?> addSpeaker(@RequestParam String name,
-                                        @RequestParam String email,
-                                        @RequestParam String title,
-                                        @RequestParam String phone,
-                                        @RequestParam String address,
-                                        @RequestParam String description) {
+    public ResponseEntity<?> addSpeaker(@RequestBody SpeakerDTO speaker) {
         Response response = new Response();
-        response.setData(speakerService.addSpeaker(name, email, title, phone, address, description));
+        response.setData(speakerService.addSpeaker(speaker));
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
     @PutMapping("/update")
-    public ResponseEntity<?> updateSpeaker(@RequestParam int id,
-                                           @RequestParam String name,
-                                           @RequestParam String email,
-                                           @RequestParam String title,
-                                           @RequestParam String phone,
-                                           @RequestParam String address,
-                                           @RequestParam String description){
+    public ResponseEntity<?> updateSpeaker(@RequestBody SpeakerDTO speaker) {
         Response response = new Response();
-        response.setData(speakerService.updateSpeaker(id, name, email, title, phone, address, description));
+        response.setData(speakerService.updateSpeaker(speaker));
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
     @DeleteMapping("/delete")

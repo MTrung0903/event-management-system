@@ -14,11 +14,9 @@ public interface ITaskService {
 
     TaskDTO findTaskById(int subTaskId);
 
-    boolean addTask(int eventId, int teamId, String taskName, String taskDesc,
-                    String taskDl, String taskStatus);
+    boolean addTask(TaskDTO taskDTO);
 
-    boolean updateTask(int taskId, int eventId, int teamId, String taskName, String taskDesc,
-                       String taskDl, String taskStatus);
+    boolean updateTask(TaskDTO taskDTO);
 
     boolean deleteTask(int taskId);
 }

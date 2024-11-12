@@ -39,8 +39,8 @@ public class SectionServiceImpl implements ISectionService {
             for(Section section : sections) {
                 SectionDTO sectionDTO = new SectionDTO();
                 sectionDTO.setId(section.getId());
-                sectionDTO.setStartTime(section.getStartTime());
-                sectionDTO.setEndTime(section.getEndTime());
+                sectionDTO.setStartTime(section.getStartTime().toString());
+                sectionDTO.setEndTime(section.getEndTime().toString());
                 sectionDTO.setEventId(eventId);
                 List<DetailSectionDTO> detailSectionDTOs = new ArrayList<>();
                 for(DetailSection detail : section.getListDetailSections()){
@@ -78,17 +78,17 @@ public class SectionServiceImpl implements ISectionService {
         return sectionDTO;
     }
     @Override
-    public boolean addSection(int eventId, String startTimte, String endTimte)  {
+    public boolean addSection(SectionDTO sectionDTO)  {
         boolean isSuccess = false;
         try{
             SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-            if(eventRepository.findById(eventId).isPresent() ) {
+            if(eventRepository.findById(sectionDTO.getEventId()).isPresent() ) {
                 Section section = new Section();
-                Date start = formatter.parse(startTimte.trim());
-                Date end = formatter.parse(endTimte.trim());
+                Date start = formatter.parse(sectionDTO.getStartTime().trim());
+                Date end = formatter.parse(sectionDTO.getEndTime().trim());
                 section.setStartTime(start);
                 section.setEndTime(end);
-                section.setEvent(eventRepository.findById(eventId).get());
+                section.setEvent(eventRepository.findById(sectionDTO.getEventId()).get());
                 sectionRepository.save(section);
                 isSuccess = true;
             }
@@ -99,17 +99,17 @@ public class SectionServiceImpl implements ISectionService {
         return isSuccess;
     }
     @Override
-    public boolean updateSection(int sectionId, int eventId, String startTimte, String endTimte) {
+    public boolean updateSection(SectionDTO sectionDTO) {
         boolean isSuccess = false;
         try{
             SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-            if(eventRepository.findById(eventId).isPresent() ) {
-                Section section = sectionRepository.findById(sectionId).get();
-                Date start = formatter.parse(startTimte.trim());
-                Date end = formatter.parse(endTimte.trim());
+            if(eventRepository.findById(sectionDTO.getEventId()).isPresent() ) {
+                Section section = sectionRepository.findById(sectionDTO.getId()).get();
+                Date start = formatter.parse(sectionDTO.getStartTime().trim());
+                Date end = formatter.parse(sectionDTO.getEndTime().trim());
                 section.setStartTime(start);
                 section.setEndTime(end);
-                section.setEvent(eventRepository.findById(eventId).get());
+                section.setEvent(eventRepository.findById(sectionDTO.getEventId()).get());
                 sectionRepository.save(section);
                 isSuccess = true;
             }

@@ -3,7 +3,10 @@ package hcmute.fit.event_management.service.Impl;
 import hcmute.fit.event_management.dto.ProviderDTO;
 import hcmute.fit.event_management.dto.ProviderServiceDTO;
 import hcmute.fit.event_management.entity.Provider;
+import hcmute.fit.event_management.entity.ProviderEvent;
 import hcmute.fit.event_management.entity.ProviderService;
+import hcmute.fit.event_management.repository.EventRepository;
+import hcmute.fit.event_management.repository.ProviderEventRepository;
 import hcmute.fit.event_management.repository.ProviderRepository;
 import hcmute.fit.event_management.service.IProvider;
 import org.springframework.beans.BeanUtils;
@@ -18,6 +21,12 @@ import java.util.Optional;
 public class ProviderImpl implements IProvider {
     @Autowired
     private ProviderRepository providerRepository;
+
+    @Autowired
+    private ProviderEventRepository providerEventRepository;
+
+    @Autowired
+    private EventRepository eventRepository;
 
     public ProviderImpl(ProviderRepository providerRepository) {
         this.providerRepository = providerRepository;
@@ -47,34 +56,32 @@ public class ProviderImpl implements IProvider {
     }
 
     @Override
-    public boolean updateProvider(Integer providerId, String name, String contact,
-                                  String email, String phone, String address, String website) {
+    public boolean updateProvider(ProviderDTO providerDTO) {
         boolean isUpdated = false;
-        if(providerRepository.findById(providerId).isPresent()) {
-            Provider provider = providerRepository.findById(providerId).get();
-            provider.setName(name);
-            provider.setContact(contact);
-            provider.setEmail(email);
-            provider.setPhone(phone);
-            provider.setAddress(address);
-            provider.setWebsite(website);
+        if(providerRepository.findById(providerDTO.getId()).isPresent()) {
+            Provider provider = providerRepository.findById(providerDTO.getId()).get();
+            provider.setName(providerDTO.getName());
+            provider.setContact(providerDTO.getContact());
+            provider.setEmail(providerDTO.getEmail());
+            provider.setPhone(providerDTO.getPhone());
+            provider.setAddress(providerDTO.getAddress());
+            provider.setWebsite(providerDTO.getWebsite());
             providerRepository.save(provider);
             isUpdated = true;
         }
         return isUpdated;
     }
     @Override
-    public boolean addProvider(String name, String contact,
-                               String email, String phone, String address, String website) {
+    public boolean addProvider(ProviderDTO providerDTO) {
         boolean isSuccess = false;
         try {
             Provider provider = new Provider();
-            provider.setName(name);
-            provider.setContact(contact);
-            provider.setEmail(email);
-            provider.setPhone(phone);
-            provider.setAddress(address);
-            provider.setWebsite(website);
+            provider.setName(providerDTO.getName());
+            provider.setContact(providerDTO.getContact());
+            provider.setEmail(providerDTO.getEmail());
+            provider.setPhone(providerDTO.getPhone());
+            provider.setAddress(providerDTO.getAddress());
+            provider.setWebsite(providerDTO.getWebsite());
             providerRepository.save(provider);
             isSuccess = true;
         } catch (Exception e) {
@@ -109,6 +116,25 @@ public class ProviderImpl implements IProvider {
         }
         return isDeleted;
     }
+    @Override
+    public boolean addProviderForEvent(int proId, int eventId){
+        boolean isSuccess = false;
+       try{
 
+           if(eventRepository.findById(eventId).isPresent() && providerRepository.findById(proId).isPresent()) {
+               ProviderEvent providerEvent = new ProviderEvent();
+               providerEvent.setEvent(eventRepository.findById(eventId).get());
+               providerEvent.setProvider(providerRepository.findById(proId).get());
+               //providerEvent.setProviderID(proId);
+               //providerEvent.setEventID(eventId);
+               providerEventRepository.save(providerEvent);
+               isSuccess = true;
+           }
+       } catch (Exception e) {
+
+           System.out.println("Add provider for event failed" + e.getMessage());
+       }
+       return isSuccess;
+    }
 
 }
