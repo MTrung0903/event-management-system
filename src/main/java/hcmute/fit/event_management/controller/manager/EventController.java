@@ -40,13 +40,14 @@ public class EventController {
     @PostMapping("add")
     public ResponseEntity<?> addEvent(@RequestParam("image") MultipartFile image,
                                       @ModelAttribute EventDTO event){
+        System.out.println("EventDTO received: " + event);
         Response response = new Response();
         response.setData(eventService.addEvent(image,event));
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
     @PutMapping("update")
-    public ResponseEntity<?> updateEvent(@RequestParam("image") MultipartFile image,  @RequestBody EventDTO event){
+    public ResponseEntity<?> updateEvent(@RequestParam("image") MultipartFile image,  @ModelAttribute EventDTO event){
         Response response = new Response();
         response.setData(eventService.updateEvent(image,event));
         return new ResponseEntity<>(response, HttpStatus.OK);

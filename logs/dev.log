@@ -5266,3 +5266,772 @@ org.springframework.web.multipart.MultipartException: Current request is not a m
 2024-11-13 01:01:33 INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
 2024-11-13 01:01:33 INFO  com.zaxxer.hikari.HikariDataSource : HikariPool-1 - Shutdown initiated...
 2024-11-13 01:01:33 INFO  com.zaxxer.hikari.HikariDataSource : HikariPool-1 - Shutdown completed.
+2024-11-13 01:01:35 INFO  o.h.validator.internal.util.Version : HV000001: Hibernate Validator 8.0.1.Final
+2024-11-13 01:01:35 INFO  h.f.e.EventManagementApplication : Starting EventManagementApplication using Java 21.0.5 with PID 17412 (D:\WORKSPACE\event-management-system\target\classes started by ADMIN in D:\WORKSPACE\event-management-system)
+2024-11-13 01:01:35 INFO  h.f.e.EventManagementApplication : No active profile set, falling back to 1 default profile: "default"
+2024-11-13 01:01:35 INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2024-11-13 01:01:35 INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2024-11-13 01:01:36 INFO  o.s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-11-13 01:01:36 INFO  o.s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 105 ms. Found 22 JPA repository interfaces.
+2024-11-13 01:01:36 INFO  o.s.b.w.embedded.tomcat.TomcatWebServer : Tomcat initialized with port 8080 (http)
+2024-11-13 01:01:36 INFO  o.apache.coyote.http11.Http11NioProtocol : Initializing ProtocolHandler ["http-nio-8080"]
+2024-11-13 01:01:36 INFO  o.apache.catalina.core.StandardService : Starting service [Tomcat]
+2024-11-13 01:01:36 INFO  org.apache.catalina.core.StandardEngine : Starting Servlet engine: [Apache Tomcat/10.1.31]
+2024-11-13 01:01:36 INFO  o.a.c.c.C.[Tomcat].[localhost].[/] : Initializing Spring embedded WebApplicationContext
+2024-11-13 01:01:36 INFO  o.s.b.w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1222 ms
+2024-11-13 01:01:36 INFO  com.zaxxer.hikari.HikariDataSource : HikariPool-1 - Starting...
+2024-11-13 01:01:37 INFO  com.zaxxer.hikari.pool.HikariPool : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@3e7d9e67
+2024-11-13 01:01:37 INFO  com.zaxxer.hikari.HikariDataSource : HikariPool-1 - Start completed.
+2024-11-13 01:01:37 INFO  o.s.b.a.h2.H2ConsoleAutoConfiguration : H2 console available at '/h2-console'. Database available at 'jdbc:mysql://localhost/event'
+2024-11-13 01:01:37 INFO  o.hibernate.jpa.internal.util.LogHelper : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-11-13 01:01:37 INFO  org.hibernate.Version : HHH000412: Hibernate ORM core version 6.5.3.Final
+2024-11-13 01:01:37 INFO  o.h.c.internal.RegionFactoryInitiator : HHH000026: Second-level cache disabled
+2024-11-13 01:01:37 INFO  o.s.o.j.p.SpringPersistenceUnitInfo : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-11-13 01:01:38 INFO  o.h.e.t.j.p.i.JtaPlatformInitiator : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-11-13 01:01:38 INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-11-13 01:01:38 WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-11-13 01:01:39 INFO  o.s.s.c.a.a.c.InitializeAuthenticationProviderBeanManagerConfigurer$InitializeAuthenticationProviderManagerConfigurer : Global AuthenticationManager configured with AuthenticationProvider bean with name authenticationProvider
+2024-11-13 01:01:39 WARN  o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with an AuthenticationProvider bean. UserDetailsService beans will not be used for username/password login. Consider removing the AuthenticationProvider bean. Alternatively, consider using the UserDetailsService in a manually instantiated DaoAuthenticationProvider.
+2024-11-13 01:01:39 INFO  o.s.d.j.r.query.QueryEnhancerFactory : Hibernate is in classpath; If applicable, HQL parser will be used.
+2024-11-13 01:01:39 WARN  o.s.b.a.t.ThymeleafAutoConfiguration$DefaultTemplateResolverConfiguration : Cannot find template location: classpath:/templates/ (please add some templates, check your Thymeleaf configuration, or set spring.thymeleaf.check-template-location=false)
+2024-11-13 01:01:40 INFO  o.s.b.d.a.OptionalLiveReloadServer : LiveReload server is running on port 35729
+2024-11-13 01:01:40 INFO  o.apache.coyote.http11.Http11NioProtocol : Starting ProtocolHandler ["http-nio-8080"]
+2024-11-13 01:01:40 INFO  o.s.b.w.embedded.tomcat.TomcatWebServer : Tomcat started on port 8080 (http) with context path '/'
+2024-11-13 01:01:40 INFO  h.f.e.EventManagementApplication : Started EventManagementApplication in 4.925 seconds (process running for 5.641)
+2024-11-13 01:01:49 INFO  o.a.c.c.C.[Tomcat].[localhost].[/] : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-11-13 01:01:49 INFO  o.s.web.servlet.DispatcherServlet : Initializing Servlet 'dispatcherServlet'
+2024-11-13 01:01:49 INFO  o.s.web.servlet.DispatcherServlet : Completed initialization in 1 ms
+2024-11-13 01:04:15 INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-11-13 01:04:15 INFO  com.zaxxer.hikari.HikariDataSource : HikariPool-1 - Shutdown initiated...
+2024-11-13 01:04:15 INFO  com.zaxxer.hikari.HikariDataSource : HikariPool-1 - Shutdown completed.
+2024-11-13 01:05:31 INFO  o.h.validator.internal.util.Version : HV000001: Hibernate Validator 8.0.1.Final
+2024-11-13 01:05:31 INFO  h.f.e.EventManagementApplication : Starting EventManagementApplication using Java 21.0.5 with PID 15276 (D:\WORKSPACE\event-management-system\target\classes started by ADMIN in D:\WORKSPACE\event-management-system)
+2024-11-13 01:05:31 INFO  h.f.e.EventManagementApplication : No active profile set, falling back to 1 default profile: "default"
+2024-11-13 01:05:32 INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2024-11-13 01:05:32 INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2024-11-13 01:05:32 INFO  o.s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-11-13 01:05:32 INFO  o.s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 107 ms. Found 22 JPA repository interfaces.
+2024-11-13 01:05:33 INFO  o.s.b.w.embedded.tomcat.TomcatWebServer : Tomcat initialized with port 8080 (http)
+2024-11-13 01:05:33 INFO  o.apache.coyote.http11.Http11NioProtocol : Initializing ProtocolHandler ["http-nio-8080"]
+2024-11-13 01:05:33 INFO  o.apache.catalina.core.StandardService : Starting service [Tomcat]
+2024-11-13 01:05:33 INFO  org.apache.catalina.core.StandardEngine : Starting Servlet engine: [Apache Tomcat/10.1.31]
+2024-11-13 01:05:33 INFO  o.a.c.c.C.[Tomcat].[localhost].[/] : Initializing Spring embedded WebApplicationContext
+2024-11-13 01:05:33 INFO  o.s.b.w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1271 ms
+2024-11-13 01:05:33 INFO  com.zaxxer.hikari.HikariDataSource : HikariPool-1 - Starting...
+2024-11-13 01:05:33 INFO  com.zaxxer.hikari.pool.HikariPool : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@3e7d9e67
+2024-11-13 01:05:33 INFO  com.zaxxer.hikari.HikariDataSource : HikariPool-1 - Start completed.
+2024-11-13 01:05:33 INFO  o.s.b.a.h2.H2ConsoleAutoConfiguration : H2 console available at '/h2-console'. Database available at 'jdbc:mysql://localhost/event'
+2024-11-13 01:05:33 INFO  o.hibernate.jpa.internal.util.LogHelper : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-11-13 01:05:33 INFO  org.hibernate.Version : HHH000412: Hibernate ORM core version 6.5.3.Final
+2024-11-13 01:05:33 INFO  o.h.c.internal.RegionFactoryInitiator : HHH000026: Second-level cache disabled
+2024-11-13 01:05:33 INFO  o.s.o.j.p.SpringPersistenceUnitInfo : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-11-13 01:05:34 INFO  o.h.e.t.j.p.i.JtaPlatformInitiator : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-11-13 01:05:35 INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-11-13 01:05:35 WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-11-13 01:05:35 INFO  o.s.s.c.a.a.c.InitializeAuthenticationProviderBeanManagerConfigurer$InitializeAuthenticationProviderManagerConfigurer : Global AuthenticationManager configured with AuthenticationProvider bean with name authenticationProvider
+2024-11-13 01:05:35 WARN  o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with an AuthenticationProvider bean. UserDetailsService beans will not be used for username/password login. Consider removing the AuthenticationProvider bean. Alternatively, consider using the UserDetailsService in a manually instantiated DaoAuthenticationProvider.
+2024-11-13 01:05:35 INFO  o.s.d.j.r.query.QueryEnhancerFactory : Hibernate is in classpath; If applicable, HQL parser will be used.
+2024-11-13 01:05:36 WARN  o.s.b.a.t.ThymeleafAutoConfiguration$DefaultTemplateResolverConfiguration : Cannot find template location: classpath:/templates/ (please add some templates, check your Thymeleaf configuration, or set spring.thymeleaf.check-template-location=false)
+2024-11-13 01:05:36 INFO  o.s.b.d.a.OptionalLiveReloadServer : LiveReload server is running on port 35729
+2024-11-13 01:05:36 INFO  o.apache.coyote.http11.Http11NioProtocol : Starting ProtocolHandler ["http-nio-8080"]
+2024-11-13 01:05:36 INFO  o.s.b.w.embedded.tomcat.TomcatWebServer : Tomcat started on port 8080 (http) with context path '/'
+2024-11-13 01:05:36 INFO  h.f.e.EventManagementApplication : Started EventManagementApplication in 5.084 seconds (process running for 5.684)
+2024-11-13 01:05:40 INFO  o.a.c.c.C.[Tomcat].[localhost].[/] : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-11-13 01:05:40 INFO  o.s.web.servlet.DispatcherServlet : Initializing Servlet 'dispatcherServlet'
+2024-11-13 01:05:40 INFO  o.s.web.servlet.DispatcherServlet : Completed initialization in 1 ms
+2024-11-13 01:06:06 INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-11-13 01:06:06 INFO  com.zaxxer.hikari.HikariDataSource : HikariPool-1 - Shutdown initiated...
+2024-11-13 01:06:06 INFO  com.zaxxer.hikari.HikariDataSource : HikariPool-1 - Shutdown completed.
+2024-11-13 01:23:48 INFO  o.h.validator.internal.util.Version : HV000001: Hibernate Validator 8.0.1.Final
+2024-11-13 01:23:48 INFO  h.f.e.EventManagementApplication : Starting EventManagementApplication using Java 21.0.5 with PID 16188 (D:\WORKSPACE\event-management-system\target\classes started by ADMIN in D:\WORKSPACE\event-management-system)
+2024-11-13 01:23:48 INFO  h.f.e.EventManagementApplication : No active profile set, falling back to 1 default profile: "default"
+2024-11-13 01:23:48 INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2024-11-13 01:23:48 INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2024-11-13 01:23:49 INFO  o.s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-11-13 01:23:49 INFO  o.s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 97 ms. Found 22 JPA repository interfaces.
+2024-11-13 01:23:49 INFO  o.s.b.w.embedded.tomcat.TomcatWebServer : Tomcat initialized with port 8080 (http)
+2024-11-13 01:23:49 INFO  o.apache.coyote.http11.Http11NioProtocol : Initializing ProtocolHandler ["http-nio-8080"]
+2024-11-13 01:23:49 INFO  o.apache.catalina.core.StandardService : Starting service [Tomcat]
+2024-11-13 01:23:49 INFO  org.apache.catalina.core.StandardEngine : Starting Servlet engine: [Apache Tomcat/10.1.31]
+2024-11-13 01:23:49 INFO  o.a.c.c.C.[Tomcat].[localhost].[/] : Initializing Spring embedded WebApplicationContext
+2024-11-13 01:23:49 INFO  o.s.b.w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1406 ms
+2024-11-13 01:23:49 INFO  com.zaxxer.hikari.HikariDataSource : HikariPool-1 - Starting...
+2024-11-13 01:23:50 INFO  com.zaxxer.hikari.pool.HikariPool : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@4b6d72fd
+2024-11-13 01:23:50 INFO  com.zaxxer.hikari.HikariDataSource : HikariPool-1 - Start completed.
+2024-11-13 01:23:50 INFO  o.s.b.a.h2.H2ConsoleAutoConfiguration : H2 console available at '/h2-console'. Database available at 'jdbc:mysql://localhost/event'
+2024-11-13 01:23:50 INFO  o.hibernate.jpa.internal.util.LogHelper : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-11-13 01:23:50 INFO  org.hibernate.Version : HHH000412: Hibernate ORM core version 6.5.3.Final
+2024-11-13 01:23:50 INFO  o.h.c.internal.RegionFactoryInitiator : HHH000026: Second-level cache disabled
+2024-11-13 01:23:50 INFO  o.s.o.j.p.SpringPersistenceUnitInfo : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-11-13 01:23:51 INFO  o.h.e.t.j.p.i.JtaPlatformInitiator : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-11-13 01:23:51 INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-11-13 01:23:52 WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-11-13 01:23:52 INFO  o.s.s.c.a.a.c.InitializeAuthenticationProviderBeanManagerConfigurer$InitializeAuthenticationProviderManagerConfigurer : Global AuthenticationManager configured with AuthenticationProvider bean with name authenticationProvider
+2024-11-13 01:23:52 WARN  o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with an AuthenticationProvider bean. UserDetailsService beans will not be used for username/password login. Consider removing the AuthenticationProvider bean. Alternatively, consider using the UserDetailsService in a manually instantiated DaoAuthenticationProvider.
+2024-11-13 01:23:52 INFO  o.s.d.j.r.query.QueryEnhancerFactory : Hibernate is in classpath; If applicable, HQL parser will be used.
+2024-11-13 01:23:53 WARN  o.s.b.a.t.ThymeleafAutoConfiguration$DefaultTemplateResolverConfiguration : Cannot find template location: classpath:/templates/ (please add some templates, check your Thymeleaf configuration, or set spring.thymeleaf.check-template-location=false)
+2024-11-13 01:23:53 INFO  o.s.b.d.a.OptionalLiveReloadServer : LiveReload server is running on port 35729
+2024-11-13 01:23:53 INFO  o.apache.coyote.http11.Http11NioProtocol : Starting ProtocolHandler ["http-nio-8080"]
+2024-11-13 01:23:53 INFO  o.s.b.w.embedded.tomcat.TomcatWebServer : Tomcat started on port 8080 (http) with context path '/'
+2024-11-13 01:23:53 INFO  h.f.e.EventManagementApplication : Started EventManagementApplication in 5.592 seconds (process running for 6.448)
+2024-11-13 01:23:59 INFO  o.a.c.c.C.[Tomcat].[localhost].[/] : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-11-13 01:23:59 INFO  o.s.web.servlet.DispatcherServlet : Initializing Servlet 'dispatcherServlet'
+2024-11-13 01:23:59 INFO  o.s.web.servlet.DispatcherServlet : Completed initialization in 2 ms
+2024-11-13 01:27:07 INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-11-13 01:27:07 INFO  com.zaxxer.hikari.HikariDataSource : HikariPool-1 - Shutdown initiated...
+2024-11-13 01:27:07 INFO  com.zaxxer.hikari.HikariDataSource : HikariPool-1 - Shutdown completed.
+2024-11-13 09:23:25 INFO  o.h.validator.internal.util.Version : HV000001: Hibernate Validator 8.0.1.Final
+2024-11-13 09:23:25 INFO  h.f.e.EventManagementApplication : Starting EventManagementApplication using Java 21.0.5 with PID 8704 (D:\WORKSPACE\event-management-system\target\classes started by ADMIN in D:\WORKSPACE\event-management-system)
+2024-11-13 09:23:25 INFO  h.f.e.EventManagementApplication : No active profile set, falling back to 1 default profile: "default"
+2024-11-13 09:23:25 INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2024-11-13 09:23:25 INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2024-11-13 09:23:26 INFO  o.s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-11-13 09:23:26 INFO  o.s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 94 ms. Found 22 JPA repository interfaces.
+2024-11-13 09:23:26 INFO  o.s.b.w.embedded.tomcat.TomcatWebServer : Tomcat initialized with port 8080 (http)
+2024-11-13 09:23:26 INFO  o.apache.coyote.http11.Http11NioProtocol : Initializing ProtocolHandler ["http-nio-8080"]
+2024-11-13 09:23:26 INFO  o.apache.catalina.core.StandardService : Starting service [Tomcat]
+2024-11-13 09:23:26 INFO  org.apache.catalina.core.StandardEngine : Starting Servlet engine: [Apache Tomcat/10.1.31]
+2024-11-13 09:23:27 INFO  o.a.c.c.C.[Tomcat].[localhost].[/] : Initializing Spring embedded WebApplicationContext
+2024-11-13 09:23:27 INFO  o.s.b.w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1388 ms
+2024-11-13 09:23:27 INFO  com.zaxxer.hikari.HikariDataSource : HikariPool-1 - Starting...
+2024-11-13 09:23:27 INFO  com.zaxxer.hikari.pool.HikariPool : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@1743a354
+2024-11-13 09:23:27 INFO  com.zaxxer.hikari.HikariDataSource : HikariPool-1 - Start completed.
+2024-11-13 09:23:27 INFO  o.s.b.a.h2.H2ConsoleAutoConfiguration : H2 console available at '/h2-console'. Database available at 'jdbc:mysql://localhost/event'
+2024-11-13 09:23:27 INFO  o.hibernate.jpa.internal.util.LogHelper : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-11-13 09:23:27 INFO  org.hibernate.Version : HHH000412: Hibernate ORM core version 6.5.3.Final
+2024-11-13 09:23:27 INFO  o.h.c.internal.RegionFactoryInitiator : HHH000026: Second-level cache disabled
+2024-11-13 09:23:27 INFO  o.s.o.j.p.SpringPersistenceUnitInfo : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-11-13 09:23:29 INFO  o.h.e.t.j.p.i.JtaPlatformInitiator : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-11-13 09:23:29 INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-11-13 09:23:29 WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-11-13 09:23:29 INFO  o.s.s.c.a.a.c.InitializeAuthenticationProviderBeanManagerConfigurer$InitializeAuthenticationProviderManagerConfigurer : Global AuthenticationManager configured with AuthenticationProvider bean with name authenticationProvider
+2024-11-13 09:23:29 WARN  o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with an AuthenticationProvider bean. UserDetailsService beans will not be used for username/password login. Consider removing the AuthenticationProvider bean. Alternatively, consider using the UserDetailsService in a manually instantiated DaoAuthenticationProvider.
+2024-11-13 09:23:29 INFO  o.s.d.j.r.query.QueryEnhancerFactory : Hibernate is in classpath; If applicable, HQL parser will be used.
+2024-11-13 09:23:30 WARN  o.s.b.a.t.ThymeleafAutoConfiguration$DefaultTemplateResolverConfiguration : Cannot find template location: classpath:/templates/ (please add some templates, check your Thymeleaf configuration, or set spring.thymeleaf.check-template-location=false)
+2024-11-13 09:23:30 INFO  o.s.b.d.a.OptionalLiveReloadServer : LiveReload server is running on port 35729
+2024-11-13 09:23:30 INFO  o.apache.coyote.http11.Http11NioProtocol : Starting ProtocolHandler ["http-nio-8080"]
+2024-11-13 09:23:30 INFO  o.s.b.w.embedded.tomcat.TomcatWebServer : Tomcat started on port 8080 (http) with context path '/'
+2024-11-13 09:23:30 INFO  h.f.e.EventManagementApplication : Started EventManagementApplication in 5.787 seconds (process running for 6.525)
+2024-11-13 09:23:50 INFO  o.a.c.c.C.[Tomcat].[localhost].[/] : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-11-13 09:23:50 INFO  o.s.web.servlet.DispatcherServlet : Initializing Servlet 'dispatcherServlet'
+2024-11-13 09:23:50 INFO  o.s.web.servlet.DispatcherServlet : Completed initialization in 1 ms
+2024-11-13 09:24:21 INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-11-13 09:24:21 INFO  com.zaxxer.hikari.HikariDataSource : HikariPool-1 - Shutdown initiated...
+2024-11-13 09:24:21 INFO  com.zaxxer.hikari.HikariDataSource : HikariPool-1 - Shutdown completed.
+2024-11-13 09:24:48 INFO  o.h.validator.internal.util.Version : HV000001: Hibernate Validator 8.0.1.Final
+2024-11-13 09:24:48 INFO  h.f.e.EventManagementApplication : Starting EventManagementApplication using Java 21.0.5 with PID 12940 (D:\WORKSPACE\event-management-system\target\classes started by ADMIN in D:\WORKSPACE\event-management-system)
+2024-11-13 09:24:48 INFO  h.f.e.EventManagementApplication : No active profile set, falling back to 1 default profile: "default"
+2024-11-13 09:24:48 INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2024-11-13 09:24:48 INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2024-11-13 09:24:49 INFO  o.s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-11-13 09:24:49 INFO  o.s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 90 ms. Found 22 JPA repository interfaces.
+2024-11-13 09:24:49 INFO  o.s.b.w.embedded.tomcat.TomcatWebServer : Tomcat initialized with port 8080 (http)
+2024-11-13 09:24:49 INFO  o.apache.coyote.http11.Http11NioProtocol : Initializing ProtocolHandler ["http-nio-8080"]
+2024-11-13 09:24:49 INFO  o.apache.catalina.core.StandardService : Starting service [Tomcat]
+2024-11-13 09:24:49 INFO  org.apache.catalina.core.StandardEngine : Starting Servlet engine: [Apache Tomcat/10.1.31]
+2024-11-13 09:24:49 INFO  o.a.c.c.C.[Tomcat].[localhost].[/] : Initializing Spring embedded WebApplicationContext
+2024-11-13 09:24:49 INFO  o.s.b.w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1164 ms
+2024-11-13 09:24:49 INFO  com.zaxxer.hikari.HikariDataSource : HikariPool-1 - Starting...
+2024-11-13 09:24:49 INFO  com.zaxxer.hikari.pool.HikariPool : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@3e7d9e67
+2024-11-13 09:24:49 INFO  com.zaxxer.hikari.HikariDataSource : HikariPool-1 - Start completed.
+2024-11-13 09:24:49 INFO  o.s.b.a.h2.H2ConsoleAutoConfiguration : H2 console available at '/h2-console'. Database available at 'jdbc:mysql://localhost/event'
+2024-11-13 09:24:50 INFO  o.hibernate.jpa.internal.util.LogHelper : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-11-13 09:24:50 INFO  org.hibernate.Version : HHH000412: Hibernate ORM core version 6.5.3.Final
+2024-11-13 09:24:50 INFO  o.h.c.internal.RegionFactoryInitiator : HHH000026: Second-level cache disabled
+2024-11-13 09:24:50 INFO  o.s.o.j.p.SpringPersistenceUnitInfo : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-11-13 09:24:51 INFO  o.h.e.t.j.p.i.JtaPlatformInitiator : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-11-13 09:24:51 INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-11-13 09:24:51 WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-11-13 09:24:51 INFO  o.s.s.c.a.a.c.InitializeAuthenticationProviderBeanManagerConfigurer$InitializeAuthenticationProviderManagerConfigurer : Global AuthenticationManager configured with AuthenticationProvider bean with name authenticationProvider
+2024-11-13 09:24:51 WARN  o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with an AuthenticationProvider bean. UserDetailsService beans will not be used for username/password login. Consider removing the AuthenticationProvider bean. Alternatively, consider using the UserDetailsService in a manually instantiated DaoAuthenticationProvider.
+2024-11-13 09:24:51 INFO  o.s.d.j.r.query.QueryEnhancerFactory : Hibernate is in classpath; If applicable, HQL parser will be used.
+2024-11-13 09:24:52 WARN  o.s.b.a.t.ThymeleafAutoConfiguration$DefaultTemplateResolverConfiguration : Cannot find template location: classpath:/templates/ (please add some templates, check your Thymeleaf configuration, or set spring.thymeleaf.check-template-location=false)
+2024-11-13 09:24:52 INFO  o.s.b.d.a.OptionalLiveReloadServer : LiveReload server is running on port 35729
+2024-11-13 09:24:52 INFO  o.apache.coyote.http11.Http11NioProtocol : Starting ProtocolHandler ["http-nio-8080"]
+2024-11-13 09:24:52 INFO  o.s.b.w.embedded.tomcat.TomcatWebServer : Tomcat started on port 8080 (http) with context path '/'
+2024-11-13 09:24:52 INFO  h.f.e.EventManagementApplication : Started EventManagementApplication in 4.67 seconds (process running for 5.231)
+2024-11-13 09:24:57 INFO  o.a.c.c.C.[Tomcat].[localhost].[/] : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-11-13 09:24:57 INFO  o.s.web.servlet.DispatcherServlet : Initializing Servlet 'dispatcherServlet'
+2024-11-13 09:24:57 INFO  o.s.web.servlet.DispatcherServlet : Completed initialization in 2 ms
+2024-11-13 09:29:43 INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-11-13 09:29:43 INFO  com.zaxxer.hikari.HikariDataSource : HikariPool-1 - Shutdown initiated...
+2024-11-13 09:29:43 INFO  com.zaxxer.hikari.HikariDataSource : HikariPool-1 - Shutdown completed.
+2024-11-13 09:29:46 INFO  o.h.validator.internal.util.Version : HV000001: Hibernate Validator 8.0.1.Final
+2024-11-13 09:29:46 INFO  h.f.e.EventManagementApplication : Starting EventManagementApplication using Java 21.0.5 with PID 11384 (D:\WORKSPACE\event-management-system\target\classes started by ADMIN in D:\WORKSPACE\event-management-system)
+2024-11-13 09:29:46 INFO  h.f.e.EventManagementApplication : No active profile set, falling back to 1 default profile: "default"
+2024-11-13 09:29:46 INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2024-11-13 09:29:46 INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2024-11-13 09:29:47 INFO  o.s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-11-13 09:29:47 INFO  o.s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 90 ms. Found 22 JPA repository interfaces.
+2024-11-13 09:29:48 INFO  o.s.b.w.embedded.tomcat.TomcatWebServer : Tomcat initialized with port 8080 (http)
+2024-11-13 09:29:48 INFO  o.apache.coyote.http11.Http11NioProtocol : Initializing ProtocolHandler ["http-nio-8080"]
+2024-11-13 09:29:48 INFO  o.apache.catalina.core.StandardService : Starting service [Tomcat]
+2024-11-13 09:29:48 INFO  org.apache.catalina.core.StandardEngine : Starting Servlet engine: [Apache Tomcat/10.1.31]
+2024-11-13 09:29:48 INFO  o.a.c.c.C.[Tomcat].[localhost].[/] : Initializing Spring embedded WebApplicationContext
+2024-11-13 09:29:48 INFO  o.s.b.w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1178 ms
+2024-11-13 09:29:48 INFO  com.zaxxer.hikari.HikariDataSource : HikariPool-1 - Starting...
+2024-11-13 09:29:48 INFO  com.zaxxer.hikari.pool.HikariPool : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@3e7d9e67
+2024-11-13 09:29:48 INFO  com.zaxxer.hikari.HikariDataSource : HikariPool-1 - Start completed.
+2024-11-13 09:29:48 INFO  o.s.b.a.h2.H2ConsoleAutoConfiguration : H2 console available at '/h2-console'. Database available at 'jdbc:mysql://localhost/event'
+2024-11-13 09:29:48 INFO  o.hibernate.jpa.internal.util.LogHelper : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-11-13 09:29:48 INFO  org.hibernate.Version : HHH000412: Hibernate ORM core version 6.5.3.Final
+2024-11-13 09:29:48 INFO  o.h.c.internal.RegionFactoryInitiator : HHH000026: Second-level cache disabled
+2024-11-13 09:29:48 INFO  o.s.o.j.p.SpringPersistenceUnitInfo : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-11-13 09:29:49 INFO  o.h.e.t.j.p.i.JtaPlatformInitiator : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-11-13 09:29:49 INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-11-13 09:29:50 WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-11-13 09:29:50 INFO  o.s.s.c.a.a.c.InitializeAuthenticationProviderBeanManagerConfigurer$InitializeAuthenticationProviderManagerConfigurer : Global AuthenticationManager configured with AuthenticationProvider bean with name authenticationProvider
+2024-11-13 09:29:50 WARN  o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with an AuthenticationProvider bean. UserDetailsService beans will not be used for username/password login. Consider removing the AuthenticationProvider bean. Alternatively, consider using the UserDetailsService in a manually instantiated DaoAuthenticationProvider.
+2024-11-13 09:29:50 INFO  o.s.d.j.r.query.QueryEnhancerFactory : Hibernate is in classpath; If applicable, HQL parser will be used.
+2024-11-13 09:29:51 WARN  o.s.b.a.t.ThymeleafAutoConfiguration$DefaultTemplateResolverConfiguration : Cannot find template location: classpath:/templates/ (please add some templates, check your Thymeleaf configuration, or set spring.thymeleaf.check-template-location=false)
+2024-11-13 09:29:51 INFO  o.s.b.d.a.OptionalLiveReloadServer : LiveReload server is running on port 35729
+2024-11-13 09:29:51 INFO  o.apache.coyote.http11.Http11NioProtocol : Starting ProtocolHandler ["http-nio-8080"]
+2024-11-13 09:29:51 INFO  o.s.b.w.embedded.tomcat.TomcatWebServer : Tomcat started on port 8080 (http) with context path '/'
+2024-11-13 09:29:51 INFO  h.f.e.EventManagementApplication : Started EventManagementApplication in 4.58 seconds (process running for 5.12)
+2024-11-13 09:29:59 INFO  o.a.c.c.C.[Tomcat].[localhost].[/] : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-11-13 09:29:59 INFO  o.s.web.servlet.DispatcherServlet : Initializing Servlet 'dispatcherServlet'
+2024-11-13 09:29:59 INFO  o.s.web.servlet.DispatcherServlet : Completed initialization in 1 ms
+2024-11-13 09:30:36 INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-11-13 09:30:36 INFO  com.zaxxer.hikari.HikariDataSource : HikariPool-1 - Shutdown initiated...
+2024-11-13 09:30:36 INFO  com.zaxxer.hikari.HikariDataSource : HikariPool-1 - Shutdown completed.
+2024-11-13 09:30:39 INFO  o.h.validator.internal.util.Version : HV000001: Hibernate Validator 8.0.1.Final
+2024-11-13 09:30:39 INFO  h.f.e.EventManagementApplication : Starting EventManagementApplication using Java 21.0.5 with PID 7412 (D:\WORKSPACE\event-management-system\target\classes started by ADMIN in D:\WORKSPACE\event-management-system)
+2024-11-13 09:30:39 INFO  h.f.e.EventManagementApplication : No active profile set, falling back to 1 default profile: "default"
+2024-11-13 09:30:39 INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2024-11-13 09:30:39 INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2024-11-13 09:30:40 INFO  o.s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-11-13 09:30:40 INFO  o.s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 82 ms. Found 22 JPA repository interfaces.
+2024-11-13 09:30:40 INFO  o.s.b.w.embedded.tomcat.TomcatWebServer : Tomcat initialized with port 8080 (http)
+2024-11-13 09:30:40 INFO  o.apache.coyote.http11.Http11NioProtocol : Initializing ProtocolHandler ["http-nio-8080"]
+2024-11-13 09:30:40 INFO  o.apache.catalina.core.StandardService : Starting service [Tomcat]
+2024-11-13 09:30:40 INFO  org.apache.catalina.core.StandardEngine : Starting Servlet engine: [Apache Tomcat/10.1.31]
+2024-11-13 09:30:40 INFO  o.a.c.c.C.[Tomcat].[localhost].[/] : Initializing Spring embedded WebApplicationContext
+2024-11-13 09:30:40 INFO  o.s.b.w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1185 ms
+2024-11-13 09:30:40 INFO  com.zaxxer.hikari.HikariDataSource : HikariPool-1 - Starting...
+2024-11-13 09:30:41 INFO  com.zaxxer.hikari.pool.HikariPool : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@3e7d9e67
+2024-11-13 09:30:41 INFO  com.zaxxer.hikari.HikariDataSource : HikariPool-1 - Start completed.
+2024-11-13 09:30:41 INFO  o.s.b.a.h2.H2ConsoleAutoConfiguration : H2 console available at '/h2-console'. Database available at 'jdbc:mysql://localhost/event'
+2024-11-13 09:30:41 INFO  o.hibernate.jpa.internal.util.LogHelper : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-11-13 09:30:41 INFO  org.hibernate.Version : HHH000412: Hibernate ORM core version 6.5.3.Final
+2024-11-13 09:30:41 INFO  o.h.c.internal.RegionFactoryInitiator : HHH000026: Second-level cache disabled
+2024-11-13 09:30:41 INFO  o.s.o.j.p.SpringPersistenceUnitInfo : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-11-13 09:30:42 INFO  o.h.e.t.j.p.i.JtaPlatformInitiator : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-11-13 09:30:42 INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-11-13 09:30:42 WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-11-13 09:30:43 INFO  o.s.s.c.a.a.c.InitializeAuthenticationProviderBeanManagerConfigurer$InitializeAuthenticationProviderManagerConfigurer : Global AuthenticationManager configured with AuthenticationProvider bean with name authenticationProvider
+2024-11-13 09:30:43 WARN  o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with an AuthenticationProvider bean. UserDetailsService beans will not be used for username/password login. Consider removing the AuthenticationProvider bean. Alternatively, consider using the UserDetailsService in a manually instantiated DaoAuthenticationProvider.
+2024-11-13 09:30:43 INFO  o.s.d.j.r.query.QueryEnhancerFactory : Hibernate is in classpath; If applicable, HQL parser will be used.
+2024-11-13 09:30:43 WARN  o.s.b.a.t.ThymeleafAutoConfiguration$DefaultTemplateResolverConfiguration : Cannot find template location: classpath:/templates/ (please add some templates, check your Thymeleaf configuration, or set spring.thymeleaf.check-template-location=false)
+2024-11-13 09:30:43 INFO  o.s.b.d.a.OptionalLiveReloadServer : LiveReload server is running on port 35729
+2024-11-13 09:30:43 INFO  o.apache.coyote.http11.Http11NioProtocol : Starting ProtocolHandler ["http-nio-8080"]
+2024-11-13 09:30:43 INFO  o.s.b.w.embedded.tomcat.TomcatWebServer : Tomcat started on port 8080 (http) with context path '/'
+2024-11-13 09:30:43 INFO  h.f.e.EventManagementApplication : Started EventManagementApplication in 4.769 seconds (process running for 5.341)
+2024-11-13 09:30:48 INFO  o.a.c.c.C.[Tomcat].[localhost].[/] : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-11-13 09:30:48 INFO  o.s.web.servlet.DispatcherServlet : Initializing Servlet 'dispatcherServlet'
+2024-11-13 09:30:48 INFO  o.s.web.servlet.DispatcherServlet : Completed initialization in 1 ms
+2024-11-13 09:32:06 INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-11-13 09:32:06 INFO  com.zaxxer.hikari.HikariDataSource : HikariPool-1 - Shutdown initiated...
+2024-11-13 09:32:06 INFO  com.zaxxer.hikari.HikariDataSource : HikariPool-1 - Shutdown completed.
+2024-11-13 09:32:10 INFO  o.h.validator.internal.util.Version : HV000001: Hibernate Validator 8.0.1.Final
+2024-11-13 09:32:10 INFO  h.f.e.EventManagementApplication : Starting EventManagementApplication using Java 21.0.5 with PID 4196 (D:\WORKSPACE\event-management-system\target\classes started by ADMIN in D:\WORKSPACE\event-management-system)
+2024-11-13 09:32:10 INFO  h.f.e.EventManagementApplication : No active profile set, falling back to 1 default profile: "default"
+2024-11-13 09:32:10 INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2024-11-13 09:32:10 INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2024-11-13 09:32:10 INFO  o.s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-11-13 09:32:10 INFO  o.s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 93 ms. Found 22 JPA repository interfaces.
+2024-11-13 09:32:11 INFO  o.s.b.w.embedded.tomcat.TomcatWebServer : Tomcat initialized with port 8080 (http)
+2024-11-13 09:32:11 INFO  o.apache.coyote.http11.Http11NioProtocol : Initializing ProtocolHandler ["http-nio-8080"]
+2024-11-13 09:32:11 INFO  o.apache.catalina.core.StandardService : Starting service [Tomcat]
+2024-11-13 09:32:11 INFO  org.apache.catalina.core.StandardEngine : Starting Servlet engine: [Apache Tomcat/10.1.31]
+2024-11-13 09:32:11 INFO  o.a.c.c.C.[Tomcat].[localhost].[/] : Initializing Spring embedded WebApplicationContext
+2024-11-13 09:32:11 INFO  o.s.b.w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1234 ms
+2024-11-13 09:32:11 INFO  com.zaxxer.hikari.HikariDataSource : HikariPool-1 - Starting...
+2024-11-13 09:32:11 INFO  com.zaxxer.hikari.pool.HikariPool : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@3e7d9e67
+2024-11-13 09:32:11 INFO  com.zaxxer.hikari.HikariDataSource : HikariPool-1 - Start completed.
+2024-11-13 09:32:11 INFO  o.s.b.a.h2.H2ConsoleAutoConfiguration : H2 console available at '/h2-console'. Database available at 'jdbc:mysql://localhost/event'
+2024-11-13 09:32:11 INFO  o.hibernate.jpa.internal.util.LogHelper : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-11-13 09:32:11 INFO  org.hibernate.Version : HHH000412: Hibernate ORM core version 6.5.3.Final
+2024-11-13 09:32:11 INFO  o.h.c.internal.RegionFactoryInitiator : HHH000026: Second-level cache disabled
+2024-11-13 09:32:12 INFO  o.s.o.j.p.SpringPersistenceUnitInfo : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-11-13 09:32:12 INFO  o.h.e.t.j.p.i.JtaPlatformInitiator : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-11-13 09:32:13 INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-11-13 09:32:13 WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-11-13 09:32:13 INFO  o.s.s.c.a.a.c.InitializeAuthenticationProviderBeanManagerConfigurer$InitializeAuthenticationProviderManagerConfigurer : Global AuthenticationManager configured with AuthenticationProvider bean with name authenticationProvider
+2024-11-13 09:32:13 WARN  o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with an AuthenticationProvider bean. UserDetailsService beans will not be used for username/password login. Consider removing the AuthenticationProvider bean. Alternatively, consider using the UserDetailsService in a manually instantiated DaoAuthenticationProvider.
+2024-11-13 09:32:13 INFO  o.s.d.j.r.query.QueryEnhancerFactory : Hibernate is in classpath; If applicable, HQL parser will be used.
+2024-11-13 09:32:14 WARN  o.s.b.a.t.ThymeleafAutoConfiguration$DefaultTemplateResolverConfiguration : Cannot find template location: classpath:/templates/ (please add some templates, check your Thymeleaf configuration, or set spring.thymeleaf.check-template-location=false)
+2024-11-13 09:32:14 INFO  o.s.b.d.a.OptionalLiveReloadServer : LiveReload server is running on port 35729
+2024-11-13 09:32:14 INFO  o.apache.coyote.http11.Http11NioProtocol : Starting ProtocolHandler ["http-nio-8080"]
+2024-11-13 09:32:14 INFO  o.s.b.w.embedded.tomcat.TomcatWebServer : Tomcat started on port 8080 (http) with context path '/'
+2024-11-13 09:32:14 INFO  h.f.e.EventManagementApplication : Started EventManagementApplication in 4.702 seconds (process running for 5.304)
+2024-11-13 09:32:45 INFO  o.a.c.c.C.[Tomcat].[localhost].[/] : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-11-13 09:32:45 INFO  o.s.web.servlet.DispatcherServlet : Initializing Servlet 'dispatcherServlet'
+2024-11-13 09:32:45 INFO  o.s.web.servlet.DispatcherServlet : Completed initialization in 1 ms
+2024-11-13 09:33:09 INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-11-13 09:33:09 INFO  com.zaxxer.hikari.HikariDataSource : HikariPool-1 - Shutdown initiated...
+2024-11-13 09:33:09 INFO  com.zaxxer.hikari.HikariDataSource : HikariPool-1 - Shutdown completed.
+2024-11-13 09:34:38 INFO  o.h.validator.internal.util.Version : HV000001: Hibernate Validator 8.0.1.Final
+2024-11-13 09:34:38 INFO  h.f.e.EventManagementApplication : Starting EventManagementApplication using Java 21.0.5 with PID 4788 (D:\WORKSPACE\event-management-system\target\classes started by ADMIN in D:\WORKSPACE\event-management-system)
+2024-11-13 09:34:38 INFO  h.f.e.EventManagementApplication : No active profile set, falling back to 1 default profile: "default"
+2024-11-13 09:34:38 INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2024-11-13 09:34:38 INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2024-11-13 09:34:39 INFO  o.s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-11-13 09:34:39 INFO  o.s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 85 ms. Found 22 JPA repository interfaces.
+2024-11-13 09:34:39 INFO  o.s.b.w.embedded.tomcat.TomcatWebServer : Tomcat initialized with port 8080 (http)
+2024-11-13 09:34:39 INFO  o.apache.coyote.http11.Http11NioProtocol : Initializing ProtocolHandler ["http-nio-8080"]
+2024-11-13 09:34:39 INFO  o.apache.catalina.core.StandardService : Starting service [Tomcat]
+2024-11-13 09:34:39 INFO  org.apache.catalina.core.StandardEngine : Starting Servlet engine: [Apache Tomcat/10.1.31]
+2024-11-13 09:34:39 INFO  o.a.c.c.C.[Tomcat].[localhost].[/] : Initializing Spring embedded WebApplicationContext
+2024-11-13 09:34:39 INFO  o.s.b.w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1130 ms
+2024-11-13 09:34:39 INFO  com.zaxxer.hikari.HikariDataSource : HikariPool-1 - Starting...
+2024-11-13 09:34:39 INFO  com.zaxxer.hikari.pool.HikariPool : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@3e7d9e67
+2024-11-13 09:34:39 INFO  com.zaxxer.hikari.HikariDataSource : HikariPool-1 - Start completed.
+2024-11-13 09:34:39 INFO  o.s.b.a.h2.H2ConsoleAutoConfiguration : H2 console available at '/h2-console'. Database available at 'jdbc:mysql://localhost/event'
+2024-11-13 09:34:39 INFO  o.hibernate.jpa.internal.util.LogHelper : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-11-13 09:34:40 INFO  org.hibernate.Version : HHH000412: Hibernate ORM core version 6.5.3.Final
+2024-11-13 09:34:40 INFO  o.h.c.internal.RegionFactoryInitiator : HHH000026: Second-level cache disabled
+2024-11-13 09:34:40 INFO  o.s.o.j.p.SpringPersistenceUnitInfo : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-11-13 09:34:41 INFO  o.h.e.t.j.p.i.JtaPlatformInitiator : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-11-13 09:34:41 INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-11-13 09:34:41 WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-11-13 09:34:41 INFO  o.s.s.c.a.a.c.InitializeAuthenticationProviderBeanManagerConfigurer$InitializeAuthenticationProviderManagerConfigurer : Global AuthenticationManager configured with AuthenticationProvider bean with name authenticationProvider
+2024-11-13 09:34:41 WARN  o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with an AuthenticationProvider bean. UserDetailsService beans will not be used for username/password login. Consider removing the AuthenticationProvider bean. Alternatively, consider using the UserDetailsService in a manually instantiated DaoAuthenticationProvider.
+2024-11-13 09:34:41 INFO  o.s.d.j.r.query.QueryEnhancerFactory : Hibernate is in classpath; If applicable, HQL parser will be used.
+2024-11-13 09:34:42 WARN  o.s.b.a.t.ThymeleafAutoConfiguration$DefaultTemplateResolverConfiguration : Cannot find template location: classpath:/templates/ (please add some templates, check your Thymeleaf configuration, or set spring.thymeleaf.check-template-location=false)
+2024-11-13 09:34:42 INFO  o.s.b.d.a.OptionalLiveReloadServer : LiveReload server is running on port 35729
+2024-11-13 09:34:42 INFO  o.apache.coyote.http11.Http11NioProtocol : Starting ProtocolHandler ["http-nio-8080"]
+2024-11-13 09:34:42 INFO  o.s.b.w.embedded.tomcat.TomcatWebServer : Tomcat started on port 8080 (http) with context path '/'
+2024-11-13 09:34:42 INFO  h.f.e.EventManagementApplication : Started EventManagementApplication in 4.438 seconds (process running for 4.967)
+2024-11-13 09:34:52 INFO  o.a.c.c.C.[Tomcat].[localhost].[/] : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-11-13 09:34:52 INFO  o.s.web.servlet.DispatcherServlet : Initializing Servlet 'dispatcherServlet'
+2024-11-13 09:34:52 INFO  o.s.web.servlet.DispatcherServlet : Completed initialization in 1 ms
+2024-11-13 09:34:52 WARN  o.s.w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.method.annotation.MethodArgumentConversionNotSupportedException: Failed to convert value of type 'java.lang.String' to required type 'hcmute.fit.event_management.dto.EventDTO'; Cannot convert value of type 'java.lang.String' to required type 'hcmute.fit.event_management.dto.EventDTO' for property 'event': no matching editors or conversion strategy found]
+2024-11-13 09:34:52 ERROR h.f.e.security.AuthEntryPointJwt : Unauthorized error: Invalid credentials
+2024-11-13 09:35:06 INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-11-13 09:35:06 INFO  com.zaxxer.hikari.HikariDataSource : HikariPool-1 - Shutdown initiated...
+2024-11-13 09:35:06 INFO  com.zaxxer.hikari.HikariDataSource : HikariPool-1 - Shutdown completed.
+2024-11-13 09:35:18 INFO  o.h.validator.internal.util.Version : HV000001: Hibernate Validator 8.0.1.Final
+2024-11-13 09:35:18 INFO  h.f.e.EventManagementApplication : Starting EventManagementApplication using Java 21.0.5 with PID 14256 (D:\WORKSPACE\event-management-system\target\classes started by ADMIN in D:\WORKSPACE\event-management-system)
+2024-11-13 09:35:18 INFO  h.f.e.EventManagementApplication : No active profile set, falling back to 1 default profile: "default"
+2024-11-13 09:35:18 INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2024-11-13 09:35:18 INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2024-11-13 09:35:18 INFO  o.s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-11-13 09:35:18 INFO  o.s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 87 ms. Found 22 JPA repository interfaces.
+2024-11-13 09:35:19 INFO  o.s.b.w.embedded.tomcat.TomcatWebServer : Tomcat initialized with port 8080 (http)
+2024-11-13 09:35:19 INFO  o.apache.coyote.http11.Http11NioProtocol : Initializing ProtocolHandler ["http-nio-8080"]
+2024-11-13 09:35:19 INFO  o.apache.catalina.core.StandardService : Starting service [Tomcat]
+2024-11-13 09:35:19 INFO  org.apache.catalina.core.StandardEngine : Starting Servlet engine: [Apache Tomcat/10.1.31]
+2024-11-13 09:35:19 INFO  o.a.c.c.C.[Tomcat].[localhost].[/] : Initializing Spring embedded WebApplicationContext
+2024-11-13 09:35:19 INFO  o.s.b.w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1155 ms
+2024-11-13 09:35:19 INFO  com.zaxxer.hikari.HikariDataSource : HikariPool-1 - Starting...
+2024-11-13 09:35:19 INFO  com.zaxxer.hikari.pool.HikariPool : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@3e7d9e67
+2024-11-13 09:35:19 INFO  com.zaxxer.hikari.HikariDataSource : HikariPool-1 - Start completed.
+2024-11-13 09:35:19 INFO  o.s.b.a.h2.H2ConsoleAutoConfiguration : H2 console available at '/h2-console'. Database available at 'jdbc:mysql://localhost/event'
+2024-11-13 09:35:19 INFO  o.hibernate.jpa.internal.util.LogHelper : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-11-13 09:35:19 INFO  org.hibernate.Version : HHH000412: Hibernate ORM core version 6.5.3.Final
+2024-11-13 09:35:19 INFO  o.h.c.internal.RegionFactoryInitiator : HHH000026: Second-level cache disabled
+2024-11-13 09:35:19 INFO  o.s.o.j.p.SpringPersistenceUnitInfo : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-11-13 09:35:20 INFO  o.h.e.t.j.p.i.JtaPlatformInitiator : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-11-13 09:35:21 INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-11-13 09:35:21 WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-11-13 09:35:21 INFO  o.s.s.c.a.a.c.InitializeAuthenticationProviderBeanManagerConfigurer$InitializeAuthenticationProviderManagerConfigurer : Global AuthenticationManager configured with AuthenticationProvider bean with name authenticationProvider
+2024-11-13 09:35:21 WARN  o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with an AuthenticationProvider bean. UserDetailsService beans will not be used for username/password login. Consider removing the AuthenticationProvider bean. Alternatively, consider using the UserDetailsService in a manually instantiated DaoAuthenticationProvider.
+2024-11-13 09:35:21 INFO  o.s.d.j.r.query.QueryEnhancerFactory : Hibernate is in classpath; If applicable, HQL parser will be used.
+2024-11-13 09:35:22 WARN  o.s.b.a.t.ThymeleafAutoConfiguration$DefaultTemplateResolverConfiguration : Cannot find template location: classpath:/templates/ (please add some templates, check your Thymeleaf configuration, or set spring.thymeleaf.check-template-location=false)
+2024-11-13 09:35:22 INFO  o.s.b.d.a.OptionalLiveReloadServer : LiveReload server is running on port 35729
+2024-11-13 09:35:22 INFO  o.apache.coyote.http11.Http11NioProtocol : Starting ProtocolHandler ["http-nio-8080"]
+2024-11-13 09:35:22 INFO  o.s.b.w.embedded.tomcat.TomcatWebServer : Tomcat started on port 8080 (http) with context path '/'
+2024-11-13 09:35:22 INFO  h.f.e.EventManagementApplication : Started EventManagementApplication in 4.671 seconds (process running for 5.208)
+2024-11-13 09:35:33 INFO  o.a.c.c.C.[Tomcat].[localhost].[/] : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-11-13 09:35:33 INFO  o.s.web.servlet.DispatcherServlet : Initializing Servlet 'dispatcherServlet'
+2024-11-13 09:35:33 INFO  o.s.web.servlet.DispatcherServlet : Completed initialization in 1 ms
+2024-11-13 09:35:33 WARN  o.s.w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.HttpMediaTypeNotSupportedException: Content-Type 'multipart/form-data;boundary=--------------------------907406756460086355807881;charset=UTF-8' is not supported]
+2024-11-13 09:35:33 ERROR h.f.e.security.AuthEntryPointJwt : Unauthorized error: Invalid credentials
+2024-11-13 09:36:47 INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-11-13 09:36:47 INFO  com.zaxxer.hikari.HikariDataSource : HikariPool-1 - Shutdown initiated...
+2024-11-13 09:36:47 INFO  com.zaxxer.hikari.HikariDataSource : HikariPool-1 - Shutdown completed.
+2024-11-13 09:36:50 INFO  o.h.validator.internal.util.Version : HV000001: Hibernate Validator 8.0.1.Final
+2024-11-13 09:36:50 INFO  h.f.e.EventManagementApplication : Starting EventManagementApplication using Java 21.0.5 with PID 18876 (D:\WORKSPACE\event-management-system\target\classes started by ADMIN in D:\WORKSPACE\event-management-system)
+2024-11-13 09:36:50 INFO  h.f.e.EventManagementApplication : No active profile set, falling back to 1 default profile: "default"
+2024-11-13 09:36:50 INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2024-11-13 09:36:50 INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2024-11-13 09:36:51 INFO  o.s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-11-13 09:36:51 INFO  o.s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 86 ms. Found 22 JPA repository interfaces.
+2024-11-13 09:36:51 INFO  o.s.b.w.embedded.tomcat.TomcatWebServer : Tomcat initialized with port 8080 (http)
+2024-11-13 09:36:51 INFO  o.apache.coyote.http11.Http11NioProtocol : Initializing ProtocolHandler ["http-nio-8080"]
+2024-11-13 09:36:51 INFO  o.apache.catalina.core.StandardService : Starting service [Tomcat]
+2024-11-13 09:36:51 INFO  org.apache.catalina.core.StandardEngine : Starting Servlet engine: [Apache Tomcat/10.1.31]
+2024-11-13 09:36:51 INFO  o.a.c.c.C.[Tomcat].[localhost].[/] : Initializing Spring embedded WebApplicationContext
+2024-11-13 09:36:51 INFO  o.s.b.w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1079 ms
+2024-11-13 09:36:51 INFO  com.zaxxer.hikari.HikariDataSource : HikariPool-1 - Starting...
+2024-11-13 09:36:52 INFO  com.zaxxer.hikari.pool.HikariPool : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@462583c1
+2024-11-13 09:36:52 INFO  com.zaxxer.hikari.HikariDataSource : HikariPool-1 - Start completed.
+2024-11-13 09:36:52 INFO  o.s.b.a.h2.H2ConsoleAutoConfiguration : H2 console available at '/h2-console'. Database available at 'jdbc:mysql://localhost/event'
+2024-11-13 09:36:52 INFO  o.hibernate.jpa.internal.util.LogHelper : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-11-13 09:36:52 INFO  org.hibernate.Version : HHH000412: Hibernate ORM core version 6.5.3.Final
+2024-11-13 09:36:52 INFO  o.h.c.internal.RegionFactoryInitiator : HHH000026: Second-level cache disabled
+2024-11-13 09:36:52 INFO  o.s.o.j.p.SpringPersistenceUnitInfo : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-11-13 09:36:53 INFO  o.h.e.t.j.p.i.JtaPlatformInitiator : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-11-13 09:36:53 INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-11-13 09:36:54 WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-11-13 09:36:54 INFO  o.s.s.c.a.a.c.InitializeAuthenticationProviderBeanManagerConfigurer$InitializeAuthenticationProviderManagerConfigurer : Global AuthenticationManager configured with AuthenticationProvider bean with name authenticationProvider
+2024-11-13 09:36:54 WARN  o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with an AuthenticationProvider bean. UserDetailsService beans will not be used for username/password login. Consider removing the AuthenticationProvider bean. Alternatively, consider using the UserDetailsService in a manually instantiated DaoAuthenticationProvider.
+2024-11-13 09:36:54 INFO  o.s.d.j.r.query.QueryEnhancerFactory : Hibernate is in classpath; If applicable, HQL parser will be used.
+2024-11-13 09:36:55 WARN  o.s.b.a.t.ThymeleafAutoConfiguration$DefaultTemplateResolverConfiguration : Cannot find template location: classpath:/templates/ (please add some templates, check your Thymeleaf configuration, or set spring.thymeleaf.check-template-location=false)
+2024-11-13 09:36:55 INFO  o.s.b.d.a.OptionalLiveReloadServer : LiveReload server is running on port 35729
+2024-11-13 09:36:55 INFO  o.apache.coyote.http11.Http11NioProtocol : Starting ProtocolHandler ["http-nio-8080"]
+2024-11-13 09:36:55 INFO  o.s.b.w.embedded.tomcat.TomcatWebServer : Tomcat started on port 8080 (http) with context path '/'
+2024-11-13 09:36:55 INFO  h.f.e.EventManagementApplication : Started EventManagementApplication in 4.939 seconds (process running for 5.471)
+2024-11-13 09:36:58 INFO  o.a.c.c.C.[Tomcat].[localhost].[/] : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-11-13 09:36:58 INFO  o.s.web.servlet.DispatcherServlet : Initializing Servlet 'dispatcherServlet'
+2024-11-13 09:36:58 INFO  o.s.web.servlet.DispatcherServlet : Completed initialization in 1 ms
+2024-11-13 09:37:09 INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-11-13 09:37:09 INFO  com.zaxxer.hikari.HikariDataSource : HikariPool-1 - Shutdown initiated...
+2024-11-13 09:37:09 INFO  com.zaxxer.hikari.HikariDataSource : HikariPool-1 - Shutdown completed.
+2024-11-13 09:39:40 INFO  o.h.validator.internal.util.Version : HV000001: Hibernate Validator 8.0.1.Final
+2024-11-13 09:39:40 INFO  h.f.e.EventManagementApplication : Starting EventManagementApplication using Java 21.0.5 with PID 12208 (D:\WORKSPACE\event-management-system\target\classes started by ADMIN in D:\WORKSPACE\event-management-system)
+2024-11-13 09:39:40 INFO  h.f.e.EventManagementApplication : No active profile set, falling back to 1 default profile: "default"
+2024-11-13 09:39:40 INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2024-11-13 09:39:40 INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2024-11-13 09:39:41 INFO  o.s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-11-13 09:39:41 INFO  o.s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 133 ms. Found 22 JPA repository interfaces.
+2024-11-13 09:39:42 INFO  o.s.b.w.embedded.tomcat.TomcatWebServer : Tomcat initialized with port 8080 (http)
+2024-11-13 09:39:42 INFO  o.apache.coyote.http11.Http11NioProtocol : Initializing ProtocolHandler ["http-nio-8080"]
+2024-11-13 09:39:42 INFO  o.apache.catalina.core.StandardService : Starting service [Tomcat]
+2024-11-13 09:39:42 INFO  org.apache.catalina.core.StandardEngine : Starting Servlet engine: [Apache Tomcat/10.1.31]
+2024-11-13 09:39:42 INFO  o.a.c.c.C.[Tomcat].[localhost].[/] : Initializing Spring embedded WebApplicationContext
+2024-11-13 09:39:42 INFO  o.s.b.w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1383 ms
+2024-11-13 09:39:42 INFO  com.zaxxer.hikari.HikariDataSource : HikariPool-1 - Starting...
+2024-11-13 09:39:42 INFO  com.zaxxer.hikari.pool.HikariPool : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@3e7d9e67
+2024-11-13 09:39:42 INFO  com.zaxxer.hikari.HikariDataSource : HikariPool-1 - Start completed.
+2024-11-13 09:39:42 INFO  o.s.b.a.h2.H2ConsoleAutoConfiguration : H2 console available at '/h2-console'. Database available at 'jdbc:mysql://localhost/event'
+2024-11-13 09:39:42 INFO  o.hibernate.jpa.internal.util.LogHelper : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-11-13 09:39:42 INFO  org.hibernate.Version : HHH000412: Hibernate ORM core version 6.5.3.Final
+2024-11-13 09:39:42 INFO  o.h.c.internal.RegionFactoryInitiator : HHH000026: Second-level cache disabled
+2024-11-13 09:39:42 INFO  o.s.o.j.p.SpringPersistenceUnitInfo : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-11-13 09:39:43 INFO  o.h.e.t.j.p.i.JtaPlatformInitiator : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-11-13 09:39:44 INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-11-13 09:39:44 WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-11-13 09:39:44 INFO  o.s.s.c.a.a.c.InitializeAuthenticationProviderBeanManagerConfigurer$InitializeAuthenticationProviderManagerConfigurer : Global AuthenticationManager configured with AuthenticationProvider bean with name authenticationProvider
+2024-11-13 09:39:44 WARN  o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with an AuthenticationProvider bean. UserDetailsService beans will not be used for username/password login. Consider removing the AuthenticationProvider bean. Alternatively, consider using the UserDetailsService in a manually instantiated DaoAuthenticationProvider.
+2024-11-13 09:39:44 INFO  o.s.d.j.r.query.QueryEnhancerFactory : Hibernate is in classpath; If applicable, HQL parser will be used.
+2024-11-13 09:39:45 WARN  o.s.b.a.t.ThymeleafAutoConfiguration$DefaultTemplateResolverConfiguration : Cannot find template location: classpath:/templates/ (please add some templates, check your Thymeleaf configuration, or set spring.thymeleaf.check-template-location=false)
+2024-11-13 09:39:45 INFO  o.s.b.d.a.OptionalLiveReloadServer : LiveReload server is running on port 35729
+2024-11-13 09:39:45 INFO  o.apache.coyote.http11.Http11NioProtocol : Starting ProtocolHandler ["http-nio-8080"]
+2024-11-13 09:39:45 INFO  o.s.b.w.embedded.tomcat.TomcatWebServer : Tomcat started on port 8080 (http) with context path '/'
+2024-11-13 09:39:45 INFO  h.f.e.EventManagementApplication : Started EventManagementApplication in 5.22 seconds (process running for 5.744)
+2024-11-13 09:39:47 INFO  o.a.c.c.C.[Tomcat].[localhost].[/] : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-11-13 09:39:47 INFO  o.s.web.servlet.DispatcherServlet : Initializing Servlet 'dispatcherServlet'
+2024-11-13 09:39:47 INFO  o.s.web.servlet.DispatcherServlet : Completed initialization in 1 ms
+2024-11-13 09:39:56 INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-11-13 09:39:56 INFO  com.zaxxer.hikari.HikariDataSource : HikariPool-1 - Shutdown initiated...
+2024-11-13 09:39:56 INFO  com.zaxxer.hikari.HikariDataSource : HikariPool-1 - Shutdown completed.
+2024-11-13 09:41:27 INFO  o.h.validator.internal.util.Version : HV000001: Hibernate Validator 8.0.1.Final
+2024-11-13 09:41:27 INFO  h.f.e.EventManagementApplication : Starting EventManagementApplication using Java 21.0.5 with PID 852 (D:\WORKSPACE\event-management-system\target\classes started by ADMIN in D:\WORKSPACE\event-management-system)
+2024-11-13 09:41:27 INFO  h.f.e.EventManagementApplication : No active profile set, falling back to 1 default profile: "default"
+2024-11-13 09:41:27 INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2024-11-13 09:41:27 INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2024-11-13 09:41:28 INFO  o.s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-11-13 09:41:28 INFO  o.s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 111 ms. Found 22 JPA repository interfaces.
+2024-11-13 09:41:28 INFO  o.s.b.w.embedded.tomcat.TomcatWebServer : Tomcat initialized with port 8080 (http)
+2024-11-13 09:41:28 INFO  o.apache.coyote.http11.Http11NioProtocol : Initializing ProtocolHandler ["http-nio-8080"]
+2024-11-13 09:41:28 INFO  o.apache.catalina.core.StandardService : Starting service [Tomcat]
+2024-11-13 09:41:28 INFO  org.apache.catalina.core.StandardEngine : Starting Servlet engine: [Apache Tomcat/10.1.31]
+2024-11-13 09:41:28 INFO  o.a.c.c.C.[Tomcat].[localhost].[/] : Initializing Spring embedded WebApplicationContext
+2024-11-13 09:41:28 INFO  o.s.b.w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1296 ms
+2024-11-13 09:41:29 INFO  com.zaxxer.hikari.HikariDataSource : HikariPool-1 - Starting...
+2024-11-13 09:41:29 INFO  com.zaxxer.hikari.pool.HikariPool : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@5c59837f
+2024-11-13 09:41:29 INFO  com.zaxxer.hikari.HikariDataSource : HikariPool-1 - Start completed.
+2024-11-13 09:41:29 INFO  o.s.b.a.h2.H2ConsoleAutoConfiguration : H2 console available at '/h2-console'. Database available at 'jdbc:mysql://localhost/event'
+2024-11-13 09:41:29 INFO  o.hibernate.jpa.internal.util.LogHelper : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-11-13 09:41:29 INFO  org.hibernate.Version : HHH000412: Hibernate ORM core version 6.5.3.Final
+2024-11-13 09:41:29 INFO  o.h.c.internal.RegionFactoryInitiator : HHH000026: Second-level cache disabled
+2024-11-13 09:41:29 INFO  o.s.o.j.p.SpringPersistenceUnitInfo : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-11-13 09:41:30 INFO  o.h.e.t.j.p.i.JtaPlatformInitiator : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-11-13 09:41:30 INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-11-13 09:41:31 WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-11-13 09:41:31 INFO  o.s.s.c.a.a.c.InitializeAuthenticationProviderBeanManagerConfigurer$InitializeAuthenticationProviderManagerConfigurer : Global AuthenticationManager configured with AuthenticationProvider bean with name authenticationProvider
+2024-11-13 09:41:31 WARN  o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with an AuthenticationProvider bean. UserDetailsService beans will not be used for username/password login. Consider removing the AuthenticationProvider bean. Alternatively, consider using the UserDetailsService in a manually instantiated DaoAuthenticationProvider.
+2024-11-13 09:41:31 INFO  o.s.d.j.r.query.QueryEnhancerFactory : Hibernate is in classpath; If applicable, HQL parser will be used.
+2024-11-13 09:41:31 WARN  o.s.b.a.t.ThymeleafAutoConfiguration$DefaultTemplateResolverConfiguration : Cannot find template location: classpath:/templates/ (please add some templates, check your Thymeleaf configuration, or set spring.thymeleaf.check-template-location=false)
+2024-11-13 09:41:32 INFO  o.s.b.d.a.OptionalLiveReloadServer : LiveReload server is running on port 35729
+2024-11-13 09:41:32 INFO  o.apache.coyote.http11.Http11NioProtocol : Starting ProtocolHandler ["http-nio-8080"]
+2024-11-13 09:41:32 INFO  o.s.b.w.embedded.tomcat.TomcatWebServer : Tomcat started on port 8080 (http) with context path '/'
+2024-11-13 09:41:32 INFO  h.f.e.EventManagementApplication : Started EventManagementApplication in 4.889 seconds (process running for 5.542)
+2024-11-13 09:41:42 INFO  o.a.c.c.C.[Tomcat].[localhost].[/] : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-11-13 09:41:42 INFO  o.s.web.servlet.DispatcherServlet : Initializing Servlet 'dispatcherServlet'
+2024-11-13 09:41:42 INFO  o.s.web.servlet.DispatcherServlet : Completed initialization in 1 ms
+2024-11-13 09:47:06 INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-11-13 09:47:06 INFO  com.zaxxer.hikari.HikariDataSource : HikariPool-1 - Shutdown initiated...
+2024-11-13 09:47:06 INFO  com.zaxxer.hikari.HikariDataSource : HikariPool-1 - Shutdown completed.
+2024-11-13 09:47:09 INFO  o.h.validator.internal.util.Version : HV000001: Hibernate Validator 8.0.1.Final
+2024-11-13 09:47:10 INFO  h.f.e.EventManagementApplication : Starting EventManagementApplication using Java 21.0.5 with PID 4348 (D:\WORKSPACE\event-management-system\target\classes started by ADMIN in D:\WORKSPACE\event-management-system)
+2024-11-13 09:47:10 INFO  h.f.e.EventManagementApplication : No active profile set, falling back to 1 default profile: "default"
+2024-11-13 09:47:10 INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2024-11-13 09:47:10 INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2024-11-13 09:47:10 INFO  o.s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-11-13 09:47:10 INFO  o.s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 85 ms. Found 22 JPA repository interfaces.
+2024-11-13 09:47:11 INFO  o.s.b.w.embedded.tomcat.TomcatWebServer : Tomcat initialized with port 8080 (http)
+2024-11-13 09:47:11 INFO  o.apache.coyote.http11.Http11NioProtocol : Initializing ProtocolHandler ["http-nio-8080"]
+2024-11-13 09:47:11 INFO  o.apache.catalina.core.StandardService : Starting service [Tomcat]
+2024-11-13 09:47:11 INFO  org.apache.catalina.core.StandardEngine : Starting Servlet engine: [Apache Tomcat/10.1.31]
+2024-11-13 09:47:11 INFO  o.a.c.c.C.[Tomcat].[localhost].[/] : Initializing Spring embedded WebApplicationContext
+2024-11-13 09:47:11 INFO  o.s.b.w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1139 ms
+2024-11-13 09:47:11 INFO  com.zaxxer.hikari.HikariDataSource : HikariPool-1 - Starting...
+2024-11-13 09:47:11 INFO  com.zaxxer.hikari.pool.HikariPool : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@e856ea3
+2024-11-13 09:47:11 INFO  com.zaxxer.hikari.HikariDataSource : HikariPool-1 - Start completed.
+2024-11-13 09:47:11 INFO  o.s.b.a.h2.H2ConsoleAutoConfiguration : H2 console available at '/h2-console'. Database available at 'jdbc:mysql://localhost/event'
+2024-11-13 09:47:11 INFO  o.hibernate.jpa.internal.util.LogHelper : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-11-13 09:47:11 INFO  org.hibernate.Version : HHH000412: Hibernate ORM core version 6.5.3.Final
+2024-11-13 09:47:11 INFO  o.h.c.internal.RegionFactoryInitiator : HHH000026: Second-level cache disabled
+2024-11-13 09:47:11 INFO  o.s.o.j.p.SpringPersistenceUnitInfo : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-11-13 09:47:12 INFO  o.h.e.t.j.p.i.JtaPlatformInitiator : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-11-13 09:47:12 INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-11-13 09:47:13 WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-11-13 09:47:13 INFO  o.s.s.c.a.a.c.InitializeAuthenticationProviderBeanManagerConfigurer$InitializeAuthenticationProviderManagerConfigurer : Global AuthenticationManager configured with AuthenticationProvider bean with name authenticationProvider
+2024-11-13 09:47:13 WARN  o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with an AuthenticationProvider bean. UserDetailsService beans will not be used for username/password login. Consider removing the AuthenticationProvider bean. Alternatively, consider using the UserDetailsService in a manually instantiated DaoAuthenticationProvider.
+2024-11-13 09:47:13 INFO  o.s.d.j.r.query.QueryEnhancerFactory : Hibernate is in classpath; If applicable, HQL parser will be used.
+2024-11-13 09:47:13 WARN  o.s.b.a.t.ThymeleafAutoConfiguration$DefaultTemplateResolverConfiguration : Cannot find template location: classpath:/templates/ (please add some templates, check your Thymeleaf configuration, or set spring.thymeleaf.check-template-location=false)
+2024-11-13 09:47:14 INFO  o.s.b.d.a.OptionalLiveReloadServer : LiveReload server is running on port 35729
+2024-11-13 09:47:14 INFO  o.apache.coyote.http11.Http11NioProtocol : Starting ProtocolHandler ["http-nio-8080"]
+2024-11-13 09:47:14 INFO  o.s.b.w.embedded.tomcat.TomcatWebServer : Tomcat started on port 8080 (http) with context path '/'
+2024-11-13 09:47:14 INFO  h.f.e.EventManagementApplication : Started EventManagementApplication in 4.469 seconds (process running for 5.006)
+2024-11-13 09:47:17 INFO  o.a.c.c.C.[Tomcat].[localhost].[/] : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-11-13 09:47:17 INFO  o.s.web.servlet.DispatcherServlet : Initializing Servlet 'dispatcherServlet'
+2024-11-13 09:47:17 INFO  o.s.web.servlet.DispatcherServlet : Completed initialization in 1 ms
+2024-11-13 09:48:50 INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-11-13 09:48:50 INFO  com.zaxxer.hikari.HikariDataSource : HikariPool-1 - Shutdown initiated...
+2024-11-13 09:48:50 INFO  com.zaxxer.hikari.HikariDataSource : HikariPool-1 - Shutdown completed.
+2024-11-13 09:48:53 INFO  o.h.validator.internal.util.Version : HV000001: Hibernate Validator 8.0.1.Final
+2024-11-13 09:48:53 INFO  h.f.e.EventManagementApplication : Starting EventManagementApplication using Java 21.0.5 with PID 19256 (D:\WORKSPACE\event-management-system\target\classes started by ADMIN in D:\WORKSPACE\event-management-system)
+2024-11-13 09:48:53 INFO  h.f.e.EventManagementApplication : No active profile set, falling back to 1 default profile: "default"
+2024-11-13 09:48:53 INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2024-11-13 09:48:53 INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2024-11-13 09:48:54 INFO  o.s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-11-13 09:48:54 INFO  o.s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 84 ms. Found 22 JPA repository interfaces.
+2024-11-13 09:48:55 INFO  o.s.b.w.embedded.tomcat.TomcatWebServer : Tomcat initialized with port 8080 (http)
+2024-11-13 09:48:55 INFO  o.apache.coyote.http11.Http11NioProtocol : Initializing ProtocolHandler ["http-nio-8080"]
+2024-11-13 09:48:55 INFO  o.apache.catalina.core.StandardService : Starting service [Tomcat]
+2024-11-13 09:48:55 INFO  org.apache.catalina.core.StandardEngine : Starting Servlet engine: [Apache Tomcat/10.1.31]
+2024-11-13 09:48:55 INFO  o.a.c.c.C.[Tomcat].[localhost].[/] : Initializing Spring embedded WebApplicationContext
+2024-11-13 09:48:55 INFO  o.s.b.w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1138 ms
+2024-11-13 09:48:55 INFO  com.zaxxer.hikari.HikariDataSource : HikariPool-1 - Starting...
+2024-11-13 09:48:55 INFO  com.zaxxer.hikari.pool.HikariPool : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@5c59837f
+2024-11-13 09:48:55 INFO  com.zaxxer.hikari.HikariDataSource : HikariPool-1 - Start completed.
+2024-11-13 09:48:55 INFO  o.s.b.a.h2.H2ConsoleAutoConfiguration : H2 console available at '/h2-console'. Database available at 'jdbc:mysql://localhost/event'
+2024-11-13 09:48:55 INFO  o.hibernate.jpa.internal.util.LogHelper : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-11-13 09:48:55 INFO  org.hibernate.Version : HHH000412: Hibernate ORM core version 6.5.3.Final
+2024-11-13 09:48:55 INFO  o.h.c.internal.RegionFactoryInitiator : HHH000026: Second-level cache disabled
+2024-11-13 09:48:55 INFO  o.s.o.j.p.SpringPersistenceUnitInfo : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-11-13 09:48:56 INFO  o.h.e.t.j.p.i.JtaPlatformInitiator : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-11-13 09:48:56 INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-11-13 09:48:56 WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-11-13 09:48:57 INFO  o.s.s.c.a.a.c.InitializeAuthenticationProviderBeanManagerConfigurer$InitializeAuthenticationProviderManagerConfigurer : Global AuthenticationManager configured with AuthenticationProvider bean with name authenticationProvider
+2024-11-13 09:48:57 WARN  o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with an AuthenticationProvider bean. UserDetailsService beans will not be used for username/password login. Consider removing the AuthenticationProvider bean. Alternatively, consider using the UserDetailsService in a manually instantiated DaoAuthenticationProvider.
+2024-11-13 09:48:57 INFO  o.s.d.j.r.query.QueryEnhancerFactory : Hibernate is in classpath; If applicable, HQL parser will be used.
+2024-11-13 09:48:57 WARN  o.s.b.a.t.ThymeleafAutoConfiguration$DefaultTemplateResolverConfiguration : Cannot find template location: classpath:/templates/ (please add some templates, check your Thymeleaf configuration, or set spring.thymeleaf.check-template-location=false)
+2024-11-13 09:48:57 INFO  o.s.b.d.a.OptionalLiveReloadServer : LiveReload server is running on port 35729
+2024-11-13 09:48:58 INFO  o.apache.coyote.http11.Http11NioProtocol : Starting ProtocolHandler ["http-nio-8080"]
+2024-11-13 09:48:58 INFO  o.s.b.w.embedded.tomcat.TomcatWebServer : Tomcat started on port 8080 (http) with context path '/'
+2024-11-13 09:48:58 INFO  h.f.e.EventManagementApplication : Started EventManagementApplication in 4.458 seconds (process running for 5.001)
+2024-11-13 09:49:03 INFO  o.a.c.c.C.[Tomcat].[localhost].[/] : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-11-13 09:49:03 INFO  o.s.web.servlet.DispatcherServlet : Initializing Servlet 'dispatcherServlet'
+2024-11-13 09:49:03 INFO  o.s.web.servlet.DispatcherServlet : Completed initialization in 1 ms
+2024-11-13 09:49:04 WARN  o.s.w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.HttpMediaTypeNotSupportedException: Content-Type 'multipart/form-data;boundary=--------------------------004034566043189991202560;charset=UTF-8' is not supported]
+2024-11-13 09:49:04 ERROR h.f.e.security.AuthEntryPointJwt : Unauthorized error: Invalid credentials
+2024-11-13 09:51:38 WARN  o.s.w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.HttpMediaTypeNotSupportedException: Content-Type 'multipart/form-data;boundary=--------------------------756102279405479328133364;charset=UTF-8' is not supported]
+2024-11-13 09:51:38 ERROR h.f.e.security.AuthEntryPointJwt : Unauthorized error: Invalid credentials
+2024-11-13 09:51:46 WARN  o.s.w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.HttpMediaTypeNotSupportedException: Content-Type 'multipart/form-data;boundary=--------------------------378870119485100037644786;charset=UTF-8' is not supported]
+2024-11-13 09:51:46 ERROR h.f.e.security.AuthEntryPointJwt : Unauthorized error: Invalid credentials
+2024-11-13 09:54:57 WARN  o.s.w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.HttpMediaTypeNotSupportedException: Content-Type 'multipart/form-data;boundary=--------------------------684203373282113567768669;charset=UTF-8' is not supported]
+2024-11-13 09:54:57 ERROR h.f.e.security.AuthEntryPointJwt : Unauthorized error: Invalid credentials
+2024-11-13 09:55:16 INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-11-13 09:55:16 INFO  com.zaxxer.hikari.HikariDataSource : HikariPool-1 - Shutdown initiated...
+2024-11-13 09:55:16 INFO  com.zaxxer.hikari.HikariDataSource : HikariPool-1 - Shutdown completed.
+2024-11-13 09:55:19 INFO  o.h.validator.internal.util.Version : HV000001: Hibernate Validator 8.0.1.Final
+2024-11-13 09:55:19 INFO  h.f.e.EventManagementApplication : Starting EventManagementApplication using Java 21.0.5 with PID 1372 (D:\WORKSPACE\event-management-system\target\classes started by ADMIN in D:\WORKSPACE\event-management-system)
+2024-11-13 09:55:19 INFO  h.f.e.EventManagementApplication : No active profile set, falling back to 1 default profile: "default"
+2024-11-13 09:55:19 INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2024-11-13 09:55:19 INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2024-11-13 09:55:20 INFO  o.s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-11-13 09:55:20 INFO  o.s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 139 ms. Found 22 JPA repository interfaces.
+2024-11-13 09:55:21 INFO  o.s.b.w.embedded.tomcat.TomcatWebServer : Tomcat initialized with port 8080 (http)
+2024-11-13 09:55:21 INFO  o.apache.coyote.http11.Http11NioProtocol : Initializing ProtocolHandler ["http-nio-8080"]
+2024-11-13 09:55:21 INFO  o.apache.catalina.core.StandardService : Starting service [Tomcat]
+2024-11-13 09:55:21 INFO  org.apache.catalina.core.StandardEngine : Starting Servlet engine: [Apache Tomcat/10.1.31]
+2024-11-13 09:55:21 INFO  o.a.c.c.C.[Tomcat].[localhost].[/] : Initializing Spring embedded WebApplicationContext
+2024-11-13 09:55:21 INFO  o.s.b.w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1251 ms
+2024-11-13 09:55:21 INFO  com.zaxxer.hikari.HikariDataSource : HikariPool-1 - Starting...
+2024-11-13 09:55:21 INFO  com.zaxxer.hikari.pool.HikariPool : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@3a90434b
+2024-11-13 09:55:21 INFO  com.zaxxer.hikari.HikariDataSource : HikariPool-1 - Start completed.
+2024-11-13 09:55:21 INFO  o.s.b.a.h2.H2ConsoleAutoConfiguration : H2 console available at '/h2-console'. Database available at 'jdbc:mysql://localhost/event'
+2024-11-13 09:55:21 INFO  o.hibernate.jpa.internal.util.LogHelper : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-11-13 09:55:21 INFO  org.hibernate.Version : HHH000412: Hibernate ORM core version 6.5.3.Final
+2024-11-13 09:55:21 INFO  o.h.c.internal.RegionFactoryInitiator : HHH000026: Second-level cache disabled
+2024-11-13 09:55:21 INFO  o.s.o.j.p.SpringPersistenceUnitInfo : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-11-13 09:55:22 INFO  o.h.e.t.j.p.i.JtaPlatformInitiator : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-11-13 09:55:22 INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-11-13 09:55:23 WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-11-13 09:55:23 INFO  o.s.s.c.a.a.c.InitializeAuthenticationProviderBeanManagerConfigurer$InitializeAuthenticationProviderManagerConfigurer : Global AuthenticationManager configured with AuthenticationProvider bean with name authenticationProvider
+2024-11-13 09:55:23 WARN  o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with an AuthenticationProvider bean. UserDetailsService beans will not be used for username/password login. Consider removing the AuthenticationProvider bean. Alternatively, consider using the UserDetailsService in a manually instantiated DaoAuthenticationProvider.
+2024-11-13 09:55:23 INFO  o.s.d.j.r.query.QueryEnhancerFactory : Hibernate is in classpath; If applicable, HQL parser will be used.
+2024-11-13 09:55:24 WARN  o.s.b.a.t.ThymeleafAutoConfiguration$DefaultTemplateResolverConfiguration : Cannot find template location: classpath:/templates/ (please add some templates, check your Thymeleaf configuration, or set spring.thymeleaf.check-template-location=false)
+2024-11-13 09:55:24 INFO  o.s.b.d.a.OptionalLiveReloadServer : LiveReload server is running on port 35729
+2024-11-13 09:55:24 INFO  o.apache.coyote.http11.Http11NioProtocol : Starting ProtocolHandler ["http-nio-8080"]
+2024-11-13 09:55:24 INFO  o.s.b.w.embedded.tomcat.TomcatWebServer : Tomcat started on port 8080 (http) with context path '/'
+2024-11-13 09:55:24 INFO  h.f.e.EventManagementApplication : Started EventManagementApplication in 4.837 seconds (process running for 5.372)
+2024-11-13 09:55:29 INFO  o.a.c.c.C.[Tomcat].[localhost].[/] : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-11-13 09:55:29 INFO  o.s.web.servlet.DispatcherServlet : Initializing Servlet 'dispatcherServlet'
+2024-11-13 09:55:29 INFO  o.s.web.servlet.DispatcherServlet : Completed initialization in 1 ms
+2024-11-13 09:55:47 INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-11-13 09:55:47 INFO  com.zaxxer.hikari.HikariDataSource : HikariPool-1 - Shutdown initiated...
+2024-11-13 09:55:47 INFO  com.zaxxer.hikari.HikariDataSource : HikariPool-1 - Shutdown completed.
+2024-11-13 09:56:43 INFO  o.h.validator.internal.util.Version : HV000001: Hibernate Validator 8.0.1.Final
+2024-11-13 09:56:43 INFO  h.f.e.EventManagementApplication : Starting EventManagementApplication using Java 21.0.5 with PID 3872 (D:\WORKSPACE\event-management-system\target\classes started by ADMIN in D:\WORKSPACE\event-management-system)
+2024-11-13 09:56:43 INFO  h.f.e.EventManagementApplication : No active profile set, falling back to 1 default profile: "default"
+2024-11-13 09:56:43 INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2024-11-13 09:56:43 INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2024-11-13 09:56:44 INFO  o.s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-11-13 09:56:44 INFO  o.s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 83 ms. Found 22 JPA repository interfaces.
+2024-11-13 09:56:44 INFO  o.s.b.w.embedded.tomcat.TomcatWebServer : Tomcat initialized with port 8080 (http)
+2024-11-13 09:56:44 INFO  o.apache.coyote.http11.Http11NioProtocol : Initializing ProtocolHandler ["http-nio-8080"]
+2024-11-13 09:56:44 INFO  o.apache.catalina.core.StandardService : Starting service [Tomcat]
+2024-11-13 09:56:44 INFO  org.apache.catalina.core.StandardEngine : Starting Servlet engine: [Apache Tomcat/10.1.31]
+2024-11-13 09:56:44 INFO  o.a.c.c.C.[Tomcat].[localhost].[/] : Initializing Spring embedded WebApplicationContext
+2024-11-13 09:56:44 INFO  o.s.b.w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1099 ms
+2024-11-13 09:56:44 INFO  com.zaxxer.hikari.HikariDataSource : HikariPool-1 - Starting...
+2024-11-13 09:56:45 INFO  com.zaxxer.hikari.pool.HikariPool : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@42649d77
+2024-11-13 09:56:45 INFO  com.zaxxer.hikari.HikariDataSource : HikariPool-1 - Start completed.
+2024-11-13 09:56:45 INFO  o.s.b.a.h2.H2ConsoleAutoConfiguration : H2 console available at '/h2-console'. Database available at 'jdbc:mysql://localhost/event'
+2024-11-13 09:56:45 INFO  o.hibernate.jpa.internal.util.LogHelper : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-11-13 09:56:45 INFO  org.hibernate.Version : HHH000412: Hibernate ORM core version 6.5.3.Final
+2024-11-13 09:56:45 INFO  o.h.c.internal.RegionFactoryInitiator : HHH000026: Second-level cache disabled
+2024-11-13 09:56:45 INFO  o.s.o.j.p.SpringPersistenceUnitInfo : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-11-13 09:56:46 INFO  o.h.e.t.j.p.i.JtaPlatformInitiator : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-11-13 09:56:46 INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-11-13 09:56:46 WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-11-13 09:56:47 INFO  o.s.s.c.a.a.c.InitializeAuthenticationProviderBeanManagerConfigurer$InitializeAuthenticationProviderManagerConfigurer : Global AuthenticationManager configured with AuthenticationProvider bean with name authenticationProvider
+2024-11-13 09:56:47 WARN  o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with an AuthenticationProvider bean. UserDetailsService beans will not be used for username/password login. Consider removing the AuthenticationProvider bean. Alternatively, consider using the UserDetailsService in a manually instantiated DaoAuthenticationProvider.
+2024-11-13 09:56:47 INFO  o.s.d.j.r.query.QueryEnhancerFactory : Hibernate is in classpath; If applicable, HQL parser will be used.
+2024-11-13 09:56:47 WARN  o.s.b.a.t.ThymeleafAutoConfiguration$DefaultTemplateResolverConfiguration : Cannot find template location: classpath:/templates/ (please add some templates, check your Thymeleaf configuration, or set spring.thymeleaf.check-template-location=false)
+2024-11-13 09:56:47 INFO  o.s.b.d.a.OptionalLiveReloadServer : LiveReload server is running on port 35729
+2024-11-13 09:56:47 INFO  o.apache.coyote.http11.Http11NioProtocol : Starting ProtocolHandler ["http-nio-8080"]
+2024-11-13 09:56:47 INFO  o.s.b.w.embedded.tomcat.TomcatWebServer : Tomcat started on port 8080 (http) with context path '/'
+2024-11-13 09:56:47 INFO  h.f.e.EventManagementApplication : Started EventManagementApplication in 4.482 seconds (process running for 5.006)
+2024-11-13 09:56:51 INFO  o.a.c.c.C.[Tomcat].[localhost].[/] : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-11-13 09:56:51 INFO  o.s.web.servlet.DispatcherServlet : Initializing Servlet 'dispatcherServlet'
+2024-11-13 09:56:51 INFO  o.s.web.servlet.DispatcherServlet : Completed initialization in 2 ms
+2024-11-13 09:59:35 INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-11-13 09:59:35 INFO  com.zaxxer.hikari.HikariDataSource : HikariPool-1 - Shutdown initiated...
+2024-11-13 09:59:35 INFO  com.zaxxer.hikari.HikariDataSource : HikariPool-1 - Shutdown completed.
+2024-11-13 09:59:38 INFO  o.h.validator.internal.util.Version : HV000001: Hibernate Validator 8.0.1.Final
+2024-11-13 09:59:38 INFO  h.f.e.EventManagementApplication : Starting EventManagementApplication using Java 21.0.5 with PID 2952 (D:\WORKSPACE\event-management-system\target\classes started by ADMIN in D:\WORKSPACE\event-management-system)
+2024-11-13 09:59:38 INFO  h.f.e.EventManagementApplication : No active profile set, falling back to 1 default profile: "default"
+2024-11-13 09:59:38 INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2024-11-13 09:59:38 INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2024-11-13 09:59:39 INFO  o.s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-11-13 09:59:39 INFO  o.s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 94 ms. Found 22 JPA repository interfaces.
+2024-11-13 09:59:39 INFO  o.s.b.w.embedded.tomcat.TomcatWebServer : Tomcat initialized with port 8080 (http)
+2024-11-13 09:59:39 INFO  o.apache.coyote.http11.Http11NioProtocol : Initializing ProtocolHandler ["http-nio-8080"]
+2024-11-13 09:59:39 INFO  o.apache.catalina.core.StandardService : Starting service [Tomcat]
+2024-11-13 09:59:39 INFO  org.apache.catalina.core.StandardEngine : Starting Servlet engine: [Apache Tomcat/10.1.31]
+2024-11-13 09:59:39 INFO  o.a.c.c.C.[Tomcat].[localhost].[/] : Initializing Spring embedded WebApplicationContext
+2024-11-13 09:59:39 INFO  o.s.b.w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1211 ms
+2024-11-13 09:59:39 INFO  com.zaxxer.hikari.HikariDataSource : HikariPool-1 - Starting...
+2024-11-13 09:59:40 INFO  com.zaxxer.hikari.pool.HikariPool : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@3cc09476
+2024-11-13 09:59:40 INFO  com.zaxxer.hikari.HikariDataSource : HikariPool-1 - Start completed.
+2024-11-13 09:59:40 INFO  o.s.b.a.h2.H2ConsoleAutoConfiguration : H2 console available at '/h2-console'. Database available at 'jdbc:mysql://localhost/event'
+2024-11-13 09:59:40 INFO  o.hibernate.jpa.internal.util.LogHelper : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-11-13 09:59:40 INFO  org.hibernate.Version : HHH000412: Hibernate ORM core version 6.5.3.Final
+2024-11-13 09:59:40 INFO  o.h.c.internal.RegionFactoryInitiator : HHH000026: Second-level cache disabled
+2024-11-13 09:59:40 INFO  o.s.o.j.p.SpringPersistenceUnitInfo : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-11-13 09:59:41 INFO  o.h.e.t.j.p.i.JtaPlatformInitiator : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-11-13 09:59:41 INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-11-13 09:59:41 WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-11-13 09:59:41 INFO  o.s.s.c.a.a.c.InitializeAuthenticationProviderBeanManagerConfigurer$InitializeAuthenticationProviderManagerConfigurer : Global AuthenticationManager configured with AuthenticationProvider bean with name authenticationProvider
+2024-11-13 09:59:41 WARN  o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with an AuthenticationProvider bean. UserDetailsService beans will not be used for username/password login. Consider removing the AuthenticationProvider bean. Alternatively, consider using the UserDetailsService in a manually instantiated DaoAuthenticationProvider.
+2024-11-13 09:59:42 INFO  o.s.d.j.r.query.QueryEnhancerFactory : Hibernate is in classpath; If applicable, HQL parser will be used.
+2024-11-13 09:59:42 WARN  o.s.b.a.t.ThymeleafAutoConfiguration$DefaultTemplateResolverConfiguration : Cannot find template location: classpath:/templates/ (please add some templates, check your Thymeleaf configuration, or set spring.thymeleaf.check-template-location=false)
+2024-11-13 09:59:42 INFO  o.s.b.d.a.OptionalLiveReloadServer : LiveReload server is running on port 35729
+2024-11-13 09:59:42 INFO  o.apache.coyote.http11.Http11NioProtocol : Starting ProtocolHandler ["http-nio-8080"]
+2024-11-13 09:59:42 INFO  o.s.b.w.embedded.tomcat.TomcatWebServer : Tomcat started on port 8080 (http) with context path '/'
+2024-11-13 09:59:42 INFO  h.f.e.EventManagementApplication : Started EventManagementApplication in 4.716 seconds (process running for 5.262)
+2024-11-13 09:59:55 INFO  o.a.c.c.C.[Tomcat].[localhost].[/] : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-11-13 09:59:55 INFO  o.s.web.servlet.DispatcherServlet : Initializing Servlet 'dispatcherServlet'
+2024-11-13 09:59:55 INFO  o.s.web.servlet.DispatcherServlet : Completed initialization in 1 ms
+2024-11-13 10:01:13 INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-11-13 10:01:13 INFO  com.zaxxer.hikari.HikariDataSource : HikariPool-1 - Shutdown initiated...
+2024-11-13 10:01:13 INFO  com.zaxxer.hikari.HikariDataSource : HikariPool-1 - Shutdown completed.
+2024-11-13 10:01:19 INFO  o.h.validator.internal.util.Version : HV000001: Hibernate Validator 8.0.1.Final
+2024-11-13 10:01:19 INFO  h.f.e.EventManagementApplication : Starting EventManagementApplication using Java 21.0.5 with PID 3392 (D:\WORKSPACE\event-management-system\target\classes started by ADMIN in D:\WORKSPACE\event-management-system)
+2024-11-13 10:01:19 INFO  h.f.e.EventManagementApplication : No active profile set, falling back to 1 default profile: "default"
+2024-11-13 10:01:19 INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2024-11-13 10:01:19 INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2024-11-13 10:01:20 INFO  o.s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-11-13 10:01:20 INFO  o.s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 94 ms. Found 22 JPA repository interfaces.
+2024-11-13 10:01:21 INFO  o.s.b.w.embedded.tomcat.TomcatWebServer : Tomcat initialized with port 8080 (http)
+2024-11-13 10:01:21 INFO  o.apache.coyote.http11.Http11NioProtocol : Initializing ProtocolHandler ["http-nio-8080"]
+2024-11-13 10:01:21 INFO  o.apache.catalina.core.StandardService : Starting service [Tomcat]
+2024-11-13 10:01:21 INFO  org.apache.catalina.core.StandardEngine : Starting Servlet engine: [Apache Tomcat/10.1.31]
+2024-11-13 10:01:21 INFO  o.a.c.c.C.[Tomcat].[localhost].[/] : Initializing Spring embedded WebApplicationContext
+2024-11-13 10:01:21 INFO  o.s.b.w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1206 ms
+2024-11-13 10:01:21 INFO  com.zaxxer.hikari.HikariDataSource : HikariPool-1 - Starting...
+2024-11-13 10:01:21 INFO  com.zaxxer.hikari.pool.HikariPool : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@3e7d9e67
+2024-11-13 10:01:21 INFO  com.zaxxer.hikari.HikariDataSource : HikariPool-1 - Start completed.
+2024-11-13 10:01:21 INFO  o.s.b.a.h2.H2ConsoleAutoConfiguration : H2 console available at '/h2-console'. Database available at 'jdbc:mysql://localhost/event'
+2024-11-13 10:01:21 INFO  o.hibernate.jpa.internal.util.LogHelper : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-11-13 10:01:21 INFO  org.hibernate.Version : HHH000412: Hibernate ORM core version 6.5.3.Final
+2024-11-13 10:01:21 INFO  o.h.c.internal.RegionFactoryInitiator : HHH000026: Second-level cache disabled
+2024-11-13 10:01:21 INFO  o.s.o.j.p.SpringPersistenceUnitInfo : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-11-13 10:01:22 INFO  o.h.e.t.j.p.i.JtaPlatformInitiator : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-11-13 10:01:22 INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-11-13 10:01:22 WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-11-13 10:01:23 INFO  o.s.s.c.a.a.c.InitializeAuthenticationProviderBeanManagerConfigurer$InitializeAuthenticationProviderManagerConfigurer : Global AuthenticationManager configured with AuthenticationProvider bean with name authenticationProvider
+2024-11-13 10:01:23 WARN  o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with an AuthenticationProvider bean. UserDetailsService beans will not be used for username/password login. Consider removing the AuthenticationProvider bean. Alternatively, consider using the UserDetailsService in a manually instantiated DaoAuthenticationProvider.
+2024-11-13 10:01:23 INFO  o.s.d.j.r.query.QueryEnhancerFactory : Hibernate is in classpath; If applicable, HQL parser will be used.
+2024-11-13 10:01:23 WARN  o.s.b.a.t.ThymeleafAutoConfiguration$DefaultTemplateResolverConfiguration : Cannot find template location: classpath:/templates/ (please add some templates, check your Thymeleaf configuration, or set spring.thymeleaf.check-template-location=false)
+2024-11-13 10:01:24 INFO  o.s.b.d.a.OptionalLiveReloadServer : LiveReload server is running on port 35729
+2024-11-13 10:01:24 INFO  o.apache.coyote.http11.Http11NioProtocol : Starting ProtocolHandler ["http-nio-8080"]
+2024-11-13 10:01:24 INFO  o.s.b.w.embedded.tomcat.TomcatWebServer : Tomcat started on port 8080 (http) with context path '/'
+2024-11-13 10:01:24 INFO  h.f.e.EventManagementApplication : Started EventManagementApplication in 4.634 seconds (process running for 5.239)
+2024-11-13 10:01:40 INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-11-13 10:01:40 INFO  com.zaxxer.hikari.HikariDataSource : HikariPool-1 - Shutdown initiated...
+2024-11-13 10:01:40 INFO  com.zaxxer.hikari.HikariDataSource : HikariPool-1 - Shutdown completed.
+2024-11-13 10:01:43 INFO  o.h.validator.internal.util.Version : HV000001: Hibernate Validator 8.0.1.Final
+2024-11-13 10:01:43 INFO  h.f.e.EventManagementApplication : Starting EventManagementApplication using Java 21.0.5 with PID 18456 (D:\WORKSPACE\event-management-system\target\classes started by ADMIN in D:\WORKSPACE\event-management-system)
+2024-11-13 10:01:43 INFO  h.f.e.EventManagementApplication : No active profile set, falling back to 1 default profile: "default"
+2024-11-13 10:01:43 INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2024-11-13 10:01:43 INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2024-11-13 10:01:44 INFO  o.s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-11-13 10:01:44 INFO  o.s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 101 ms. Found 22 JPA repository interfaces.
+2024-11-13 10:01:45 INFO  o.s.b.w.embedded.tomcat.TomcatWebServer : Tomcat initialized with port 8080 (http)
+2024-11-13 10:01:45 INFO  o.apache.coyote.http11.Http11NioProtocol : Initializing ProtocolHandler ["http-nio-8080"]
+2024-11-13 10:01:45 INFO  o.apache.catalina.core.StandardService : Starting service [Tomcat]
+2024-11-13 10:01:45 INFO  org.apache.catalina.core.StandardEngine : Starting Servlet engine: [Apache Tomcat/10.1.31]
+2024-11-13 10:01:45 INFO  o.a.c.c.C.[Tomcat].[localhost].[/] : Initializing Spring embedded WebApplicationContext
+2024-11-13 10:01:45 INFO  o.s.b.w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1258 ms
+2024-11-13 10:01:45 INFO  com.zaxxer.hikari.HikariDataSource : HikariPool-1 - Starting...
+2024-11-13 10:01:45 INFO  com.zaxxer.hikari.pool.HikariPool : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@ed6499b
+2024-11-13 10:01:45 INFO  com.zaxxer.hikari.HikariDataSource : HikariPool-1 - Start completed.
+2024-11-13 10:01:45 INFO  o.s.b.a.h2.H2ConsoleAutoConfiguration : H2 console available at '/h2-console'. Database available at 'jdbc:mysql://localhost/event'
+2024-11-13 10:01:45 INFO  o.hibernate.jpa.internal.util.LogHelper : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-11-13 10:01:45 INFO  org.hibernate.Version : HHH000412: Hibernate ORM core version 6.5.3.Final
+2024-11-13 10:01:45 INFO  o.h.c.internal.RegionFactoryInitiator : HHH000026: Second-level cache disabled
+2024-11-13 10:01:45 INFO  o.s.o.j.p.SpringPersistenceUnitInfo : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-11-13 10:01:46 INFO  o.h.e.t.j.p.i.JtaPlatformInitiator : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-11-13 10:01:46 INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-11-13 10:01:47 WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-11-13 10:01:47 INFO  o.s.s.c.a.a.c.InitializeAuthenticationProviderBeanManagerConfigurer$InitializeAuthenticationProviderManagerConfigurer : Global AuthenticationManager configured with AuthenticationProvider bean with name authenticationProvider
+2024-11-13 10:01:47 WARN  o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with an AuthenticationProvider bean. UserDetailsService beans will not be used for username/password login. Consider removing the AuthenticationProvider bean. Alternatively, consider using the UserDetailsService in a manually instantiated DaoAuthenticationProvider.
+2024-11-13 10:01:47 INFO  o.s.d.j.r.query.QueryEnhancerFactory : Hibernate is in classpath; If applicable, HQL parser will be used.
+2024-11-13 10:01:48 WARN  o.s.b.a.t.ThymeleafAutoConfiguration$DefaultTemplateResolverConfiguration : Cannot find template location: classpath:/templates/ (please add some templates, check your Thymeleaf configuration, or set spring.thymeleaf.check-template-location=false)
+2024-11-13 10:01:48 INFO  o.s.b.d.a.OptionalLiveReloadServer : LiveReload server is running on port 35729
+2024-11-13 10:01:48 INFO  o.apache.coyote.http11.Http11NioProtocol : Starting ProtocolHandler ["http-nio-8080"]
+2024-11-13 10:01:48 INFO  o.s.b.w.embedded.tomcat.TomcatWebServer : Tomcat started on port 8080 (http) with context path '/'
+2024-11-13 10:01:48 INFO  h.f.e.EventManagementApplication : Started EventManagementApplication in 4.691 seconds (process running for 5.271)
+2024-11-13 10:05:21 INFO  o.a.c.c.C.[Tomcat].[localhost].[/] : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-11-13 10:05:21 INFO  o.s.web.servlet.DispatcherServlet : Initializing Servlet 'dispatcherServlet'
+2024-11-13 10:05:21 INFO  o.s.web.servlet.DispatcherServlet : Completed initialization in 1 ms
+2024-11-13 10:05:54 INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-11-13 10:05:54 INFO  com.zaxxer.hikari.HikariDataSource : HikariPool-1 - Shutdown initiated...
+2024-11-13 10:05:54 INFO  com.zaxxer.hikari.HikariDataSource : HikariPool-1 - Shutdown completed.

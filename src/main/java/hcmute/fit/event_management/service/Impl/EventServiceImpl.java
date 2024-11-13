@@ -12,7 +12,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -65,12 +67,16 @@ public class EventServiceImpl implements IEventService {
     public boolean addEvent(MultipartFile image, EventDTO eventDTO) {
         boolean isSuccess = false;
         boolean isUoloadImg = fileService.saveFiles(image);
-        if(isUoloadImg) {
+        if (isUoloadImg) {
             try{
-
-                if(managerRepository.findById(eventDTO.getManId()).isPresent()
-                        && mcRepository.findById(eventDTO.getMcId()).isPresent()) {
+                System.out.println("Manager ID: " + eventDTO.getManId());
+                if(managerRepository.existsById(eventDTO.getManId())) {
+                    System.out.println(eventDTO.getEventName() + eventDTO.getEventDescription() + eventDTO.getEventDetail() + eventDTO.getEventLocation() );
                     Event event = new Event();
+                    event.setEventName(eventDTO.getEventName());
+                    SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+                    Date date = formatter.parse(eventDTO.getEventDate().trim());
+                    event.setEventDate(date);
                     BeanUtils.copyProperties(eventDTO, event);
                     event.setEventImg(image.getOriginalFilename());
                     event.setManager(managerRepository.findById(eventDTO.getManId()).get());
@@ -83,6 +89,8 @@ public class EventServiceImpl implements IEventService {
             }
         }
 
+
+
         return isSuccess;
 
     }
@@ -93,9 +101,12 @@ public class EventServiceImpl implements IEventService {
         if(isUoloadImg) {
             try{
                 if(managerRepository.findById(eventDTO.getManId()).isPresent()
-                        && mcRepository.findById(eventDTO.getMcId()).isPresent()) {
+                       ) {
                     Event event = eventRepository.findById(eventDTO.getEventId()).get();
                     BeanUtils.copyProperties(eventDTO, event);
+                    SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+                    Date date = formatter.parse(eventDTO.getEventDate().trim());
+                    event.setEventDate(date);
                     event.setEventImg(image.getOriginalFilename());
                     event.setManager(managerRepository.findById(eventDTO.getManId()).get());
                     event.setMc(mcRepository.findById(eventDTO.getMcId()).get());
@@ -105,6 +116,9 @@ public class EventServiceImpl implements IEventService {
             } catch (Exception e) {
                 System.out.println("add event failed" +e.getMessage());
             }
+        }else{
+            System.out.println("update file image failed");
+
         }
         return isSuccess;
     }
