@@ -101,7 +101,7 @@ public class EventServiceImpl implements IEventService {
         if(isUoloadImg) {
             try{
                 if(managerRepository.findById(eventDTO.getManId()).isPresent()
-                       ) {
+                && eventRepository.existsById(eventDTO.getEventId())) {
                     Event event = eventRepository.findById(eventDTO.getEventId()).get();
                     BeanUtils.copyProperties(eventDTO, event);
                     SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
