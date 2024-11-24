@@ -24,21 +24,21 @@ public class McController {
         response.setData(list);
         return ResponseEntity.ok(response);
     }
-    @GetMapping("/find")
-    public ResponseEntity<?> findMC(@RequestParam int mcId) {
+    @GetMapping("/{mcId}")
+    public ResponseEntity<?> findMC(@PathVariable int mcId) {
         McDTO mc = mcService.findMcById(mcId);
         Response response = new Response();
         response.setData(mc);
         return ResponseEntity.ok(response);
     }
-    @PostMapping("/add")
+    @PostMapping("")
     public ResponseEntity<?> addMc(@RequestBody McDTO mcDto){
         Response response = new Response();
         response.setData(mcService.addMc(mcDto));
         return ResponseEntity.ok(response);
     }
 
-    @PutMapping("/update")
+    @PutMapping("")
     public ResponseEntity<?> updateMc(@RequestBody McDTO mcDto){
         Response response = new Response();
         response.setData(mcService.updateMc(mcDto));

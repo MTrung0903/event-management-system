@@ -18,29 +18,23 @@ public class TeamController {
     @Autowired
     private ITeamService teamService;
 
-    @GetMapping("")
-    public ResponseEntity<?> getTeamsOfEvent(int eventId){
-        List<TeamDTO> teams = teamService.getTeamsOfEvent(eventId);
-        Response response  = new Response();
-        response.setData(teams);
-        return new ResponseEntity<>(response, HttpStatus.OK);
-    }
 
-    @GetMapping("/find")
-    public ResponseEntity<?> findTeamById(int teamId){
+
+    @GetMapping("/{teamId}")
+    public ResponseEntity<?> findTeamById(@PathVariable int teamId){
         TeamDTO team = teamService.getTeamById(teamId);
         Response response  = new Response();
         response.setData(team);
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
-    @PostMapping("/add")
+    @PostMapping("")
     public ResponseEntity<?> addTeam(@RequestBody TeamDTO team){
         Response response  = new Response();
         response.setData(teamService.addTeam(team));
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
-    @PutMapping("/update")
+    @PutMapping("")
     public ResponseEntity<?> updateTeam(@RequestBody TeamDTO team){
         Response response  = new Response();
         response.setData(teamService.updateTeam(team));

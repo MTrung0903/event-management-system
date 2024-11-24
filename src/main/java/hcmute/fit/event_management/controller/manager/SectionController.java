@@ -18,37 +18,31 @@ public class SectionController {
     @Autowired
     private ISectionService sectionService;
 
-    @GetMapping("")
-    public ResponseEntity<?> getSectionOfEvent(@RequestParam int eventId) {
-        List<SectionDTO> listSection = sectionService.getSectionOfEvent(eventId);
-        Response response = new Response();
-        response.setData(listSection);
-        return new ResponseEntity<>(response, HttpStatus.OK);
-    }
 
-    @GetMapping("/find")
-    public ResponseEntity<?> findSectionById(@RequestParam int sectionId) {
+
+    @GetMapping("/{sectionId}")
+    public ResponseEntity<?> findSectionById(@PathVariable int sectionId) {
         SectionDTO section = sectionService.getSectionById(sectionId);
         Response response = new Response();
         response.setData(section);
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
-    @PostMapping("/add")
+    @PostMapping("")
     public ResponseEntity<?> addSection(@RequestBody SectionDTO sectionDTO) {
         Response response = new Response();
         response.setData(sectionService.addSection(sectionDTO));
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
-    @PutMapping("update")
+    @PutMapping("")
     public ResponseEntity<?> updateSection(@RequestBody SectionDTO sectionDTO){
         Response response = new Response();
         response.setData(sectionService.updateSection(sectionDTO));
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
-    @DeleteMapping("/delete")
-    public ResponseEntity<?> deleteSection(@RequestParam int sectionId){
+    @DeleteMapping("/{sectionId}")
+    public ResponseEntity<?> deleteSection(@PathVariable int sectionId){
         Response response = new Response();
         response.setData(sectionService.deleteSection(sectionId));
         return new ResponseEntity<>(response, HttpStatus.OK);

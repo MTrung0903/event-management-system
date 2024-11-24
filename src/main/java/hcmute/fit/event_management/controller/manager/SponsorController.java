@@ -27,38 +27,33 @@ public class SponsorController {
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
-    @GetMapping("/find")
-    public ResponseEntity<?> findSponsorById(@RequestParam int id) {
-        SponsorDTO sponsor = sponsorService.getSponsorById(id);
+    @GetMapping("/{sponsorId}")
+    public ResponseEntity<?> findSponsorById(@PathVariable int sponsorId) {
+        SponsorDTO sponsor = sponsorService.getSponsorById(sponsorId);
         Response response = new Response();
         response.setData(sponsor);
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
-    @PostMapping("/add")
+    @PostMapping("")
     public ResponseEntity<?> addSponsor(@RequestBody SponsorDTO sponsorDTO) {
         Response response = new Response();
         response.setData(sponsorService.addSponsor(sponsorDTO));
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
-    @PutMapping("update")
+    @PutMapping("")
     public ResponseEntity<?> updateSponsor(@RequestBody SponsorDTO sponsorDTO) {
         Response response = new Response();
         response.setData(sponsorService.updatSponsor(sponsorDTO));
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
-    @DeleteMapping("/delete")
-    public ResponseEntity<?> deleteSponsor(@RequestParam int id) {
+    @DeleteMapping("/{id}")
+    public ResponseEntity<?> deleteSponsor(@PathVariable int id) {
         Response response = new Response();
         response.setData(sponsorService.deleteSponsor(id));
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
-    @PostMapping("addEvent")
-    public ResponseEntity<?> addSponsorShip(@RequestParam int sponsorId,@RequestParam int eventID) {
-        Response response = new Response();
-        response.setData(sponsorService.addSponsorForEvent(sponsorId,eventID));
-        return new ResponseEntity<>(response, HttpStatus.OK);
-    }
+
 }

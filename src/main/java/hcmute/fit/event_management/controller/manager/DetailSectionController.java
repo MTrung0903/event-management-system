@@ -20,34 +20,28 @@ import java.util.Optional;
 public class DetailSectionController {
     @Autowired
     private IDetailSectionService detailSectionService;
-    @GetMapping("")
-    public ResponseEntity<?> getDetailSectionOfEvent(@RequestParam int eventId){
-        List<DetailSectionDTO> list = detailSectionService.getListDetailSectionsByEventId(eventId);
-        Response response = new Response();
-        response.setData(list);
-        return new ResponseEntity<>(response, HttpStatus.OK);
-    }
-    @GetMapping("/find")
-    public ResponseEntity<?> getDetailSectionById(@RequestParam int id){
+
+    @GetMapping("/{id}")
+    public ResponseEntity<?> getDetailSectionById(@PathVariable int id){
         DetailSectionDTO detailSectionDTO = detailSectionService.getDetailSectionById(id);
         Response response = new Response();
         response.setData(detailSectionDTO);
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
-    @PostMapping("/add")
+    @PostMapping("")
     public ResponseEntity<?> addDetailSection(@RequestBody DetailSectionDTO detail){
         Response response = new Response();
         response.setData(detailSectionService.addDetailSection(detail));
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
-    @PutMapping("/update")
+    @PutMapping("")
     public ResponseEntity<?> updateDetailSection(@RequestBody DetailSectionDTO detail){
         Response response = new Response();
         response.setData(detailSectionService.updateDetailSection(detail));
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
-    @DeleteMapping("/delete")
-    public ResponseEntity<?> deleteDetailSection(@RequestParam int detailSectionId){
+    @DeleteMapping("/{detailSectionId}")
+    public ResponseEntity<?> deleteDetailSection(@PathVariable int detailSectionId){
         Response response = new Response();
         response.setData(detailSectionService.deleteDetailSection(detailSectionId));
         return new ResponseEntity<>(response, HttpStatus.OK);

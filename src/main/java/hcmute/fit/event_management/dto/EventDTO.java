@@ -17,6 +17,6 @@ public class EventDTO {
     private String eventDate;
     private String eventLocation;
     private String eventDetail;
-    private int manId;
-    private int mcId;
+    private Integer manId;
+    private Integer mcId;
 }

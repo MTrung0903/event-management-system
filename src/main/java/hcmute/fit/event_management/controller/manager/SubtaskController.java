@@ -17,37 +17,31 @@ public class SubtaskController {
     @Autowired
     private ISubtaskService subtaskService;
 
-    @GetMapping("")
-    public ResponseEntity<?> getSubtaskOfTask(int taskId){
-        List<SubTaskDTO> listSubtask = subtaskService.getAllSubtasksOfTask(taskId);
-        Response response = new Response();
-        response.setData(listSubtask);
-        return new ResponseEntity<>(response, HttpStatus.OK);
-    }
 
-    @GetMapping("/find")
-    public ResponseEntity<?> findSubtaskById(int subtaskId){
+
+    @GetMapping("/{subtaskId}")
+    public ResponseEntity<?> findSubtaskById(@PathVariable int subtaskId){
         SubTaskDTO subtask = subtaskService.getSubtaskById(subtaskId);
         Response response = new Response();
         response.setData(subtask);
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
-    @PostMapping("/add")
-    public ResponseEntity<?> addSubtask(@RequestParam int taskId,
+    @PostMapping("/{taskId}")
+    public ResponseEntity<?> addSubtask(@PathVariable int taskId,
                                         @RequestBody SubTaskDTO subtaskDTO){
         Response response = new Response();
         response.setData(subtaskService.addSubtask(taskId,subtaskDTO));
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
-    @PutMapping("/update")
-    public ResponseEntity<?> updateSubtask(@RequestParam int taskId,
+    @PutMapping("/{taskId}")
+    public ResponseEntity<?> updateSubtask(@PathVariable int taskId,
                                            @RequestBody SubTaskDTO subtaskDTO){
         Response response = new Response();
         response.setData(subtaskService.updateSubtask(taskId,subtaskDTO));
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
-    @DeleteMapping("/delete")
-    public ResponseEntity<?> deleteSubtask(@RequestParam int subtaskId){
+    @DeleteMapping("/{subtaskId}")
+    public ResponseEntity<?> deleteSubtask(@PathVariable int subtaskId){
         Response response = new Response();
         response.setData(subtaskService.deleteSubtask(subtaskId));
         return new ResponseEntity<>(response, HttpStatus.OK);

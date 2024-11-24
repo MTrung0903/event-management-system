@@ -1,6 +1,7 @@
 package hcmute.fit.event_management.controller.manager;
 
 import hcmute.fit.event_management.dto.ProviderDTO;
+import hcmute.fit.event_management.dto.ProviderServiceDTO;
 import hcmute.fit.event_management.entity.Provider;
 import hcmute.fit.event_management.entity.ProviderService;
 import hcmute.fit.event_management.service.IProvider;
@@ -14,10 +15,14 @@ import payload.Response;
 import java.util.List;
 
 @RestController
+@CrossOrigin("*")
 @RequestMapping("/man/provider")
 public class ProviderController {
     @Autowired
     private IProvider providerImpl;
+
+    @Autowired
+    private IProviderService providerService;
 
 
     @GetMapping("")
@@ -26,37 +31,38 @@ public class ProviderController {
         return new ResponseEntity<>(listProvider, HttpStatus.OK);
     }
 
-    @GetMapping("/find")
-    public ResponseEntity<?> getProviderById(@RequestParam("providerId") int providerId) {
+    @GetMapping("/{providerId}")
+    public ResponseEntity<?> getProviderById(@PathVariable("providerId") int providerId) {
         ProviderDTO provider = providerImpl.findProviderById(providerId);
         return new ResponseEntity<>(provider, HttpStatus.OK);
     }
 
-    @PostMapping("/add")
+    @PostMapping()
     public ResponseEntity<?> addProvider(@RequestBody ProviderDTO provider) {
         Response response = new Response();
         response.setData(providerImpl.addProvider(provider));
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
-    @PutMapping("/update")
+    @PutMapping()
     public ResponseEntity<?> updateProvider(@RequestBody ProviderDTO provider) {
         Response response = new Response();
         response.setData(providerImpl.updateProvider(provider));
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
-    @DeleteMapping("/delete")
-    public ResponseEntity<?> deleteProvider(@RequestParam int providerId) {
+    @DeleteMapping("/{providerId}")
+    public ResponseEntity<?> deleteProvider(@PathVariable int providerId) {
         Response response = new Response();
         response.setData(providerImpl.deleteProvider(providerId));
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
-    @PostMapping("/addEvent")
-    public ResponseEntity<?> addEvent(@RequestParam int providerId, @RequestParam int eventId) {
+    @GetMapping("/{providerId}/service")
+    public ResponseEntity<?> getListServiceOfProvider(@PathVariable int providerId) {
         Response response = new Response();
-        response.setData(providerImpl.addProviderForEvent(providerId, eventId));
-        return new ResponseEntity<>(response, HttpStatus.OK);
+        List<ProviderServiceDTO> list = providerService.getServiceProviders(providerId);
+        response.setData(list);
+        return ResponseEntity.ok(response);
     }
 }
 

@@ -16,4 +16,5 @@ public interface IAttendeeService {
 
     public boolean updateStatus(Integer attendeeId,String status);
 
+    boolean addAttendee(AttendeeDTO attendeeDTO);
 }

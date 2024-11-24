@@ -26,7 +26,7 @@ public class SpeakerController {
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
-    @GetMapping("/find")
+    @GetMapping("/{speakerId}")
     public ResponseEntity<?> getSpeakerById(@RequestParam int speakerId) {
         SpeakerDTO speaker = speakerService.getSpeakerById(speakerId);
         Response response = new Response();
@@ -34,20 +34,20 @@ public class SpeakerController {
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
-    @PostMapping("/add")
+    @PostMapping("")
     public ResponseEntity<?> addSpeaker(@RequestBody SpeakerDTO speaker) {
         Response response = new Response();
         response.setData(speakerService.addSpeaker(speaker));
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
-    @PutMapping("/update")
+    @PutMapping("")
     public ResponseEntity<?> updateSpeaker(@RequestBody SpeakerDTO speaker) {
         Response response = new Response();
         response.setData(speakerService.updateSpeaker(speaker));
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
-    @DeleteMapping("/delete")
-    public ResponseEntity<?> deleteSpeaker(@RequestParam int id) {
+    @DeleteMapping("/{id}")
+    public ResponseEntity<?> deleteSpeaker(@PathVariable int id) {
         Response response = new Response();
         response.setData(speakerService.deleteSpeaker(id));
         return new ResponseEntity<>(response, HttpStatus.OK);

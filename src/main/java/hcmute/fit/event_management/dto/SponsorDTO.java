@@ -20,5 +20,6 @@ public class SponsorDTO {
     private String website;
     private String address;
     private int sponsorshipId;
+    private String sponsorshipLevel;
     private List<SponsorEventDTO> listSponsorEvents;
 }

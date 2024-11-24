@@ -17,5 +17,4 @@ public class ProviderServiceDTO {
     private String price;
     private String duration;
     private int providerId;
-
 }

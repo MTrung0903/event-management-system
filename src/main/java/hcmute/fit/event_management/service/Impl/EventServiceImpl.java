@@ -1,7 +1,10 @@
 package hcmute.fit.event_management.service.Impl;
 
 import hcmute.fit.event_management.dto.EventDTO;
+import hcmute.fit.event_management.dto.McDTO;
 import hcmute.fit.event_management.entity.Event;
+import hcmute.fit.event_management.entity.Manager;
+import hcmute.fit.event_management.entity.Mc;
 import hcmute.fit.event_management.repository.EventRepository;
 import hcmute.fit.event_management.repository.ManagerRepository;
 import hcmute.fit.event_management.repository.McRepository;
@@ -12,6 +15,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -71,12 +75,16 @@ public class EventServiceImpl implements IEventService {
             try{
                 System.out.println("Manager ID: " + eventDTO.getManId());
                 if(managerRepository.existsById(eventDTO.getManId())) {
-                    System.out.println(eventDTO.getEventName() + eventDTO.getEventDescription() + eventDTO.getEventDetail() + eventDTO.getEventLocation() );
                     Event event = new Event();
-                    event.setEventName(eventDTO.getEventName());
                     SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-                    Date date = formatter.parse(eventDTO.getEventDate().trim());
-                    event.setEventDate(date);
+                    if (eventDTO.getEventDate() != null) {
+                        try {
+                            event.setEventDate(formatter.parse(eventDTO.getEventDate().trim()));
+                        } catch (ParseException e) {
+                            System.out.println("Invalid date format: " + eventDTO.getEventDate());
+                            return isSuccess;
+                        }
+                    }
                     BeanUtils.copyProperties(eventDTO, event);
                     event.setEventImg(image.getOriginalFilename());
                     event.setManager(managerRepository.findById(eventDTO.getManId()).get());
@@ -89,36 +97,44 @@ public class EventServiceImpl implements IEventService {
             }
         }
 
-
-
         return isSuccess;
-
     }
+
     @Override
     public boolean updateEvent(MultipartFile image, EventDTO eventDTO) {
         boolean isSuccess = false;
         boolean isUoloadImg = fileService.saveFiles(image);
-        if(isUoloadImg) {
-            try{
-                if(managerRepository.findById(eventDTO.getManId()).isPresent()
-                && eventRepository.existsById(eventDTO.getEventId())) {
-                    Event event = eventRepository.findById(eventDTO.getEventId()).get();
+        if (isUoloadImg) {
+            try {
+                Optional<Manager> managerOpt = managerRepository.findById(eventDTO.getManId());
+                Optional<Event> eventOpt = eventRepository.findById(eventDTO.getEventId());
+
+                if (managerOpt.isPresent() && eventOpt.isPresent()) {
+                    Event event = eventOpt.get();
                     BeanUtils.copyProperties(eventDTO, event);
                     SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-                    Date date = formatter.parse(eventDTO.getEventDate().trim());
-                    event.setEventDate(date);
+                    if (eventDTO.getEventDate() != null) {
+                        try {
+                            event.setEventDate(formatter.parse(eventDTO.getEventDate().trim()));
+                        } catch (ParseException e) {
+                            System.out.println("Invalid date format: " + eventDTO.getEventDate());
+                            return isSuccess;
+                        }
+                    }
                     event.setEventImg(image.getOriginalFilename());
-                    event.setManager(managerRepository.findById(eventDTO.getManId()).get());
-                    event.setMc(mcRepository.findById(eventDTO.getMcId()).get());
+                    event.setManager(managerOpt.get());
+                    if(eventDTO.getMcId() != null)
+                        event.setMc(mcRepository.findById(eventDTO.getMcId()).get());
                     eventRepository.save(event);
                     isSuccess = true;
+                }else{
+                    throw new RuntimeException("Manager or Event not found with ID: ");
                 }
             } catch (Exception e) {
-                System.out.println("add event failed" +e.getMessage());
+                System.out.println("Add event failed: " + e.getMessage());
             }
-        }else{
-            System.out.println("update file image failed");
-
+        } else {
+            System.out.println("Update file image failed");
         }
         return isSuccess;
     }
@@ -138,5 +154,6 @@ public class EventServiceImpl implements IEventService {
         }
         return isSuccess;
     }
+
 
 }

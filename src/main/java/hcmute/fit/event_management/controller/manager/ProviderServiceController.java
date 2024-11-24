@@ -15,38 +15,31 @@ public class ProviderServiceController {
     @Autowired
     private IProviderService providerService;
 
-    @GetMapping("")
-    public ResponseEntity<?> getListServiceOfProvider(@RequestParam int providerId) {
-        Response response = new Response();
-        List<ProviderServiceDTO> list = providerService.getServiceProviders(providerId);
-        response.setData(list);
-        return ResponseEntity.ok(response);
-    }
 
-    @GetMapping("/find")
-    public ResponseEntity<?> findServiceById(@RequestParam int serviceId) {
+    @GetMapping("/{serviceId}")
+    public ResponseEntity<?> findServiceById(@PathVariable int serviceId) {
         Response response = new Response();
         ProviderServiceDTO service = providerService.findServiceById(serviceId);
         response.setData(service);
         return ResponseEntity.ok(response);
     }
 
-    @PostMapping("/add")
+    @PostMapping("")
     public ResponseEntity<?> addService(@RequestBody ProviderServiceDTO serviceDTO) {
         Response response = new Response();
         response.setData(providerService.addServiceProvider(serviceDTO));
         return ResponseEntity.ok(response);
     }
 
-    @PutMapping("update")
+    @PutMapping("")
     public ResponseEntity<?> updateService(@RequestBody ProviderServiceDTO serviceDTO) {
         Response response = new Response();
         response.setData(providerService.updateServiceProvider(serviceDTO));
         return ResponseEntity.ok(response);
     }
 
-    @DeleteMapping("delete")
-    public ResponseEntity<?> deleteService(@RequestParam int serviceId) {
+    @DeleteMapping("/{serviceId}")
+    public ResponseEntity<?> deleteService(@PathVariable int serviceId) {
         Response response = new Response();
         response.setData(providerService.deleteServiceProvider(serviceId));
         return ResponseEntity.ok(response);

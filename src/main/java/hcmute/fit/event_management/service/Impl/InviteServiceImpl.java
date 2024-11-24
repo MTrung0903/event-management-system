@@ -1,10 +1,12 @@
 package hcmute.fit.event_management.service.Impl;
 
+import hcmute.fit.event_management.dto.AttendeeDTO;
 import hcmute.fit.event_management.dto.InviteDTO;
 import hcmute.fit.event_management.entity.Event;
 import hcmute.fit.event_management.entity.Invite;
 import hcmute.fit.event_management.repository.EventRepository;
 import hcmute.fit.event_management.repository.InviteRepository;
+import hcmute.fit.event_management.service.IAttendeeService;
 import hcmute.fit.event_management.service.IInviteService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +27,9 @@ public class InviteServiceImpl implements IInviteService {
     @Autowired
     private EventRepository eventRepository;
 
+    @Autowired
+    private IAttendeeService attendeeService;
+
     public InviteServiceImpl(InviteRepository inviteRepository) {
         this.inviteRepository = inviteRepository;
     }
@@ -36,6 +41,7 @@ public class InviteServiceImpl implements IInviteService {
         for (Invite invite : invites) {
             InviteDTO inviteDTO = new InviteDTO();
             BeanUtils.copyProperties(invite, inviteDTO);
+            inviteDTO.setInviteDate(invite.getInviteDate().toString());
             inviteDTO.setEventId(eventId);
             inviteDTOs.add(inviteDTO);
         }
@@ -85,9 +91,10 @@ public class InviteServiceImpl implements IInviteService {
     @Override
     public boolean updateInvite(InviteDTO invite) {
         Optional<Invite> cmp = inviteRepository.findById(invite.getId());
+        Optional<Event> eventOpt = eventRepository.findById(invite.getEventId());
         boolean isUpdated = false;
         try{
-            if(cmp.isPresent()) {
+            if(cmp.isPresent() ) {
                 Invite updateInvite = cmp.get();
                 updateInvite.setName(invite.getName());
                 updateInvite.setEmail(invite.getEmail());
@@ -95,6 +102,8 @@ public class InviteServiceImpl implements IInviteService {
                 Date date = formatter.parse(invite.getInviteDate().trim());
                 updateInvite.setInviteDate(date);
                 updateInvite.setStatus(invite.getStatus());
+                if(eventOpt.isPresent())
+                    updateInvite.setEvent(eventOpt.get());
                 inviteRepository.save(updateInvite);
                 isUpdated = true;
             }
@@ -109,12 +118,27 @@ public class InviteServiceImpl implements IInviteService {
     public boolean updateInviteStatus(Integer inviteId, String status) {
         Optional<Invite> invite = inviteRepository.findById(inviteId);
         boolean isUpdated = false;
-        if(invite.isPresent()) {
-            Invite updateInvite = invite.get();
-            updateInvite.setStatus(status);
-            inviteRepository.save(updateInvite);
-            isUpdated = true;
-        }
+       try{
+           if(invite.isPresent()) {
+               Invite updateInvite = invite.get();
+               updateInvite.setStatus(status);
+               inviteRepository.save(updateInvite);
+               isUpdated = true;
+               if(status.equals("accepted")){
+                   AttendeeDTO attendeeDTO = new AttendeeDTO();
+                   attendeeDTO.setInviteId(inviteId);
+                   attendeeDTO.setFullName(updateInvite.getName());
+                   attendeeDTO.setEmail(updateInvite.getEmail());
+                   attendeeDTO.setAttendeeStatus("accepted");
+                   boolean isAddAttendee = attendeeService.addAttendee(attendeeDTO);
+                   if(!isAddAttendee){
+                       throw new RuntimeException("Add attendee failed");
+                   }
+               }
+           }
+       } catch (Exception e) {
+           System.out.println("Update invite failed" +e.getMessage());
+       }
         return isUpdated;
     }
 

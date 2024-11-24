@@ -24,29 +24,29 @@ public class SponsorShipController {
         return ResponseEntity.ok(response);
     }
 
-    @GetMapping("/find")
-    public ResponseEntity<?> findSponsorById(@RequestParam int id){
+    @GetMapping("/{id}")
+    public ResponseEntity<?> findSponsorById(@PathVariable int id){
         SponsorShipDTO shipDTO = sponsorShipService.getSponsorShipByID(id);
         Response response  = new Response();
         response.setData(shipDTO);
         return ResponseEntity.ok(response);
     }
 
-    @PostMapping("/add")
+    @PostMapping("")
     public ResponseEntity<?> addSponsorShip(@RequestBody SponsorShipDTO sponsorShipDTO){
         Response response = new Response();
         response.setData(sponsorShipService.addSponsorShip(sponsorShipDTO));
         return ResponseEntity.ok(response);
     }
 
-    @PutMapping("/update")
+    @PutMapping("")
     public ResponseEntity<?> updateSponsorShip(@RequestBody SponsorShipDTO sponsorShipDTO){
         Response response = new Response();
         response.setData(sponsorShipService.updateSponsorShip(sponsorShipDTO));
         return ResponseEntity.ok(response);
     }
-    @DeleteMapping("/delete")
-    public ResponseEntity<?> deleteSponsorShip(@RequestParam int id){
+    @DeleteMapping("/{id}")
+    public ResponseEntity<?> deleteSponsorShip(@PathVariable int id){
         Response response = new Response();
         response.setData(sponsorShipService.deleteSponsorShip(id));
         return ResponseEntity.ok(response);

@@ -18,23 +18,15 @@ public class AttendeeController {
     @Autowired
     private IAttendeeService attendeeService;
 
-    @GetMapping("")
-    public ResponseEntity<?> getListAttendees(@RequestParam("eventId") int eventId) {
-        List<AttendeeDTO> listAttendee = attendeeService.gettListAttendeeByEventId(eventId);
-        Response response = new Response();
-        response.setData(listAttendee);
-        return new ResponseEntity<>(response, HttpStatus.OK);
-    }
-
-    @GetMapping("/find")
-    public ResponseEntity<?> findAttendee(@RequestParam("id") int id) {
+    @GetMapping("/{id}")
+    public ResponseEntity<?> findAttendee(@PathVariable("id") int id) {
         AttendeeDTO attendee = attendeeService.findAttendee(id);
         Response response = new Response();
         response.setData(attendee);
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
-    @PutMapping("/update")
+    @PutMapping("/{id}")
     public ResponseEntity<?> updateStatus(@RequestParam("id") int id,
                                             @RequestParam String status) {
         Response response = new Response();

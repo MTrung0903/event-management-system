@@ -12,5 +12,5 @@ public class AttendeeDTO {
     private String fullName;
     private String email;
     private String attendeeStatus;
-    private InviteDTO invite;
+    private Integer inviteId;
 }

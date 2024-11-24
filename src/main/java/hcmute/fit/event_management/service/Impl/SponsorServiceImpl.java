@@ -43,15 +43,9 @@ public class SponsorServiceImpl implements ISponsorService {
             sponsorDTO.setId(sponsor.getId());
             BeanUtils.copyProperties(sponsor, sponsorDTO);
             sponsorDTO.setSponsorshipId(sponsor.getSponsorship().getSponsorShipID());
+            sponsorDTO.setSponsorshipLevel(sponsor.getSponsorship().getLevel());
             sponsorDTOs.add(sponsorDTO);
-            List<SponsorEventDTO> dtoList = new ArrayList<>();
-            for(SponsorEvent se : sponsor.getListSponsorEvents()){
-                SponsorEventDTO seDto = new SponsorEventDTO();
-                seDto.setEventId(se.getEvent().getEventID());
-                seDto.setEventName(se.getEvent().getEventName());
-                dtoList.add(seDto);
-            }
-            sponsorDTO.setListSponsorEvents(dtoList);
+
         }
         return sponsorDTOs;
     }
@@ -62,6 +56,7 @@ public class SponsorServiceImpl implements ISponsorService {
         if(sponsor.isPresent()){
             BeanUtils.copyProperties(sponsor.get(), sponsorDTO);
             sponsorDTO.setSponsorshipId(sponsor.get().getSponsorship().getSponsorShipID());
+            sponsorDTO.setSponsorshipLevel(sponsor.get().getSponsorship().getLevel());
             List<SponsorEventDTO> dtoList = new ArrayList<>();
             for(SponsorEvent se : sponsor.get().getListSponsorEvents()){
                 SponsorEventDTO seDto = new SponsorEventDTO();
