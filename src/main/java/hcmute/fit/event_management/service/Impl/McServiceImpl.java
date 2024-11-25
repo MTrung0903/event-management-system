@@ -5,10 +5,13 @@ import hcmute.fit.event_management.dto.McDTO;
 import hcmute.fit.event_management.entity.Event;
 import hcmute.fit.event_management.entity.Mc;
 import hcmute.fit.event_management.repository.McRepository;
+import hcmute.fit.event_management.service.IFileService;
 import hcmute.fit.event_management.service.IMcService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,6 +21,9 @@ import java.util.Optional;
 public class McServiceImpl implements IMcService {
     @Autowired
     private McRepository mcRepository;
+
+    @Autowired
+    private IFileService fileService;
 
     public McServiceImpl(McRepository mcRepository) {
         this.mcRepository = mcRepository;
@@ -30,6 +36,7 @@ public class McServiceImpl implements IMcService {
         for (Mc mc : mcList) {
             McDTO mcDTO = new McDTO();
             BeanUtils.copyProperties(mc,mcDTO);
+            mcDTO.setImage(mc.getImage());
             List<EventDTO> listeventdto = new ArrayList<>();
             for(Event e : mc.getListEvents() ){
                 EventDTO eventDTO = new EventDTO();
@@ -42,35 +49,45 @@ public class McServiceImpl implements IMcService {
         return listMc;
     }
     @Override
-    public boolean addMc(McDTO mcDto){
+    public boolean addMc(MultipartFile image,McDTO mcDto){
         boolean isSucess = false;
-        try{
-            Mc mc = new Mc();
-            mc.setMcName(mcDto.getMcName());
-            mc.setEmail(mcDto.getEmail());
-            mcRepository.save(mc);
-            isSucess = true;
-        } catch (Exception e) {
-            System.out.println("Add MC failed" + e.getMessage());
+        boolean isUoloadImg = fileService.saveFiles(image);
+        if(isUoloadImg){
+            try{
+                Mc mc = new Mc();
+                mc.setImage(image.getOriginalFilename());
+                mc.setMcName(mcDto.getMcName());
+                mc.setEmail(mcDto.getEmail());
+                mcRepository.save(mc);
+                isSucess = true;
+            } catch (Exception e) {
+                System.out.println("Add MC failed" + e.getMessage());
+            }
         }
+
         return isSucess;
     }
     @Override
-    public boolean updateMc(McDTO mcDto){
+    public boolean updateMc(MultipartFile image,McDTO mcDto){
         boolean isSucess = false;
-        try{
-            Optional<Mc> mc = mcRepository.findById(mcDto.getMcID());
-            if(mc.isPresent()){
-                Mc newMc = mc.get();
-                newMc.setMcName(mcDto.getMcName());
-                newMc.setEmail(mcDto.getEmail());
-                mcRepository.save(newMc);
-                isSucess = true;
-            }
+        boolean isUoloadImg = fileService.saveFiles(image);
+        if(isUoloadImg){
+            try{
+                Optional<Mc> mc = mcRepository.findById(mcDto.getMcID());
+                if(mc.isPresent()){
+                    Mc newMc = mc.get();
+                    newMc.setImage(image.getOriginalFilename());
+                    newMc.setMcName(mcDto.getMcName());
+                    newMc.setEmail(mcDto.getEmail());
+                    mcRepository.save(newMc);
+                    isSucess = true;
+                }
 
-        } catch (Exception e) {
-            System.out.println("Update MC failed" + e.getMessage());
+            } catch (Exception e) {
+                System.out.println("Update MC failed" + e.getMessage());
+            }
         }
+
         return isSucess;
     }
     @Override
@@ -95,6 +112,7 @@ public class McServiceImpl implements IMcService {
         try{
             if(mc.isPresent()){
                 BeanUtils.copyProperties(mc.get(),mcDTO);
+                mcDTO.setImage(mc.get().getImage());
                 List<EventDTO> listeventdto = new ArrayList<>();
                 for(Event e : mc.get().getListEvents()){
                     EventDTO eventDTO = new EventDTO();

@@ -22,7 +22,16 @@ public class Mc {
     private String mcName;
     @Column(name = "email")
     private String email;
-
+    @Column(name = "image")
+    private String image;
+    @Column(name = "title")
+    private String title;
+    @Column(name = "phone")
+    private String phone;
+    @Column(name = "address")
+    private String address;
+    @Column(name = "description")
+    private String description;
     @OneToMany(mappedBy = "mc")
     private List<Event> listEvents;
 }

@@ -46,13 +46,7 @@ public class EventController {
     @Autowired
     private ITeamService teamService;
 
-    @GetMapping("/files/{filesname:.+}")
-    public ResponseEntity<Resource> getFile(@PathVariable String filesname){
-        Resource resource = fileService.load(filesname);
-        return ResponseEntity.ok()
-                .header(HttpHeaders.CONTENT_DISPOSITION,"attachment; filename=\"" + filesname + "\"")
-                .body(resource);
-    }
+
 
     @PostMapping("")
     public ResponseEntity<?> addEvent(@RequestParam("image") MultipartFile image,

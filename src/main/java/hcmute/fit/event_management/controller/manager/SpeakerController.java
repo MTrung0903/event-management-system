@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 import payload.Response;
 
 import java.util.List;
@@ -27,7 +28,7 @@ public class SpeakerController {
     }
 
     @GetMapping("/{speakerId}")
-    public ResponseEntity<?> getSpeakerById(@RequestParam int speakerId) {
+    public ResponseEntity<?> getSpeakerById(@PathVariable int speakerId) {
         SpeakerDTO speaker = speakerService.getSpeakerById(speakerId);
         Response response = new Response();
         response.setData(speaker);
@@ -35,15 +36,17 @@ public class SpeakerController {
     }
 
     @PostMapping("")
-    public ResponseEntity<?> addSpeaker(@RequestBody SpeakerDTO speaker) {
+    public ResponseEntity<?> addSpeaker(@RequestParam("imageSpeaker") MultipartFile imageSpeaker,
+                                        @ModelAttribute SpeakerDTO speaker) {
         Response response = new Response();
-        response.setData(speakerService.addSpeaker(speaker));
+        response.setData(speakerService.addSpeaker(imageSpeaker,speaker));
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
     @PutMapping("")
-    public ResponseEntity<?> updateSpeaker(@RequestBody SpeakerDTO speaker) {
+    public ResponseEntity<?> updateSpeaker(@RequestParam("imageSpeaker") MultipartFile imageSpeaker,
+                                           @ModelAttribute SpeakerDTO speaker) {
         Response response = new Response();
-        response.setData(speakerService.updateSpeaker(speaker));
+        response.setData(speakerService.updateSpeaker(imageSpeaker,speaker));
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
     @DeleteMapping("/{id}")

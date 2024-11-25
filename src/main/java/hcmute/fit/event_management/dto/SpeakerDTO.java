@@ -19,5 +19,6 @@ public class SpeakerDTO {
     private String phone;
     private String address;
     private String description;
+    private String image;
     private List<DetailSectionDTO> listDetailSections;
 }

@@ -2,10 +2,12 @@ package hcmute.fit.event_management.controller.manager;
 
 import hcmute.fit.event_management.dto.McDTO;
 import hcmute.fit.event_management.entity.Mc;
+import hcmute.fit.event_management.service.IFileService;
 import hcmute.fit.event_management.service.IMcService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 import payload.Response;
 
 import java.util.List;
@@ -16,6 +18,8 @@ import java.util.List;
 public class McController {
     @Autowired
     private IMcService mcService;
+    @Autowired
+    private IFileService fileService;
 
     @GetMapping("")
     public ResponseEntity<?> getAllMC() {
@@ -32,16 +36,18 @@ public class McController {
         return ResponseEntity.ok(response);
     }
     @PostMapping("")
-    public ResponseEntity<?> addMc(@RequestBody McDTO mcDto){
+    public ResponseEntity<?> addMc(@RequestParam("imageMc") MultipartFile imageMc,
+                                   @ModelAttribute McDTO mcDto){
         Response response = new Response();
-        response.setData(mcService.addMc(mcDto));
+        response.setData(mcService.addMc(imageMc,mcDto));
         return ResponseEntity.ok(response);
     }
 
     @PutMapping("")
-    public ResponseEntity<?> updateMc(@RequestBody McDTO mcDto){
+    public ResponseEntity<?> updateMc(@RequestParam("imageMc") MultipartFile imageMc,
+                                      @ModelAttribute McDTO mcDto){
         Response response = new Response();
-        response.setData(mcService.updateMc(mcDto));
+        response.setData(mcService.updateMc(imageMc,mcDto));
         return ResponseEntity.ok(response);
     }
 

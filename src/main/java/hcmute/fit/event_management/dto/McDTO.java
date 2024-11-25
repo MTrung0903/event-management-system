@@ -14,5 +14,10 @@ public class McDTO {
     private int mcID;
     private String mcName;
     private String email;
+    private String image;
+    private String title;
+    private String phone;
+    private String address;
+    private String description;;
     private List<EventDTO> listEvents;
 }

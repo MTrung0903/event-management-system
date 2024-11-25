@@ -18,6 +18,8 @@ public class Speaker {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "speaker_id")
     private int id;
+    @Column(name = "image")
+    private String image;
     @Column(name = "speaker_name")
     private String name;
     @Column(name = "speaker_email")

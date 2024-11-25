@@ -21,19 +21,26 @@ public class FileServiceImpl implements IFileService {
 
     @Override
     public Resource load(String fileName) {
-        try{
+        try {
+            // Gọi init() để đảm bảo path được khởi tạo trước khi sử dụng
+            if (path == null) {
+                init();
+            }
+
             Path file = path.resolve(fileName);
             Resource resource = new UrlResource(file.toUri());
-            if(resource.exists() || resource.isReadable()){
+
+            if (resource.exists() || resource.isReadable()) {
                 return resource;
-            }else {
+            } else {
                 return null;
             }
-        }catch (Exception e){
+        } catch (Exception e) {
             System.out.println("Error load file " + e.getMessage());
             return null;
         }
     }
+
 
 
     @Override
@@ -50,16 +57,17 @@ public class FileServiceImpl implements IFileService {
             return  false;
         }
     }
-    private void init(){
-        try{
+    private void init() {
+        try {
             path = Paths.get(uploadPath);
-            if(!Files.exists(path)){
+            System.out.println("Upload path: " + path);  // Log để kiểm tra giá trị path
+            if (!Files.exists(path)) {
                 Files.createDirectories(path);
             }
-        }catch (Exception e){
+        } catch (Exception e) {
             System.out.println("Error create root folder " + e.getMessage());
         }
-
     }
+
 
 }

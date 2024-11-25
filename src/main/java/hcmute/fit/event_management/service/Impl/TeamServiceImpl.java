@@ -71,13 +71,13 @@ public class TeamServiceImpl implements ITeamService {
             teamDTO.setTeamName(team.getTeamName());
             List<Task> tasks = team.getListTasks();
             List<TaskDTO> taskDTOs = new ArrayList<>();
-            for (Task task : tasks) {
-                TaskDTO taskDTO = new TaskDTO();
-                taskDTO.setTaskId(task.getTaskId());
-                taskDTO.setTaskName(task.getTaskName());
-                taskDTO.setTaskStatus(task.getTaskStatus());
-                taskDTOs.add(taskDTO);
-            }
+//            for (Task task : tasks) {
+//                TaskDTO taskDTO = new TaskDTO();
+//                taskDTO.setTaskId(task.getTaskId());
+//                taskDTO.setTaskName(task.getTaskName());
+//                taskDTO.setTaskStatus(task.getTaskStatus());
+//                taskDTOs.add(taskDTO);
+//            }
             List<Employee> employees = team.getListEmployees();
             List<EmployeeDTO> employeeDTOs = new ArrayList<>();
             for (Employee employee : employees) {
