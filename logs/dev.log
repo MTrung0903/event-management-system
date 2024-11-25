@@ -11021,3 +11021,11 @@ Unconditional classes:
 2024-11-25 20:24:53 INFO  o.a.c.c.C.[Tomcat].[localhost].[/] : Initializing Spring DispatcherServlet 'dispatcherServlet'
 2024-11-25 20:24:53 INFO  o.s.web.servlet.DispatcherServlet : Initializing Servlet 'dispatcherServlet'
 2024-11-25 20:24:53 INFO  o.s.web.servlet.DispatcherServlet : Completed initialization in 1 ms
+2024-11-25 20:47:02 ERROR h.f.e.security.AuthEntryPointJwt : Unauthorized error: Invalid credentials
+2024-11-25 20:47:02 ERROR h.f.e.security.AuthEntryPointJwt : Unauthorized error: Invalid credentials
+2024-11-25 20:51:15 ERROR h.f.e.security.AuthEntryPointJwt : Unauthorized error: Invalid credentials
+2024-11-25 20:51:15 ERROR h.f.e.security.AuthEntryPointJwt : Unauthorized error: Invalid credentials
+2024-11-25 20:51:29 ERROR h.f.e.security.AuthEntryPointJwt : Unauthorized error: Invalid credentials
+2024-11-25 21:08:21 INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-11-25 21:08:21 INFO  com.zaxxer.hikari.HikariDataSource : HikariPool-3 - Shutdown initiated...
+2024-11-25 21:08:21 INFO  com.zaxxer.hikari.HikariDataSource : HikariPool-3 - Shutdown completed.
