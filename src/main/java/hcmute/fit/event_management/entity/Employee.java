@@ -31,9 +31,9 @@ public class Employee {
     @JoinColumn(name = "employee_id")
     private Account account;
 
-    @ManyToOne
-    @JoinColumn(name = "team_id")
-    private Team team;
+    @OneToMany(mappedBy = "employee", cascade = CascadeType.ALL)
+    private List<TeamEmployee> listTeamEmployees;
+
     @ManyToOne
     @JoinColumn(name = "man_id")
     private Manager manager;

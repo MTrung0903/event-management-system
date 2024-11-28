@@ -11,4 +11,7 @@ import java.util.Optional;
 public interface IEmployeeService {
 
 
+    List<EmployeeDTO> getEmployeeByTeamId(int teamId);
+
+    List<EmployeeDTO> getEmployeesNotJoinTeam();
 }

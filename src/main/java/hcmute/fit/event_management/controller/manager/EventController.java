@@ -38,13 +38,13 @@ public class EventController {
     private IEventService eventService;
 
     @Autowired
-    private IFileService fileService;
-
-    @Autowired
     private ISectionService sectionService;
 
     @Autowired
     private ITeamService teamService;
+
+    @Autowired
+    private ITaskService taskService;
 
 
 
@@ -85,17 +85,50 @@ public class EventController {
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
     @PostMapping("/{eventId}/providers/{providerId}")
-    public ResponseEntity<?> addProviderToEvent(
-            @PathVariable int eventId,
-            @PathVariable int providerId) {
+    public ResponseEntity<?> addProviderForEvent(@PathVariable int eventId, @PathVariable int providerId) {
         Response response = new Response();
-        response.setData(providerImpl.addProviderForEvent(eventId,providerId));
+        response.setData(providerImpl.addProviderForEvent(providerId,eventId));
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
+
+    @GetMapping("/{eventId}/providers")
+    public ResponseEntity<?> getProvidersByEventId(@PathVariable int eventId){
+        Response response = new Response();
+        response.setData(providerImpl.listProviderInEvent(eventId));
+        return new ResponseEntity<>(response, HttpStatus.OK);
+    }
+    @GetMapping("/{eventId}/listprovider")
+    public ResponseEntity<?> getListProvidersForAdd(@PathVariable int eventId){
+        Response response = new Response();
+        response.setData(providerImpl.listProviderForAdd(eventId));
+        return new ResponseEntity<>(response, HttpStatus.OK);
+    }
+
     @PostMapping("/{eventId}/sponsors/{sponsorId}")
     public ResponseEntity<?> addSponsorForEvent(@PathVariable int eventId,@PathVariable int sponsorId) {
         Response response = new Response();
         response.setData(sponsorService.addSponsorForEvent(sponsorId,eventId));
+        return new ResponseEntity<>(response, HttpStatus.OK);
+    }
+    @GetMapping("/{eventId}/sponsors")
+    public ResponseEntity<?> getAllSponsorByEventId(@PathVariable int eventId){
+        Response response = new Response();
+        response.setData(sponsorService.getAllSponsorByEventId(eventId));
+        return new ResponseEntity<>(response, HttpStatus.OK);
+    }
+    //Lấy danh sách các nhà tài trợ chưa tài trợ cho sự kiện
+    @GetMapping("/{eventId}/listponsor")
+    public ResponseEntity<?> getNewSponsorsForEvent(@PathVariable int eventId){
+        Response response = new Response();
+        response.setData(sponsorService.getSponsorForAddNew(eventId));
+        return new ResponseEntity<>(response, HttpStatus.OK);
+    }
+    //Thêm mới 1 sponsor chưa có trong db cho event
+    @PostMapping("/{eventId}/add-new-sponsor")
+    public ResponseEntity<?> addNewSponsorForEvent(@PathVariable int eventId,@RequestParam("image") MultipartFile image,
+                                                   @ModelAttribute SponsorDTO sponsorDTO){
+        Response response = new Response();
+        response.setData(sponsorService.addNewSponsorForEvent(eventId,image,sponsorDTO));
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
     @GetMapping("/{eventId}/attendee")
@@ -133,4 +166,26 @@ public class EventController {
         response.setData(teams);
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
+    @GetMapping("/{eventId}/team-member")
+    public ResponseEntity<?> findEmployeeByTeamId(@PathVariable int eventId){
+        Response response  = new Response();
+        response.setData(teamService.getAllTeamsByEventId(eventId));
+        return new ResponseEntity<>(response, HttpStatus.OK);
+    }
+    @GetMapping("/{eventId}/tasks")
+    public ResponseEntity<?> getTaskOfEvent(@PathVariable int eventId){
+        List<TaskDTO> listTask = taskService.getTasksOfEvent(eventId);
+        Response response = new Response();
+        response.setData(listTask);
+        return new ResponseEntity<>(response, HttpStatus.OK);
+    }
+    @GetMapping("{eventId}/teams/{taskId}")
+    public ResponseEntity<?> assignedTeamForTask(@PathVariable int taskId, @PathVariable int eventId){
+
+        Response response  = new Response();
+        response.setData(teamService.getListTeamToAssignedTask(taskId, eventId));
+        return new ResponseEntity<>(response, HttpStatus.OK);
+    }
+
+
 }

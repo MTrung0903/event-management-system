@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 import payload.Response;
 
 import java.util.List;
@@ -36,18 +37,28 @@ public class SponsorController {
     }
 
     @PostMapping("")
-    public ResponseEntity<?> addSponsor(@RequestBody SponsorDTO sponsorDTO) {
+    public ResponseEntity<?> addSponsor(@RequestParam("logo") MultipartFile logo,
+                                        @ModelAttribute SponsorDTO sponsorDTO) {
         Response response = new Response();
-        response.setData(sponsorService.addSponsor(sponsorDTO));
+        response.setData(sponsorService.addSponsor(logo,sponsorDTO));
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
     @PutMapping("")
-    public ResponseEntity<?> updateSponsor(@RequestBody SponsorDTO sponsorDTO) {
+    public ResponseEntity<?> updateSponsor(@RequestParam("logo") MultipartFile logo,
+                                        @ModelAttribute SponsorDTO sponsorDTO) {
         Response response = new Response();
-        response.setData(sponsorService.updatSponsor(sponsorDTO));
+        response.setData(sponsorService.updateSponsor(logo,sponsorDTO));
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
+//    @PutMapping("")
+//    public ResponseEntity<?> updateSponsorNoLogo(@RequestParam SponsorDTO sponsorDTO) {
+//        Response response = new Response();
+//
+//        response.setData(sponsorService.updateSponsor(sponsorDTO));
+//        return new ResponseEntity<>(response, HttpStatus.OK);
+//    }
+
 
     @DeleteMapping("/{id}")
     public ResponseEntity<?> deleteSponsor(@PathVariable int id) {

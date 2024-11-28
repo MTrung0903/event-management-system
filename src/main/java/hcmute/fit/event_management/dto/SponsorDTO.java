@@ -14,6 +14,7 @@ import java.util.List;
 public class SponsorDTO {
     private int id;
     private String name;
+    private String sponsorLogo;
     private String contact;
     private String email;
     private String phone;

@@ -17,9 +17,9 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 public class TeamDTO {
-    private int teamId;
+    private Integer teamId;
     private String teamName;
-    private int  eventId;
+    private Integer  eventId;
     private List<EmployeeDTO> listEmployees;
     private List<TaskDTO> listTasks;
 }

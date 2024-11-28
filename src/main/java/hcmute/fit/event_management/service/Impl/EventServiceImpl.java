@@ -47,6 +47,7 @@ public class EventServiceImpl implements IEventService {
         for (Event event : events) {
             EventDTO eventDTO = new EventDTO();
             BeanUtils.copyProperties(event, eventDTO);
+            eventDTO.setEventId(event.getEventID());
             eventDTO.setManId(event.getManager().getManID());
             eventDTO.setMcId(event.getMc().getMcID());
             eventDTOs.add(eventDTO);
@@ -59,7 +60,9 @@ public class EventServiceImpl implements IEventService {
         Optional<Event> event = eventRepository.findById(id);
         if (event.isPresent()) {
             EventDTO eventDTO = new EventDTO();
+
             BeanUtils.copyProperties(event.get(), eventDTO);
+            eventDTO.setEventId(event.get().getEventID());
             eventDTO.setManId(event.get().getManager().getManID());
             eventDTO.setMcId(event.get().getMc().getMcID());
             return eventDTO;
@@ -148,6 +151,8 @@ public class EventServiceImpl implements IEventService {
                 event.setMc(mcRepository.findById(mcId).get());
                 eventRepository.save(event);
                 isSuccess = true;
+            }else{
+                throw new RuntimeException("Mc not found with ID: " + mcId);
             }
         } catch (Exception e) {
             System.out.println("add mc failed" +e.getMessage());

@@ -114,4 +114,28 @@ public class SubtaskServiceImpl implements ISubtaskService {
         }
         return isSuccess;
     }
+    @Override
+    public boolean actionSubtask(int employeeId, int subtaskId, String action) {
+        boolean result = false;
+        try {
+            if(!employeeRepository.existsById(employeeId)) {
+                throw new Exception("employee does not exist");
+            } else if (!subtaskRepository.existsById(subtaskId)) {
+                throw new Exception("subtask does not exist");
+            }else if(action.equals("join")){
+                    SubTask subtask = subtaskRepository.findById(subtaskId).get();
+                    subtask.setEmployee(employeeRepository.findById(employeeId).get());
+                    subtaskRepository.save(subtask);
+            }else if(action.equals("leave")){
+                SubTask subtask = subtaskRepository.findById(subtaskId).get();
+                subtask.setEmployee(null);
+                subtaskRepository.save(subtask);
+            }
+        } catch (Exception e) {
+            System.out.println("join subtask failed" + e.getMessage());
+        }
+        return result;
+    }
+
+
 }

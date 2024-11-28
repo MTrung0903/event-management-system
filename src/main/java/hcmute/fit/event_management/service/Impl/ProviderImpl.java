@@ -2,9 +2,11 @@ package hcmute.fit.event_management.service.Impl;
 
 import hcmute.fit.event_management.dto.ProviderDTO;
 import hcmute.fit.event_management.dto.ProviderServiceDTO;
+import hcmute.fit.event_management.entity.Event;
 import hcmute.fit.event_management.entity.Provider;
 import hcmute.fit.event_management.entity.ProviderEvent;
 import hcmute.fit.event_management.entity.ProviderService;
+import hcmute.fit.event_management.entity.keys.ProviderEventId;
 import hcmute.fit.event_management.repository.EventRepository;
 import hcmute.fit.event_management.repository.ProviderEventRepository;
 import hcmute.fit.event_management.repository.ProviderRepository;
@@ -13,9 +15,7 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 @Service
 public class ProviderImpl implements IProvider {
@@ -117,24 +117,65 @@ public class ProviderImpl implements IProvider {
         return isDeleted;
     }
     @Override
-    public boolean addProviderForEvent(int proId, int eventId){
+    public boolean addProviderForEvent(int proId, int eventId) {
         boolean isSuccess = false;
-       try{
 
-           if(eventRepository.findById(eventId).isPresent() && providerRepository.findById(proId).isPresent()) {
-               ProviderEvent providerEvent = new ProviderEvent();
-               providerEvent.setEvent(eventRepository.findById(eventId).get());
-               providerEvent.setProvider(providerRepository.findById(proId).get());
-               //providerEvent.setProviderID(proId);
-               //providerEvent.setEventID(eventId);
-               providerEventRepository.save(providerEvent);
-               isSuccess = true;
-           }
-       } catch (Exception e) {
+        try {
+            Optional<Provider> providerOptional = providerRepository.findById(proId);
+            Optional<Event> eventOptional = eventRepository.findById(eventId);
 
-           System.out.println("Add provider for event failed" + e.getMessage());
-       }
-       return isSuccess;
+            if (providerOptional.isPresent() && eventOptional.isPresent()) {
+                ProviderEvent providerEvent = new ProviderEvent();
+                ProviderEventId providerEventId = new ProviderEventId(proId, eventId);
+
+                providerEvent.setId(providerEventId);
+                providerEvent.setProvider(providerOptional.get());
+                providerEvent.setEvent(eventOptional.get());
+
+                providerEventRepository.save(providerEvent);
+                isSuccess = true;
+            } else {
+                System.out.println("Provider or Event not found for the given IDs.");
+            }
+        } catch (Exception e) {
+            System.out.println("Add provider for event failed: " + e.getMessage());
+        }
+
+        return isSuccess;
+    }
+
+    @Override
+    public List<ProviderDTO> listProviderInEvent(int eventId){
+        List<ProviderDTO> providerDTOs = new ArrayList<>();
+        List<ProviderEvent> list = providerEventRepository.findByEventId(eventId);
+        for (ProviderEvent providerEvent : list) {
+            ProviderDTO providerDTO = new ProviderDTO();
+            Provider provider = providerRepository.findById(providerEvent.getProvider().getId()).get();
+            BeanUtils.copyProperties(provider, providerDTO);
+            providerDTOs.add(providerDTO);
+
+        }
+        return providerDTOs;
+    }
+    @Override
+    public List<ProviderDTO> listProviderForAdd(int eventId){
+        List<ProviderDTO> providerDTOs = new ArrayList<>();
+        Set<Integer> oldProviderId = new HashSet<>();
+
+        List<ProviderDTO> providers = getAllProviders();
+        List<ProviderDTO> oldProvider = listProviderInEvent(eventId);
+
+
+        for (ProviderDTO providerDTO : oldProvider) {
+            oldProviderId.add(providerDTO.getId());
+        }
+        for (ProviderDTO providerDTO : providers) {
+            if(!oldProviderId.contains(providerDTO.getId())) {
+                providerDTOs.add(providerDTO);
+            }
+        }
+        return providerDTOs;
+
     }
 
 }

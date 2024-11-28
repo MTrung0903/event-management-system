@@ -19,4 +19,9 @@ public interface ITaskService {
     boolean updateTask(TaskDTO taskDTO);
 
     boolean deleteTask(int taskId);
+
+
+    boolean addTeamForTask(int taskId, int teamId);
+
+    List<TaskDTO> getTasksNoTeam(int eventId);
 }

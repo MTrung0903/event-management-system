@@ -25,8 +25,8 @@ public class Team {
     @JoinColumn(name = "event_id")
     private Event event;
 
-    @OneToMany(mappedBy = "team")
-    private List<Employee> listEmployees;
+    @OneToMany(mappedBy = "team", cascade = CascadeType.ALL)
+    private List<TeamEmployee> listTeamEmployees;
 
     @OneToMany(mappedBy = "team")
     private List<Task> listTasks;

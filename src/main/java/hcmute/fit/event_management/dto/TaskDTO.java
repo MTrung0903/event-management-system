@@ -20,7 +20,8 @@ public class TaskDTO {
     private String taskDesc;
     private String taskDl;
     private String taskStatus;
-    private int eventId;
-    private int teamId;
+    private Integer eventId;
+    private Integer teamId;
+    private String teamName;
     private List<SubTaskDTO> listSubTasks;
 }

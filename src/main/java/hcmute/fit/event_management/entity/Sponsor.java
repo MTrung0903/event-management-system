@@ -18,6 +18,8 @@ public class Sponsor {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "sponsor_id")
     private int id;
+    @Column(name = "sponsor_logo")
+    private String sponsorLogo;
     @Column(name = "sponsor_name")
     private String name;
     @Column(name = "contact_person")

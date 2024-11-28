@@ -25,6 +25,8 @@ public class Task {
     private String taskDesc;
     @Column(name = "task_deadline")
     private Date taskDl;
+    @Column(name ="create_date")
+    private Date createDate;
     @Column(name = "task_status")
     private String taskStatus;
 

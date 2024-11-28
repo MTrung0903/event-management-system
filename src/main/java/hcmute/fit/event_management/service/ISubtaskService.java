@@ -19,4 +19,6 @@ public interface ISubtaskService {
     boolean updateSubtask(int taskId, SubTaskDTO subtaskDTO);
 
     boolean deleteSubtask(int subtaskId);
+
+    boolean actionSubtask(int employeeId, int subtaskId, String action);
 }

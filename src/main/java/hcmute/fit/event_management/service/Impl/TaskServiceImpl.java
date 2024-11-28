@@ -38,18 +38,13 @@ public class TaskServiceImpl implements ITaskService {
         List<TaskDTO> taskDTOs = new ArrayList<>();
         for (Task task : tasks) {
             TaskDTO taskDTO = new TaskDTO();
-
             BeanUtils.copyProperties(task, taskDTO);
             taskDTO.setEventId(eventId);
-            List<SubTaskDTO> subTaskDTOS = new ArrayList<>();
-            List<SubTask>  subTasks = task.getListSubTasks();
-            for(SubTask subTask : subTasks){
-                SubTaskDTO subTaskDTO = new SubTaskDTO();
-                BeanUtils.copyProperties(subTask, subTaskDTO);
-                subTaskDTO.setEmployeeId(subTask.getEmployee().getId());
-                subTaskDTOS.add(subTaskDTO);
+            taskDTO.setTaskDl(task.getTaskDl().toString());
+            if(task.getTeam() != null) {
+                taskDTO.setTeamId(task.getTeam().getTeamId());
+                taskDTO.setTeamName(task.getTeam().getTeamName());
             }
-            taskDTO.setListSubTasks(subTaskDTOS);
             taskDTOs.add(taskDTO);
         }
         return taskDTOs;
@@ -78,16 +73,23 @@ public class TaskServiceImpl implements ITaskService {
     public boolean addTask(TaskDTO taskDTO) {
         boolean isSuccess = false;
         try{
-            if(eventRepository.findById(taskDTO.getEventId()).isPresent() && teamRepository.findById(taskDTO.getTeamId()).isPresent()){
+            if(eventRepository.findById(taskDTO.getEventId()).isPresent() ){
                 Task task = new Task();
                 task.setTaskName(taskDTO.getTaskName());
                 task.setTaskDesc(taskDTO.getTaskDesc());
                 SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+                String nowAsString = formatter.format(new Date());
+                Date taskStartDate = formatter.parse(nowAsString);
+                task.setCreateDate(taskStartDate);
                 Date date = formatter.parse(taskDTO.getTaskDl().trim());
                 task.setTaskDl(date);
                 task.setTaskStatus(taskDTO.getTaskStatus());
-                task.setTeam(teamRepository.findById(taskDTO.getTeamId()).get());
                 task.setEvent(eventRepository.findById(taskDTO.getEventId()).get());
+                if (taskDTO.getTeamId() != null && taskDTO.getTeamId() >=0) {
+                    task.setTeam(teamRepository.findById(taskDTO.getTeamId()).orElse(null));
+                } else {
+                    task.setTeam(null);
+                }
                 taskRepository.save(task);
                 isSuccess = true;
             }
@@ -101,7 +103,7 @@ public class TaskServiceImpl implements ITaskService {
         boolean isSuccess = false;
         try{
             if(taskRepository.findById(taskDTO.getTaskId()).isPresent()){
-                if(eventRepository.findById(taskDTO.getEventId()).isPresent() && teamRepository.findById(taskDTO.getEventId()).isPresent()){
+                if(eventRepository.findById(taskDTO.getEventId()).isPresent()){
                     Task task = taskRepository.findById(taskDTO.getTaskId()).get();
                     task.setTaskName(taskDTO.getTaskName());
                     task.setTaskDesc(taskDTO.getTaskDesc());
@@ -109,7 +111,11 @@ public class TaskServiceImpl implements ITaskService {
                     Date date = formatter.parse(taskDTO.getTaskDl().trim());
                     task.setTaskDl(date);
                     task.setTaskStatus(taskDTO.getTaskStatus());
-                    task.setTeam(teamRepository.findById(taskDTO.getTeamId()).get());
+                    if (taskDTO.getTeamId() != null && taskDTO.getTeamId() >=0) {
+                        task.setTeam(teamRepository.findById(taskDTO.getTeamId()).orElse(null));
+                    } else {
+                        task.setTeam(null);
+                    }
                     task.setEvent(eventRepository.findById(taskDTO.getEventId()).get());
                     taskRepository.save(task);
                     isSuccess = true;
@@ -134,4 +140,38 @@ public class TaskServiceImpl implements ITaskService {
         }
         return isSuccess;
     }
+
+    @Override
+    public boolean addTeamForTask(int taskId, int teamId) {
+        boolean isSuccess = false;
+        try {
+            if(teamRepository.findById(teamId).isPresent() ) {
+                Task task = taskRepository.findById(taskId).get();
+                task.setTeam(teamRepository.findById(teamId).get());
+                taskRepository.save(task);
+                isSuccess = true;
+            }
+        } catch (Exception e) {
+            System.out.println("Add team for task failed"+ e.getMessage());
+        }
+        return isSuccess;
+    }
+    @Override
+    public List<TaskDTO> getTasksNoTeam(int eventId){
+        List<Task> tasks = taskRepository.findByEventId(eventId);
+        List<TaskDTO> taskDTOS = new ArrayList<>();
+        for(Task task : tasks){
+            if(task.getTeam() == null){
+                TaskDTO taskDTO = new TaskDTO();
+                BeanUtils.copyProperties(task, taskDTO);
+                taskDTOS.add(taskDTO);
+            }
+        }
+        return taskDTOS;
+    }
+
+
+
+
+
 }

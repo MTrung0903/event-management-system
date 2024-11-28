@@ -54,6 +54,7 @@ public class SpeakerServiceImpl implements ISpeakerService {
         if (speaker.isPresent()) {
             BeanUtils.copyProperties(speaker.get(), speakerDTO);
             speakerDTO.setImage(speaker.get().getImage());
+            speakerDTO.setImage(speaker.get().getImage());
             return speakerDTO;
         }
         return null;

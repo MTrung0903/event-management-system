@@ -23,13 +23,7 @@ public class TaskController {
     @Autowired
     private ISubtaskService subtaskService;
 
-    @GetMapping("")
-    public ResponseEntity<?> getTaskOfEvent(@RequestParam int eventId){
-        List<TaskDTO> listTask = taskService.getTasksOfEvent(eventId);
-        Response response = new Response();
-        response.setData(listTask);
-        return new ResponseEntity<>(response, HttpStatus.OK);
-    }
+
     @GetMapping("/{taskId}")
     public ResponseEntity<?> getTaskById(@PathVariable int taskId){
         TaskDTO task = taskService.findTaskById(taskId);
@@ -56,6 +50,17 @@ public class TaskController {
         response.setData(listSubtask);
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
-
+    @DeleteMapping("/{taskId}")
+    public ResponseEntity<?> deleteTask(@PathVariable int taskId){
+        Response response = new Response();
+        response.setData(taskService.deleteTask(taskId));
+        return new ResponseEntity<>(response, HttpStatus.OK);
+    }
+    @PutMapping("/{taskId}/assigned/{teamId}")
+    public ResponseEntity<?> assignTaskToTeam(@PathVariable int taskId, @PathVariable int teamId){
+        Response response = new Response();
+        response.setData(taskService.addTeamForTask(taskId, teamId));
+        return new ResponseEntity<>(response, HttpStatus.OK);
+    }
 
 }

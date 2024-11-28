@@ -4,6 +4,7 @@ import hcmute.fit.event_management.dto.EventDTO;
 import hcmute.fit.event_management.dto.McDTO;
 import hcmute.fit.event_management.entity.Event;
 import hcmute.fit.event_management.entity.Mc;
+import hcmute.fit.event_management.repository.EventRepository;
 import hcmute.fit.event_management.repository.McRepository;
 import hcmute.fit.event_management.service.IFileService;
 import hcmute.fit.event_management.service.IMcService;
@@ -21,6 +22,8 @@ import java.util.Optional;
 public class McServiceImpl implements IMcService {
     @Autowired
     private McRepository mcRepository;
+
+
 
     @Autowired
     private IFileService fileService;
@@ -55,9 +58,10 @@ public class McServiceImpl implements IMcService {
         if(isUoloadImg){
             try{
                 Mc mc = new Mc();
+
+
+                BeanUtils.copyProperties(mcDto,mc);
                 mc.setImage(image.getOriginalFilename());
-                mc.setMcName(mcDto.getMcName());
-                mc.setEmail(mcDto.getEmail());
                 mcRepository.save(mc);
                 isSucess = true;
             } catch (Exception e) {
@@ -76,9 +80,8 @@ public class McServiceImpl implements IMcService {
                 Optional<Mc> mc = mcRepository.findById(mcDto.getMcID());
                 if(mc.isPresent()){
                     Mc newMc = mc.get();
+                    BeanUtils.copyProperties(mcDto,newMc);
                     newMc.setImage(image.getOriginalFilename());
-                    newMc.setMcName(mcDto.getMcName());
-                    newMc.setEmail(mcDto.getEmail());
                     mcRepository.save(newMc);
                     isSucess = true;
                 }
@@ -126,4 +129,5 @@ public class McServiceImpl implements IMcService {
         }
        return mcDTO;
     }
+
 }
