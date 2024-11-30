@@ -1,6 +1,8 @@
 package hcmute.fit.event_management.controller.guest;
 
 import hcmute.fit.event_management.dto.AccountDTO;
+
+
 import hcmute.fit.event_management.dto.ResetPasswordDTO;
 import hcmute.fit.event_management.service.Impl.AccountServiceImpl;
 import hcmute.fit.event_management.service.Impl.AuthServiceImpl;
@@ -21,11 +23,14 @@ public class LoginController {
 
     @PostMapping("/login")
     public ResponseEntity<?> login(@RequestBody AccountDTO account) {
+
         return authServiceImpl.signIn(account);
     }
-    @GetMapping("/forgot")
-    public ResponseEntity<?> forgot(@RequestParam String email) {
-        return authServiceImpl.sendResetPassword(email);
+
+    @PostMapping("/forgot")
+    public ResponseEntity<?> forgot(@RequestBody ResetPasswordDTO email) {
+        System.out.println("======================"+email+"====================");
+        return authServiceImpl.sendResetPassword(email.getEmail());
     }
     @PostMapping("/reset-password")
     public ResponseEntity<?> resetPassword(@RequestBody ResetPasswordDTO resetPasswordDTO) {

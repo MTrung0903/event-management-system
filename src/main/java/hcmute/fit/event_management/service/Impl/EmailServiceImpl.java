@@ -20,7 +20,7 @@ public class EmailServiceImpl implements EmailService {
     @Override
     public void sendResetEmail(String to, String resetToken) {
         String subject = "Password Reset Request";
-        String resetUrl =  "http://localhost:8080/reset-password?token=" + resetToken;
+        String resetUrl =  "http://localhost:3000/reset-password?token=" + resetToken;
         String content =  "<p>Click the link below to reset it:</p>"
                 + "<p><a href=\"" + resetUrl + "\">Reset my password</a></p>";
         sendHtmlEmail(to, subject, content);

@@ -61,27 +61,37 @@ public class AuthServiceImpl implements AuthService {
             return new ResponseEntity<>(response, HttpStatus.UNAUTHORIZED);
         }
     }
+    @Transactional
     @Override
     public ResponseEntity<Response> sendResetPassword(String email) {
-        Response response;
-        Optional<Account> account = accountRepository.findByEmail(email);
-        if (account.isEmpty()) {
-            logger.warn("Account not found with password reset request");
-            response = new Response(404, "Not Found", "Account with this email does not exist");
-            return new ResponseEntity<>(response, HttpStatus.NOT_FOUND);
+        // Tìm tài khoản theo email
+        Optional<Account> accountOpt = accountRepository.findByEmail(email);
+        if (accountOpt.isEmpty()) {
+            logger.warn("Account not found with password reset request for email: {}", email);
+            return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                    .body(new Response(404, "Not Found", "Account with this email does not exist"));
         }
-        else {
-            String token = jwtTokenUtil.generateResetToken(email);
-            PasswordResetToken resetToken = new PasswordResetToken();
-            resetToken.setAccount(account.get());
-            resetToken.setToken(token);
-            passwordResetTokenRepository.save(resetToken);
-            emailService.sendResetEmail(email, token);
-            response = new Response(200, "Success", "Password reset link has been sent to your email");
-            logger.info("Password reset request email sent successfully");
-            return new ResponseEntity<>(response, HttpStatus.OK);
-        }
+
+        Account account = accountOpt.get(); // Tài khoản tồn tại
+        String newToken = jwtTokenUtil.generateResetToken(email);
+
+        // Kiểm tra và cập nhật/đặt mới token
+        PasswordResetToken resetToken = passwordResetTokenRepository
+                .findByAccountID(account.getAccountID())
+                .orElse(new PasswordResetToken());
+
+        resetToken.setAccount(account);
+        resetToken.setToken(newToken);
+        passwordResetTokenRepository.save(resetToken);
+
+        // Gửi email
+        emailService.sendResetEmail(email, newToken);
+        logger.info("Password reset request email sent successfully for email: {}", email);
+
+        // Trả về phản hồi
+        return ResponseEntity.ok(new Response(200, "Success", "Password reset link has been sent to your email"));
     }
+
     @Transactional
     @Override
     public ResponseEntity<Response> resetPassword(ResetPasswordDTO resetPasswordDTO) {
