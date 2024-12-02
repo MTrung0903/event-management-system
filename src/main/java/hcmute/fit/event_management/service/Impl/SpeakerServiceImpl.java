@@ -1,8 +1,8 @@
 package hcmute.fit.event_management.service.Impl;
 
-import hcmute.fit.event_management.dto.DetailSectionDTO;
+
 import hcmute.fit.event_management.dto.SpeakerDTO;
-import hcmute.fit.event_management.entity.DetailSection;
+
 import hcmute.fit.event_management.entity.Speaker;
 import hcmute.fit.event_management.repository.SpeakerRepository;
 import hcmute.fit.event_management.service.IFileService;
@@ -37,12 +37,6 @@ public class SpeakerServiceImpl implements ISpeakerService {
             SpeakerDTO speakerDTO = new SpeakerDTO();
             speakerDTO.setImage(speaker.getImage());
             BeanUtils.copyProperties(speaker, speakerDTO);
-            List<DetailSectionDTO> detailSectionDTOs = new ArrayList<>();
-            for (DetailSection dt : speaker.getListDetailSections()){
-                DetailSectionDTO dto = new DetailSectionDTO();
-                BeanUtils.copyProperties(dt, dto);
-            }
-            speakerDTO.setListDetailSections(detailSectionDTOs);
             speakerDTOs.add(speakerDTO);
         }
         return speakerDTOs;

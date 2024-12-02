@@ -22,8 +22,7 @@ public class EventController {
     @Autowired
     private IInviteService inviteService;
 
-    @Autowired
-    private IDetailSectionService detailSectionService;
+
 
     @Autowired
     private IAttendeeService attendeeService;
@@ -138,13 +137,7 @@ public class EventController {
         response.setData(listAttendee);
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
-    @GetMapping("/{eventId}/detail-section")
-    public ResponseEntity<?> getDetailSectionOfEvent(@PathVariable int eventId){
-        List<DetailSectionDTO> list = detailSectionService.getListDetailSectionsByEventId(eventId);
-        Response response = new Response();
-        response.setData(list);
-        return new ResponseEntity<>(response, HttpStatus.OK);
-    }
+
     @GetMapping("/{eventId}/list-invite")
     public ResponseEntity<?> getListInviteByEventId(@PathVariable int eventId) {
         List<InviteDTO> listInvites= inviteService.getListInvitesByEventId(eventId);

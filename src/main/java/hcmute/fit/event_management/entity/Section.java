@@ -5,9 +5,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.Date;
-import java.util.List;
-import java.util.Set;
+import java.sql.Time;
+
 
 @Entity
 @Data
@@ -20,14 +19,21 @@ public class Section {
     @Column(name = "section_id")
     private int id;
     @Column(name = "start_time")
-    private Date startTime;
+    private Time startTime;
     @Column(name = "end_time")
-    private Date endTime;
+    private Time endTime;
+
+    @Column(name ="section_title")
+    private String sectionTitle;
+
+    @Column(name ="section_description")
+    private String sectionDescription;
+
+    @ManyToOne
+    @JoinColumn(name = "speaker_id")
+    private Speaker speaker;
 
     @ManyToOne
     @JoinColumn(name = "event_id")
     private Event event;
-
-    @OneToMany(mappedBy = "section", cascade = CascadeType.ALL)
-    private List<DetailSection> listDetailSections;
 }

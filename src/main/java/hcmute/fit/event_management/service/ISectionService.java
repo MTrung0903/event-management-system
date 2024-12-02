@@ -9,13 +9,14 @@ import java.text.ParseException;
 import java.util.List;
 import java.util.Optional;
 
+
 public interface ISectionService {
 
     List<SectionDTO> getSectionOfEvent(int eventId);
 
     SectionDTO getSectionById(int sectionId);
 
-    boolean addSection(SectionDTO sectionDTO) ;
+    SectionDTO addSection(SectionDTO sectionDTO) ;
 
     boolean updateSection(SectionDTO sectionDTO) ;
 

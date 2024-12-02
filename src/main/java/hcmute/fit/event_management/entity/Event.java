@@ -39,8 +39,7 @@ public class Event {
     @JoinColumn(name = "mc_id")
     private Mc mc;
 
-    @OneToMany(mappedBy = "event", cascade = CascadeType.ALL)
-    private List<DetailSection> listDetailSections;
+
     @OneToMany(mappedBy = "event", cascade = CascadeType.ALL)
     private List<Invite> listInvites;
     @OneToMany(mappedBy = "event", cascade = CascadeType.ALL)

@@ -1,6 +1,6 @@
 package hcmute.fit.event_management.dto;
 
-import hcmute.fit.event_management.entity.DetailSection;
+
 import hcmute.fit.event_management.entity.Event;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -14,10 +14,12 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 public class SectionDTO {
-    private int id;
+    private int sectionId;
     private String startTime;
     private String endTime;
+    private String sectionTitle;
+    private String sectionDescription;
     private int eventId;
+    private int speakerId;
 
-    private List<DetailSectionDTO> listDetailSections;
 }

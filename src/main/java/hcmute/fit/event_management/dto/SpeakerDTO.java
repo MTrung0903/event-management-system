@@ -1,6 +1,6 @@
 package hcmute.fit.event_management.dto;
 
-import hcmute.fit.event_management.entity.DetailSection;
+
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -20,5 +20,5 @@ public class SpeakerDTO {
     private String address;
     private String description;
     private String image;
-    private List<DetailSectionDTO> listDetailSections;
+
 }

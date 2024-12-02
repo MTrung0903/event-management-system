@@ -33,6 +33,5 @@ public class Speaker {
     @Column(name = "speaker_desc")
     private String description;
 
-    @OneToMany(mappedBy = "speaker")
-    private List<DetailSection> listDetailSections;
+
 }
