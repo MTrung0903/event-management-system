@@ -1,10 +1,8 @@
 package hcmute.fit.event_management.service.Impl;
 
 import hcmute.fit.event_management.dto.EventDTO;
-import hcmute.fit.event_management.dto.McDTO;
 import hcmute.fit.event_management.entity.Event;
 import hcmute.fit.event_management.entity.Manager;
-import hcmute.fit.event_management.entity.Mc;
 import hcmute.fit.event_management.repository.EventRepository;
 import hcmute.fit.event_management.repository.ManagerRepository;
 import hcmute.fit.event_management.repository.McRepository;
@@ -18,7 +16,6 @@ import org.springframework.web.multipart.MultipartFile;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -159,6 +156,18 @@ public class EventServiceImpl implements IEventService {
         }
         return isSuccess;
     }
-
-
+    @Override
+    public List<EventDTO> getAllEventByEmp(int empId){
+        List<Event> events = eventRepository.findByEmpId(empId);
+        List<EventDTO> eventDTOs = new ArrayList<>();
+        for (Event event : events) {
+            EventDTO eventDTO = new EventDTO();
+            BeanUtils.copyProperties(event, eventDTO);
+            eventDTO.setEventId(event.getEventID());
+            eventDTO.setManId(event.getManager().getManID());
+            eventDTO.setMcId(event.getMc().getMcID());
+            eventDTOs.add(eventDTO);
+        }
+        return eventDTOs;
+    }
 }

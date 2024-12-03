@@ -22,4 +22,6 @@ public interface IEventService {
     boolean updateEvent(MultipartFile image, EventDTO eventDTO);
 
     boolean addMc(int eventId, int mcId);
+
+    List<EventDTO> getAllEventByEmp(int empId);
 }

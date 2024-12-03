@@ -19,7 +19,9 @@ public class SectionDTO {
     private String endTime;
     private String sectionTitle;
     private String sectionDescription;
+    private String handOut;
     private int eventId;
     private int speakerId;
+    private String speakerName;
 
 }

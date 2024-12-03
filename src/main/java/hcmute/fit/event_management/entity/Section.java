@@ -29,6 +29,9 @@ public class Section {
     @Column(name ="section_description")
     private String sectionDescription;
 
+    @Column(name ="section_handout")
+    private String handOut;
+
     @ManyToOne
     @JoinColumn(name = "speaker_id")
     private Speaker speaker;

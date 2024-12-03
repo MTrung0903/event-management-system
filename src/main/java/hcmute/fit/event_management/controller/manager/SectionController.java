@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 import payload.Response;
 
 import java.util.List;
@@ -28,16 +29,16 @@ public class SectionController {
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
     @PostMapping("")
-    public ResponseEntity<?> addSection(@RequestBody SectionDTO sectionDTO) {
+    public ResponseEntity<?> addSection(@RequestParam("file") MultipartFile handout, @ModelAttribute SectionDTO sectionDTO) {
         Response response = new Response();
-        response.setData(sectionService.addSection(sectionDTO));
+        response.setData(sectionService.addSection(handout,sectionDTO));
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
     @PutMapping("")
-    public ResponseEntity<?> updateSection(@RequestBody SectionDTO sectionDTO){
+    public ResponseEntity<?> updateSection(@RequestParam("file") MultipartFile handout, @ModelAttribute SectionDTO sectionDTO){
         Response response = new Response();
-        response.setData(sectionService.updateSection(sectionDTO));
+        response.setData(sectionService.updateSection(handout, sectionDTO));
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 

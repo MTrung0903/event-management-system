@@ -179,6 +179,6 @@ public class EventController {
         response.setData(teamService.getListTeamToAssignedTask(taskId, eventId));
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
-
+    
 
 }
