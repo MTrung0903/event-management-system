@@ -30,4 +30,6 @@ public interface ISponsorService {
     List<SponsorDTO> getAllSponsorByEventId(int eventId);
 
     List<SponsorDTO> getSponsorForAddNew(int eventId);
+
+    boolean deleteSponsorEvent(int eventId, int sponsorId);
 }

@@ -21,9 +21,8 @@ public class SubtaskController {
 
     @GetMapping("/{subtaskId}")
     public ResponseEntity<?> findSubtaskById(@PathVariable int subtaskId){
-        SubTaskDTO subtask = subtaskService.getSubtaskById(subtaskId);
         Response response = new Response();
-        response.setData(subtask);
+        response.setData(subtaskService.getSubtaskById(subtaskId));
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
     @PostMapping("/{taskId}")
@@ -33,11 +32,10 @@ public class SubtaskController {
         response.setData(subtaskService.addSubtask(taskId,subtaskDTO));
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
-    @PutMapping("/{taskId}")
-    public ResponseEntity<?> updateSubtask(@PathVariable int taskId,
-                                           @RequestBody SubTaskDTO subtaskDTO){
+    @PutMapping("")
+    public ResponseEntity<?> updateSubtask( @RequestBody SubTaskDTO subtaskDTO){
         Response response = new Response();
-        response.setData(subtaskService.updateSubtask(taskId,subtaskDTO));
+        response.setData(subtaskService.updateSubtask(subtaskDTO.getTaskId(),subtaskDTO));
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
     @DeleteMapping("/{subtaskId}")
@@ -46,4 +44,20 @@ public class SubtaskController {
         response.setData(subtaskService.deleteSubtask(subtaskId));
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
+
+    @PutMapping("/{subtaskId}/assigned/{employeeId}")
+    public  ResponseEntity<?> assignedEmployee(@PathVariable int subtaskId, @PathVariable int employeeId){
+        Response response = new Response();
+        response.setData(subtaskService.assignedSubtask(employeeId,subtaskId));
+        return new ResponseEntity<>(response, HttpStatus.OK);
+    }
+
+    @PutMapping("/{subtaskId}/change/{employeeId}")
+    public ResponseEntity<?> changeEmployee(@PathVariable int subtaskId, @PathVariable int employeeId){
+        Response response = new Response();
+        response.setData(subtaskService.changeEmployeeAssigned(subtaskId,employeeId));
+        return new ResponseEntity<>(response, HttpStatus.OK);
+    }
+
+
 }

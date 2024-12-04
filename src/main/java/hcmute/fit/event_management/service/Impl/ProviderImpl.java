@@ -177,5 +177,19 @@ public class ProviderImpl implements IProvider {
         return providerDTOs;
 
     }
-
+    @Override
+    public boolean delProviderEvent(int eventId, int providerId) {
+        boolean isSuccess = false;
+        try{
+            if(!providerEventRepository.findByProviderId(providerId).isEmpty() &&
+                    !providerEventRepository.findByEventId(eventId).isEmpty()) {
+                ProviderEvent providerEvent = providerEventRepository.providerEvent(providerId,eventId);
+                providerEventRepository.delete(providerEvent);
+                isSuccess = true;
+            }
+        }catch (Exception e){
+            System.out.println("Del provider event failed: " + e.getMessage());
+        }
+        return isSuccess;
+    }
 }

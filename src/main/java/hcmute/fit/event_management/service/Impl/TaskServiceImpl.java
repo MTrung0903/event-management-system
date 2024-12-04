@@ -5,6 +5,7 @@ import hcmute.fit.event_management.dto.TaskDTO;
 import hcmute.fit.event_management.entity.SubTask;
 import hcmute.fit.event_management.entity.Task;
 import hcmute.fit.event_management.repository.EventRepository;
+import hcmute.fit.event_management.repository.SubtaskRepository;
 import hcmute.fit.event_management.repository.TaskRepository;
 import hcmute.fit.event_management.repository.TeamRepository;
 import hcmute.fit.event_management.service.ITaskService;
@@ -13,10 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 @Service
 public class TaskServiceImpl implements ITaskService {
@@ -27,6 +25,9 @@ public class TaskServiceImpl implements ITaskService {
     private TeamRepository teamRepository;
     @Autowired
     private EventRepository eventRepository;
+
+    @Autowired
+    private SubtaskRepository subtaskRepository;
 
     public TaskServiceImpl(TaskRepository taskRepository) {
         this.taskRepository = taskRepository;
@@ -45,6 +46,20 @@ public class TaskServiceImpl implements ITaskService {
                 taskDTO.setTeamId(task.getTeam().getTeamId());
                 taskDTO.setTeamName(task.getTeam().getTeamName());
             }
+            List<SubTask> subTasks = task.getListSubTasks();
+            List<SubTaskDTO> subTaskDTOs = new ArrayList<>();
+            for (SubTask subTask : subTasks) {
+                SubTaskDTO subTaskDTO = new SubTaskDTO();
+                BeanUtils.copyProperties(subTask, subTaskDTO);
+                subTaskDTO.setTaskId(subTask.getTask().getTaskId());
+                subTaskDTO.setEmployeeId(subTask.getEmployee().getId());
+                subTaskDTO.setSubTaskDeadline(subTask.getSubTaskDeadline().toString());
+                subTaskDTO.setSubTaskStart(subTask.getCreateDate().toString());
+                subTaskDTOs.add(subTaskDTO);
+                taskDTO.setListSubTasks(subTaskDTOs);
+            }
+
+
             taskDTOs.add(taskDTO);
         }
         return taskDTOs;
@@ -128,18 +143,38 @@ public class TaskServiceImpl implements ITaskService {
         return isSuccess;
     }
     @Override
-    public boolean deleteTask(int taskId) {
-        boolean isSuccess = false;
+    public Map<String, Object> deleteTask(int taskId) {
+        Map<String, Object> response = new HashMap<>();
         try {
-            if(taskRepository.findById(taskId).isPresent()){
-                taskRepository.deleteById(taskId);
-                isSuccess = true;
+            Optional<Task> task = taskRepository.findById(taskId);
+
+            if (task.isPresent()) {
+                if (task.get().getTaskStatus().equalsIgnoreCase("done")) {
+                    response.put("statusCode", 1);
+                    response.put("message", "Không thể xóa task đã hoàn thành");
+                } else {
+                    if (task.get().getListSubTasks() != null && !task.get().getListSubTasks().isEmpty()) {
+                        List<SubTask> subTasks = task.get().getListSubTasks();
+                        for (SubTask subTask : subTasks) {
+                            subtaskRepository.deleteById(subTask.getSubTaskId());
+                        }
+                    }
+                    taskRepository.deleteById(taskId);
+                    response.put("statusCode", 0);
+                    response.put("message", "Xóa task thành công");
+                }
+            } else {
+                response.put("statusCode", 1);
+                response.put("message", "Task không tồn tại");
             }
         } catch (Exception e) {
             System.out.println(e.getMessage());
+            response.put("statusCode", -1);
+            response.put("message", "Đã xảy ra lỗi khi xóa task");
         }
-        return isSuccess;
+        return response;
     }
+
 
     @Override
     public boolean addTeamForTask(int taskId, int teamId) {

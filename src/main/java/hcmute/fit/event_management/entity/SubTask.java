@@ -22,6 +22,8 @@ public class SubTask {
     private String subTaskName;
     @Column(name = "subtask_desc")
     private String subTaskDesc;
+    @Column(name ="create_date")
+    private Date createDate;
     @Column(name = "subtask_deadline")
     private Date subTaskDeadline;
     @Column(name = "subtask_status")

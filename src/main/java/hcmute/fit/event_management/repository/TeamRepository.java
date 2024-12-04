@@ -13,6 +13,11 @@ public interface TeamRepository extends JpaRepository<Team, Integer> {
     @Query("select t from Team t where t.event.eventID =:eventId")
     List<Team> findByEventId(@Param("eventId") int eventId);
 
+    @Query("SELECT t FROM Team t " +
+            "LEFT JOIN FETCH t.listTeamEmployees e " +
+            "LEFT JOIN FETCH e.employee " +
+            "WHERE t.event.eventID = :eventId")
+    List<Team> findByEventIdWithEmployees(@Param("eventId") int eventId);
 
 
 }

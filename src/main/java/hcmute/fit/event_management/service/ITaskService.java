@@ -6,6 +6,7 @@ import org.springframework.data.domain.Example;
 import org.springframework.data.domain.Sort;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 public interface ITaskService {
@@ -18,7 +19,7 @@ public interface ITaskService {
 
     boolean updateTask(TaskDTO taskDTO);
 
-    boolean deleteTask(int taskId);
+    Map<String, Object> deleteTask(int taskId);
 
 
     boolean addTeamForTask(int taskId, int teamId);
