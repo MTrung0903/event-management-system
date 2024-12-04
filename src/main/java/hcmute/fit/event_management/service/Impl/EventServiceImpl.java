@@ -77,11 +77,13 @@ public class EventServiceImpl implements IEventService {
                 if(managerRepository.existsById(eventDTO.getManId())) {
                     Event event = new Event();
                     SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-                    if (eventDTO.getEventDate() != null) {
+                    if (eventDTO.getEventStart() != null && eventDTO.getEventEnd() != null) {
                         try {
-                            event.setEventDate(formatter.parse(eventDTO.getEventDate().trim()));
+                            event.setEventStart(formatter.parse(eventDTO.getEventStart().trim()));
+                            event.setEventEnd(formatter.parse(eventDTO.getEventEnd().trim()));
                         } catch (ParseException e) {
-                            System.out.println("Invalid date format: " + eventDTO.getEventDate());
+                            System.out.println("Invalid date format: " + eventDTO.getEventStart());
+                            System.out.println("Invalid date format: " + eventDTO.getEventEnd());
                             return isSuccess;
                         }
                     }
@@ -113,11 +115,13 @@ public class EventServiceImpl implements IEventService {
                     Event event = eventOpt.get();
                     BeanUtils.copyProperties(eventDTO, event);
                     SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-                    if (eventDTO.getEventDate() != null) {
+                    if (eventDTO.getEventStart() != null && eventDTO.getEventEnd() != null) {
                         try {
-                            event.setEventDate(formatter.parse(eventDTO.getEventDate().trim()));
+                            event.setEventStart(formatter.parse(eventDTO.getEventStart().trim()));
+                            event.setEventEnd(formatter.parse(eventDTO.getEventEnd().trim()));
                         } catch (ParseException e) {
-                            System.out.println("Invalid date format: " + eventDTO.getEventDate());
+                            System.out.println("Invalid date format: " + eventDTO.getEventStart());
+                            System.out.println("Invalid date format: " + eventDTO.getEventEnd());
                             return isSuccess;
                         }
                     }

@@ -184,9 +184,6 @@ public class EventController {
         response.setData(teamService.getListTeamToAssignedTask(taskId, eventId));
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
-<<<<<<< HEAD
-    
-=======
 
     @GetMapping("/{eventId}/subtasks")
     public ResponseEntity<?> getSubtasks(@PathVariable int eventId) {
@@ -194,7 +191,7 @@ public class EventController {
         response.setData(subtaskService.listSubtaskFromEvent(eventId));
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
->>>>>>> manager-dev
+
 
     @DeleteMapping("/{eventId}/del-provider/{providerId}")
     public ResponseEntity<?> delProviderEvent(@PathVariable int eventId, @PathVariable int providerId){

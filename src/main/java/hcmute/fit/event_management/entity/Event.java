@@ -21,17 +21,24 @@ public class Event {
     private int eventID;
     @Column(name = "event_name")
     private String eventName;
+    @Column(name = "event_type")
+    private String eventType;
+    @Column(name = "event_location")
+    private String eventLocation;
+    @Column(name = "event_host")
+    private String eventHost;
     @Column(name = "event_desc")
     private String eventDescription;
     @Column(name = "event_image")
     private String eventImg;
-    @Column(name = "event_date")
-    private Date eventDate;
-    @Column(name = "eventlocation")
-    private String eventLocation;
+    @Column(name = "event_start")
+    private Date eventStart;
+    @Column(name = "event_end")
+    private Date eventEnd;
     @Column(name = "event_detail")
     private String eventDetail;
-
+    @Column(name = "event_status")
+    private String eventStatus;
     @ManyToOne
     @JoinColumn(name = "man_id")
     private Manager manager;

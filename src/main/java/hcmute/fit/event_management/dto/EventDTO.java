@@ -12,9 +12,13 @@ import java.util.List;
 public class EventDTO {
     private int eventId;
     private String eventName;
+    private String eventType;
+    private String eventHost;
+    private String eventStatus;
     private String eventDescription;
     private String eventImg;
-    private String eventDate;
+    private String eventStart;
+    private String eventEnd;
     private String eventLocation;
     private String eventDetail;
     private Integer manId;

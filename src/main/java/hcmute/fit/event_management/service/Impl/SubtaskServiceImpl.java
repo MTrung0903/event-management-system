@@ -162,8 +162,7 @@ public class SubtaskServiceImpl implements ISubtaskService {
         }
         return result;
     }
-<<<<<<< HEAD
-=======
+
     @Override
     public boolean assignedSubtask(int employeeId, int subtaskId) {
         boolean result = false;
@@ -221,5 +220,4 @@ public class SubtaskServiceImpl implements ISubtaskService {
         return result;
     }
 
->>>>>>> manager-dev
 }
