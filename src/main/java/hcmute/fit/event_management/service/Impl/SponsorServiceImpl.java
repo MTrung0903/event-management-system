@@ -248,4 +248,19 @@ public class SponsorServiceImpl implements ISponsorService {
         return new ArrayList<>();
     }
 
+    @Override
+    public boolean deleteSponsorEvent(int eventId, int sponsorId){
+        boolean isSuccess = false;
+        try{
+            SponsorEvent sponsorEvent = sponsorEventRepository.findSponsorEvent(eventId,sponsorId);
+            if(sponsorEvent != null){
+                sponsorEventRepository.delete(sponsorEvent);
+                isSuccess = true;
+            }
+        }catch(Exception e){
+            System.out.println("delete sponsor failed"+ e.getMessage());
+        }
+        return isSuccess;
+    }
+
 }

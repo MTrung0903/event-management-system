@@ -2,6 +2,7 @@ package hcmute.fit.event_management.service.Impl;
 
 import hcmute.fit.event_management.dto.SubTaskDTO;
 import hcmute.fit.event_management.entity.SubTask;
+import hcmute.fit.event_management.entity.Task;
 import hcmute.fit.event_management.repository.EmployeeRepository;
 import hcmute.fit.event_management.repository.SubtaskRepository;
 import hcmute.fit.event_management.repository.TaskRepository;
@@ -11,10 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 @Service
 public class SubtaskServiceImpl implements ISubtaskService {
@@ -38,7 +36,32 @@ public class SubtaskServiceImpl implements ISubtaskService {
             SubTaskDTO subtaskDTO = new SubTaskDTO();
             BeanUtils.copyProperties(subtask, subtaskDTO);
             subtaskDTO.setEmployeeId(subtask.getEmployee().getId());
+            subtaskDTO.setSubTaskDeadline(subtask.getSubTaskDeadline().toString());
+            subtaskDTO.setSubTaskStart(subtask.getCreateDate().toString());
             subtaskDTOs.add(subtaskDTO);
+        }
+        return subtaskDTOs;
+    }
+    @Override
+    public List<SubTaskDTO> listSubtaskFromEvent(int eventId){
+        List<Task> taskOfEvent = taskRepository.findByEventId(eventId);
+        Set<Integer> taskIds = new HashSet<>();
+        for (Task task : taskOfEvent) {
+            taskIds.add(task.getTaskId());
+        }
+        List<SubTask> subtasks = subtaskRepository.findAll();
+        List<SubTaskDTO> subtaskDTOs = new ArrayList<>();
+        for (SubTask subtask : subtasks) {
+            if(taskIds.contains(subtask.getTask().getTaskId())){
+                SubTaskDTO subtaskDTO = new SubTaskDTO();
+                BeanUtils.copyProperties(subtask, subtaskDTO);
+                subtaskDTO.setTaskId(subtask.getTask().getTaskId());
+                subtaskDTO.setEmployeeId(subtask.getEmployee().getId());
+                subtaskDTO.setSubTaskDeadline(subtask.getSubTaskDeadline().toString());
+                subtaskDTO.setSubTaskStart(subtask.getCreateDate().toString());
+                subtaskDTOs.add(subtaskDTO);
+            }
+
         }
         return subtaskDTOs;
     }
@@ -61,6 +84,9 @@ public class SubtaskServiceImpl implements ISubtaskService {
                 subtask.setSubTaskName(subtaskDTO.getSubTaskName());
                 subtask.setSubTaskDesc(subtaskDTO.getSubTaskDesc());
                 SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+                String nowAsString = formatter.format(new Date());
+                Date startDate = formatter.parse(nowAsString);
+                subtask.setCreateDate(startDate);
                 Date date = formatter.parse(subtaskDTO.getSubTaskDeadline().trim());
                 subtask.setSubTaskDeadline(date);
                 subtask.setStatus(subtaskDTO.getStatus());
@@ -136,6 +162,61 @@ public class SubtaskServiceImpl implements ISubtaskService {
         }
         return result;
     }
+    @Override
+    public boolean assignedSubtask(int employeeId, int subtaskId) {
+        boolean result = false;
+        try{
+            SubTask subtask = subtaskRepository.findById(subtaskId).get();
+            subtask.setEmployee(employeeRepository.findById(employeeId).get());
+            subtaskRepository.save(subtask);
+            result = true;
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        return result;
+    }
+    @Override
+    public boolean assignedUpdate(int subtaskId, int employeeId) {
+        boolean result = false;
+        try
+        {
+            SubTask subtask = subtaskRepository.findById(subtaskId).get();
+            subtask.setEmployee(employeeRepository.findById(employeeId).get());
+            subtaskRepository.save(subtask);
+            result = true;
+        } catch (Exception e) {
 
+            System.out.println(e.getMessage());
+        }
+        return result;
+    }
+
+    @Override
+    public boolean changeStatus(int subtaskId, String status){
+        boolean result = false;
+        try {
+            SubTask subtask = subtaskRepository.findById(subtaskId).get();
+            subtask.setStatus(status);
+            subtaskRepository.save(subtask);
+            result = true;
+        }
+        catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        return result;
+    }
+    @Override
+    public boolean changeEmployeeAssigned(int subtaskId, int employeeId){
+        boolean result = false;
+        try {
+            SubTask subTask = subtaskRepository.findById(subtaskId).get();
+            subTask.setEmployee(employeeRepository.findById(employeeId).get());
+            result = true;
+        }
+        catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        return result;
+    }
 
 }

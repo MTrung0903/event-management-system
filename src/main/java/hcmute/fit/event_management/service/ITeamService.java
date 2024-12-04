@@ -7,6 +7,7 @@ import org.springframework.data.domain.Sort;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 public interface ITeamService {
@@ -25,7 +26,10 @@ public interface ITeamService {
 
     boolean addMemberToTeam(int teamId, int employeeId);
 
-    boolean deleteMemberFromTeam(int teamId, int employeeId);
+
+    Map<String, Object> deleteMemberFromTeam(int teamId, int employeeId);
 
     List<TeamDTO> getListTeamToAssignedTask(int taskId, int eventId);
+
+    List<TeamDTO> getDetailTeamInEvent(int eventId);
 }

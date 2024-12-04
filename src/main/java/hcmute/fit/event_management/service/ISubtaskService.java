@@ -12,6 +12,8 @@ public interface ISubtaskService {
 
     List<SubTaskDTO> getAllSubtasksOfTask(int taskId);
 
+    List<SubTaskDTO> listSubtaskFromEvent(int eventId);
+
     SubTaskDTO getSubtaskById(int subtaskId);
 
     boolean addSubtask(int taskId, SubTaskDTO subtaskDTO);
@@ -21,4 +23,12 @@ public interface ISubtaskService {
     boolean deleteSubtask(int subtaskId);
 
     boolean actionSubtask(int employeeId, int subtaskId, String action);
+
+    boolean assignedSubtask(int employeeId, int subtaskId);
+
+    boolean assignedUpdate(int subtaskId, int employeeId);
+
+    boolean changeStatus(int subtaskId, String status);
+
+    boolean changeEmployeeAssigned(int subtaskId, int employeeId);
 }

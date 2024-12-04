@@ -25,4 +25,6 @@ public interface IProvider {
     List<ProviderDTO> listProviderInEvent(int eventId);
 
     List<ProviderDTO> listProviderForAdd(int eventId);
+
+    boolean delProviderEvent(int eventId, int providerId);
 }

@@ -11,6 +11,9 @@ import java.util.List;
 
 @Repository
 public interface SponsorEventRepository extends JpaRepository<SponsorEvent, SponsorEventId> {
-    @Query("select sp from SponsorEvent sp where sp.id.eventId = :eventId")
+    @Query("select sp from SponsorEvent sp where sp.event.eventID = :eventId")
     List<SponsorEvent> findByEventId(@Param("eventId") int eventId);
+
+    @Query("select sp from  SponsorEvent sp where sp.event.eventID = :id and  sp.sponsor.id = :sponsorId")
+    SponsorEvent findSponsorEvent(@Param("id") int id, @Param("sponsorId") int sponsorId);
 }

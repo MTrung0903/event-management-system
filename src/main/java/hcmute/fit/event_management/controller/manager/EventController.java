@@ -46,6 +46,11 @@ public class EventController {
     @Autowired
     private ITaskService taskService;
 
+    @Autowired
+    private ISubtaskService subtaskService;
+
+    @Autowired
+    private IEmployeeService employeeService;
 
 
     @PostMapping("")
@@ -187,5 +192,24 @@ public class EventController {
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
+    @GetMapping("/{eventId}/subtasks")
+    public ResponseEntity<?> getSubtasks(@PathVariable int eventId) {
+        Response response = new Response();
+        response.setData(subtaskService.listSubtaskFromEvent(eventId));
+        return new ResponseEntity<>(response, HttpStatus.OK);
+    }
 
+    @DeleteMapping("/{eventId}/del-provider/{providerId}")
+    public ResponseEntity<?> delProviderEvent(@PathVariable int eventId, @PathVariable int providerId){
+        Response response = new Response();
+        response.setData(providerImpl.delProviderEvent(eventId, providerId));
+        return new ResponseEntity<>(response, HttpStatus.OK);
+    }
+    @DeleteMapping("/{eventId}/del-sponsor/{sponsorId}")
+    public ResponseEntity<?> delSponsorEvent(@PathVariable int eventId, @PathVariable int sponsorId){
+        Response response = new Response();
+        response.setData(sponsorService.deleteSponsorEvent(eventId, sponsorId));
+        return new ResponseEntity<>(response, HttpStatus.OK);
+    }
+    
 }

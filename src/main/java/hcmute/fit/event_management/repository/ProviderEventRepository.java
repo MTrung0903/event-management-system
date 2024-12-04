@@ -15,4 +15,8 @@ public interface ProviderEventRepository extends JpaRepository<ProviderEvent, In
 
     @Query("select pv from ProviderEvent pv where pv.provider.id = :providerId")
     List<ProviderEvent> findByProviderId(@Param("providerId") int providerId);
+
+    @Query("select pv from ProviderEvent pv where pv.provider.id = :providerId and pv.event.eventID = :eventId" )
+    ProviderEvent providerEvent(@Param("providerId") int providerId, @Param("eventId") int eventId);
+
 }

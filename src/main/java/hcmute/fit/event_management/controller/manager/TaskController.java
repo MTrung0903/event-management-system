@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 import payload.Response;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/man/task")
@@ -44,7 +45,7 @@ public class TaskController {
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
     @GetMapping("/{taskId}/subtask")
-    public ResponseEntity<?> getSubtaskOfTask(int taskId){
+    public ResponseEntity<?> getSubtaskOfTask(@PathVariable  int taskId){
         List<SubTaskDTO> listSubtask = subtaskService.getAllSubtasksOfTask(taskId);
         Response response = new Response();
         response.setData(listSubtask);
@@ -52,8 +53,7 @@ public class TaskController {
     }
     @DeleteMapping("/{taskId}")
     public ResponseEntity<?> deleteTask(@PathVariable int taskId){
-        Response response = new Response();
-        response.setData(taskService.deleteTask(taskId));
+        Map<String, Object> response = taskService.deleteTask(taskId);
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
     @PutMapping("/{taskId}/assigned/{teamId}")
