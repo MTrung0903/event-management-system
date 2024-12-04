@@ -71,7 +71,7 @@ public class SecurityConfig {
                         .requestMatchers("/login","/forgot","/reset-password","/file").permitAll()
                         .requestMatchers("/admin/**").hasRole("ADMIN")
                         .requestMatchers("/man/**").hasAnyRole("MANAGER", "ADMIN")
-                        .requestMatchers("/emp/**").hasAnyRole("USER","MANAGER", "ADMIN")
+                        .requestMatchers("/emp/**").hasAnyRole("EMPLOYEE","MANAGER", "ADMIN")
                         .anyRequest().authenticated()
                 ).addFilterBefore(authTokenFilter, UsernamePasswordAuthenticationFilter.class)
                 .exceptionHandling(configurer -> configurer

@@ -23879,3 +23879,738 @@ Fix this pattern in your application or switch to the legacy parser implementati
 2024-12-04 01:52:21 INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
 2024-12-04 01:52:21 INFO  com.zaxxer.hikari.HikariDataSource : HikariPool-2 - Shutdown initiated...
 2024-12-04 01:52:21 INFO  com.zaxxer.hikari.HikariDataSource : HikariPool-2 - Shutdown completed.
+2024-12-04 05:15:59 INFO  o.h.validator.internal.util.Version : HV000001: Hibernate Validator 8.0.1.Final
+2024-12-04 05:15:59 INFO  h.f.e.EventManagementApplication : Starting EventManagementApplication using Java 21.0.2 with PID 21408 (D:\JAVA\event-management-system\target\classes started by TungNT in D:\JAVA\event-management-system)
+2024-12-04 05:15:59 INFO  h.f.e.EventManagementApplication : No active profile set, falling back to 1 default profile: "default"
+2024-12-04 05:15:59 INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2024-12-04 05:15:59 INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2024-12-04 05:16:00 INFO  o.s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-12-04 05:16:00 INFO  o.s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 151 ms. Found 22 JPA repository interfaces.
+2024-12-04 05:16:01 INFO  o.s.b.w.embedded.tomcat.TomcatWebServer : Tomcat initialized with port 8080 (http)
+2024-12-04 05:16:01 INFO  o.apache.coyote.http11.Http11NioProtocol : Initializing ProtocolHandler ["http-nio-8080"]
+2024-12-04 05:16:01 INFO  o.apache.catalina.core.StandardService : Starting service [Tomcat]
+2024-12-04 05:16:01 INFO  org.apache.catalina.core.StandardEngine : Starting Servlet engine: [Apache Tomcat/10.1.31]
+2024-12-04 05:16:01 INFO  o.a.c.c.C.[Tomcat].[localhost].[/] : Initializing Spring embedded WebApplicationContext
+2024-12-04 05:16:01 INFO  o.s.b.w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2018 ms
+2024-12-04 05:16:01 INFO  com.zaxxer.hikari.HikariDataSource : HikariPool-1 - Starting...
+2024-12-04 05:16:01 INFO  com.zaxxer.hikari.pool.HikariPool : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@1f375479
+2024-12-04 05:16:01 INFO  com.zaxxer.hikari.HikariDataSource : HikariPool-1 - Start completed.
+2024-12-04 05:16:01 INFO  o.s.b.a.h2.H2ConsoleAutoConfiguration : H2 console available at '/h2-console'. Database available at 'jdbc:mysql://localhost/event'
+2024-12-04 05:16:01 INFO  o.hibernate.jpa.internal.util.LogHelper : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-12-04 05:16:02 INFO  org.hibernate.Version : HHH000412: Hibernate ORM core version 6.5.3.Final
+2024-12-04 05:16:02 INFO  o.h.c.internal.RegionFactoryInitiator : HHH000026: Second-level cache disabled
+2024-12-04 05:16:02 INFO  o.s.o.j.p.SpringPersistenceUnitInfo : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-12-04 05:16:04 INFO  o.h.e.t.j.p.i.JtaPlatformInitiator : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-12-04 05:16:04 INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-12-04 05:16:04 INFO  o.s.d.j.r.query.QueryEnhancerFactory : Hibernate is in classpath; If applicable, HQL parser will be used.
+2024-12-04 05:16:05 WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-12-04 05:16:05 INFO  o.s.s.c.a.a.c.InitializeAuthenticationProviderBeanManagerConfigurer$InitializeAuthenticationProviderManagerConfigurer : Global AuthenticationManager configured with AuthenticationProvider bean with name authenticationProvider
+2024-12-04 05:16:05 WARN  o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with an AuthenticationProvider bean. UserDetailsService beans will not be used for username/password login. Consider removing the AuthenticationProvider bean. Alternatively, consider using the UserDetailsService in a manually instantiated DaoAuthenticationProvider.
+2024-12-04 05:16:06 WARN  o.s.b.a.t.ThymeleafAutoConfiguration$DefaultTemplateResolverConfiguration : Cannot find template location: classpath:/templates/ (please add some templates, check your Thymeleaf configuration, or set spring.thymeleaf.check-template-location=false)
+2024-12-04 05:16:06 INFO  o.s.b.d.a.OptionalLiveReloadServer : LiveReload server is running on port 35729
+2024-12-04 05:16:06 INFO  o.apache.coyote.http11.Http11NioProtocol : Starting ProtocolHandler ["http-nio-8080"]
+2024-12-04 05:16:06 INFO  o.s.b.w.embedded.tomcat.TomcatWebServer : Tomcat started on port 8080 (http) with context path '/'
+2024-12-04 05:16:06 INFO  h.f.e.EventManagementApplication : Started EventManagementApplication in 8.36 seconds (process running for 9.397)
+2024-12-04 05:16:25 INFO  o.a.c.c.C.[Tomcat].[localhost].[/] : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-12-04 05:16:25 INFO  o.s.web.servlet.DispatcherServlet : Initializing Servlet 'dispatcherServlet'
+2024-12-04 05:16:25 INFO  o.s.web.servlet.DispatcherServlet : Completed initialization in 3 ms
+2024-12-04 05:18:47 WARN  o.s.w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.multipart.support.MissingServletRequestPartException: Required part 'file' is not present.]
+2024-12-04 05:18:47 ERROR h.f.e.security.AuthEntryPointJwt : Unauthorized error: Invalid credentials
+2024-12-04 05:30:52 INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-12-04 05:30:52 INFO  com.zaxxer.hikari.HikariDataSource : HikariPool-1 - Shutdown initiated...
+2024-12-04 05:30:52 INFO  com.zaxxer.hikari.HikariDataSource : HikariPool-1 - Shutdown completed.
+2024-12-04 05:30:55 INFO  o.h.validator.internal.util.Version : HV000001: Hibernate Validator 8.0.1.Final
+2024-12-04 05:30:55 INFO  h.f.e.EventManagementApplication : Starting EventManagementApplication using Java 21.0.2 with PID 23644 (D:\JAVA\event-management-system\target\classes started by TungNT in D:\JAVA\event-management-system)
+2024-12-04 05:30:55 INFO  h.f.e.EventManagementApplication : No active profile set, falling back to 1 default profile: "default"
+2024-12-04 05:30:55 INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2024-12-04 05:30:55 INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2024-12-04 05:30:56 INFO  o.s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-12-04 05:30:56 INFO  o.s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 181 ms. Found 22 JPA repository interfaces.
+2024-12-04 05:30:57 INFO  o.s.b.w.embedded.tomcat.TomcatWebServer : Tomcat initialized with port 8080 (http)
+2024-12-04 05:30:57 INFO  o.apache.coyote.http11.Http11NioProtocol : Initializing ProtocolHandler ["http-nio-8080"]
+2024-12-04 05:30:57 INFO  o.apache.catalina.core.StandardService : Starting service [Tomcat]
+2024-12-04 05:30:57 INFO  org.apache.catalina.core.StandardEngine : Starting Servlet engine: [Apache Tomcat/10.1.31]
+2024-12-04 05:30:57 INFO  o.a.c.c.C.[Tomcat].[localhost].[/] : Initializing Spring embedded WebApplicationContext
+2024-12-04 05:30:57 INFO  o.s.b.w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2133 ms
+2024-12-04 05:30:57 INFO  com.zaxxer.hikari.HikariDataSource : HikariPool-1 - Starting...
+2024-12-04 05:30:57 INFO  com.zaxxer.hikari.pool.HikariPool : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@1f375479
+2024-12-04 05:30:57 INFO  com.zaxxer.hikari.HikariDataSource : HikariPool-1 - Start completed.
+2024-12-04 05:30:58 INFO  o.s.b.a.h2.H2ConsoleAutoConfiguration : H2 console available at '/h2-console'. Database available at 'jdbc:mysql://localhost/event'
+2024-12-04 05:30:58 INFO  o.hibernate.jpa.internal.util.LogHelper : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-12-04 05:30:58 INFO  org.hibernate.Version : HHH000412: Hibernate ORM core version 6.5.3.Final
+2024-12-04 05:30:58 INFO  o.h.c.internal.RegionFactoryInitiator : HHH000026: Second-level cache disabled
+2024-12-04 05:30:58 INFO  o.s.o.j.p.SpringPersistenceUnitInfo : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-12-04 05:31:00 INFO  o.h.e.t.j.p.i.JtaPlatformInitiator : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-12-04 05:31:00 INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-12-04 05:31:01 INFO  o.s.d.j.r.query.QueryEnhancerFactory : Hibernate is in classpath; If applicable, HQL parser will be used.
+2024-12-04 05:31:01 WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-12-04 05:31:01 INFO  o.s.s.c.a.a.c.InitializeAuthenticationProviderBeanManagerConfigurer$InitializeAuthenticationProviderManagerConfigurer : Global AuthenticationManager configured with AuthenticationProvider bean with name authenticationProvider
+2024-12-04 05:31:01 WARN  o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with an AuthenticationProvider bean. UserDetailsService beans will not be used for username/password login. Consider removing the AuthenticationProvider bean. Alternatively, consider using the UserDetailsService in a manually instantiated DaoAuthenticationProvider.
+2024-12-04 05:31:02 WARN  o.s.b.a.t.ThymeleafAutoConfiguration$DefaultTemplateResolverConfiguration : Cannot find template location: classpath:/templates/ (please add some templates, check your Thymeleaf configuration, or set spring.thymeleaf.check-template-location=false)
+2024-12-04 05:31:03 INFO  o.s.b.d.a.OptionalLiveReloadServer : LiveReload server is running on port 35729
+2024-12-04 05:31:03 INFO  o.apache.coyote.http11.Http11NioProtocol : Starting ProtocolHandler ["http-nio-8080"]
+2024-12-04 05:31:03 INFO  o.s.b.w.embedded.tomcat.TomcatWebServer : Tomcat started on port 8080 (http) with context path '/'
+2024-12-04 05:31:03 INFO  h.f.e.EventManagementApplication : Started EventManagementApplication in 8.531 seconds (process running for 9.606)
+2024-12-04 05:31:37 INFO  o.a.c.c.C.[Tomcat].[localhost].[/] : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-12-04 05:31:37 INFO  o.s.web.servlet.DispatcherServlet : Initializing Servlet 'dispatcherServlet'
+2024-12-04 05:31:37 INFO  o.s.web.servlet.DispatcherServlet : Completed initialization in 3 ms
+2024-12-04 05:36:08 ERROR h.f.e.security.CustomAccessDeniedHandler : Forbidden error: /emp/event
+2024-12-04 05:36:09 ERROR h.f.e.security.CustomAccessDeniedHandler : Forbidden error: /emp/event
+2024-12-04 05:36:13 ERROR h.f.e.security.CustomAccessDeniedHandler : Forbidden error: /emp/event
+2024-12-04 05:36:14 ERROR h.f.e.security.CustomAccessDeniedHandler : Forbidden error: /emp/event
+2024-12-04 05:40:36 INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-12-04 05:40:36 INFO  com.zaxxer.hikari.HikariDataSource : HikariPool-1 - Shutdown initiated...
+2024-12-04 05:40:36 INFO  com.zaxxer.hikari.HikariDataSource : HikariPool-1 - Shutdown completed.
+2024-12-04 15:58:52 INFO  o.h.validator.internal.util.Version : HV000001: Hibernate Validator 8.0.1.Final
+2024-12-04 15:58:52 INFO  h.f.e.EventManagementApplication : Starting EventManagementApplication using Java 21.0.2 with PID 17044 (D:\JAVA\event-management-system\target\classes started by TungNT in D:\JAVA\event-management-system)
+2024-12-04 15:58:52 INFO  h.f.e.EventManagementApplication : No active profile set, falling back to 1 default profile: "default"
+2024-12-04 15:58:52 INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2024-12-04 15:58:52 INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2024-12-04 15:58:54 INFO  o.s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-12-04 15:58:54 INFO  o.s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 163 ms. Found 22 JPA repository interfaces.
+2024-12-04 15:58:55 INFO  o.s.b.w.embedded.tomcat.TomcatWebServer : Tomcat initialized with port 8080 (http)
+2024-12-04 15:58:55 INFO  o.apache.coyote.http11.Http11NioProtocol : Initializing ProtocolHandler ["http-nio-8080"]
+2024-12-04 15:58:55 INFO  o.apache.catalina.core.StandardService : Starting service [Tomcat]
+2024-12-04 15:58:55 INFO  org.apache.catalina.core.StandardEngine : Starting Servlet engine: [Apache Tomcat/10.1.31]
+2024-12-04 15:58:55 INFO  o.a.c.c.C.[Tomcat].[localhost].[/] : Initializing Spring embedded WebApplicationContext
+2024-12-04 15:58:55 INFO  o.s.b.w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2398 ms
+2024-12-04 15:58:55 INFO  com.zaxxer.hikari.HikariDataSource : HikariPool-1 - Starting...
+2024-12-04 15:58:55 INFO  com.zaxxer.hikari.pool.HikariPool : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@22f19a5d
+2024-12-04 15:58:55 INFO  com.zaxxer.hikari.HikariDataSource : HikariPool-1 - Start completed.
+2024-12-04 15:58:55 INFO  o.s.b.a.h2.H2ConsoleAutoConfiguration : H2 console available at '/h2-console'. Database available at 'jdbc:mysql://localhost/event'
+2024-12-04 15:58:56 INFO  o.hibernate.jpa.internal.util.LogHelper : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-12-04 15:58:56 INFO  org.hibernate.Version : HHH000412: Hibernate ORM core version 6.5.3.Final
+2024-12-04 15:58:56 INFO  o.h.c.internal.RegionFactoryInitiator : HHH000026: Second-level cache disabled
+2024-12-04 15:58:56 INFO  o.s.o.j.p.SpringPersistenceUnitInfo : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-12-04 15:58:58 INFO  o.h.e.t.j.p.i.JtaPlatformInitiator : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-12-04 15:58:58 INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-12-04 15:58:59 INFO  o.s.d.j.r.query.QueryEnhancerFactory : Hibernate is in classpath; If applicable, HQL parser will be used.
+2024-12-04 15:59:00 WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-12-04 15:59:00 INFO  o.s.s.c.a.a.c.InitializeAuthenticationProviderBeanManagerConfigurer$InitializeAuthenticationProviderManagerConfigurer : Global AuthenticationManager configured with AuthenticationProvider bean with name authenticationProvider
+2024-12-04 15:59:00 WARN  o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with an AuthenticationProvider bean. UserDetailsService beans will not be used for username/password login. Consider removing the AuthenticationProvider bean. Alternatively, consider using the UserDetailsService in a manually instantiated DaoAuthenticationProvider.
+2024-12-04 15:59:01 WARN  o.s.b.a.t.ThymeleafAutoConfiguration$DefaultTemplateResolverConfiguration : Cannot find template location: classpath:/templates/ (please add some templates, check your Thymeleaf configuration, or set spring.thymeleaf.check-template-location=false)
+2024-12-04 15:59:01 INFO  o.s.b.d.a.OptionalLiveReloadServer : LiveReload server is running on port 35729
+2024-12-04 15:59:01 INFO  o.apache.coyote.http11.Http11NioProtocol : Starting ProtocolHandler ["http-nio-8080"]
+2024-12-04 15:59:01 INFO  o.s.b.w.embedded.tomcat.TomcatWebServer : Tomcat started on port 8080 (http) with context path '/'
+2024-12-04 15:59:01 INFO  h.f.e.EventManagementApplication : Started EventManagementApplication in 9.478 seconds (process running for 10.748)
+2024-12-04 15:59:12 INFO  o.a.c.c.C.[Tomcat].[localhost].[/] : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-12-04 15:59:12 INFO  o.s.web.servlet.DispatcherServlet : Initializing Servlet 'dispatcherServlet'
+2024-12-04 15:59:12 INFO  o.s.web.servlet.DispatcherServlet : Completed initialization in 2 ms
+2024-12-04 15:59:12 ERROR h.f.e.security.AuthEntryPointJwt : Unauthorized error: Invalid credentials
+2024-12-04 16:01:34 WARN  o.s.w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'POST' is not supported]
+2024-12-04 16:01:34 ERROR h.f.e.security.AuthEntryPointJwt : Unauthorized error: Invalid credentials
+2024-12-04 16:11:58 ERROR h.f.e.security.AuthEntryPointJwt : Unauthorized error: Invalid credentials
+2024-12-04 16:12:06 ERROR h.f.e.security.AuthEntryPointJwt : Unauthorized error: Invalid credentials
+2024-12-04 16:12:10 ERROR h.f.e.security.AuthEntryPointJwt : Unauthorized error: Invalid credentials
+2024-12-04 16:14:26 WARN  o.s.w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.HttpMediaTypeNotSupportedException: Content-Type 'multipart/form-data;boundary=--------------------------438119467260233426903692;charset=UTF-8' is not supported]
+2024-12-04 16:14:26 ERROR h.f.e.security.AuthEntryPointJwt : Unauthorized error: Invalid credentials
+2024-12-04 16:15:23 WARN  o.s.w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.http.converter.HttpMessageNotReadableException: JSON parse error: Unexpected character ('}' (code 125)): was expecting double-quote to start field name]
+2024-12-04 16:15:23 ERROR h.f.e.security.AuthEntryPointJwt : Unauthorized error: Invalid credentials
+2024-12-04 16:21:40 ERROR h.f.e.security.CustomAccessDeniedHandler : Forbidden error: /emp/event
+2024-12-04 16:21:40 ERROR h.f.e.security.CustomAccessDeniedHandler : Forbidden error: /emp/event
+2024-12-04 16:21:54 ERROR h.f.e.security.CustomAccessDeniedHandler : Forbidden error: /emp/event
+2024-12-04 16:21:54 ERROR h.f.e.security.CustomAccessDeniedHandler : Forbidden error: /emp/event
+2024-12-04 16:22:13 ERROR h.f.e.security.CustomAccessDeniedHandler : Forbidden error: /emp/event
+2024-12-04 16:22:13 ERROR h.f.e.security.CustomAccessDeniedHandler : Forbidden error: /emp/event
+2024-12-04 16:23:26 INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-12-04 16:23:26 INFO  com.zaxxer.hikari.HikariDataSource : HikariPool-1 - Shutdown initiated...
+2024-12-04 16:23:26 INFO  com.zaxxer.hikari.HikariDataSource : HikariPool-1 - Shutdown completed.
+2024-12-04 16:23:32 INFO  o.h.validator.internal.util.Version : HV000001: Hibernate Validator 8.0.1.Final
+2024-12-04 16:23:32 INFO  h.f.e.EventManagementApplication : Starting EventManagementApplication using Java 21.0.2 with PID 24876 (D:\JAVA\event-management-system\target\classes started by TungNT in D:\JAVA\event-management-system)
+2024-12-04 16:23:32 INFO  h.f.e.EventManagementApplication : No active profile set, falling back to 1 default profile: "default"
+2024-12-04 16:23:32 INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2024-12-04 16:23:32 INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2024-12-04 16:23:33 INFO  o.s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-12-04 16:23:33 INFO  o.s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 179 ms. Found 22 JPA repository interfaces.
+2024-12-04 16:23:34 INFO  o.s.b.w.embedded.tomcat.TomcatWebServer : Tomcat initialized with port 8080 (http)
+2024-12-04 16:23:34 INFO  o.apache.coyote.http11.Http11NioProtocol : Initializing ProtocolHandler ["http-nio-8080"]
+2024-12-04 16:23:34 INFO  o.apache.catalina.core.StandardService : Starting service [Tomcat]
+2024-12-04 16:23:34 INFO  org.apache.catalina.core.StandardEngine : Starting Servlet engine: [Apache Tomcat/10.1.31]
+2024-12-04 16:23:34 INFO  o.a.c.c.C.[Tomcat].[localhost].[/] : Initializing Spring embedded WebApplicationContext
+2024-12-04 16:23:34 INFO  o.s.b.w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2145 ms
+2024-12-04 16:23:34 INFO  com.zaxxer.hikari.HikariDataSource : HikariPool-1 - Starting...
+2024-12-04 16:23:34 INFO  com.zaxxer.hikari.pool.HikariPool : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@7c20d260
+2024-12-04 16:23:34 INFO  com.zaxxer.hikari.HikariDataSource : HikariPool-1 - Start completed.
+2024-12-04 16:23:34 INFO  o.s.b.a.h2.H2ConsoleAutoConfiguration : H2 console available at '/h2-console'. Database available at 'jdbc:mysql://localhost/event'
+2024-12-04 16:23:34 INFO  o.hibernate.jpa.internal.util.LogHelper : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-12-04 16:23:35 INFO  org.hibernate.Version : HHH000412: Hibernate ORM core version 6.5.3.Final
+2024-12-04 16:23:35 INFO  o.h.c.internal.RegionFactoryInitiator : HHH000026: Second-level cache disabled
+2024-12-04 16:23:35 INFO  o.s.o.j.p.SpringPersistenceUnitInfo : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-12-04 16:23:37 INFO  o.h.e.t.j.p.i.JtaPlatformInitiator : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-12-04 16:23:37 INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-12-04 16:23:37 INFO  o.s.d.j.r.query.QueryEnhancerFactory : Hibernate is in classpath; If applicable, HQL parser will be used.
+2024-12-04 16:23:38 WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-12-04 16:23:38 INFO  o.s.s.c.a.a.c.InitializeAuthenticationProviderBeanManagerConfigurer$InitializeAuthenticationProviderManagerConfigurer : Global AuthenticationManager configured with AuthenticationProvider bean with name authenticationProvider
+2024-12-04 16:23:38 WARN  o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with an AuthenticationProvider bean. UserDetailsService beans will not be used for username/password login. Consider removing the AuthenticationProvider bean. Alternatively, consider using the UserDetailsService in a manually instantiated DaoAuthenticationProvider.
+2024-12-04 16:23:39 WARN  o.s.b.a.t.ThymeleafAutoConfiguration$DefaultTemplateResolverConfiguration : Cannot find template location: classpath:/templates/ (please add some templates, check your Thymeleaf configuration, or set spring.thymeleaf.check-template-location=false)
+2024-12-04 16:23:39 INFO  o.s.b.d.a.OptionalLiveReloadServer : LiveReload server is running on port 35729
+2024-12-04 16:23:39 INFO  o.apache.coyote.http11.Http11NioProtocol : Starting ProtocolHandler ["http-nio-8080"]
+2024-12-04 16:23:39 INFO  o.s.b.w.embedded.tomcat.TomcatWebServer : Tomcat started on port 8080 (http) with context path '/'
+2024-12-04 16:23:39 INFO  h.f.e.EventManagementApplication : Started EventManagementApplication in 8.39 seconds (process running for 9.377)
+2024-12-04 16:23:47 INFO  o.a.c.c.C.[Tomcat].[localhost].[/] : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-12-04 16:23:47 INFO  o.s.web.servlet.DispatcherServlet : Initializing Servlet 'dispatcherServlet'
+2024-12-04 16:23:47 INFO  o.s.web.servlet.DispatcherServlet : Completed initialization in 2 ms
+2024-12-04 16:23:47 WARN  o.s.w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.http.converter.HttpMessageNotReadableException: Required request body is missing: public org.springframework.http.ResponseEntity<?> hcmute.fit.event_management.controller.employee.HomeEmployeeController.findEventId(int)]
+2024-12-04 16:23:47 ERROR h.f.e.security.AuthEntryPointJwt : Unauthorized error: Invalid credentials
+2024-12-04 16:23:47 WARN  o.s.w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.http.converter.HttpMessageNotReadableException: Required request body is missing: public org.springframework.http.ResponseEntity<?> hcmute.fit.event_management.controller.employee.HomeEmployeeController.findEventId(int)]
+2024-12-04 16:23:47 ERROR h.f.e.security.AuthEntryPointJwt : Unauthorized error: Invalid credentials
+2024-12-04 16:25:19 INFO  o.s.b.d.a.LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener : Restarting due to 1 class path change (0 additions, 1 deletion, 0 modifications)
+2024-12-04 16:25:20 INFO  o.apache.coyote.http11.Http11NioProtocol : Stopping ProtocolHandler ["http-nio-8080"]
+2024-12-04 16:25:20 INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-12-04 16:25:20 INFO  com.zaxxer.hikari.HikariDataSource : HikariPool-1 - Shutdown initiated...
+2024-12-04 16:25:20 INFO  com.zaxxer.hikari.HikariDataSource : HikariPool-1 - Shutdown completed.
+2024-12-04 16:25:20 INFO  h.f.e.EventManagementApplication : Starting EventManagementApplication using Java 21.0.2 with PID 24876 (D:\JAVA\event-management-system\target\classes started by TungNT in D:\JAVA\event-management-system)
+2024-12-04 16:25:20 INFO  h.f.e.EventManagementApplication : No active profile set, falling back to 1 default profile: "default"
+2024-12-04 16:25:20 INFO  o.s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-12-04 16:25:21 INFO  o.s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 152 ms. Found 22 JPA repository interfaces.
+2024-12-04 16:25:21 INFO  o.s.b.w.embedded.tomcat.TomcatWebServer : Tomcat initialized with port 8080 (http)
+2024-12-04 16:25:21 INFO  o.apache.coyote.http11.Http11NioProtocol : Initializing ProtocolHandler ["http-nio-8080"]
+2024-12-04 16:25:21 INFO  o.apache.catalina.core.StandardService : Starting service [Tomcat]
+2024-12-04 16:25:21 INFO  org.apache.catalina.core.StandardEngine : Starting Servlet engine: [Apache Tomcat/10.1.31]
+2024-12-04 16:25:21 INFO  o.a.c.c.C.[Tomcat].[localhost].[/] : Initializing Spring embedded WebApplicationContext
+2024-12-04 16:25:21 INFO  o.s.b.w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1129 ms
+2024-12-04 16:25:21 INFO  com.zaxxer.hikari.HikariDataSource : HikariPool-2 - Starting...
+2024-12-04 16:25:21 INFO  com.zaxxer.hikari.pool.HikariPool : HikariPool-2 - Added connection com.mysql.cj.jdbc.ConnectionImpl@7d4387e8
+2024-12-04 16:25:21 INFO  com.zaxxer.hikari.HikariDataSource : HikariPool-2 - Start completed.
+2024-12-04 16:25:21 INFO  o.s.b.a.h2.H2ConsoleAutoConfiguration : H2 console available at '/h2-console'. Database available at 'jdbc:mysql://localhost/event'
+2024-12-04 16:25:21 INFO  o.hibernate.jpa.internal.util.LogHelper : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-12-04 16:25:21 INFO  o.h.c.internal.RegionFactoryInitiator : HHH000026: Second-level cache disabled
+2024-12-04 16:25:21 INFO  o.s.o.j.p.SpringPersistenceUnitInfo : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-12-04 16:25:22 INFO  o.h.e.t.j.p.i.JtaPlatformInitiator : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-12-04 16:25:22 INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-12-04 16:25:22 WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-12-04 16:25:22 INFO  o.s.s.c.a.a.c.InitializeAuthenticationProviderBeanManagerConfigurer$InitializeAuthenticationProviderManagerConfigurer : Global AuthenticationManager configured with AuthenticationProvider bean with name authenticationProvider
+2024-12-04 16:25:22 WARN  o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with an AuthenticationProvider bean. UserDetailsService beans will not be used for username/password login. Consider removing the AuthenticationProvider bean. Alternatively, consider using the UserDetailsService in a manually instantiated DaoAuthenticationProvider.
+2024-12-04 16:25:23 WARN  o.s.b.a.t.ThymeleafAutoConfiguration$DefaultTemplateResolverConfiguration : Cannot find template location: classpath:/templates/ (please add some templates, check your Thymeleaf configuration, or set spring.thymeleaf.check-template-location=false)
+2024-12-04 16:25:23 INFO  o.s.b.d.a.OptionalLiveReloadServer : LiveReload server is running on port 35729
+2024-12-04 16:25:23 INFO  o.apache.coyote.http11.Http11NioProtocol : Starting ProtocolHandler ["http-nio-8080"]
+2024-12-04 16:25:23 INFO  o.s.b.w.embedded.tomcat.TomcatWebServer : Tomcat started on port 8080 (http) with context path '/'
+2024-12-04 16:25:23 INFO  h.f.e.EventManagementApplication : Started EventManagementApplication in 3.232 seconds (process running for 112.885)
+2024-12-04 16:25:23 INFO  o.s.b.d.a.ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2024-12-04 16:25:24 INFO  o.s.b.d.a.LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener : Restarting due to 1 class path change (1 addition, 0 deletions, 0 modifications)
+2024-12-04 16:25:24 INFO  o.apache.coyote.http11.Http11NioProtocol : Stopping ProtocolHandler ["http-nio-8080"]
+2024-12-04 16:25:24 INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-12-04 16:25:24 INFO  com.zaxxer.hikari.HikariDataSource : HikariPool-2 - Shutdown initiated...
+2024-12-04 16:25:24 INFO  com.zaxxer.hikari.HikariDataSource : HikariPool-2 - Shutdown completed.
+2024-12-04 16:25:24 INFO  h.f.e.EventManagementApplication : Starting EventManagementApplication using Java 21.0.2 with PID 24876 (D:\JAVA\event-management-system\target\classes started by TungNT in D:\JAVA\event-management-system)
+2024-12-04 16:25:24 INFO  h.f.e.EventManagementApplication : No active profile set, falling back to 1 default profile: "default"
+2024-12-04 16:25:25 INFO  o.s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-12-04 16:25:25 INFO  o.s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 99 ms. Found 22 JPA repository interfaces.
+2024-12-04 16:25:25 INFO  o.s.b.w.embedded.tomcat.TomcatWebServer : Tomcat initialized with port 8080 (http)
+2024-12-04 16:25:25 INFO  o.apache.coyote.http11.Http11NioProtocol : Initializing ProtocolHandler ["http-nio-8080"]
+2024-12-04 16:25:25 INFO  o.apache.catalina.core.StandardService : Starting service [Tomcat]
+2024-12-04 16:25:25 INFO  org.apache.catalina.core.StandardEngine : Starting Servlet engine: [Apache Tomcat/10.1.31]
+2024-12-04 16:25:25 INFO  o.a.c.c.C.[Tomcat].[localhost].[/] : Initializing Spring embedded WebApplicationContext
+2024-12-04 16:25:25 INFO  o.s.b.w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 606 ms
+2024-12-04 16:25:25 INFO  com.zaxxer.hikari.HikariDataSource : HikariPool-3 - Starting...
+2024-12-04 16:25:25 INFO  com.zaxxer.hikari.pool.HikariPool : HikariPool-3 - Added connection com.mysql.cj.jdbc.ConnectionImpl@5c314dda
+2024-12-04 16:25:25 INFO  com.zaxxer.hikari.HikariDataSource : HikariPool-3 - Start completed.
+2024-12-04 16:25:25 INFO  o.s.b.a.h2.H2ConsoleAutoConfiguration : H2 console available at '/h2-console'. Database available at 'jdbc:mysql://localhost/event'
+2024-12-04 16:25:25 INFO  o.hibernate.jpa.internal.util.LogHelper : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-12-04 16:25:25 INFO  o.h.c.internal.RegionFactoryInitiator : HHH000026: Second-level cache disabled
+2024-12-04 16:25:25 INFO  o.s.o.j.p.SpringPersistenceUnitInfo : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-12-04 16:25:26 INFO  o.h.e.t.j.p.i.JtaPlatformInitiator : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-12-04 16:25:26 INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-12-04 16:25:26 WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-12-04 16:25:26 INFO  o.s.s.c.a.a.c.InitializeAuthenticationProviderBeanManagerConfigurer$InitializeAuthenticationProviderManagerConfigurer : Global AuthenticationManager configured with AuthenticationProvider bean with name authenticationProvider
+2024-12-04 16:25:26 WARN  o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with an AuthenticationProvider bean. UserDetailsService beans will not be used for username/password login. Consider removing the AuthenticationProvider bean. Alternatively, consider using the UserDetailsService in a manually instantiated DaoAuthenticationProvider.
+2024-12-04 16:25:26 WARN  o.s.b.a.t.ThymeleafAutoConfiguration$DefaultTemplateResolverConfiguration : Cannot find template location: classpath:/templates/ (please add some templates, check your Thymeleaf configuration, or set spring.thymeleaf.check-template-location=false)
+2024-12-04 16:25:26 INFO  o.s.b.d.a.OptionalLiveReloadServer : LiveReload server is running on port 35729
+2024-12-04 16:25:26 INFO  o.apache.coyote.http11.Http11NioProtocol : Starting ProtocolHandler ["http-nio-8080"]
+2024-12-04 16:25:26 INFO  o.s.b.w.embedded.tomcat.TomcatWebServer : Tomcat started on port 8080 (http) with context path '/'
+2024-12-04 16:25:26 INFO  h.f.e.EventManagementApplication : Started EventManagementApplication in 1.959 seconds (process running for 116.406)
+2024-12-04 16:25:26 INFO  o.s.b.d.a.ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2024-12-04 16:27:17 INFO  o.a.c.c.C.[Tomcat].[localhost].[/] : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-12-04 16:27:17 INFO  o.s.web.servlet.DispatcherServlet : Initializing Servlet 'dispatcherServlet'
+2024-12-04 16:27:17 INFO  o.s.web.servlet.DispatcherServlet : Completed initialization in 3 ms
+2024-12-04 16:27:17 WARN  o.s.w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.method.annotation.MethodArgumentTypeMismatchException: Method parameter 'empId': Failed to convert value of type 'java.lang.String' to required type 'int'; For input string: "{"]
+2024-12-04 16:27:17 ERROR h.f.e.security.AuthEntryPointJwt : Unauthorized error: Invalid credentials
+2024-12-04 16:27:19 WARN  o.s.w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.method.annotation.MethodArgumentTypeMismatchException: Method parameter 'empId': Failed to convert value of type 'java.lang.String' to required type 'int'; For input string: "${}"]
+2024-12-04 16:27:19 ERROR h.f.e.security.AuthEntryPointJwt : Unauthorized error: Invalid credentials
+2024-12-04 16:27:22 WARN  o.s.w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.method.annotation.MethodArgumentTypeMismatchException: Method parameter 'empId': Failed to convert value of type 'java.lang.String' to required type 'int'; For input string: "${empId}"]
+2024-12-04 16:27:22 ERROR h.f.e.security.AuthEntryPointJwt : Unauthorized error: Invalid credentials
+2024-12-04 16:27:24 WARN  o.s.w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.method.annotation.MethodArgumentTypeMismatchException: Method parameter 'empId': Failed to convert value of type 'java.lang.String' to required type 'int'; For input string: "${empId}"]
+2024-12-04 16:27:24 ERROR h.f.e.security.AuthEntryPointJwt : Unauthorized error: Invalid credentials
+2024-12-04 16:39:09 INFO  o.s.b.d.a.LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener : Restarting due to 1 class path change (0 additions, 1 deletion, 0 modifications)
+2024-12-04 16:39:09 INFO  o.apache.coyote.http11.Http11NioProtocol : Stopping ProtocolHandler ["http-nio-8080"]
+2024-12-04 16:39:09 INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-12-04 16:39:09 INFO  com.zaxxer.hikari.HikariDataSource : HikariPool-3 - Shutdown initiated...
+2024-12-04 16:39:09 INFO  com.zaxxer.hikari.HikariDataSource : HikariPool-3 - Shutdown completed.
+2024-12-04 16:39:09 INFO  h.f.e.EventManagementApplication : Starting EventManagementApplication using Java 21.0.2 with PID 24876 (D:\JAVA\event-management-system\target\classes started by TungNT in D:\JAVA\event-management-system)
+2024-12-04 16:39:09 INFO  h.f.e.EventManagementApplication : No active profile set, falling back to 1 default profile: "default"
+2024-12-04 16:39:09 INFO  o.s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-12-04 16:39:09 INFO  o.s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 115 ms. Found 22 JPA repository interfaces.
+2024-12-04 16:39:10 INFO  o.s.b.w.embedded.tomcat.TomcatWebServer : Tomcat initialized with port 8080 (http)
+2024-12-04 16:39:10 INFO  o.apache.coyote.http11.Http11NioProtocol : Initializing ProtocolHandler ["http-nio-8080"]
+2024-12-04 16:39:10 INFO  o.apache.catalina.core.StandardService : Starting service [Tomcat]
+2024-12-04 16:39:10 INFO  org.apache.catalina.core.StandardEngine : Starting Servlet engine: [Apache Tomcat/10.1.31]
+2024-12-04 16:39:10 INFO  o.a.c.c.C.[Tomcat].[localhost].[/] : Initializing Spring embedded WebApplicationContext
+2024-12-04 16:39:10 INFO  o.s.b.w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 837 ms
+2024-12-04 16:39:10 INFO  com.zaxxer.hikari.HikariDataSource : HikariPool-4 - Starting...
+2024-12-04 16:39:10 INFO  com.zaxxer.hikari.pool.HikariPool : HikariPool-4 - Added connection com.mysql.cj.jdbc.ConnectionImpl@7286235c
+2024-12-04 16:39:10 INFO  com.zaxxer.hikari.HikariDataSource : HikariPool-4 - Start completed.
+2024-12-04 16:39:10 INFO  o.s.b.a.h2.H2ConsoleAutoConfiguration : H2 console available at '/h2-console'. Database available at 'jdbc:mysql://localhost/event'
+2024-12-04 16:39:10 ERROR o.s.b.web.embedded.tomcat.TomcatStarter : Error starting Tomcat context. Exception: org.springframework.beans.factory.BeanCreationException. Message: Error creating bean with name 'authTokenFilter' defined in file [D:\JAVA\event-management-system\target\classes\hcmute\fit\event_management\security\AuthTokenFilter.class]: Post-processing of merged bean definition failed
+2024-12-04 16:39:10 INFO  o.apache.catalina.core.StandardService : Stopping service [Tomcat]
+2024-12-04 16:39:10 WARN  o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.context.ApplicationContextException: Unable to start web server
+2024-12-04 16:39:10 INFO  com.zaxxer.hikari.HikariDataSource : HikariPool-4 - Shutdown initiated...
+2024-12-04 16:39:10 INFO  com.zaxxer.hikari.HikariDataSource : HikariPool-4 - Shutdown completed.
+2024-12-04 16:39:10 INFO  o.s.b.a.l.ConditionEvaluationReportLogger : 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2024-12-04 16:39:10 ERROR o.springframework.boot.SpringApplication : Application run failed
+org.springframework.context.ApplicationContextException: Unable to start web server
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.onRefresh(ServletWebServerApplicationContext.java:165)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:619)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:754)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:456)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:335)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1363)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1352)
+	at hcmute.fit.event_management.EventManagementApplication.main(EventManagementApplication.java:14)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:50)
+Caused by: org.springframework.boot.web.server.WebServerException: Unable to start embedded Tomcat
+	at org.springframework.boot.web.embedded.tomcat.TomcatWebServer.initialize(TomcatWebServer.java:147)
+	at org.springframework.boot.web.embedded.tomcat.TomcatWebServer.<init>(TomcatWebServer.java:107)
+	at org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactory.getTomcatWebServer(TomcatServletWebServerFactory.java:516)
+	at org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactory.getWebServer(TomcatServletWebServerFactory.java:222)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.createWebServer(ServletWebServerApplicationContext.java:188)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.onRefresh(ServletWebServerApplicationContext.java:162)
+	... 11 common frames omitted
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'authTokenFilter' defined in file [D:\JAVA\event-management-system\target\classes\hcmute\fit\event_management\security\AuthTokenFilter.class]: Post-processing of merged bean definition failed
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:577)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:522)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:337)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:335)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:205)
+	at org.springframework.boot.web.servlet.ServletContextInitializerBeans.getOrderedBeansOfType(ServletContextInitializerBeans.java:211)
+	at org.springframework.boot.web.servlet.ServletContextInitializerBeans.addAsRegistrationBean(ServletContextInitializerBeans.java:174)
+	at org.springframework.boot.web.servlet.ServletContextInitializerBeans.addAsRegistrationBean(ServletContextInitializerBeans.java:169)
+	at org.springframework.boot.web.servlet.ServletContextInitializerBeans.addAdaptableBeans(ServletContextInitializerBeans.java:154)
+	at org.springframework.boot.web.servlet.ServletContextInitializerBeans.<init>(ServletContextInitializerBeans.java:87)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.getServletContextInitializerBeans(ServletWebServerApplicationContext.java:266)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.selfInitialize(ServletWebServerApplicationContext.java:240)
+	at org.springframework.boot.web.embedded.tomcat.TomcatStarter.onStartup(TomcatStarter.java:52)
+	at org.apache.catalina.core.StandardContext.startInternal(StandardContext.java:4412)
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:164)
+	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1203)
+	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1193)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:317)
+	at org.apache.tomcat.util.threads.InlineExecutorService.execute(InlineExecutorService.java:75)
+	at java.base/java.util.concurrent.AbstractExecutorService.submit(AbstractExecutorService.java:145)
+	at org.apache.catalina.core.ContainerBase.startInternal(ContainerBase.java:749)
+	at org.apache.catalina.core.StandardHost.startInternal(StandardHost.java:772)
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:164)
+	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1203)
+	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1193)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:317)
+	at org.apache.tomcat.util.threads.InlineExecutorService.execute(InlineExecutorService.java:75)
+	at java.base/java.util.concurrent.AbstractExecutorService.submit(AbstractExecutorService.java:145)
+	at org.apache.catalina.core.ContainerBase.startInternal(ContainerBase.java:749)
+	at org.apache.catalina.core.StandardEngine.startInternal(StandardEngine.java:203)
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:164)
+	at org.apache.catalina.core.StandardService.startInternal(StandardService.java:415)
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:164)
+	at org.apache.catalina.core.StandardServer.startInternal(StandardServer.java:870)
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:164)
+	at org.apache.catalina.startup.Tomcat.start(Tomcat.java:437)
+	at org.springframework.boot.web.embedded.tomcat.TomcatWebServer.initialize(TomcatWebServer.java:128)
+	... 16 common frames omitted
+Caused by: java.lang.IllegalStateException: Failed to introspect Class [hcmute.fit.event_management.security.AuthTokenFilter] from ClassLoader [org.springframework.boot.devtools.restart.classloader.RestartClassLoader@33cc376f]
+	at org.springframework.util.ReflectionUtils.getDeclaredFields(ReflectionUtils.java:757)
+	at org.springframework.util.ReflectionUtils.doWithLocalFields(ReflectionUtils.java:689)
+	at org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor.buildPersistenceMetadata(PersistenceAnnotationBeanPostProcessor.java:436)
+	at org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor.findPersistenceMetadata(PersistenceAnnotationBeanPostProcessor.java:417)
+	at org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor.findInjectionMetadata(PersistenceAnnotationBeanPostProcessor.java:376)
+	at org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor.postProcessMergedBeanDefinition(PersistenceAnnotationBeanPostProcessor.java:353)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.applyMergedBeanDefinitionPostProcessors(AbstractAutowireCapableBeanFactory.java:1103)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:574)
+	... 53 common frames omitted
+Caused by: java.lang.NoClassDefFoundError: hcmute/fit/event_management/util/JwtTokenUtil
+	at java.base/java.lang.Class.getDeclaredFields0(Native Method)
+	at java.base/java.lang.Class.privateGetDeclaredFields(Class.java:3473)
+	at java.base/java.lang.Class.getDeclaredFields(Class.java:2542)
+	at org.springframework.util.ReflectionUtils.getDeclaredFields(ReflectionUtils.java:752)
+	... 60 common frames omitted
+Caused by: java.lang.ClassNotFoundException: hcmute.fit.event_management.util.JwtTokenUtil
+	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:641)
+	at java.base/jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(ClassLoaders.java:188)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:526)
+	at java.base/java.lang.Class.forName0(Native Method)
+	at java.base/java.lang.Class.forName(Class.java:534)
+	at java.base/java.lang.Class.forName(Class.java:513)
+	at org.springframework.boot.devtools.restart.classloader.RestartClassLoader.loadClass(RestartClassLoader.java:121)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:526)
+	... 64 common frames omitted
+2024-12-04 16:39:47 INFO  h.f.e.EventManagementApplication : Starting EventManagementApplication using Java 21.0.2 with PID 24876 (D:\JAVA\event-management-system\target\classes started by TungNT in D:\JAVA\event-management-system)
+2024-12-04 16:39:47 INFO  h.f.e.EventManagementApplication : No active profile set, falling back to 1 default profile: "default"
+2024-12-04 16:39:47 INFO  o.s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-12-04 16:39:47 INFO  o.s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 107 ms. Found 22 JPA repository interfaces.
+2024-12-04 16:39:47 INFO  o.s.b.w.embedded.tomcat.TomcatWebServer : Tomcat initialized with port 8080 (http)
+2024-12-04 16:39:47 INFO  o.apache.coyote.http11.Http11NioProtocol : Initializing ProtocolHandler ["http-nio-8080"]
+2024-12-04 16:39:47 INFO  o.apache.catalina.core.StandardService : Starting service [Tomcat]
+2024-12-04 16:39:47 INFO  org.apache.catalina.core.StandardEngine : Starting Servlet engine: [Apache Tomcat/10.1.31]
+2024-12-04 16:39:47 INFO  o.a.c.c.C.[Tomcat-1].[localhost].[/] : Initializing Spring embedded WebApplicationContext
+2024-12-04 16:39:47 INFO  o.s.b.w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 691 ms
+2024-12-04 16:39:47 INFO  com.zaxxer.hikari.HikariDataSource : HikariPool-5 - Starting...
+2024-12-04 16:39:47 INFO  com.zaxxer.hikari.pool.HikariPool : HikariPool-5 - Added connection com.mysql.cj.jdbc.ConnectionImpl@158e909b
+2024-12-04 16:39:47 INFO  com.zaxxer.hikari.HikariDataSource : HikariPool-5 - Start completed.
+2024-12-04 16:39:47 INFO  o.s.b.a.h2.H2ConsoleAutoConfiguration : H2 console available at '/h2-console'. Database available at 'jdbc:mysql://localhost/event'
+2024-12-04 16:39:47 INFO  o.hibernate.jpa.internal.util.LogHelper : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-12-04 16:39:47 INFO  o.h.c.internal.RegionFactoryInitiator : HHH000026: Second-level cache disabled
+2024-12-04 16:39:47 INFO  o.s.o.j.p.SpringPersistenceUnitInfo : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-12-04 16:39:48 INFO  o.h.e.t.j.p.i.JtaPlatformInitiator : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-12-04 16:39:48 INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-12-04 16:39:48 WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-12-04 16:39:48 INFO  o.s.s.c.a.a.c.InitializeAuthenticationProviderBeanManagerConfigurer$InitializeAuthenticationProviderManagerConfigurer : Global AuthenticationManager configured with AuthenticationProvider bean with name authenticationProvider
+2024-12-04 16:39:48 WARN  o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with an AuthenticationProvider bean. UserDetailsService beans will not be used for username/password login. Consider removing the AuthenticationProvider bean. Alternatively, consider using the UserDetailsService in a manually instantiated DaoAuthenticationProvider.
+2024-12-04 16:39:49 WARN  o.s.b.a.t.ThymeleafAutoConfiguration$DefaultTemplateResolverConfiguration : Cannot find template location: classpath:/templates/ (please add some templates, check your Thymeleaf configuration, or set spring.thymeleaf.check-template-location=false)
+2024-12-04 16:39:49 INFO  o.s.b.d.a.OptionalLiveReloadServer : LiveReload server is running on port 35729
+2024-12-04 16:39:49 INFO  o.apache.coyote.http11.Http11NioProtocol : Starting ProtocolHandler ["http-nio-8080"]
+2024-12-04 16:39:49 INFO  o.s.b.w.embedded.tomcat.TomcatWebServer : Tomcat started on port 8080 (http) with context path '/'
+2024-12-04 16:39:49 INFO  h.f.e.EventManagementApplication : Started EventManagementApplication in 2.361 seconds (process running for 978.903)
+2024-12-04 16:39:49 INFO  o.s.b.d.a.ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2024-12-04 16:43:06 INFO  o.s.b.d.a.LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener : Restarting due to 1 class path change (0 additions, 1 deletion, 0 modifications)
+2024-12-04 16:43:06 INFO  o.apache.coyote.http11.Http11NioProtocol : Stopping ProtocolHandler ["http-nio-8080"]
+2024-12-04 16:43:06 INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-12-04 16:43:06 INFO  com.zaxxer.hikari.HikariDataSource : HikariPool-5 - Shutdown initiated...
+2024-12-04 16:43:06 INFO  com.zaxxer.hikari.HikariDataSource : HikariPool-5 - Shutdown completed.
+2024-12-04 16:43:06 INFO  h.f.e.EventManagementApplication : Starting EventManagementApplication using Java 21.0.2 with PID 24876 (D:\JAVA\event-management-system\target\classes started by TungNT in D:\JAVA\event-management-system)
+2024-12-04 16:43:06 INFO  h.f.e.EventManagementApplication : No active profile set, falling back to 1 default profile: "default"
+2024-12-04 16:43:07 INFO  o.s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-12-04 16:43:07 INFO  o.s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 101 ms. Found 22 JPA repository interfaces.
+2024-12-04 16:43:07 INFO  o.s.b.w.embedded.tomcat.TomcatWebServer : Tomcat initialized with port 8080 (http)
+2024-12-04 16:43:07 INFO  o.apache.coyote.http11.Http11NioProtocol : Initializing ProtocolHandler ["http-nio-8080"]
+2024-12-04 16:43:07 INFO  o.apache.catalina.core.StandardService : Starting service [Tomcat]
+2024-12-04 16:43:07 INFO  org.apache.catalina.core.StandardEngine : Starting Servlet engine: [Apache Tomcat/10.1.31]
+2024-12-04 16:43:07 INFO  o.a.c.c.C.[Tomcat-1].[localhost].[/] : Initializing Spring embedded WebApplicationContext
+2024-12-04 16:43:07 INFO  o.s.b.w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 988 ms
+2024-12-04 16:43:07 INFO  com.zaxxer.hikari.HikariDataSource : HikariPool-6 - Starting...
+2024-12-04 16:43:07 INFO  com.zaxxer.hikari.pool.HikariPool : HikariPool-6 - Added connection com.mysql.cj.jdbc.ConnectionImpl@504ea50b
+2024-12-04 16:43:07 INFO  com.zaxxer.hikari.HikariDataSource : HikariPool-6 - Start completed.
+2024-12-04 16:43:07 INFO  o.s.b.a.h2.H2ConsoleAutoConfiguration : H2 console available at '/h2-console'. Database available at 'jdbc:mysql://localhost/event'
+2024-12-04 16:43:07 ERROR o.s.b.web.embedded.tomcat.TomcatStarter : Error starting Tomcat context. Exception: org.springframework.beans.factory.BeanCreationException. Message: Error creating bean with name 'authTokenFilter' defined in file [D:\JAVA\event-management-system\target\classes\hcmute\fit\event_management\security\AuthTokenFilter.class]: Post-processing of merged bean definition failed
+2024-12-04 16:43:07 INFO  o.apache.catalina.core.StandardService : Stopping service [Tomcat]
+2024-12-04 16:43:07 WARN  o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.context.ApplicationContextException: Unable to start web server
+2024-12-04 16:43:07 INFO  com.zaxxer.hikari.HikariDataSource : HikariPool-6 - Shutdown initiated...
+2024-12-04 16:43:07 INFO  com.zaxxer.hikari.HikariDataSource : HikariPool-6 - Shutdown completed.
+2024-12-04 16:43:07 INFO  o.s.b.a.l.ConditionEvaluationReportLogger : 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2024-12-04 16:43:07 ERROR o.springframework.boot.SpringApplication : Application run failed
+org.springframework.context.ApplicationContextException: Unable to start web server
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.onRefresh(ServletWebServerApplicationContext.java:165)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:619)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:754)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:456)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:335)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1363)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1352)
+	at hcmute.fit.event_management.EventManagementApplication.main(EventManagementApplication.java:14)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:50)
+Caused by: org.springframework.boot.web.server.WebServerException: Unable to start embedded Tomcat
+	at org.springframework.boot.web.embedded.tomcat.TomcatWebServer.initialize(TomcatWebServer.java:147)
+	at org.springframework.boot.web.embedded.tomcat.TomcatWebServer.<init>(TomcatWebServer.java:107)
+	at org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactory.getTomcatWebServer(TomcatServletWebServerFactory.java:516)
+	at org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactory.getWebServer(TomcatServletWebServerFactory.java:222)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.createWebServer(ServletWebServerApplicationContext.java:188)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.onRefresh(ServletWebServerApplicationContext.java:162)
+	... 11 common frames omitted
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'authTokenFilter' defined in file [D:\JAVA\event-management-system\target\classes\hcmute\fit\event_management\security\AuthTokenFilter.class]: Post-processing of merged bean definition failed
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:577)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:522)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:337)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:335)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:205)
+	at org.springframework.boot.web.servlet.ServletContextInitializerBeans.getOrderedBeansOfType(ServletContextInitializerBeans.java:211)
+	at org.springframework.boot.web.servlet.ServletContextInitializerBeans.addAsRegistrationBean(ServletContextInitializerBeans.java:174)
+	at org.springframework.boot.web.servlet.ServletContextInitializerBeans.addAsRegistrationBean(ServletContextInitializerBeans.java:169)
+	at org.springframework.boot.web.servlet.ServletContextInitializerBeans.addAdaptableBeans(ServletContextInitializerBeans.java:154)
+	at org.springframework.boot.web.servlet.ServletContextInitializerBeans.<init>(ServletContextInitializerBeans.java:87)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.getServletContextInitializerBeans(ServletWebServerApplicationContext.java:266)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.selfInitialize(ServletWebServerApplicationContext.java:240)
+	at org.springframework.boot.web.embedded.tomcat.TomcatStarter.onStartup(TomcatStarter.java:52)
+	at org.apache.catalina.core.StandardContext.startInternal(StandardContext.java:4412)
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:164)
+	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1203)
+	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1193)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:317)
+	at org.apache.tomcat.util.threads.InlineExecutorService.execute(InlineExecutorService.java:75)
+	at java.base/java.util.concurrent.AbstractExecutorService.submit(AbstractExecutorService.java:145)
+	at org.apache.catalina.core.ContainerBase.startInternal(ContainerBase.java:749)
+	at org.apache.catalina.core.StandardHost.startInternal(StandardHost.java:772)
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:164)
+	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1203)
+	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1193)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:317)
+	at org.apache.tomcat.util.threads.InlineExecutorService.execute(InlineExecutorService.java:75)
+	at java.base/java.util.concurrent.AbstractExecutorService.submit(AbstractExecutorService.java:145)
+	at org.apache.catalina.core.ContainerBase.startInternal(ContainerBase.java:749)
+	at org.apache.catalina.core.StandardEngine.startInternal(StandardEngine.java:203)
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:164)
+	at org.apache.catalina.core.StandardService.startInternal(StandardService.java:415)
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:164)
+	at org.apache.catalina.core.StandardServer.startInternal(StandardServer.java:870)
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:164)
+	at org.apache.catalina.startup.Tomcat.start(Tomcat.java:437)
+	at org.springframework.boot.web.embedded.tomcat.TomcatWebServer.initialize(TomcatWebServer.java:128)
+	... 16 common frames omitted
+Caused by: java.lang.IllegalStateException: Failed to introspect Class [hcmute.fit.event_management.security.AuthTokenFilter] from ClassLoader [org.springframework.boot.devtools.restart.classloader.RestartClassLoader@4c624f1b]
+	at org.springframework.util.ReflectionUtils.getDeclaredFields(ReflectionUtils.java:757)
+	at org.springframework.util.ReflectionUtils.doWithLocalFields(ReflectionUtils.java:689)
+	at org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor.buildPersistenceMetadata(PersistenceAnnotationBeanPostProcessor.java:436)
+	at org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor.findPersistenceMetadata(PersistenceAnnotationBeanPostProcessor.java:417)
+	at org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor.findInjectionMetadata(PersistenceAnnotationBeanPostProcessor.java:376)
+	at org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor.postProcessMergedBeanDefinition(PersistenceAnnotationBeanPostProcessor.java:353)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.applyMergedBeanDefinitionPostProcessors(AbstractAutowireCapableBeanFactory.java:1103)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:574)
+	... 53 common frames omitted
+Caused by: java.lang.NoClassDefFoundError: hcmute/fit/event_management/util/JwtTokenUtil
+	at java.base/java.lang.Class.getDeclaredFields0(Native Method)
+	at java.base/java.lang.Class.privateGetDeclaredFields(Class.java:3473)
+	at java.base/java.lang.Class.getDeclaredFields(Class.java:2542)
+	at org.springframework.util.ReflectionUtils.getDeclaredFields(ReflectionUtils.java:752)
+	... 60 common frames omitted
+Caused by: java.lang.ClassNotFoundException: hcmute.fit.event_management.util.JwtTokenUtil
+	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:641)
+	at java.base/jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(ClassLoaders.java:188)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:526)
+	at java.base/java.lang.Class.forName0(Native Method)
+	at java.base/java.lang.Class.forName(Class.java:534)
+	at java.base/java.lang.Class.forName(Class.java:513)
+	at org.springframework.boot.devtools.restart.classloader.RestartClassLoader.loadClass(RestartClassLoader.java:121)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:526)
+	... 64 common frames omitted
+2024-12-04 16:44:23 INFO  h.f.e.EventManagementApplication : Starting EventManagementApplication using Java 21.0.2 with PID 24876 (D:\JAVA\event-management-system\target\classes started by TungNT in D:\JAVA\event-management-system)
+2024-12-04 16:44:23 INFO  h.f.e.EventManagementApplication : No active profile set, falling back to 1 default profile: "default"
+2024-12-04 16:44:23 INFO  o.s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-12-04 16:44:23 INFO  o.s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 92 ms. Found 22 JPA repository interfaces.
+2024-12-04 16:44:23 INFO  o.s.b.w.embedded.tomcat.TomcatWebServer : Tomcat initialized with port 8080 (http)
+2024-12-04 16:44:23 INFO  o.apache.coyote.http11.Http11NioProtocol : Initializing ProtocolHandler ["http-nio-8080"]
+2024-12-04 16:44:23 INFO  o.apache.catalina.core.StandardService : Starting service [Tomcat]
+2024-12-04 16:44:23 INFO  org.apache.catalina.core.StandardEngine : Starting Servlet engine: [Apache Tomcat/10.1.31]
+2024-12-04 16:44:23 INFO  o.a.c.c.C.[Tomcat-2].[localhost].[/] : Initializing Spring embedded WebApplicationContext
+2024-12-04 16:44:23 INFO  o.s.b.w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 593 ms
+2024-12-04 16:44:23 INFO  com.zaxxer.hikari.HikariDataSource : HikariPool-7 - Starting...
+2024-12-04 16:44:23 INFO  com.zaxxer.hikari.pool.HikariPool : HikariPool-7 - Added connection com.mysql.cj.jdbc.ConnectionImpl@3fc13321
+2024-12-04 16:44:23 INFO  com.zaxxer.hikari.HikariDataSource : HikariPool-7 - Start completed.
+2024-12-04 16:44:23 INFO  o.s.b.a.h2.H2ConsoleAutoConfiguration : H2 console available at '/h2-console'. Database available at 'jdbc:mysql://localhost/event'
+2024-12-04 16:44:23 INFO  o.hibernate.jpa.internal.util.LogHelper : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-12-04 16:44:23 INFO  o.h.c.internal.RegionFactoryInitiator : HHH000026: Second-level cache disabled
+2024-12-04 16:44:23 INFO  o.s.o.j.p.SpringPersistenceUnitInfo : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-12-04 16:44:24 INFO  o.h.e.t.j.p.i.JtaPlatformInitiator : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-12-04 16:44:24 INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-12-04 16:44:24 WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-12-04 16:44:24 INFO  o.s.s.c.a.a.c.InitializeAuthenticationProviderBeanManagerConfigurer$InitializeAuthenticationProviderManagerConfigurer : Global AuthenticationManager configured with AuthenticationProvider bean with name authenticationProvider
+2024-12-04 16:44:24 WARN  o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with an AuthenticationProvider bean. UserDetailsService beans will not be used for username/password login. Consider removing the AuthenticationProvider bean. Alternatively, consider using the UserDetailsService in a manually instantiated DaoAuthenticationProvider.
+2024-12-04 16:44:25 WARN  o.s.b.a.t.ThymeleafAutoConfiguration$DefaultTemplateResolverConfiguration : Cannot find template location: classpath:/templates/ (please add some templates, check your Thymeleaf configuration, or set spring.thymeleaf.check-template-location=false)
+2024-12-04 16:44:25 INFO  o.s.b.d.a.OptionalLiveReloadServer : LiveReload server is running on port 35729
+2024-12-04 16:44:25 INFO  o.apache.coyote.http11.Http11NioProtocol : Starting ProtocolHandler ["http-nio-8080"]
+2024-12-04 16:44:25 INFO  o.s.b.w.embedded.tomcat.TomcatWebServer : Tomcat started on port 8080 (http) with context path '/'
+2024-12-04 16:44:25 INFO  h.f.e.EventManagementApplication : Started EventManagementApplication in 1.989 seconds (process running for 1254.656)
+2024-12-04 16:44:25 INFO  o.s.b.d.a.ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2024-12-04 16:44:49 INFO  o.s.b.d.a.LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener : Restarting due to 1 class path change (0 additions, 1 deletion, 0 modifications)
+2024-12-04 16:44:49 INFO  o.apache.coyote.http11.Http11NioProtocol : Stopping ProtocolHandler ["http-nio-8080"]
+2024-12-04 16:44:49 INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-12-04 16:44:49 INFO  com.zaxxer.hikari.HikariDataSource : HikariPool-7 - Shutdown initiated...
+2024-12-04 16:44:49 INFO  com.zaxxer.hikari.HikariDataSource : HikariPool-7 - Shutdown completed.
+2024-12-04 16:44:49 INFO  h.f.e.EventManagementApplication : Starting EventManagementApplication using Java 21.0.2 with PID 24876 (D:\JAVA\event-management-system\target\classes started by TungNT in D:\JAVA\event-management-system)
+2024-12-04 16:44:49 INFO  h.f.e.EventManagementApplication : No active profile set, falling back to 1 default profile: "default"
+2024-12-04 16:44:49 INFO  o.s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-12-04 16:44:49 INFO  o.s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 113 ms. Found 22 JPA repository interfaces.
+2024-12-04 16:44:50 INFO  o.s.b.w.embedded.tomcat.TomcatWebServer : Tomcat initialized with port 8080 (http)
+2024-12-04 16:44:50 INFO  o.apache.coyote.http11.Http11NioProtocol : Initializing ProtocolHandler ["http-nio-8080"]
+2024-12-04 16:44:50 INFO  o.apache.catalina.core.StandardService : Starting service [Tomcat]
+2024-12-04 16:44:50 INFO  org.apache.catalina.core.StandardEngine : Starting Servlet engine: [Apache Tomcat/10.1.31]
+2024-12-04 16:44:50 INFO  o.a.c.c.C.[Tomcat-2].[localhost].[/] : Initializing Spring embedded WebApplicationContext
+2024-12-04 16:44:50 INFO  o.s.b.w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 769 ms
+2024-12-04 16:44:50 INFO  com.zaxxer.hikari.HikariDataSource : HikariPool-8 - Starting...
+2024-12-04 16:44:50 INFO  com.zaxxer.hikari.pool.HikariPool : HikariPool-8 - Added connection com.mysql.cj.jdbc.ConnectionImpl@20e2e0b1
+2024-12-04 16:44:50 INFO  com.zaxxer.hikari.HikariDataSource : HikariPool-8 - Start completed.
+2024-12-04 16:44:50 INFO  o.s.b.a.h2.H2ConsoleAutoConfiguration : H2 console available at '/h2-console'. Database available at 'jdbc:mysql://localhost/event'
+2024-12-04 16:44:50 ERROR o.s.b.web.embedded.tomcat.TomcatStarter : Error starting Tomcat context. Exception: org.springframework.beans.factory.BeanCreationException. Message: Error creating bean with name 'authTokenFilter' defined in file [D:\JAVA\event-management-system\target\classes\hcmute\fit\event_management\security\AuthTokenFilter.class]: Post-processing of merged bean definition failed
+2024-12-04 16:44:50 INFO  o.apache.catalina.core.StandardService : Stopping service [Tomcat]
+2024-12-04 16:44:50 WARN  o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.context.ApplicationContextException: Unable to start web server
+2024-12-04 16:44:50 INFO  com.zaxxer.hikari.HikariDataSource : HikariPool-8 - Shutdown initiated...
+2024-12-04 16:44:50 INFO  com.zaxxer.hikari.HikariDataSource : HikariPool-8 - Shutdown completed.
+2024-12-04 16:44:50 INFO  o.s.b.a.l.ConditionEvaluationReportLogger : 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2024-12-04 16:44:50 ERROR o.springframework.boot.SpringApplication : Application run failed
+org.springframework.context.ApplicationContextException: Unable to start web server
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.onRefresh(ServletWebServerApplicationContext.java:165)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:619)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:754)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:456)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:335)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1363)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1352)
+	at hcmute.fit.event_management.EventManagementApplication.main(EventManagementApplication.java:14)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:50)
+Caused by: org.springframework.boot.web.server.WebServerException: Unable to start embedded Tomcat
+	at org.springframework.boot.web.embedded.tomcat.TomcatWebServer.initialize(TomcatWebServer.java:147)
+	at org.springframework.boot.web.embedded.tomcat.TomcatWebServer.<init>(TomcatWebServer.java:107)
+	at org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactory.getTomcatWebServer(TomcatServletWebServerFactory.java:516)
+	at org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactory.getWebServer(TomcatServletWebServerFactory.java:222)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.createWebServer(ServletWebServerApplicationContext.java:188)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.onRefresh(ServletWebServerApplicationContext.java:162)
+	... 11 common frames omitted
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'authTokenFilter' defined in file [D:\JAVA\event-management-system\target\classes\hcmute\fit\event_management\security\AuthTokenFilter.class]: Post-processing of merged bean definition failed
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:577)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:522)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:337)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:335)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:205)
+	at org.springframework.boot.web.servlet.ServletContextInitializerBeans.getOrderedBeansOfType(ServletContextInitializerBeans.java:211)
+	at org.springframework.boot.web.servlet.ServletContextInitializerBeans.addAsRegistrationBean(ServletContextInitializerBeans.java:174)
+	at org.springframework.boot.web.servlet.ServletContextInitializerBeans.addAsRegistrationBean(ServletContextInitializerBeans.java:169)
+	at org.springframework.boot.web.servlet.ServletContextInitializerBeans.addAdaptableBeans(ServletContextInitializerBeans.java:154)
+	at org.springframework.boot.web.servlet.ServletContextInitializerBeans.<init>(ServletContextInitializerBeans.java:87)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.getServletContextInitializerBeans(ServletWebServerApplicationContext.java:266)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.selfInitialize(ServletWebServerApplicationContext.java:240)
+	at org.springframework.boot.web.embedded.tomcat.TomcatStarter.onStartup(TomcatStarter.java:52)
+	at org.apache.catalina.core.StandardContext.startInternal(StandardContext.java:4412)
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:164)
+	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1203)
+	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1193)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:317)
+	at org.apache.tomcat.util.threads.InlineExecutorService.execute(InlineExecutorService.java:75)
+	at java.base/java.util.concurrent.AbstractExecutorService.submit(AbstractExecutorService.java:145)
+	at org.apache.catalina.core.ContainerBase.startInternal(ContainerBase.java:749)
+	at org.apache.catalina.core.StandardHost.startInternal(StandardHost.java:772)
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:164)
+	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1203)
+	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1193)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:317)
+	at org.apache.tomcat.util.threads.InlineExecutorService.execute(InlineExecutorService.java:75)
+	at java.base/java.util.concurrent.AbstractExecutorService.submit(AbstractExecutorService.java:145)
+	at org.apache.catalina.core.ContainerBase.startInternal(ContainerBase.java:749)
+	at org.apache.catalina.core.StandardEngine.startInternal(StandardEngine.java:203)
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:164)
+	at org.apache.catalina.core.StandardService.startInternal(StandardService.java:415)
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:164)
+	at org.apache.catalina.core.StandardServer.startInternal(StandardServer.java:870)
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:164)
+	at org.apache.catalina.startup.Tomcat.start(Tomcat.java:437)
+	at org.springframework.boot.web.embedded.tomcat.TomcatWebServer.initialize(TomcatWebServer.java:128)
+	... 16 common frames omitted
+Caused by: java.lang.IllegalStateException: Failed to introspect Class [hcmute.fit.event_management.security.AuthTokenFilter] from ClassLoader [org.springframework.boot.devtools.restart.classloader.RestartClassLoader@2af15be5]
+	at org.springframework.util.ReflectionUtils.getDeclaredFields(ReflectionUtils.java:757)
+	at org.springframework.util.ReflectionUtils.doWithLocalFields(ReflectionUtils.java:689)
+	at org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor.buildPersistenceMetadata(PersistenceAnnotationBeanPostProcessor.java:436)
+	at org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor.findPersistenceMetadata(PersistenceAnnotationBeanPostProcessor.java:417)
+	at org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor.findInjectionMetadata(PersistenceAnnotationBeanPostProcessor.java:376)
+	at org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor.postProcessMergedBeanDefinition(PersistenceAnnotationBeanPostProcessor.java:353)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.applyMergedBeanDefinitionPostProcessors(AbstractAutowireCapableBeanFactory.java:1103)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:574)
+	... 53 common frames omitted
+Caused by: java.lang.NoClassDefFoundError: hcmute/fit/event_management/util/JwtTokenUtil
+	at java.base/java.lang.Class.getDeclaredFields0(Native Method)
+	at java.base/java.lang.Class.privateGetDeclaredFields(Class.java:3473)
+	at java.base/java.lang.Class.getDeclaredFields(Class.java:2542)
+	at org.springframework.util.ReflectionUtils.getDeclaredFields(ReflectionUtils.java:752)
+	... 60 common frames omitted
+Caused by: java.lang.ClassNotFoundException: hcmute.fit.event_management.util.JwtTokenUtil
+	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:641)
+	at java.base/jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(ClassLoaders.java:188)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:526)
+	at java.base/java.lang.Class.forName0(Native Method)
+	at java.base/java.lang.Class.forName(Class.java:534)
+	at java.base/java.lang.Class.forName(Class.java:513)
+	at org.springframework.boot.devtools.restart.classloader.RestartClassLoader.loadClass(RestartClassLoader.java:121)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:526)
+	... 64 common frames omitted
+2024-12-04 16:44:51 INFO  h.f.e.EventManagementApplication : Starting EventManagementApplication using Java 21.0.2 with PID 24876 (D:\JAVA\event-management-system\target\classes started by TungNT in D:\JAVA\event-management-system)
+2024-12-04 16:44:51 INFO  h.f.e.EventManagementApplication : No active profile set, falling back to 1 default profile: "default"
+2024-12-04 16:44:52 INFO  o.s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-12-04 16:44:52 INFO  o.s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 220 ms. Found 22 JPA repository interfaces.
+2024-12-04 16:44:53 INFO  o.s.b.w.embedded.tomcat.TomcatWebServer : Tomcat initialized with port 8080 (http)
+2024-12-04 16:44:53 INFO  o.apache.coyote.http11.Http11NioProtocol : Initializing ProtocolHandler ["http-nio-8080"]
+2024-12-04 16:44:53 INFO  o.apache.catalina.core.StandardService : Starting service [Tomcat]
+2024-12-04 16:44:53 INFO  org.apache.catalina.core.StandardEngine : Starting Servlet engine: [Apache Tomcat/10.1.31]
+2024-12-04 16:44:53 INFO  o.a.c.c.C.[Tomcat-3].[localhost].[/] : Initializing Spring embedded WebApplicationContext
+2024-12-04 16:44:53 INFO  o.s.b.w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1345 ms
+2024-12-04 16:44:53 INFO  com.zaxxer.hikari.HikariDataSource : HikariPool-9 - Starting...
+2024-12-04 16:44:53 INFO  com.zaxxer.hikari.pool.HikariPool : HikariPool-9 - Added connection com.mysql.cj.jdbc.ConnectionImpl@6c03cbb9
+2024-12-04 16:44:53 INFO  com.zaxxer.hikari.HikariDataSource : HikariPool-9 - Start completed.
+2024-12-04 16:44:53 INFO  o.s.b.a.h2.H2ConsoleAutoConfiguration : H2 console available at '/h2-console'. Database available at 'jdbc:mysql://localhost/event'
+2024-12-04 16:44:53 INFO  o.hibernate.jpa.internal.util.LogHelper : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-12-04 16:44:53 INFO  o.h.c.internal.RegionFactoryInitiator : HHH000026: Second-level cache disabled
+2024-12-04 16:44:53 INFO  o.s.o.j.p.SpringPersistenceUnitInfo : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-12-04 16:44:53 INFO  o.h.e.t.j.p.i.JtaPlatformInitiator : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-12-04 16:44:54 INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-12-04 16:44:54 WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-12-04 16:44:54 INFO  o.s.s.c.a.a.c.InitializeAuthenticationProviderBeanManagerConfigurer$InitializeAuthenticationProviderManagerConfigurer : Global AuthenticationManager configured with AuthenticationProvider bean with name authenticationProvider
+2024-12-04 16:44:54 WARN  o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with an AuthenticationProvider bean. UserDetailsService beans will not be used for username/password login. Consider removing the AuthenticationProvider bean. Alternatively, consider using the UserDetailsService in a manually instantiated DaoAuthenticationProvider.
+2024-12-04 16:44:54 WARN  o.s.b.a.t.ThymeleafAutoConfiguration$DefaultTemplateResolverConfiguration : Cannot find template location: classpath:/templates/ (please add some templates, check your Thymeleaf configuration, or set spring.thymeleaf.check-template-location=false)
+2024-12-04 16:44:55 INFO  o.s.b.d.a.OptionalLiveReloadServer : LiveReload server is running on port 35729
+2024-12-04 16:44:55 INFO  o.apache.coyote.http11.Http11NioProtocol : Starting ProtocolHandler ["http-nio-8080"]
+2024-12-04 16:44:55 INFO  o.s.b.w.embedded.tomcat.TomcatWebServer : Tomcat started on port 8080 (http) with context path '/'
+2024-12-04 16:44:55 INFO  h.f.e.EventManagementApplication : Started EventManagementApplication in 3.31 seconds (process running for 1284.605)
+2024-12-04 16:44:55 INFO  o.s.b.d.a.ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2024-12-04 16:45:36 INFO  o.a.c.c.C.[Tomcat-3].[localhost].[/] : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-12-04 16:45:36 INFO  o.s.web.servlet.DispatcherServlet : Initializing Servlet 'dispatcherServlet'
+2024-12-04 16:45:36 INFO  o.s.web.servlet.DispatcherServlet : Completed initialization in 3 ms
+2024-12-04 16:45:36 WARN  o.s.w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.method.annotation.MethodArgumentTypeMismatchException: Method parameter 'empId': Failed to convert value of type 'java.lang.String' to required type 'int'; For input string: "null"]
+2024-12-04 16:45:36 ERROR h.f.e.security.AuthEntryPointJwt : Unauthorized error: Invalid credentials
+2024-12-04 16:45:43 INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-12-04 16:45:43 INFO  com.zaxxer.hikari.HikariDataSource : HikariPool-9 - Shutdown initiated...
+2024-12-04 16:45:43 INFO  com.zaxxer.hikari.HikariDataSource : HikariPool-9 - Shutdown completed.
+2024-12-04 16:45:48 INFO  o.h.validator.internal.util.Version : HV000001: Hibernate Validator 8.0.1.Final
+2024-12-04 16:45:48 INFO  h.f.e.EventManagementApplication : Starting EventManagementApplication using Java 21.0.2 with PID 3364 (D:\JAVA\event-management-system\target\classes started by TungNT in D:\JAVA\event-management-system)
+2024-12-04 16:45:48 INFO  h.f.e.EventManagementApplication : No active profile set, falling back to 1 default profile: "default"
+2024-12-04 16:45:48 INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2024-12-04 16:45:48 INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2024-12-04 16:45:49 INFO  o.s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-12-04 16:45:49 INFO  o.s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 193 ms. Found 22 JPA repository interfaces.
+2024-12-04 16:45:50 INFO  o.s.b.w.embedded.tomcat.TomcatWebServer : Tomcat initialized with port 8080 (http)
+2024-12-04 16:45:50 INFO  o.apache.coyote.http11.Http11NioProtocol : Initializing ProtocolHandler ["http-nio-8080"]
+2024-12-04 16:45:50 INFO  o.apache.catalina.core.StandardService : Starting service [Tomcat]
+2024-12-04 16:45:50 INFO  org.apache.catalina.core.StandardEngine : Starting Servlet engine: [Apache Tomcat/10.1.31]
+2024-12-04 16:45:50 INFO  o.a.c.c.C.[Tomcat].[localhost].[/] : Initializing Spring embedded WebApplicationContext
+2024-12-04 16:45:50 INFO  o.s.b.w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2524 ms
+2024-12-04 16:45:50 INFO  com.zaxxer.hikari.HikariDataSource : HikariPool-1 - Starting...
+2024-12-04 16:45:51 INFO  com.zaxxer.hikari.pool.HikariPool : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@3a23cf3d
+2024-12-04 16:45:51 INFO  com.zaxxer.hikari.HikariDataSource : HikariPool-1 - Start completed.
+2024-12-04 16:45:51 INFO  o.s.b.a.h2.H2ConsoleAutoConfiguration : H2 console available at '/h2-console'. Database available at 'jdbc:mysql://localhost/event'
+2024-12-04 16:45:51 INFO  o.hibernate.jpa.internal.util.LogHelper : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-12-04 16:45:51 INFO  org.hibernate.Version : HHH000412: Hibernate ORM core version 6.5.3.Final
+2024-12-04 16:45:51 INFO  o.h.c.internal.RegionFactoryInitiator : HHH000026: Second-level cache disabled
+2024-12-04 16:45:52 INFO  o.s.o.j.p.SpringPersistenceUnitInfo : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-12-04 16:45:54 INFO  o.h.e.t.j.p.i.JtaPlatformInitiator : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-12-04 16:45:54 INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-12-04 16:45:55 INFO  o.s.d.j.r.query.QueryEnhancerFactory : Hibernate is in classpath; If applicable, HQL parser will be used.
+2024-12-04 16:45:55 WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-12-04 16:45:56 INFO  o.s.s.c.a.a.c.InitializeAuthenticationProviderBeanManagerConfigurer$InitializeAuthenticationProviderManagerConfigurer : Global AuthenticationManager configured with AuthenticationProvider bean with name authenticationProvider
+2024-12-04 16:45:56 WARN  o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with an AuthenticationProvider bean. UserDetailsService beans will not be used for username/password login. Consider removing the AuthenticationProvider bean. Alternatively, consider using the UserDetailsService in a manually instantiated DaoAuthenticationProvider.
+2024-12-04 16:45:57 WARN  o.s.b.a.t.ThymeleafAutoConfiguration$DefaultTemplateResolverConfiguration : Cannot find template location: classpath:/templates/ (please add some templates, check your Thymeleaf configuration, or set spring.thymeleaf.check-template-location=false)
+2024-12-04 16:45:57 INFO  o.s.b.d.a.OptionalLiveReloadServer : LiveReload server is running on port 35729
+2024-12-04 16:45:57 INFO  o.apache.coyote.http11.Http11NioProtocol : Starting ProtocolHandler ["http-nio-8080"]
+2024-12-04 16:45:57 INFO  o.s.b.w.embedded.tomcat.TomcatWebServer : Tomcat started on port 8080 (http) with context path '/'
+2024-12-04 16:45:57 INFO  h.f.e.EventManagementApplication : Started EventManagementApplication in 9.896 seconds (process running for 11.184)
+2024-12-04 16:46:13 INFO  o.a.c.c.C.[Tomcat].[localhost].[/] : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-12-04 16:46:13 INFO  o.s.web.servlet.DispatcherServlet : Initializing Servlet 'dispatcherServlet'
+2024-12-04 16:46:13 INFO  o.s.web.servlet.DispatcherServlet : Completed initialization in 2 ms
+2024-12-04 16:46:13 WARN  o.s.w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.method.annotation.MethodArgumentTypeMismatchException: Method parameter 'empId': Failed to convert value of type 'java.lang.String' to required type 'int'; For input string: "null"]
+2024-12-04 16:46:13 ERROR h.f.e.security.AuthEntryPointJwt : Unauthorized error: Invalid credentials
+2024-12-04 16:46:13 WARN  o.s.w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.method.annotation.MethodArgumentTypeMismatchException: Method parameter 'empId': Failed to convert value of type 'java.lang.String' to required type 'int'; For input string: "null"]
+2024-12-04 16:46:13 ERROR h.f.e.security.AuthEntryPointJwt : Unauthorized error: Invalid credentials
+2024-12-04 16:46:49 WARN  o.s.w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.method.annotation.MethodArgumentTypeMismatchException: Method parameter 'empId': Failed to convert value of type 'java.lang.String' to required type 'int'; For input string: "null"]
+2024-12-04 16:46:49 ERROR h.f.e.security.AuthEntryPointJwt : Unauthorized error: Invalid credentials
+2024-12-04 16:46:49 WARN  o.s.w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.method.annotation.MethodArgumentTypeMismatchException: Method parameter 'empId': Failed to convert value of type 'java.lang.String' to required type 'int'; For input string: "null"]
+2024-12-04 16:46:49 ERROR h.f.e.security.AuthEntryPointJwt : Unauthorized error: Invalid credentials
+2024-12-04 17:14:22 INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-12-04 17:14:22 INFO  com.zaxxer.hikari.HikariDataSource : HikariPool-1 - Shutdown initiated...
+2024-12-04 17:14:22 INFO  com.zaxxer.hikari.HikariDataSource : HikariPool-1 - Shutdown completed.

@@ -16,8 +16,8 @@ public class HomeEmployeeController {
     @Autowired
     IEventService eventService;
 
-    @GetMapping("/event")
-    public ResponseEntity<?> findEventId(@RequestBody int empId) {
+    @GetMapping("/event/{empId}")
+    public ResponseEntity<?> findEventId(@PathVariable int empId) {
         List<EventDTO> events = eventService.getAllEventByEmp(empId);
         Response response = new Response();
         response.setData(events);
