@@ -19,4 +19,9 @@ public interface IProviderService {
     public boolean updateServiceProvider(ProviderServiceDTO serviceDTO);
 
     boolean deleteServiceProvider(int serviceId);
+
+    List<ProviderServiceDTO> listServiceInEvent(int eventId, int providerId);
+
+
+    List<ProviderServiceDTO> listServiceNotInEvent(int eventId, int providerId);
 }
