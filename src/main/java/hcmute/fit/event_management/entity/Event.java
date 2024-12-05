@@ -35,8 +35,6 @@ public class Event {
     private Date eventStart;
     @Column(name = "event_end")
     private Date eventEnd;
-    @Column(name = "event_detail")
-    private String eventDetail;
     @Column(name = "event_status")
     private String eventStatus;
     @ManyToOne
