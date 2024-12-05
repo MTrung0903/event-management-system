@@ -44,4 +44,5 @@ public class ProviderServiceController {
         response.setData(providerService.deleteServiceProvider(serviceId));
         return ResponseEntity.ok(response);
     }
+
 }

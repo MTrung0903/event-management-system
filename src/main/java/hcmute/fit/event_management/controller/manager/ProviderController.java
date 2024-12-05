@@ -64,5 +64,17 @@ public class ProviderController {
         response.setData(list);
         return ResponseEntity.ok(response);
     }
+    @GetMapping("/{providerId}/ser-in-event/{eventId}")
+    public ResponseEntity<?> getListServiceInEvent(@PathVariable int providerId, @PathVariable int eventId) {
+        Response response = new Response();
+        response.setData(providerService.listServiceInEvent(eventId, providerId));
+        return ResponseEntity.ok(response);
+    }
+    @GetMapping("/{providerId}/ser-not-in-event/{eventId}")
+    public ResponseEntity<?> getListServiceNotInEvent(@PathVariable int providerId, @PathVariable int eventId) {
+        Response response = new Response();
+        response.setData(providerService.listServiceNotInEvent(eventId, providerId));
+        return ResponseEntity.ok(response);
+    }
 }
 

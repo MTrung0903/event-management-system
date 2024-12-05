@@ -5,13 +5,12 @@ import hcmute.fit.event_management.entity.ProviderService;
 import hcmute.fit.event_management.repository.ProviderRepository;
 import hcmute.fit.event_management.repository.ProviderServiceRepository;
 import hcmute.fit.event_management.service.IProviderService;
+import hcmute.fit.event_management.service.IServiceEventSerivce;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 @Service
 public class ProviderServiceImpl implements IProviderService {
@@ -21,6 +20,8 @@ public class ProviderServiceImpl implements IProviderService {
     @Autowired
     private ProviderRepository providerRepository;
 
+    @Autowired
+    private IServiceEventSerivce serviceEventSerivce;
     public ProviderServiceImpl(ProviderServiceRepository providerServiceRepository) {
         this.providerServiceRepository = providerServiceRepository;
     }
@@ -108,4 +109,30 @@ public class ProviderServiceImpl implements IProviderService {
         }
         return isSuccess;
     }
+    @Override
+    public List<ProviderServiceDTO> listServiceInEvent(int eventId, int providerId){
+        List<ProviderService> list = providerServiceRepository.getServiceInEvent(providerId,eventId);
+        List<ProviderServiceDTO> providerServiceDTOList = new ArrayList<>();
+        for (ProviderService providerService : list) {
+            ProviderServiceDTO providerServiceDTO = new ProviderServiceDTO();
+            BeanUtils.copyProperties(providerService, providerServiceDTO);
+            providerServiceDTO.setProviderId(providerService.getProvider().getId());
+            providerServiceDTOList.add(providerServiceDTO);
+        }
+        return providerServiceDTOList;
+    }
+    @Override
+    public List<ProviderServiceDTO> listServiceNotInEvent(int eventId, int providerId){
+        List<ProviderService> list = providerServiceRepository.getServicesNotInEvent(providerId,eventId);
+        List<ProviderServiceDTO> providerServiceDTOList = new ArrayList<>();
+        for (ProviderService providerService : list) {
+            ProviderServiceDTO providerServiceDTO = new ProviderServiceDTO();
+            BeanUtils.copyProperties(providerService, providerServiceDTO);
+            providerServiceDTO.setProviderId(providerService.getProvider().getId());
+            providerServiceDTOList.add(providerServiceDTO);
+        }
+        return providerServiceDTOList;
+    }
+
+
 }

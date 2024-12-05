@@ -51,6 +51,12 @@ public class EventController {
     @Autowired
     private IEmployeeService employeeService;
 
+    @Autowired
+    private IProviderService providerService;
+
+    @Autowired
+    private IServiceEventSerivce serviceEventSerivce;
+
 
     @PostMapping("")
     public ResponseEntity<?> addEvent(@RequestParam("image") MultipartFile image,
@@ -205,5 +211,24 @@ public class EventController {
         response.setData(sponsorService.deleteSponsorEvent(eventId, sponsorId));
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
-    
+
+    @PostMapping("/{eventId}/add-ser/{serviceId}")
+    public ResponseEntity<?> addServiceToEvent(@PathVariable int eventId, @PathVariable int serviceId) {
+        Response response = new Response();
+        response.setData(serviceEventSerivce.addServiceEvent(eventId, serviceId));
+        return new ResponseEntity<>(response, HttpStatus.OK);
+    }
+    @DeleteMapping("/{eventId}/del-ser/{serviceId}")
+    public ResponseEntity<?> delServiceFromEvent(@PathVariable int eventId, @PathVariable int serviceId) {
+        Response response = new Response();
+        response.setData(serviceEventSerivce.delServiceEvent(eventId, serviceId));
+        return new ResponseEntity<>(response, HttpStatus.OK);
+    }
+
+    @GetMapping("/{eventId}/detail-ser/{providerId}")
+    public ResponseEntity<?> getDetailSerEvent(@PathVariable int eventId, @PathVariable int providerId) {
+        Response response = new Response();
+        response.setData(providerImpl.providerDetailInEvent(eventId, providerId));
+        return new ResponseEntity<>(response, HttpStatus.OK);
+    }
 }
