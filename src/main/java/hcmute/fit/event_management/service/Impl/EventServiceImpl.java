@@ -46,7 +46,7 @@ public class EventServiceImpl implements IEventService {
             BeanUtils.copyProperties(event, eventDTO);
             eventDTO.setEventId(event.getEventID());
             eventDTO.setManId(event.getManager().getManID());
-            eventDTO.setMcId(event.getMc().getMcID());
+//            eventDTO.setMcId(event.getMc().getMcID());
             eventDTOs.add(eventDTO);
         }
         return eventDTOs;
@@ -57,11 +57,12 @@ public class EventServiceImpl implements IEventService {
         Optional<Event> event = eventRepository.findById(id);
         if (event.isPresent()) {
             EventDTO eventDTO = new EventDTO();
-
             BeanUtils.copyProperties(event.get(), eventDTO);
-            eventDTO.setEventId(event.get().getEventID());
+            eventDTO.setEventId(id);
             eventDTO.setManId(event.get().getManager().getManID());
-            eventDTO.setMcId(event.get().getMc().getMcID());
+            eventDTO.setEventStart(event.get().getEventStart().toString());
+            eventDTO.setEventEnd(event.get().getEventEnd().toString());
+//            eventDTO.setMcId(event.get().getMc().getMcID());
             return eventDTO;
         }
         return null;
@@ -72,9 +73,9 @@ public class EventServiceImpl implements IEventService {
         boolean isSuccess = false;
         boolean isUoloadImg = fileService.saveFiles(image);
         if (isUoloadImg) {
-            try{
+            try {
                 System.out.println("Manager ID: " + eventDTO.getManId());
-                if(managerRepository.existsById(eventDTO.getManId())) {
+                if (managerRepository.existsById(eventDTO.getManId())) {
                     Event event = new Event();
                     SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
                     if (eventDTO.getEventStart() != null && eventDTO.getEventEnd() != null) {
@@ -89,16 +90,27 @@ public class EventServiceImpl implements IEventService {
                     }
                     BeanUtils.copyProperties(eventDTO, event);
                     event.setEventImg(image.getOriginalFilename());
-                    event.setManager(managerRepository.findById(eventDTO.getManId()).get());
-                    event.setMc(mcRepository.findById(eventDTO.getMcId()).get());
+                    event.setManager(managerRepository.findById(eventDTO.getManId()).orElse(null));
                     eventRepository.save(event);
                     isSuccess = true;
                 }
             } catch (Exception e) {
-                System.out.println("add event failed" +e.getMessage());
+                System.out.println("add event failed" + e.getMessage());
             }
         }
 
+        return isSuccess;
+    }
+
+    @Override
+    public boolean deleteEvent(int eventId) {
+        boolean isSuccess = false;
+        try {
+            eventRepository.deleteById(eventId);
+            isSuccess = true;
+        } catch (Exception e) {
+            System.out.println("delete event failed" + e.getMessage());
+        }
         return isSuccess;
     }
 
@@ -127,11 +139,11 @@ public class EventServiceImpl implements IEventService {
                     }
                     event.setEventImg(image.getOriginalFilename());
                     event.setManager(managerOpt.get());
-                    if(eventDTO.getMcId() != null)
-                        event.setMc(mcRepository.findById(eventDTO.getMcId()).get());
+                    if (eventDTO.getMcId() != null)
+                        event.setMc(mcRepository.findById(eventDTO.getMcId()).orElse(null));
                     eventRepository.save(event);
                     isSuccess = true;
-                }else{
+                } else {
                     throw new RuntimeException("Manager or Event not found with ID: ");
                 }
             } catch (Exception e) {
@@ -146,22 +158,23 @@ public class EventServiceImpl implements IEventService {
     @Override
     public boolean addMc(int eventId, int mcId) {
         boolean isSuccess = false;
-        try{
-            if(mcRepository.findById(mcId).isPresent()){
+        try {
+            if (mcRepository.findById(mcId).isPresent()) {
                 Event event = eventRepository.findById(eventId).get();
                 event.setMc(mcRepository.findById(mcId).get());
                 eventRepository.save(event);
                 isSuccess = true;
-            }else{
+            } else {
                 throw new RuntimeException("Mc not found with ID: " + mcId);
             }
         } catch (Exception e) {
-            System.out.println("add mc failed" +e.getMessage());
+            System.out.println("add mc failed" + e.getMessage());
         }
         return isSuccess;
     }
+
     @Override
-    public List<EventDTO> getAllEventByEmp(int empId){
+    public List<EventDTO> getAllEventByEmp(int empId) {
         List<Event> events = eventRepository.findByEmpId(empId);
         List<EventDTO> eventDTOs = new ArrayList<>();
         for (Event event : events) {
@@ -173,5 +186,25 @@ public class EventServiceImpl implements IEventService {
             eventDTOs.add(eventDTO);
         }
         return eventDTOs;
+    }
+
+    @Override
+    public String getListAttendeeByEventId(int eventId){
+        Event event = eventRepository.findById(eventId).orElse(new Event());
+        return event.getEventAttendee();
+    }
+    @Override
+    public String addAttendee(int eventId, MultipartFile attendee){
+        try {
+            Event event = eventRepository.findById(eventId).orElse(new Event());
+            boolean isUploadSeccess = fileService.saveFiles(attendee);
+            if (isUploadSeccess) {
+                event.setEventAttendee(attendee.getOriginalFilename());
+            }
+            eventRepository.save(event);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        return attendee.getOriginalFilename();
     }
 }

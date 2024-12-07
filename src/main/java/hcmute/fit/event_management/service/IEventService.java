@@ -19,9 +19,15 @@ public interface IEventService {
 
     boolean addEvent(MultipartFile image, EventDTO eventDTO);
 
+    boolean deleteEvent(int eventId);
+
     boolean updateEvent(MultipartFile image, EventDTO eventDTO);
 
     boolean addMc(int eventId, int mcId);
 
     List<EventDTO> getAllEventByEmp(int empId);
+
+    String getListAttendeeByEventId(int eventId);
+
+    String addAttendee(int eventId, MultipartFile attendee);
 }

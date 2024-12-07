@@ -10,7 +10,7 @@ import java.util.Optional;
 
 public interface IAttendeeService {
 
-    List<AttendeeDTO> gettListAttendeeByEventId(Integer eventId);
+    List<AttendeeDTO> getListAttendeeByEventId(Integer eventId);
 
     AttendeeDTO findAttendee(Integer id);
 

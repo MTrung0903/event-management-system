@@ -37,6 +37,10 @@ public class Event {
     private Date eventEnd;
     @Column(name = "event_status")
     private String eventStatus;
+
+    @Column(name = "event_attendee")
+    private String eventAttendee;
+
     @ManyToOne
     @JoinColumn(name = "man_id")
     private Manager manager;
@@ -45,16 +49,16 @@ public class Event {
     private Mc mc;
 
 
-    @OneToMany(mappedBy = "event", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "event", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Invite> listInvites;
-    @OneToMany(mappedBy = "event", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "event", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<ProviderEvent> listProviderEvents;
-    @OneToMany(mappedBy = "event", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "event", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Section> listSections;
-    @OneToMany(mappedBy = "event", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "event", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<SponsorEvent> listSponsorEvents;
-    @OneToMany(mappedBy = "event", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "event", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Task> listTasks;
-    @OneToMany(mappedBy = "event", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "event", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Team> listTeams;
 }

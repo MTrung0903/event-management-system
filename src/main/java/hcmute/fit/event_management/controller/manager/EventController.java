@@ -74,6 +74,12 @@ public class EventController {
         response.setData(eventService.updateEvent(image,event));
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
+    @DeleteMapping("/{eventId}")
+    public ResponseEntity<?> deleteEvent(@PathVariable int eventId){
+        Response response = new Response();
+        response.setData(eventService.deleteEvent(eventId));
+        return new ResponseEntity<>(response, HttpStatus.OK);
+    }
     @PutMapping("/{eventId}/mc/{mcId}")
     public ResponseEntity<?> addMcEvent(@PathVariable Integer eventId, @PathVariable Integer mcId){
         Response response = new Response();
@@ -141,9 +147,23 @@ public class EventController {
         response.setData(sponsorService.addNewSponsorForEvent(eventId,image,sponsorDTO));
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
+//    @GetMapping("/{eventId}/attendee")
+//    public ResponseEntity<?> getListAttendees(@PathVariable("eventId") int eventId) {
+//        List<AttendeeDTO> listAttendee = attendeeService.getListAttendeeByEventId(eventId);
+//        Response response = new Response();
+//        response.setData(listAttendee);
+//        return new ResponseEntity<>(response, HttpStatus.OK);
+//    }
     @GetMapping("/{eventId}/attendee")
     public ResponseEntity<?> getListAttendees(@PathVariable("eventId") int eventId) {
-        List<AttendeeDTO> listAttendee = attendeeService.gettListAttendeeByEventId(eventId);
+        String listAttendee = eventService.getListAttendeeByEventId(eventId);
+        Response response = new Response();
+        response.setData(listAttendee);
+        return new ResponseEntity<>(response, HttpStatus.OK);
+    }
+    @PutMapping("/{eventId}/attendee")
+    public ResponseEntity<?> uploadAttendee(@PathVariable("eventId") int eventId, @RequestParam("file") MultipartFile file) {
+        String listAttendee = eventService.addAttendee(eventId,file);
         Response response = new Response();
         response.setData(listAttendee);
         return new ResponseEntity<>(response, HttpStatus.OK);

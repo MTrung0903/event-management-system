@@ -26,7 +26,7 @@ public class AttendeeServiceImpl implements IAttendeeService {
     }
 
     @Override
-    public List<AttendeeDTO> gettListAttendeeByEventId(Integer eventId) {
+    public List<AttendeeDTO> getListAttendeeByEventId(Integer eventId) {
         List<AttendeeDTO> dtoList =new ArrayList<>();
         List<Attendee> attendees = attendeeRepository.findAttendeesByEventId(eventId);
         for(Attendee attendee : attendees){
