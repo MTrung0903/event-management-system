@@ -2,7 +2,7 @@
 ---
 
 
-# **Backend - [Tên dự án]**
+# **Backend - EVENT MANAGEMENT SYSTEM**
 
 [![Spring Boot](https://img.shields.io/badge/springboot-2.5.2-green.svg)](https://spring.io/projects/spring-boot)  
 [![Build Status](https://img.shields.io/badge/build-passing-brightgreen)](https://github.com/MTrung0903/event-management-system/actions)
