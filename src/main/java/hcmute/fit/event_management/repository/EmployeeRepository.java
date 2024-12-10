@@ -37,6 +37,14 @@ public interface EmployeeRepository extends JpaRepository<Employee, Integer> {
 """)
     List<Employee> findEmployeesWithoutSubtasksInTeam(@Param("teamId") int teamId);
 
-
+    @Query("SELECT e\n" +
+            "FROM Employee e\n" +
+            "WHERE e.manager.manID = :manId\n" +
+            "  AND e.id NOT IN (\n" +
+            "      SELECT te.employee.id\n" +
+            "      FROM TeamEmployee te\n" +
+            "      WHERE te.team.event.eventID = :eventId\n" +
+            "  )\n")
+    List<Employee> getListMemTOTeam(@Param("manId") int manId,@Param("eventId") int eventId);
 
 }

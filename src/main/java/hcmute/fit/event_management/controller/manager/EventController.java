@@ -83,9 +83,9 @@ public class EventController {
         response.setData(eventService.addMc(eventId,mcId));
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
-    @GetMapping("")
-    public ResponseEntity<?> getAllEvent(){
-        List<EventDTO> events = eventService.getAllEvents();
+    @GetMapping("/list-event/{accountId}")
+    public ResponseEntity<?> getAllEvent(@PathVariable Integer accountId){
+        List<EventDTO> events = eventService.getAllEvents(accountId);
         Response response = new Response();
         response.setData(events);
         return new ResponseEntity<>(response, HttpStatus.OK);

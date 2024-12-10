@@ -38,15 +38,14 @@ public class EventServiceImpl implements IEventService {
     }
 
     @Override
-    public List<EventDTO> getAllEvents() {
-        List<Event> events = eventRepository.findAll();
+    public List<EventDTO> getAllEvents(int accountId) {
+        List<Event> events = eventRepository.findByManagerId(accountId);
         List<EventDTO> eventDTOs = new ArrayList<>();
         for (Event event : events) {
             EventDTO eventDTO = new EventDTO();
             BeanUtils.copyProperties(event, eventDTO);
             eventDTO.setEventId(event.getEventID());
             eventDTO.setManId(event.getManager().getManID());
-//            eventDTO.setMcId(event.getMc().getMcID());
             eventDTOs.add(eventDTO);
         }
         return eventDTOs;

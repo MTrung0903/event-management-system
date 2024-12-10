@@ -13,7 +13,7 @@ import java.util.Optional;
 public interface IEventService {
 
 
-    List<EventDTO> getAllEvents();
+    List<EventDTO> getAllEvents(int accountId);
 
     EventDTO getEventById(int id);
 

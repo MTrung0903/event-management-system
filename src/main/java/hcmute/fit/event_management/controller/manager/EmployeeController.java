@@ -14,10 +14,10 @@ import payload.Response;
 public class EmployeeController {
     @Autowired
     private IEmployeeService employeeService;
-    @GetMapping("/{eventId}")
-    public ResponseEntity<?> findEmployeeAddTOTeam(@PathVariable int eventId) {
+    @GetMapping("/{manId}/member/{eventId}")
+    public ResponseEntity<?> findEmployeeAddTOTeam(@PathVariable int manId,@PathVariable int eventId) {
         Response response  = new Response();
-        response.setData(employeeService.getEmployeesJoinTeam(eventId));
+        response.setData(employeeService.getEmployeesJoinTeam(manId,eventId));
         return ResponseEntity.ok(response);
     }
 }
