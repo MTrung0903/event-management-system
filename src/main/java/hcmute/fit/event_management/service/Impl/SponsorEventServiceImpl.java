@@ -20,5 +20,9 @@ public class SponsorEventServiceImpl implements ISponsorEventService {
     SponsorEventRepository sponsorEventRepository;
 
 
+    public SponsorEventServiceImpl(SponsorEventRepository sponsorEventRepository) {
+        this.sponsorEventRepository = sponsorEventRepository;
+    }
+
 
 }

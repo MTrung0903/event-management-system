@@ -205,25 +205,27 @@ public class ProviderImpl implements IProvider {
                 .collect(Collectors.toList());
 
         for (Provider provider : providersNotInEvent) {
-            ProviderDTO providerDTO = new ProviderDTO();
-            BeanUtils.copyProperties(provider, providerDTO);
-
-            // Lấy tất cả dịch vụ của provider
+            // Lấy danh sách tất cả dịch vụ của provider
             List<ProviderServiceDTO> allServices = provider.getListProviderServices().stream()
                     .map(service -> {
                         ProviderServiceDTO dto = new ProviderServiceDTO();
                         BeanUtils.copyProperties(service, dto);
                         dto.setProviderId(provider.getId());
                         return dto;
-                    })
-                    .collect(Collectors.toList());
+                    }).collect(Collectors.toList());
 
-            providerDTO.setListProviderServices(allServices);
-            providerDTOs.add(providerDTO);
+            // Kiểm tra nếu không có dịch vụ nào thì bỏ qua provider này
+            if (!allServices.isEmpty()) {
+                ProviderDTO providerDTO = new ProviderDTO();
+                BeanUtils.copyProperties(provider, providerDTO);
+                providerDTO.setListProviderServices(allServices);
+                providerDTOs.add(providerDTO);
+            }
         }
 
         return providerDTOs;
     }
+
 
     @Override
     public boolean delProviderEvent(int eventId, int providerId) {
