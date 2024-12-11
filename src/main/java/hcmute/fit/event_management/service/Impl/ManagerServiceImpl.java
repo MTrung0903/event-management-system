@@ -21,7 +21,11 @@ public class ManagerServiceImpl implements IManagerService {
         List<Manager> managers = managerRepository.findAll();
         System.out.println(managers.size());
         List<ManagerDTO> managerDTOs = new ArrayList<>();
-        BeanUtils.copyProperties(managers, managerDTOs);
+        for (Manager manager : managers) {
+            ManagerDTO managerDTO = new ManagerDTO();
+            BeanUtils.copyProperties(manager, managerDTO);
+            managerDTOs.add(managerDTO);
+        }
         return managerDTOs;
     }
 }

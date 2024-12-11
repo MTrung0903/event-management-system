@@ -27,7 +27,7 @@ public class Event {
     private String eventLocation;
     @Column(name = "event_host")
     private String eventHost;
-    @Column(name = "event_desc")
+    @Column(name = "event_desc",columnDefinition = "TEXT")
     private String eventDescription;
     @Column(name = "event_image")
     private String eventImg;

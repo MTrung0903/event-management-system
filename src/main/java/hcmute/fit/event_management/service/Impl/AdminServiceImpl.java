@@ -48,6 +48,7 @@ public class AdminServiceImpl implements IAdminService {
         for (Event event : events) {
             EventDTO eventDTO = new EventDTO();
             BeanUtils.copyProperties(event, eventDTO);
+            eventDTO.setEventId(event.getEventID());
             eventDTO.setEventStart(event.getEventStart().toString());
             eventDTO.setEventEnd(event.getEventEnd().toString());
             eventDTOs.add(eventDTO);
