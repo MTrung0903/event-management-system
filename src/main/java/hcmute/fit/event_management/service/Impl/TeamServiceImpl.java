@@ -5,10 +5,12 @@ import hcmute.fit.event_management.entity.*;
 import hcmute.fit.event_management.entity.keys.TeamEmployeeId;
 import hcmute.fit.event_management.repository.*;
 import hcmute.fit.event_management.service.IEmployeeService;
+import hcmute.fit.event_management.service.ITaskService;
 import hcmute.fit.event_management.service.ITeamService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import payload.Response;
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -33,6 +35,9 @@ public class TeamServiceImpl implements ITeamService {
 
     @Autowired
     private SubtaskRepository subtaskRepository;
+
+    @Autowired
+    private ITaskService taskService;
 
     public TeamServiceImpl(TeamRepository teamRepository) {
         this.teamRepository = teamRepository;
@@ -125,14 +130,49 @@ public class TeamServiceImpl implements ITeamService {
         return isSuccess;
     }
     @Override
-    public boolean deleteTeam(int teamId){
+    public boolean deleteTeam(int teamId) {
         boolean isSuccess = false;
-        if(teamRepository.findById(teamId).isPresent()) {
-            teamRepository.delete(teamRepository.findById(teamId).get());
-            isSuccess = true;
+        boolean canDelete = true;
+        Optional<Team> teamOpt = teamRepository.findById(teamId);
+
+        if (teamOpt.isPresent()) {
+            Team team = teamOpt.get();
+            List<Task> taskList = taskRepository.findByTeamId(teamId);
+            if (taskList.isEmpty()) {
+                teamRepository.delete(team);
+                return  true;
+            } else {
+                for (Task task : taskList) {
+
+                    if ("done".equals(task.getTaskStatus())) {
+                        canDelete = false;
+                        break;
+                    }
+
+
+                    List<SubTask> subTasks = subtaskRepository.findByTaskId(task.getTaskId());
+                    for (SubTask subTask : subTasks) {
+                        if ("done".equals(subTask.getStatus())) {
+                            canDelete = false;
+                            break;
+                        }
+                    }
+                }
+            }
+
+            if (canDelete) {
+
+                for (Task task : taskList) {
+                    taskService.deleteTask(task.getTaskId());
+                }
+                teamRepository.delete(team);
+                isSuccess = true;
+            }
         }
+
         return isSuccess;
     }
+
     @Override
     public boolean addMemberToTeam(int teamId, int employeeId){
         boolean isSuccess = false;

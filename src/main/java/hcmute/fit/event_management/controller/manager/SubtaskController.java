@@ -28,14 +28,14 @@ public class SubtaskController {
     @PostMapping("/{taskId}")
     public ResponseEntity<?> addSubtask(@PathVariable int taskId,
                                         @RequestBody SubTaskDTO subtaskDTO){
-        Response response = new Response();
-        response.setData(subtaskService.addSubtask(taskId,subtaskDTO));
+        Response response = subtaskService.addSubtask(taskId,subtaskDTO);
+
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
     @PutMapping("")
     public ResponseEntity<?> updateSubtask( @RequestBody SubTaskDTO subtaskDTO){
-        Response response = new Response();
-        response.setData(subtaskService.updateSubtask(subtaskDTO.getTaskId(),subtaskDTO));
+        Response response =subtaskService.updateSubtask(subtaskDTO.getTaskId(),subtaskDTO);
+
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
     @DeleteMapping("/{subtaskId}")
