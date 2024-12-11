@@ -100,6 +100,12 @@ public class AccountServiceImpl implements IAccountService {
         for (AccountRole accountRole : account.getListAccountRoles()) {
             roles.add(accountRole.getRole().getName());
         }
+        if (account.getManager() != null) {
+            accountDTO.setName(account.getManager().getName());
+        }
+        if (account.getEmployee() != null) {
+            accountDTO.setName(account.getEmployee().getFullName());
+        }
         accountDTO.setRoles(roles);
         return accountDTO;
     }

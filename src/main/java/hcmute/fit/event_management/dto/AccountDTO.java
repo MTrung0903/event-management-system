@@ -14,6 +14,7 @@ import java.util.List;
 @NoArgsConstructor
 public class AccountDTO {
     private int accountID;
+    private String name;
     private String email;
     private String password;
     @JsonProperty
