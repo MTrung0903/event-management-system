@@ -1,12 +1,9 @@
 package hcmute.fit.event_management.controller.manager;
 
 import hcmute.fit.event_management.dto.*;
-import hcmute.fit.event_management.repository.ProviderRepository;
 import hcmute.fit.event_management.service.*;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.io.Resource;
-import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -86,9 +83,9 @@ public class EventController {
         response.setData(eventService.addMc(eventId,mcId));
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
-    @GetMapping("")
-    public ResponseEntity<?> getAllEvent(){
-        List<EventDTO> events = eventService.getAllEvents();
+    @GetMapping("/list-event/{accountId}")
+    public ResponseEntity<?> getAllEvent(@PathVariable Integer accountId){
+        List<EventDTO> events = eventService.getAllEvents(accountId);
         Response response = new Response();
         response.setData(events);
         return new ResponseEntity<>(response, HttpStatus.OK);
@@ -147,13 +144,7 @@ public class EventController {
         response.setData(sponsorService.addNewSponsorForEvent(eventId,image,sponsorDTO));
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
-//    @GetMapping("/{eventId}/attendee")
-//    public ResponseEntity<?> getListAttendees(@PathVariable("eventId") int eventId) {
-//        List<AttendeeDTO> listAttendee = attendeeService.getListAttendeeByEventId(eventId);
-//        Response response = new Response();
-//        response.setData(listAttendee);
-//        return new ResponseEntity<>(response, HttpStatus.OK);
-//    }
+
     @GetMapping("/{eventId}/attendee")
     public ResponseEntity<?> getListAttendees(@PathVariable("eventId") int eventId) {
         String listAttendee = eventService.getListAttendeeByEventId(eventId);
@@ -232,12 +223,7 @@ public class EventController {
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
-    @PostMapping("/{eventId}/add-ser/{serviceId}")
-    public ResponseEntity<?> addServiceToEvent(@PathVariable int eventId, @PathVariable int serviceId) {
-        Response response = new Response();
-        response.setData(serviceEventSerivce.addServiceEvent(eventId, serviceId));
-        return new ResponseEntity<>(response, HttpStatus.OK);
-    }
+
     @DeleteMapping("/{eventId}/del-ser/{serviceId}")
     public ResponseEntity<?> delServiceFromEvent(@PathVariable int eventId, @PathVariable int serviceId) {
         Response response = new Response();

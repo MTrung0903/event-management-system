@@ -2,6 +2,7 @@ package hcmute.fit.event_management.service.Impl;
 
 import hcmute.fit.event_management.dto.SubTaskDTO;
 import hcmute.fit.event_management.dto.TaskDTO;
+import hcmute.fit.event_management.entity.Event;
 import hcmute.fit.event_management.entity.SubTask;
 import hcmute.fit.event_management.entity.Task;
 import hcmute.fit.event_management.repository.EventRepository;
@@ -12,6 +13,7 @@ import hcmute.fit.event_management.service.ITaskService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import payload.Response;
 
 import java.text.SimpleDateFormat;
 import java.util.*;
@@ -85,33 +87,47 @@ public class TaskServiceImpl implements ITaskService {
         return taskDTO;
     }
     @Override
-    public boolean addTask(TaskDTO taskDTO) {
+    public Response addTask(TaskDTO taskDTO) {
         boolean isSuccess = false;
+        Response response = new Response();
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         try{
-            if(eventRepository.findById(taskDTO.getEventId()).isPresent() ){
-                Task task = new Task();
-                task.setTaskName(taskDTO.getTaskName());
-                task.setTaskDesc(taskDTO.getTaskDesc());
-                SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-                String nowAsString = formatter.format(new Date());
-                Date taskStartDate = formatter.parse(nowAsString);
-                task.setCreateDate(taskStartDate);
+            Optional<Event> event = eventRepository.findById(taskDTO.getEventId());
+            if(event.isPresent()){
+                Date startEvent = event.get().getEventStart();
+                Date endEvent = event.get().getEventEnd();
                 Date date = formatter.parse(taskDTO.getTaskDl().trim());
-                task.setTaskDl(date);
-                task.setTaskStatus(taskDTO.getTaskStatus());
-                task.setEvent(eventRepository.findById(taskDTO.getEventId()).get());
-                if (taskDTO.getTeamId() != null && taskDTO.getTeamId() >=0) {
-                    task.setTeam(teamRepository.findById(taskDTO.getTeamId()).orElse(null));
-                } else {
-                    task.setTeam(null);
+                if(date.after(startEvent) && date.before(endEvent)){
+                    Task task = new Task();
+                    task.setTaskName(taskDTO.getTaskName());
+                    task.setTaskDesc(taskDTO.getTaskDesc());
+
+                    String nowAsString = formatter.format(new Date());
+                    Date taskStartDate = formatter.parse(nowAsString);
+                    task.setCreateDate(taskStartDate);
+
+                    task.setTaskDl(date);
+                    task.setTaskStatus(taskDTO.getTaskStatus());
+                    task.setEvent(eventRepository.findById(taskDTO.getEventId()).get());
+                    if (taskDTO.getTeamId() != null && taskDTO.getTeamId() >=0) {
+                        task.setTeam(teamRepository.findById(taskDTO.getTeamId()).orElse(null));
+                    } else {
+                        task.setTeam(null);
+                    }
+                    taskRepository.save(task);
+                    isSuccess = true;
+                    response.setMsg("Tạo task thành công");
+                }else {
+                    response.setMsg("Không thể tạo task có thời hạn vượt quá ngày diễn ra sự kiện");
                 }
-                taskRepository.save(task);
-                isSuccess = true;
+
             }
         } catch (Exception e) {
+            response.setMsg(e.getMessage());
             System.out.println(e.getMessage());
         }
-        return isSuccess;
+        response.setData(isSuccess);
+        return response;
     }
     @Override
     public boolean updateTask(TaskDTO taskDTO) {

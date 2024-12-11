@@ -14,7 +14,7 @@ public interface IEmployeeService {
     List<EmployeeDTO> getEmployeeByTeamId(int teamId);
 
 
-    List<EmployeeDTO> getEmployeesJoinTeam(int eventId);
+    List<EmployeeDTO> getEmployeesJoinTeam(int manId, int eventId);
 
     List<EmployeeDTO> getEmployeeToAssignedSubTask();
 

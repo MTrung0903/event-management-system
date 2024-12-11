@@ -4,6 +4,7 @@ import hcmute.fit.event_management.dto.TaskDTO;
 import hcmute.fit.event_management.entity.Task;
 import org.springframework.data.domain.Example;
 import org.springframework.data.domain.Sort;
+import payload.Response;
 
 import java.util.List;
 import java.util.Map;
@@ -15,7 +16,7 @@ public interface ITaskService {
 
     TaskDTO findTaskById(int subTaskId);
 
-    boolean addTask(TaskDTO taskDTO);
+    Response addTask(TaskDTO taskDTO);
 
     boolean updateTask(TaskDTO taskDTO);
 

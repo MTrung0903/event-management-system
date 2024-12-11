@@ -6,10 +6,12 @@ import hcmute.fit.event_management.entity.Task;
 import hcmute.fit.event_management.repository.EmployeeRepository;
 import hcmute.fit.event_management.repository.SubtaskRepository;
 import hcmute.fit.event_management.repository.TaskRepository;
+import hcmute.fit.event_management.service.IEventService;
 import hcmute.fit.event_management.service.ISubtaskService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import payload.Response;
 
 import java.text.SimpleDateFormat;
 import java.util.*;
@@ -23,6 +25,9 @@ public class SubtaskServiceImpl implements ISubtaskService {
     private TaskRepository taskRepository;
     @Autowired
     private EmployeeRepository employeeRepository;
+
+    @Autowired
+    private IEventService eventService;
 
     public SubtaskServiceImpl(SubtaskRepository subtaskRepository) {
         this.subtaskRepository = subtaskRepository;
@@ -76,55 +81,81 @@ public class SubtaskServiceImpl implements ISubtaskService {
         return subtaskDTO;
     }
     @Override
-    public boolean addSubtask(int taskId, SubTaskDTO subtaskDTO) {
+    public Response addSubtask(int taskId, SubTaskDTO subtaskDTO) {
         boolean isSuccess = false;
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        Response response = new Response();
+        Optional<Task> task = taskRepository.findById(taskId);
         try {
-            if(taskRepository.findById(taskId).isPresent() && employeeRepository.findById(subtaskDTO.getEmployeeId()).isPresent()) {
-                SubTask subtask = new SubTask();
-                subtask.setSubTaskName(subtaskDTO.getSubTaskName());
-                subtask.setSubTaskDesc(subtaskDTO.getSubTaskDesc());
-                SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-                String nowAsString = formatter.format(new Date());
-                Date startDate = formatter.parse(nowAsString);
-                subtask.setCreateDate(startDate);
+            if(task.isPresent() && employeeRepository.findById(subtaskDTO.getEmployeeId()).isPresent()) {
+                Date startTask = task.get().getCreateDate();
+                Date endTask = task.get().getTaskDl();
                 Date date = formatter.parse(subtaskDTO.getSubTaskDeadline().trim());
-                subtask.setSubTaskDeadline(date);
-                subtask.setStatus(subtaskDTO.getStatus());
-                subtask.setEmployee(employeeRepository.findById(subtaskDTO.getEmployeeId()).get());
-                subtask.setTask(taskRepository.findById(taskId).get());
-                subtaskRepository.save(subtask);
-                isSuccess = true;
-            }
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-        }
-        return isSuccess;
-    }
-
-    @Override
-    public boolean updateSubtask(int taskId, SubTaskDTO subtaskDTO) {
-        boolean isSuccess = false;
-        try {
-            if(subtaskRepository.findById(subtaskDTO.getSubTaskId()).isPresent()) {
-                if(taskRepository.findById(taskId).isPresent() && employeeRepository.findById(subtaskDTO.getEmployeeId()).isPresent()) {
-                    SubTask subtask = subtaskRepository.findById(subtaskDTO.getSubTaskId()).get();
+                if(date.after(startTask) && date.before(endTask)) {
+                    SubTask subtask = new SubTask();
                     subtask.setSubTaskName(subtaskDTO.getSubTaskName());
                     subtask.setSubTaskDesc(subtaskDTO.getSubTaskDesc());
-                    SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-                    Date date = formatter.parse(subtaskDTO.getSubTaskDeadline().trim());
+
+                    String nowAsString = formatter.format(new Date());
+                    Date startDate = formatter.parse(nowAsString);
+                    subtask.setCreateDate(startDate);
+
                     subtask.setSubTaskDeadline(date);
                     subtask.setStatus(subtaskDTO.getStatus());
                     subtask.setEmployee(employeeRepository.findById(subtaskDTO.getEmployeeId()).get());
                     subtask.setTask(taskRepository.findById(taskId).get());
                     subtaskRepository.save(subtask);
                     isSuccess = true;
+                    response.setMsg("Thêm subtask thành công");
+                }else{
+                    response.setMsg("Không thể tạo subtask có deadlined quá hạn của task");
+                }
+
+            }
+        } catch (Exception e) {
+            response.setMsg(e.getMessage());
+            System.out.println(e.getMessage());
+        }
+        response.setData(isSuccess);
+        return response;
+    }
+
+    @Override
+    public Response updateSubtask(int taskId, SubTaskDTO subtaskDTO) {
+        boolean isSuccess = false;
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        Response response = new Response();
+        Optional<Task> task = taskRepository.findById(taskId);
+        Optional<SubTask> subtask = subtaskRepository.findById(subtaskDTO.getSubTaskId());
+        try {
+            if(subtask.isPresent()) {
+                if(task.isPresent() && employeeRepository.findById(subtaskDTO.getEmployeeId()).isPresent()) {
+                    Date startTask = task.get().getCreateDate();
+                    Date endTask = task.get().getTaskDl();
+                    Date date = formatter.parse(subtaskDTO.getSubTaskDeadline().trim());
+                    if(date.after(startTask) && date.before(endTask)) {
+                        SubTask tmp = subtask.get();
+                        tmp.setSubTaskName(subtaskDTO.getSubTaskName());
+                        tmp.setSubTaskDesc(subtaskDTO.getSubTaskDesc());
+                        tmp.setSubTaskDeadline(date);
+                        tmp.setStatus(subtaskDTO.getStatus());
+                        tmp.setEmployee(employeeRepository.findById(subtaskDTO.getEmployeeId()).get());
+                        tmp.setTask(taskRepository.findById(taskId).get());
+                        subtaskRepository.save(tmp);
+                        isSuccess = true;
+                        response.setMsg("Cập nhật subtask thành công");
+                    }else{
+                        response.setMsg("Không thể cập nhật deadlined vượt quá deadlined của task");
+                    }
                 }
             }
 
         } catch (Exception e) {
+            response.setMsg(e.getMessage());
             System.out.println(e.getMessage());
         }
-        return isSuccess;
+        response.setData(isSuccess);
+        return response;
     }
 
     @Override

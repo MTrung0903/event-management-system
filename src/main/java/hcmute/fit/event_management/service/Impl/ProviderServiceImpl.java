@@ -21,6 +21,9 @@ public class ProviderServiceImpl implements IProviderService {
     private ProviderRepository providerRepository;
 
     @Autowired
+    private IServiceEventSerivce eventSerivce;
+
+    @Autowired
     private IServiceEventSerivce serviceEventSerivce;
     public ProviderServiceImpl(ProviderServiceRepository providerServiceRepository) {
         this.providerServiceRepository = providerServiceRepository;
@@ -38,6 +41,7 @@ public class ProviderServiceImpl implements IProviderService {
         }
         return providerServiceDTOList;
     }
+
     @Override
     public ProviderServiceDTO findServiceById(int serviceId){
         Optional<ProviderService> providerService = providerServiceRepository.findById(serviceId);
@@ -117,6 +121,7 @@ public class ProviderServiceImpl implements IProviderService {
             ProviderServiceDTO providerServiceDTO = new ProviderServiceDTO();
             BeanUtils.copyProperties(providerService, providerServiceDTO);
             providerServiceDTO.setProviderId(providerService.getProvider().getId());
+
             providerServiceDTOList.add(providerServiceDTO);
         }
         return providerServiceDTOList;

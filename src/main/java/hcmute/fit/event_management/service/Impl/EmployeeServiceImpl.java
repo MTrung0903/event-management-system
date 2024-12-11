@@ -50,23 +50,18 @@ public class EmployeeServiceImpl implements IEmployeeService {
 
 
     @Override
-    public List<EmployeeDTO> getEmployeesJoinTeam(int eventId) {
-        Set<Integer> listEmployeeIds = new HashSet<>();
-        List<TeamEmployee> list = teamEmployeeRepository.findAll();
-        for (TeamEmployee teamEmployee : list) {
-            int eventTmp = teamRepository.findById(teamEmployee.getTeam().getTeamId()).get().getEvent().getEventID();
-            if(eventTmp == eventId) {
-                listEmployeeIds.add(teamEmployee.getEmployee().getId());
-            }
-        }
-        List<Employee> employees = employeeRepository.findAll();
+    public List<EmployeeDTO> getEmployeesJoinTeam(int manId,int eventId) {
+
+        List<Employee> list = employeeRepository.getListMemTOTeam(manId,eventId);
+
+
         List<EmployeeDTO> employeeDTOs = new ArrayList<>();
-        for (Employee employee : employees) {
-            if(!listEmployeeIds.contains(employee.getId())) {
+        for (Employee employee : list) {
+
                 EmployeeDTO employeeDTO = new EmployeeDTO();
                 BeanUtils.copyProperties(employee, employeeDTO);
                 employeeDTOs.add(employeeDTO);
-            }
+
         }
         return employeeDTOs;
     }

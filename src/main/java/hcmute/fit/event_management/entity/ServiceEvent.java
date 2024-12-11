@@ -6,6 +6,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.Date;
+
 @Entity
 @Data
 @AllArgsConstructor
@@ -25,4 +27,8 @@ public class ServiceEvent {
     @JoinColumn(name = "event_id", referencedColumnName = "event_id", nullable = false)
     private Event event;
 
+    @Column(name = "rental_date")
+    private Date rentalDate;
+    @Column(name = "exp_date")
+    private Date expDate;
 }

@@ -8,7 +8,9 @@ import java.util.List;
 public interface IServiceEventSerivce {
     List<ServiceEventDTO> findServiceByEventId(int eventId);
 
-    boolean addServiceEvent(int eventId, int serviceId);
+    boolean addServiceEvent(ServiceEventDTO serviceEventDTO);
 
     boolean delServiceEvent(int eventId, int serviceId);
+
+    ServiceEventDTO detailRental(int eventId, int serviceId);
 }

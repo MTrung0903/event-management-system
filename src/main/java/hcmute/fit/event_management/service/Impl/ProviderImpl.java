@@ -2,11 +2,13 @@ package hcmute.fit.event_management.service.Impl;
 
 import hcmute.fit.event_management.dto.ProviderDTO;
 import hcmute.fit.event_management.dto.ProviderServiceDTO;
+import hcmute.fit.event_management.dto.ServiceEventDTO;
 import hcmute.fit.event_management.entity.Event;
 import hcmute.fit.event_management.entity.Provider;
 import hcmute.fit.event_management.entity.ProviderEvent;
 import hcmute.fit.event_management.entity.ProviderService;
 import hcmute.fit.event_management.entity.keys.ProviderEventId;
+import hcmute.fit.event_management.entity.keys.ProviderServiceEventId;
 import hcmute.fit.event_management.repository.EventRepository;
 import hcmute.fit.event_management.repository.ProviderEventRepository;
 import hcmute.fit.event_management.repository.ProviderRepository;
@@ -36,6 +38,9 @@ public class ProviderImpl implements IProvider {
 
     @Autowired
     private IProviderService providerService;
+
+    @Autowired
+    private IServiceEventSerivce serviceEventService;
 
     public ProviderImpl(ProviderRepository providerRepository) {
         this.providerRepository = providerRepository;
@@ -200,25 +205,27 @@ public class ProviderImpl implements IProvider {
                 .collect(Collectors.toList());
 
         for (Provider provider : providersNotInEvent) {
-            ProviderDTO providerDTO = new ProviderDTO();
-            BeanUtils.copyProperties(provider, providerDTO);
-
-            // Lấy tất cả dịch vụ của provider
+            // Lấy danh sách tất cả dịch vụ của provider
             List<ProviderServiceDTO> allServices = provider.getListProviderServices().stream()
                     .map(service -> {
                         ProviderServiceDTO dto = new ProviderServiceDTO();
                         BeanUtils.copyProperties(service, dto);
                         dto.setProviderId(provider.getId());
                         return dto;
-                    })
-                    .collect(Collectors.toList());
+                    }).collect(Collectors.toList());
 
-            providerDTO.setListProviderServices(allServices);
-            providerDTOs.add(providerDTO);
+            // Kiểm tra nếu không có dịch vụ nào thì bỏ qua provider này
+            if (!allServices.isEmpty()) {
+                ProviderDTO providerDTO = new ProviderDTO();
+                BeanUtils.copyProperties(provider, providerDTO);
+                providerDTO.setListProviderServices(allServices);
+                providerDTOs.add(providerDTO);
+            }
         }
 
         return providerDTOs;
     }
+
 
     @Override
     public boolean delProviderEvent(int eventId, int providerId) {
@@ -227,6 +234,10 @@ public class ProviderImpl implements IProvider {
             if(!providerEventRepository.findByProviderId(providerId).isEmpty() &&
                     !providerEventRepository.findByEventId(eventId).isEmpty()) {
                 ProviderEvent providerEvent = providerEventRepository.providerEvent(providerId,eventId);
+                List<ProviderServiceDTO> list = providerService.listServiceInEvent(eventId,providerId);
+                for (ProviderServiceDTO serviceDTO : list) {
+                   serviceEventService.delServiceEvent(eventId,serviceDTO.getId());
+                }
                 providerEventRepository.delete(providerEvent);
                 isSuccess = true;
             }
