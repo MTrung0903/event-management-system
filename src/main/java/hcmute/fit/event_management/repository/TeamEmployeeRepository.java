@@ -15,4 +15,6 @@ public interface TeamEmployeeRepository extends JpaRepository<TeamEmployee, Inte
 
     @Query("select p from  TeamEmployee p where p.employee.id = :employeeId and p.team.teamId = :teamId")
     public TeamEmployee findByTeamIdAndEmployee(int teamId, int employeeId);
+
+
 }

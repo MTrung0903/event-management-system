@@ -1,15 +1,16 @@
 package hcmute.fit.event_management.service.Impl;
 
 import hcmute.fit.event_management.dto.EmployeeDTO;
+import hcmute.fit.event_management.dto.TeamDTO;
 import hcmute.fit.event_management.entity.*;
 import hcmute.fit.event_management.repository.*;
 import hcmute.fit.event_management.service.IEmployeeService;
+import hcmute.fit.event_management.service.ITeamService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
-import java.util.stream.Collectors;
 
 @Service
 public class EmployeeServiceImpl implements IEmployeeService {
@@ -21,12 +22,6 @@ public class EmployeeServiceImpl implements IEmployeeService {
     @Autowired
     private SubtaskRepository subtaskRepository;
 
-    @Autowired
-    private TeamRepository teamRepository;
-    @Autowired
-    private EventRepository eventRepository;
-    @Autowired
-    private TaskRepository taskRepository;
 
 
     public EmployeeServiceImpl(EmployeeRepository employeeRepository) {
@@ -43,6 +38,8 @@ public class EmployeeServiceImpl implements IEmployeeService {
             Employee employee = employeeRepository.findById(teamEmployee.getEmployee().getId()).get();
             EmployeeDTO employeeDTO = new EmployeeDTO();
             BeanUtils.copyProperties(employee, employeeDTO);
+            employeeDTO.setTeamId(teamId);
+
             employeeDTOs.add(employeeDTO);
         }
         return employeeDTOs;
@@ -65,31 +62,7 @@ public class EmployeeServiceImpl implements IEmployeeService {
         }
         return employeeDTOs;
     }
-//    public List<EmployeeDTO> getEmployeesJoinTeam(int eventId) {
-//        // Lấy danh sách employeeId tham gia eventId
-//        Set<Integer> employeeIdsInEvent = teamEmployeeRepository.findByEventId(eventId).stream()
-//                .map(teamEmployee -> teamEmployee.)
-//                .collect(Collectors.toSet());
-//
-//        // Lấy danh sách employeeId tham gia team ở các event khác
-//        Set<Integer> employeeIdsInOtherEvents = teamEmployeeRepository.findByNotEventId(eventId).stream()
-//                .map(teamEmployee -> teamEmployee.getEmployee().getId())
-//                .collect(Collectors.toSet());
-//
-//        // Kết hợp danh sách các nhân viên chưa tham gia team hoặc ở sự kiện khác
-//        Set<Integer> excludedIds = new HashSet<>(employeeIdsInEvent);
-//        excludedIds.addAll(employeeIdsInOtherEvents);
-//
-//        // Lấy danh sách nhân viên không nằm trong excludedIds
-//        return employeeRepository.findAll().stream()
-//                .filter(employee -> !excludedIds.contains(employee.getId()))
-//                .map(employee -> {
-//                    EmployeeDTO employeeDTO = new EmployeeDTO();
-//                    BeanUtils.copyProperties(employee, employeeDTO);
-//                    return employeeDTO;
-//                })
-//                .collect(Collectors.toList());
-//    }
+
 
     @Override
     public List<EmployeeDTO> getEmployeeToAssignedSubTask(){

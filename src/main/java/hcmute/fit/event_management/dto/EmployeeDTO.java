@@ -16,6 +16,8 @@ import java.util.List;
 @NoArgsConstructor
 public class EmployeeDTO {
     private int id;
+    private int teamId;
+    private String teamName;
     private String fullName;
     private String address;
     private String phone;
