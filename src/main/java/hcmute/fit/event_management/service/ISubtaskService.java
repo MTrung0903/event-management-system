@@ -32,4 +32,6 @@ public interface ISubtaskService {
     boolean changeStatus(int subtaskId, String status);
 
     boolean changeEmployeeAssigned(int subtaskId, int employeeId);
+
+    List<SubTaskDTO> getListSubtaskByEmployeeId(int employeeId, int taskId);
 }

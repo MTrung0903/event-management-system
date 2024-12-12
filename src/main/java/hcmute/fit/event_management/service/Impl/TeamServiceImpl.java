@@ -42,9 +42,7 @@ public class TeamServiceImpl implements ITeamService {
     @Autowired
     private ISubtaskService subtaskService;
 
-    public TeamServiceImpl(TeamRepository teamRepository) {
-        this.teamRepository = teamRepository;
-    }
+
 
     @Override
     public List<TeamDTO> getTeamsOfEvent(int eventId) {

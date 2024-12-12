@@ -254,6 +254,20 @@ public class SubtaskServiceImpl implements ISubtaskService {
         return result;
     }
 
-
+    @Override
+    public List<SubTaskDTO> getListSubtaskByEmployeeId(int employeeId, int taskId) {
+        List<SubTask> list = subtaskRepository.getListSubtaskById(employeeId, taskId);
+        List<SubTaskDTO> subTaskDTOList = new ArrayList<>();
+        for (SubTask subTask : list) {
+            SubTaskDTO subTaskDTO = new SubTaskDTO();
+            BeanUtils.copyProperties(subTask, subTaskDTO);
+            subTaskDTO.setSubTaskStart(subTask.getCreateDate().toString());
+            subTaskDTO.setSubTaskDeadline(subTask.getSubTaskDeadline().toString());
+            subTaskDTO.setEmployeeId(subTask.getEmployee().getId());
+            subTaskDTO.setTaskId(subTask.getTask().getTaskId());
+            subTaskDTOList.add(subTaskDTO);
+        }
+        return subTaskDTOList;
+    }
 
 }
