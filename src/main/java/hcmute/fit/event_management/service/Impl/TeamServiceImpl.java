@@ -337,13 +337,16 @@ public class TeamServiceImpl implements ITeamService {
             List<SubTask> sub = subtaskRepository.findByEmployeeId(e.getId());
             List<SubTaskDTO> subTaskDTOs = new ArrayList<>();
             for (SubTask s : sub){
-                SubTaskDTO subTaskDTO = new SubTaskDTO();
-                BeanUtils.copyProperties(s, subTaskDTO);
-                subTaskDTO.setSubTaskStart(s.getCreateDate().toString());
-                subTaskDTO.setSubTaskDeadline(s.getSubTaskDeadline().toString());
-                subTaskDTO.setEmployeeId(e.getId());
-                subTaskDTO.setTaskId(s.getTask().getTaskId());
-                subTaskDTOs.add(subTaskDTO);
+                if(s.getTask().getTeam().getTeamId()== team.getTeamId()){
+                    SubTaskDTO subTaskDTO = new SubTaskDTO();
+                    BeanUtils.copyProperties(s, subTaskDTO);
+                    subTaskDTO.setSubTaskStart(s.getCreateDate().toString());
+                    subTaskDTO.setSubTaskDeadline(s.getSubTaskDeadline().toString());
+                    subTaskDTO.setEmployeeId(e.getId());
+                    subTaskDTO.setTaskId(s.getTask().getTaskId());
+                    subTaskDTOs.add(subTaskDTO);
+                }
+
             }
             e.setListSubTasks(subTaskDTOs);
             teamDTOs.add(e);

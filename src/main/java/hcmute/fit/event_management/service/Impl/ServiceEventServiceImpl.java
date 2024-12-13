@@ -8,10 +8,11 @@ import hcmute.fit.event_management.entity.keys.ProviderServiceEventId;
 import hcmute.fit.event_management.repository.EventRepository;
 import hcmute.fit.event_management.repository.ProviderServiceRepository;
 import hcmute.fit.event_management.repository.ServiceEventRepository;
+import hcmute.fit.event_management.service.IProviderService;
 import hcmute.fit.event_management.service.IServiceEventSerivce;
-import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import payload.Response;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -28,6 +29,8 @@ public class ServiceEventServiceImpl implements IServiceEventSerivce {
     private ProviderServiceRepository providerServiceRepository;
     @Autowired
     private EventRepository eventRepository;
+
+
 
     public ServiceEventServiceImpl(ServiceEventRepository serviceEventRepository) {
         this.serviceEventRepository = serviceEventRepository;
@@ -95,4 +98,40 @@ public class ServiceEventServiceImpl implements IServiceEventSerivce {
         return dto;
     }
 
+    @Override
+    public boolean deleteRentalService(int eventId, int serviceId) {
+        boolean result = false;
+//        try {
+//            Event event = eventRepository.findById(eventId).get();
+//            ServiceEvent tmp =  serviceEventRepository.serviceEvent(eventId,serviceId);
+//            if(tmp.getRentalDate().before(event.getEventEnd())){
+//                serviceEventRepository.delete(tmp);
+//                result = true;
+//            }
+//        }catch (Exception e){
+//            System.out.println("Delete failed"+e.getMessage());
+//        }
+        return result;
+    }
+    @Override
+    public boolean updateRentalService(int eventId, ServiceEventDTO serviceEventDTO) {
+        boolean result = false;
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        try{
+            Date rentalDateUpdate = formatter.parse(serviceEventDTO.getRentalDate().trim());
+            Date expDateUpdate = formatter.parse(serviceEventDTO.getExpDate().trim());
+            System.out.println(eventId);
+            System.out.println(serviceEventDTO.getServiceId());
+            System.out.println(serviceEventDTO.getRentalDate());
+            System.out.println(serviceEventDTO.getExpDate());
+            ServiceEvent serviceEvent = serviceEventRepository.serviceEvent(eventId,serviceEventDTO.getServiceId());
+            serviceEvent.setRentalDate(rentalDateUpdate);
+            serviceEvent.setExpDate(expDateUpdate);
+            serviceEventRepository.save(serviceEvent);
+            result = true;
+        } catch (Exception e) {
+            System.out.println("Update failed"+e.getMessage());
+        }
+        return result;
+    }
 }
