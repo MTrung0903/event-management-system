@@ -36,9 +36,37 @@ public class TaskServiceImpl implements ITaskService {
     }
 
     @Override
+    public void changeStatusTask(int taskId) {
+        boolean allDone = true;
+        boolean hasDoing = false;
+        List<SubTask> list = subtaskRepository.findByTaskId(taskId);
+
+        for (SubTask subTask : list) {
+            if(subTask.getStatus().equals("doing")) {
+                hasDoing = true;
+                break; // Nếu có trạng thái "doing", không cần kiểm tra nữa.
+            } else if(!subTask.getStatus().equals("done")) {
+                allDone = false;
+            }
+        }
+
+        Task task = taskRepository.findById(taskId).get();
+
+        if(allDone) {
+            task.setTaskStatus("done");
+        } else if(hasDoing) {
+            task.setTaskStatus("doing");
+        }
+
+        taskRepository.save(task);
+    }
+    @Override
     public List<TaskDTO> getTasksOfEvent(int eventId) {
         List<Task> tasks = taskRepository.findByEventId(eventId);
         List<TaskDTO> taskDTOs = new ArrayList<>();
+        for (Task t : tasks) {
+            changeStatusTask(t.getTaskId());
+        }
         for (Task task : tasks) {
             TaskDTO taskDTO = new TaskDTO();
             BeanUtils.copyProperties(task, taskDTO);

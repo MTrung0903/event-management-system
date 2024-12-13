@@ -259,7 +259,30 @@ public class TeamServiceImpl implements ITeamService {
             throw new RuntimeException("Error while assigning teams to task", e);
         }
     }
+    public void changeStatusTask(int taskId) {
+        boolean allDone = true;
+        boolean hasDoing = false;
+        List<SubTask> list = subtaskRepository.findByTaskId(taskId);
 
+        for (SubTask subTask : list) {
+            if(subTask.getStatus().equals("doing")) {
+                hasDoing = true;
+                break; // Nếu có trạng thái "doing", không cần kiểm tra nữa.
+            } else if(!subTask.getStatus().equals("done")) {
+                allDone = false;
+            }
+        }
+
+        Task task = taskRepository.findById(taskId).get();
+
+        if(allDone) {
+            task.setTaskStatus("done");
+        } else if(hasDoing) {
+            task.setTaskStatus("doing");
+        }
+
+        taskRepository.save(task);
+    }
     @Override
     public List<TeamDTO> getDetailTeamInEvent(int eventId) {
         List<Team> teams = teamRepository.findByEventIdWithEmployees(eventId);
@@ -284,6 +307,7 @@ public class TeamServiceImpl implements ITeamService {
             List<TaskDTO> taskDTOs = team.getListTasks()
                     .stream()
                     .map(task -> {
+                        changeStatusTask(task.getTaskId());
                         TaskDTO taskDTO = new TaskDTO();
                         BeanUtils.copyProperties(task, taskDTO);
                         taskDTO.setTaskDl(task.getTaskDl().toString());

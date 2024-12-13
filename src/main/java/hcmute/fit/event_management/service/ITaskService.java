@@ -12,6 +12,8 @@ import java.util.Optional;
 
 public interface ITaskService {
 
+    void changeStatusTask(int taskId);
+
     List<TaskDTO> getTasksOfEvent(int eventId);
 
     TaskDTO findTaskById(int subTaskId);
