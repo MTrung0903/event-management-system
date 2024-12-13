@@ -1,6 +1,7 @@
 package hcmute.fit.event_management.service.Impl;
 
 import hcmute.fit.event_management.dto.ManagerDTO;
+import hcmute.fit.event_management.entity.Employee;
 import hcmute.fit.event_management.entity.Manager;
 import hcmute.fit.event_management.repository.ManagerRepository;
 import hcmute.fit.event_management.service.IManagerService;
@@ -10,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ManagerServiceImpl implements IManagerService {
@@ -27,5 +29,24 @@ public class ManagerServiceImpl implements IManagerService {
             managerDTOs.add(managerDTO);
         }
         return managerDTOs;
+    }
+    @Override
+    public Optional<Manager> findById(Integer integer) {
+        return managerRepository.findById(integer);
+    }
+    @Override
+    public Boolean updateProfile(int manId, ManagerDTO managerDTO) {
+        List<Manager> managers = managerRepository.findByPhone(managerDTO.getPhone());
+        if (managers.isEmpty()) {
+            Optional<Manager> manOpt = managerRepository.findById(manId);
+            if (manOpt.isPresent()) {
+                Manager man = manOpt.get();
+                man.setPhone(managerDTO.getPhone());
+                man.setAddress(managerDTO.getAddress());
+                managerRepository.save(man);
+                return true;
+            }
+        }
+        return false;
     }
 }

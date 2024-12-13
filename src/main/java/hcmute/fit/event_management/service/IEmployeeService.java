@@ -14,6 +14,10 @@ public interface IEmployeeService {
     List<EmployeeDTO> getEmployeeByTeamId(int teamId);
 
 
+    Boolean updateProfile(int empId, EmployeeDTO employeeDTO);
+
+    Optional<Employee> findById(Integer integer);
+
     List<EmployeeDTO> getEmployeesJoinTeam(int manId, int eventId);
 
     List<EmployeeDTO> getEmployeeToAssignedSubTask();

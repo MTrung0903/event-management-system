@@ -11,4 +11,8 @@ import java.util.Optional;
 public interface IManagerService {
 
     List<ManagerDTO> findAllManager();
+
+    Optional<Manager> findById(Integer integer);
+
+    Boolean updateProfile(int manId, ManagerDTO managerDTO);
 }
