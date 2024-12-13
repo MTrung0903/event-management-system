@@ -21,6 +21,5 @@ public class NotificationDTO {
 
     private Date createdAt;
 
-    private String userName;
     private int accountID;
 }

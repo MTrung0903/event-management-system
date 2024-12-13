@@ -27,10 +27,10 @@ public class NotificationController {
     public void sendToSpecificUser(@Payload NotificationDTO notificationDTO) {
 
         String message = notificationDTO.getMessage();
-        System.out.println("Sending message to user " + notificationDTO.getUserName() + ": " + message);
-
+        System.out.println("Sending message to user " + notificationDTO.getAccountID() + ": " + message);
+        //notificationService.createNotification(notificationDTO);
         // Gửi thông báo tới người dùng cụ thể
-        template.convertAndSendToUser(notificationDTO.getUserName(), "/specific", notificationDTO.getMessage());
+        template.convertAndSendToUser(String.valueOf(notificationDTO.getAccountID()), "/specific", notificationDTO);
     }
 
 }

@@ -94,6 +94,7 @@ public class NotificationServiceImpl implements INotification {
     public Notification createNotification(NotificationDTO notificationDTO) {
         Notification notification = new Notification();
         BeanUtils.copyProperties(notificationDTO, notification);
+        notification.setRead(false);
         notification.setAccount(accountRepository.findById(notificationDTO.getAccountID()).orElse(new Account()));
         notification.setCreatedAt(new Date());
         return notificationRepository.save(notification);
