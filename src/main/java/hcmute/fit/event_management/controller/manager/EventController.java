@@ -230,6 +230,12 @@ public class EventController {
         response.setData(serviceEventSerivce.delServiceEvent(eventId, serviceId));
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
+    @PutMapping("/{eventId}/update-ser-rental")
+    public ResponseEntity<?> updateRentalService(@PathVariable int eventId,@RequestBody ServiceEventDTO serviceEventDTO){
+        Response response = new Response();
+        response.setData(serviceEventSerivce.updateRentalService(eventId, serviceEventDTO));
+        return new ResponseEntity<>(response, HttpStatus.OK);
+    }
 
     @GetMapping("/{eventId}/detail-ser/{providerId}")
     public ResponseEntity<?> getDetailSerEvent(@PathVariable int eventId, @PathVariable int providerId) {
@@ -237,4 +243,5 @@ public class EventController {
         response.setData(providerImpl.providerDetailInEvent(eventId, providerId));
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
+
 }

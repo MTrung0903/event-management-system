@@ -5,12 +5,12 @@ import hcmute.fit.event_management.entity.*;
 import hcmute.fit.event_management.entity.keys.TeamEmployeeId;
 import hcmute.fit.event_management.repository.*;
 import hcmute.fit.event_management.service.IEmployeeService;
+import hcmute.fit.event_management.service.ISubtaskService;
 import hcmute.fit.event_management.service.ITaskService;
 import hcmute.fit.event_management.service.ITeamService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import payload.Response;
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -39,9 +39,10 @@ public class TeamServiceImpl implements ITeamService {
     @Autowired
     private ITaskService taskService;
 
-    public TeamServiceImpl(TeamRepository teamRepository) {
-        this.teamRepository = teamRepository;
-    }
+    @Autowired
+    private ISubtaskService subtaskService;
+
+
 
     @Override
     public List<TeamDTO> getTeamsOfEvent(int eventId) {
@@ -314,5 +315,43 @@ public class TeamServiceImpl implements ITeamService {
         return teamDTOs;
     }
 
+    @Override
+    public TeamDTO teamFindByUserIdAndEventId(int eventId, int userId){
+        Team team = teamRepository.teamFindByUserIdAndEventId(userId,eventId);
+        TeamDTO teamDTO = new TeamDTO();
+        if(team != null){
+            teamDTO.setTeamId(team.getTeamId());
+            teamDTO.setTeamName(team.getTeamName());
+            teamDTO.setEventId(team.getEvent().getEventID());
+
+        }
+        return teamDTO;
+    }
+    @Override
+    public List<EmployeeDTO> memberTeamInEvent(int eventId, int userId) {
+        TeamDTO team = teamFindByUserIdAndEventId(eventId, userId);
+        List<EmployeeDTO> list = employeeService.getEmployeeByTeamId(team.getTeamId());
+        List<EmployeeDTO> teamDTOs = new ArrayList<>();
+        for (EmployeeDTO e : list){
+            e.setTeamName(team.getTeamName());
+            List<SubTask> sub = subtaskRepository.findByEmployeeId(e.getId());
+            List<SubTaskDTO> subTaskDTOs = new ArrayList<>();
+            for (SubTask s : sub){
+                if(s.getTask().getTeam().getTeamId()== team.getTeamId()){
+                    SubTaskDTO subTaskDTO = new SubTaskDTO();
+                    BeanUtils.copyProperties(s, subTaskDTO);
+                    subTaskDTO.setSubTaskStart(s.getCreateDate().toString());
+                    subTaskDTO.setSubTaskDeadline(s.getSubTaskDeadline().toString());
+                    subTaskDTO.setEmployeeId(e.getId());
+                    subTaskDTO.setTaskId(s.getTask().getTaskId());
+                    subTaskDTOs.add(subTaskDTO);
+                }
+
+            }
+            e.setListSubTasks(subTaskDTOs);
+            teamDTOs.add(e);
+        }
+        return teamDTOs;
+    }
 
 }

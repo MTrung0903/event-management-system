@@ -1,5 +1,6 @@
 package hcmute.fit.event_management.service;
 
+import hcmute.fit.event_management.dto.EmployeeDTO;
 import hcmute.fit.event_management.dto.TeamDTO;
 import hcmute.fit.event_management.entity.Team;
 import org.springframework.data.domain.Example;
@@ -32,4 +33,8 @@ public interface ITeamService {
     List<TeamDTO> getListTeamToAssignedTask(int taskId, int eventId);
 
     List<TeamDTO> getDetailTeamInEvent(int eventId);
+
+    TeamDTO teamFindByUserIdAndEventId(int eventId, int userId);
+
+    List<EmployeeDTO> memberTeamInEvent(int eventId, int userId);
 }

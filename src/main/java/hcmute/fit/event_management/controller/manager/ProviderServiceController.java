@@ -60,4 +60,5 @@ public class ProviderServiceController {
         response.setData(serviceEventSerivce.detailRental(eventId, serviceId));
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
+
 }

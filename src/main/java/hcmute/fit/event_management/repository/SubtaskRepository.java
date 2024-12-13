@@ -3,6 +3,7 @@ package hcmute.fit.event_management.repository;
 import hcmute.fit.event_management.entity.SubTask;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -20,4 +21,7 @@ public interface SubtaskRepository extends JpaRepository<SubTask, Integer> {
 
     @Query("select sb from SubTask sb where sb.employee.id = :employeeId")
     List<SubTask> findByEmployeeId(int employeeId);
+
+    @Query("select sb from SubTask sb where sb.employee.id = :employeeId and sb.task.taskId = :taskId")
+    List<SubTask> getListSubtaskById(@Param("employeeId") int employeeId, @Param("taskId")int taskId);
 }

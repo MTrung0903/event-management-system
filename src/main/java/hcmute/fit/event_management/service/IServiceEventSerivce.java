@@ -13,4 +13,8 @@ public interface IServiceEventSerivce {
     boolean delServiceEvent(int eventId, int serviceId);
 
     ServiceEventDTO detailRental(int eventId, int serviceId);
+
+    boolean deleteRentalService(int eventId, int serviceId);
+
+    boolean updateRentalService(int eventId, ServiceEventDTO serviceEventDTO);
 }
