@@ -8,11 +8,9 @@ import hcmute.fit.event_management.entity.Sponsor;
 import hcmute.fit.event_management.entity.SponsorEvent;
 import hcmute.fit.event_management.repository.EmployeeRepository;
 import hcmute.fit.event_management.repository.EventRepository;
+import hcmute.fit.event_management.repository.ServiceEventRepository;
 import hcmute.fit.event_management.repository.SponsorRepository;
-import hcmute.fit.event_management.service.IAdminService;
-import hcmute.fit.event_management.service.IEventService;
-import hcmute.fit.event_management.service.ISponsorEventService;
-import hcmute.fit.event_management.service.ISponsorService;
+import hcmute.fit.event_management.service.*;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -40,6 +38,8 @@ public class AdminServiceImpl implements IAdminService {
     @Autowired
     ISponsorEventService sponsorEventService;
 
+    @Autowired
+    ServiceEventRepository serviceEventRepository;
     @Override
     public OverviewDTO getOverview() {
         OverviewDTO overview = new OverviewDTO();
@@ -55,9 +55,15 @@ public class AdminServiceImpl implements IAdminService {
         }
         List<Employee> employees = employeeRepository.findAll();
         List<SponsorEvent> sponsorEvents = sponsorEventService.sponsorEvents();
-        int totalEventFinish,totalDevices = 0, totalEmployees = 0;
+        int totalEventFinish,totalDevices, totalEmployees;
         totalEventFinish = events.stream().filter(event -> Objects.equals(event.getEventStatus(), "Completed")).toList().size();
         totalEmployees = employees.size();
+        totalDevices = serviceEventRepository.findAll().stream()
+                .filter(serviceEvent -> {
+                    Date currentDate = new Date();
+                    return serviceEvent.getRentalDate().before(currentDate)
+                            && serviceEvent.getExpDate().after(currentDate);
+                }).toList().size();
         // event hoàn thành
         overview.setTotalEvents(totalEventFinish);
         // tổng số nhân viên
