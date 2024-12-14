@@ -61,7 +61,9 @@ public class EventServiceImpl implements IEventService {
             eventDTO.setManId(event.get().getManager().getManID());
             eventDTO.setEventStart(event.get().getEventStart().toString());
             eventDTO.setEventEnd(event.get().getEventEnd().toString());
-//            eventDTO.setMcId(event.get().getMc().getMcID());
+            if(event.get().getMc() != null) {
+                eventDTO.setMcId(event.get().getMc().getMcID());
+            }
             return eventDTO;
         }
         return null;
