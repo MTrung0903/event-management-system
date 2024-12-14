@@ -128,7 +128,7 @@ public class TaskServiceImpl implements ITaskService {
                 Date startEvent = event.get().getEventStart();
                 Date endEvent = event.get().getEventEnd();
                 Date date = formatter.parse(taskDTO.getTaskDl().trim());
-                if(date.after(startEvent) && date.before(endEvent)){
+                if(true){
                     Task task = new Task();
                     task.setTaskName(taskDTO.getTaskName());
                     task.setTaskDesc(taskDTO.getTaskDesc());
