@@ -8,6 +8,7 @@ import hcmute.fit.event_management.service.IEmployeeService;
 import hcmute.fit.event_management.service.ISubtaskService;
 import hcmute.fit.event_management.service.ITaskService;
 import hcmute.fit.event_management.service.ITeamService;
+import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -260,28 +261,23 @@ public class TeamServiceImpl implements ITeamService {
         }
     }
     public void changeStatusTask(int taskId) {
-        boolean allDone = true;
-        boolean hasDoing = false;
         List<SubTask> list = subtaskRepository.findByTaskId(taskId);
+        if(!list.isEmpty()){
+            boolean allDone = list.stream().allMatch(subTask -> subTask.getStatus().equals("done"));
+            boolean hasDoing = list.stream().anyMatch(subTask -> subTask.getStatus().equals("doing"));
 
-        for (SubTask subTask : list) {
-            if(subTask.getStatus().equals("doing")) {
-                hasDoing = true;
-                break;
-            } else if(!subTask.getStatus().equals("done")) {
-                allDone = false;
+            Task task = taskRepository.findById(taskId).orElseThrow(() -> new EntityNotFoundException("Task not found"));
+
+            if (allDone) {
+                task.setTaskStatus("done");
+            } else if (hasDoing) {
+                task.setTaskStatus("doing");
             }
+
+            taskRepository.save(task);
         }
 
-        Task task = taskRepository.findById(taskId).get();
 
-        if(allDone) {
-            task.setTaskStatus("done");
-        } else if(hasDoing) {
-            task.setTaskStatus("doing");
-        }
-
-        taskRepository.save(task);
     }
     @Override
     public List<TeamDTO> getDetailTeamInEvent(int eventId) {
