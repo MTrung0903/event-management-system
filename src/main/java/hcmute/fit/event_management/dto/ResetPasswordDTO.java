@@ -9,6 +9,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class ResetPasswordDTO {
     private String token;
+    private int accountId;
     private String email;
     private String newPassword;
 }

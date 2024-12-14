@@ -14,8 +14,11 @@ import java.util.List;
 @NoArgsConstructor
 public class AccountDTO {
     private int accountID;
+    private String name;
     private String email;
+    private String phone;
     private String password;
+    private int manID = 0;
     @JsonProperty
     private boolean isActive;
     private List<String> roles;

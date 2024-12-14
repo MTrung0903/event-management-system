@@ -36,4 +36,7 @@ public class Account {
     @OneToMany(mappedBy = "account", cascade = CascadeType.ALL)
     private List<AccountRole> listAccountRoles;
 
+    @OneToMany(mappedBy = "account", cascade = CascadeType.ALL)
+    private List<Notification> notifications;
+
 }

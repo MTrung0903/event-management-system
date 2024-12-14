@@ -42,7 +42,7 @@ public class AccountController {
     @PostMapping()
     public ResponseEntity<?> addAccount(@RequestBody AccountDTO accountDTO) {
         int statusCode = accountServiceImpl.addOrUpdateAccount(false, accountDTO);
-        Response response;
+
         return switch (statusCode) {
             case 201 -> new ResponseEntity<>(new Response(201, "Account created successfully", accountDTO), HttpStatus.CREATED);
             case 409 -> new ResponseEntity<>(new Response(409, "Account creation failed: Account already exists", "False"), HttpStatus.CONFLICT);
@@ -50,12 +50,12 @@ public class AccountController {
         };
     }
 
-    @PutMapping()
-    public ResponseEntity<?> updateAccount(@RequestBody AccountDTO accountDTO) {
-        int statusCode = accountServiceImpl.addOrUpdateAccount(true, accountDTO);
-        Response response;
+    @PutMapping("/{accountID}")
+    public ResponseEntity<?> blockAccount(@PathVariable("accountID") int accountID) {
+        int statusCode = accountServiceImpl.blockAccount(accountID);
+        System.out.println(accountID);
         return switch (statusCode) {
-            case 200 -> new ResponseEntity<>(new Response(200, "Account updated successfully", accountDTO), HttpStatus.OK);
+            case 200 -> new ResponseEntity<>(new Response(200, "Account updated successfully", ""), HttpStatus.OK);
             case 404 -> new ResponseEntity<>(new Response(404, "Account update failed: Account not found", "False"), HttpStatus.NOT_FOUND);
             default ->  new ResponseEntity<>(new Response(500, "Account update failed due to an unknown error", "False"), HttpStatus.INTERNAL_SERVER_ERROR);
         };

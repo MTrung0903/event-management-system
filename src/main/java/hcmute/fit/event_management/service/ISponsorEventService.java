@@ -10,6 +10,7 @@ import org.springframework.data.domain.Sort;
 import java.util.List;
 import java.util.Optional;
 
-public interface ISponsorEventService {
 
+public interface ISponsorEventService {
+    List<SponsorEvent> sponsorEvents();
 }

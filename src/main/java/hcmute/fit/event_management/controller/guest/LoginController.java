@@ -37,4 +37,10 @@ public class LoginController {
         System.out.println(resetPasswordDTO);
         return authServiceImpl.resetPassword(resetPasswordDTO);
     }
+    @PostMapping("/change-password")
+    public ResponseEntity<?> changePW(@RequestBody ResetPasswordDTO resetPasswordDTO) {
+        System.out.println(resetPasswordDTO);
+        return authServiceImpl.changePW(resetPasswordDTO);
+    }
+
 }

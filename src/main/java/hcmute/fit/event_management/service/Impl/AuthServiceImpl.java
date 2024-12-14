@@ -43,6 +43,7 @@ public class AuthServiceImpl implements AuthService {
     @Autowired
     private JwtTokenUtil jwtTokenUtil;
     Logger logger = LoggerFactory.getLogger(this.getClass());
+
     @Override
     public ResponseEntity<Response> signIn(AccountDTO account) {
         Response response;
@@ -61,6 +62,7 @@ public class AuthServiceImpl implements AuthService {
             return new ResponseEntity<>(response, HttpStatus.UNAUTHORIZED);
         }
     }
+
     @Transactional
     @Override
     public ResponseEntity<Response> sendResetPassword(String email) {
@@ -122,4 +124,15 @@ public class AuthServiceImpl implements AuthService {
         }
     }
 
+    @Override
+    public ResponseEntity<Response> changePW(ResetPasswordDTO resetPasswordDTO) {
+        Response response;
+        Account account = accountRepository.findById(resetPasswordDTO.getAccountId()).orElse(new Account());
+        // Set the new password for the account
+        account.setPassword(passwordEncoder.encode(resetPasswordDTO.getNewPassword()));
+        accountRepository.save(account);
+        response = new Response(200, "Password successfully reset", "True");
+        logger.info("The account's password has been reset successfully");
+        return new ResponseEntity<>(response, HttpStatus.OK);
+    }
 }

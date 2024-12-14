@@ -2,13 +2,9 @@ package hcmute.fit.event_management.service.Impl;
 
 import hcmute.fit.event_management.dto.AccountDTO;
 
-import hcmute.fit.event_management.entity.Account;
-import hcmute.fit.event_management.entity.AccountRole;
-import hcmute.fit.event_management.entity.Role;
+import hcmute.fit.event_management.entity.*;
 import hcmute.fit.event_management.entity.keys.AccountRoleId;
-import hcmute.fit.event_management.repository.AccountRepository;
-import hcmute.fit.event_management.repository.AccountRoleRepository;
-import hcmute.fit.event_management.repository.RoleRepository;
+import hcmute.fit.event_management.repository.*;
 import hcmute.fit.event_management.service.IAccountService;
 import jakarta.transaction.Transactional;
 import org.slf4j.Logger;
@@ -21,7 +17,9 @@ import org.springframework.data.domain.Sort;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.security.SecureRandom;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
@@ -39,13 +37,21 @@ public class AccountServiceImpl implements IAccountService {
     private AccountRoleRepository accountRoleRepository;
 
     @Autowired
+    private ManagerRepository managerRepository;
+    @Autowired
+    private EmployeeRepository employeeRepository;
+
+    @Autowired
     private PasswordEncoder passwordEncoder;
 
     Logger logger = LoggerFactory.getLogger(this.getClass());
     public AccountServiceImpl(AccountRepository accountRepository) {
         this.accountRepository = accountRepository;
     }
-
+    @Override
+    public Optional<Account> findById(Integer integer) {
+        return accountRepository.findById(integer);
+    }
 
     @Override
     public List<Account> findAll() {
@@ -100,6 +106,15 @@ public class AccountServiceImpl implements IAccountService {
         for (AccountRole accountRole : account.getListAccountRoles()) {
             roles.add(accountRole.getRole().getName());
         }
+        if (account.getManager() != null) {
+            accountDTO.setName(account.getManager().getName());
+            accountDTO.setPhone(account.getManager().getPhone());
+        }
+        if (account.getEmployee() != null) {
+            accountDTO.setName(account.getEmployee().getFullName());
+            accountDTO.setPhone(account.getEmployee().getPhone());
+        }
+
         accountDTO.setRoles(roles);
         return accountDTO;
     }
@@ -110,7 +125,41 @@ public class AccountServiceImpl implements IAccountService {
                 .map(this::DTO)
                 .toList();
     }
+    private String generateRandomPassword(int length){
+        // Danh sách ký tự
+        String upperCaseLetters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        String lowerCaseLetters = "abcdefghijklmnopqrstuvwxyz";
+        String digits = "0123456789";
+        String specialCharacters = "!@#$%^&*()_+-=~";
+        String allCharacters = upperCaseLetters + lowerCaseLetters + digits + specialCharacters;
+
+        SecureRandom random = new SecureRandom();
+
+        // Bắt buộc chọn ít nhất một ký tự từ mỗi loại
+        List<Character> passwordChars = new ArrayList<>();
+        passwordChars.add(upperCaseLetters.charAt(random.nextInt(upperCaseLetters.length())));
+        passwordChars.add(lowerCaseLetters.charAt(random.nextInt(lowerCaseLetters.length())));
+        passwordChars.add(digits.charAt(random.nextInt(digits.length())));
+        passwordChars.add(specialCharacters.charAt(random.nextInt(specialCharacters.length())));
+
+        // Phần còn lại được chọn ngẫu nhiên từ tất cả các loại ký tự
+        for (int i = 4; i < length; i++) {
+            passwordChars.add(allCharacters.charAt(random.nextInt(allCharacters.length())));
+        }
+
+        // Trộn ngẫu nhiên danh sách ký tự
+        Collections.shuffle(passwordChars);
+
+        // Chuyển đổi thành chuỗi
+        StringBuilder password = new StringBuilder();
+        for (char c : passwordChars) {
+            password.append(c);
+        }
+
+        return password.toString();
+    }
     @Transactional
+    @Override
     public int addOrUpdateAccount(boolean isUpdate, AccountDTO accountDTO) {
         Optional<Account> existingAccount = findbyEmail(accountDTO.getEmail());
 
@@ -128,20 +177,54 @@ public class AccountServiceImpl implements IAccountService {
         }
         return updateAccount(existingAccount.get(), accountDTO);
     }
-
+    @Override
+    public int blockAccount(int accountID) {
+        Optional<Account> existingAccount = findById(accountID);
+        if (existingAccount.isEmpty()) {
+            logger.warn("Account update failed: Account not found");
+            return 404;
+        }
+        Account account = existingAccount.get();
+        account.setActive(!account.isActive());
+        save(account);
+        return 200;
+    }
     private int createAccount(AccountDTO accountDTO) {
         Account account = new Account();
-        accountDTO.setPassword(passwordEncoder.encode(accountDTO.getPassword()));
+        accountDTO.setPassword(passwordEncoder.encode(generateRandomPassword(8)));
         BeanUtils.copyProperties(accountDTO, account);
-        account.setActive(accountDTO.isActive());
+        account.setActive(true);
         save(account);
-
+        if (accountDTO.getManID() != 0) {
+            createEmployee(accountDTO, account);
+        }
+        else {
+            createManager(accountDTO, account);
+        }
         createAccountRoles(accountDTO, account);
 
         logger.info("Account created successfully");
         return 201;
     }
+    private void createManager(AccountDTO accountDTO, Account account){
+        Manager man = new Manager();
 
+        man.setName(accountDTO.getName());
+        man.setEmail(accountDTO.getEmail());
+        man.setPhone(accountDTO.getPhone());
+        man.setAccount(account);
+        managerRepository.save(man);
+    }
+    private void createEmployee(AccountDTO accountDTO, Account account){
+        Employee emp = new Employee();
+
+        emp.setFullName(accountDTO.getName());
+        emp.setPhone(accountDTO.getPhone());
+        emp.setEmail(accountDTO.getEmail());
+        emp.setManager(managerRepository.findById(accountDTO.getManID()).orElse(null));
+        emp.setAccount(account);
+        employeeRepository.save(emp);
+    }
     private int updateAccount(Account existingAccount, AccountDTO accountDTO) {
         accountDTO.setAccountID(existingAccount.getAccountID());
         accountRoleRepository.deleteAllByAccount(existingAccount);

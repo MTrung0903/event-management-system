@@ -44,7 +44,22 @@ public class EmployeeServiceImpl implements IEmployeeService {
         }
         return employeeDTOs;
     }
-
+    @Override
+    public Boolean updateProfile(int empId, EmployeeDTO employeeDTO) {
+        Optional<Employee> empOpt = employeeRepository.findById(empId);
+        if (empOpt.isPresent()) {
+            Employee employee = empOpt.get();
+            employee.setPhone(employeeDTO.getPhone());
+            employee.setAddress(employeeDTO.getAddress());
+            employeeRepository.save(employee);
+            return true;
+        }
+        return false;
+    }
+    @Override
+    public Optional<Employee> findById(Integer integer) {
+        return employeeRepository.findById(integer);
+    }
 
     @Override
     public List<EmployeeDTO> getEmployeesJoinTeam(int manId,int eventId) {

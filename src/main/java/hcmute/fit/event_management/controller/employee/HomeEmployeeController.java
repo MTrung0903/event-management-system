@@ -1,5 +1,6 @@
 package hcmute.fit.event_management.controller.employee;
 
+import hcmute.fit.event_management.dto.EmployeeDTO;
 import hcmute.fit.event_management.dto.EventDTO;
 import hcmute.fit.event_management.dto.SubTaskDTO;
 import hcmute.fit.event_management.service.IEmployeeService;
@@ -19,6 +20,8 @@ import java.util.List;
 public class HomeEmployeeController {
     @Autowired
     IEventService eventService;
+    @Autowired
+    IEmployeeService employeeService;
 
     @Autowired
     private ITeamService teamService;
