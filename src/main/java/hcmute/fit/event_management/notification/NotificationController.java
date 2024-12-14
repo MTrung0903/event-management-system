@@ -25,10 +25,9 @@ public class NotificationController {
 
     @MessageMapping("/private")
     public void sendToSpecificUser(@Payload NotificationDTO notificationDTO) {
-
         String message = notificationDTO.getMessage();
         System.out.println("Sending message to user " + notificationDTO.getAccountID() + ": " + message);
-        //notificationService.createNotification(notificationDTO);
+        notificationService.createNotification(notificationDTO);
         // Gửi thông báo tới người dùng cụ thể
         template.convertAndSendToUser(String.valueOf(notificationDTO.getAccountID()), "/specific", notificationDTO);
     }
