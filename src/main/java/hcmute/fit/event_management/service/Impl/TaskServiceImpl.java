@@ -44,7 +44,7 @@ public class TaskServiceImpl implements ITaskService {
         for (SubTask subTask : list) {
             if(subTask.getStatus().equals("doing")) {
                 hasDoing = true;
-                break; // Nếu có trạng thái "doing", không cần kiểm tra nữa.
+                break; 
             } else if(!subTask.getStatus().equals("done")) {
                 allDone = false;
             }
@@ -56,6 +56,8 @@ public class TaskServiceImpl implements ITaskService {
             task.setTaskStatus("done");
         } else if(hasDoing) {
             task.setTaskStatus("doing");
+        }else {
+            task.setTaskStatus("to do");
         }
 
         taskRepository.save(task);
@@ -68,6 +70,7 @@ public class TaskServiceImpl implements ITaskService {
             changeStatusTask(t.getTaskId());
         }
         for (Task task : tasks) {
+            changeStatusTask(task.getTaskId());
             TaskDTO taskDTO = new TaskDTO();
             BeanUtils.copyProperties(task, taskDTO);
             taskDTO.setEventId(eventId);

@@ -267,7 +267,7 @@ public class TeamServiceImpl implements ITeamService {
         for (SubTask subTask : list) {
             if(subTask.getStatus().equals("doing")) {
                 hasDoing = true;
-                break; // Nếu có trạng thái "doing", không cần kiểm tra nữa.
+                break;
             } else if(!subTask.getStatus().equals("done")) {
                 allDone = false;
             }
