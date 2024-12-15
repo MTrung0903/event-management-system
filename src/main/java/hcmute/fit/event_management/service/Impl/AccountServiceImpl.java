@@ -44,6 +44,9 @@ public class AccountServiceImpl implements IAccountService {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
+    @Autowired
+    EmailServiceImpl emailServiceImpl;
+
     Logger logger = LoggerFactory.getLogger(this.getClass());
     public AccountServiceImpl(AccountRepository accountRepository) {
         this.accountRepository = accountRepository;
@@ -191,7 +194,8 @@ public class AccountServiceImpl implements IAccountService {
     }
     private int createAccount(AccountDTO accountDTO) {
         Account account = new Account();
-        accountDTO.setPassword(passwordEncoder.encode(generateRandomPassword(8)));
+        String pw = generateRandomPassword(8);
+        accountDTO.setPassword(passwordEncoder.encode(pw));
         BeanUtils.copyProperties(accountDTO, account);
         account.setActive(true);
         save(account);
@@ -202,7 +206,7 @@ public class AccountServiceImpl implements IAccountService {
             createManager(accountDTO, account);
         }
         createAccountRoles(accountDTO, account);
-
+        emailServiceImpl.sendAccountEmail(account.getEmail(), account.getEmail(), pw);
         logger.info("Account created successfully");
         return 201;
     }

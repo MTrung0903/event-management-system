@@ -73,7 +73,7 @@ public class AdminServiceImpl implements IAdminService {
         // list sự kiện hoàn thành theo tháng
         overview.setCntCompleted(getCompletedEventsByMonth(events));
         // list sự kiện hủy theo tháng
-        overview.setCntCancel(getCancelEventsByMonth(events));
+        overview.setCntIncoming(getIncomingEventsByMonth(events));
         // list sự kiện hủy theo tháng
         overview.setCntSponsor(getSponsorsByMonth(sponsorEvents));
         // list event
@@ -93,10 +93,10 @@ public class AdminServiceImpl implements IAdminService {
                 .map(month -> completedEventsByMonth.getOrDefault(Month.of(month), 0L).intValue()) // Lấy số lượng hoặc mặc định 0
                 .toArray();
     }
-    public int[] getCancelEventsByMonth(List<Event> events) {
+    public int[] getIncomingEventsByMonth(List<Event> events) {
         // Bước 1: Lọc các sự kiện có status là "Hoàn thành"
         Map<Month, Long> completedEventsByMonth = events.stream()
-                .filter(event -> "Cancel".equals(event.getEventStatus())) // Lọc theo status
+                .filter(event -> "Incoming".equals(event.getEventStatus())) // Lọc theo status
                 .collect(Collectors.groupingBy(
                         event -> Month.of(event.getEventStart().getMonth()), // Nhóm theo tháng
                         Collectors.counting() // Đếm số lượng sự kiện trong mỗi tháng
