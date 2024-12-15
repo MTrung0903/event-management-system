@@ -1,5 +1,6 @@
 package hcmute.fit.event_management.service;
 
+import hcmute.fit.event_management.dto.SponsorShipDTO;
 import hcmute.fit.event_management.entity.SponsorShip;
 import org.springframework.data.domain.Example;
 import org.springframework.data.domain.Sort;
@@ -8,17 +9,14 @@ import java.util.List;
 import java.util.Optional;
 
 public interface ISponsorShipService {
-    long count();
 
-    void deleteAll();
+    List<SponsorShipDTO> getAllSponsorShips();
 
-    Optional<SponsorShip> findById(Integer integer);
+    SponsorShipDTO getSponsorShipByID(int sponsorShipID);
 
-    <S extends SponsorShip> S save(S entity);
+    boolean addSponsorShip(SponsorShipDTO sponsorShipDTO);
 
-    List<SponsorShip> findAll(Sort sort);
+    boolean updateSponsorShip(SponsorShipDTO sponsorShipDTO);
 
-    <S extends SponsorShip> Optional<S> findOne(Example<S> example);
-
-    void deleteById(Integer integer);
+    boolean deleteSponsorShip(int id);
 }

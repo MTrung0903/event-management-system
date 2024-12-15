@@ -1,30 +1,40 @@
 package hcmute.fit.event_management.service;
 
+import hcmute.fit.event_management.dto.EmployeeDTO;
+import hcmute.fit.event_management.dto.TeamDTO;
 import hcmute.fit.event_management.entity.Team;
 import org.springframework.data.domain.Example;
 import org.springframework.data.domain.Sort;
 
+import java.util.Date;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 public interface ITeamService {
-    List<Team> findAll();
 
-    List<Team> findAllById(Iterable<Integer> integers);
+    List<TeamDTO> getTeamsOfEvent(int eventId);
 
-    <S extends Team> List<S> saveAll(Iterable<S> entities);
+    TeamDTO getDetailTeamById(int teamId);
 
-    long count();
+    List<TeamDTO> getAllTeamsByEventId(int eventId);
 
-    void delete(Team entity);
+    boolean addTeam(TeamDTO teamDTO);
 
-    void deleteById(Integer integer);
+    boolean updateTeam(TeamDTO teamDTO);
 
-    Optional<Team> findById(Integer integer);
+    boolean deleteTeam(int teamId);
 
-    <S extends Team> S save(S entity);
+    boolean addMemberToTeam(int teamId, int employeeId);
 
-    List<Team> findAll(Sort sort);
 
-    <S extends Team> Optional<S> findOne(Example<S> example);
+    Map<String, Object> deleteMemberFromTeam(int teamId, int employeeId);
+
+    List<TeamDTO> getListTeamToAssignedTask(int taskId, int eventId);
+
+    List<TeamDTO> getDetailTeamInEvent(int eventId);
+
+    TeamDTO teamFindByUserIdAndEventId(int eventId, int userId);
+
+    List<EmployeeDTO> memberTeamInEvent(int eventId, int userId);
 }

@@ -1,26 +1,33 @@
 package hcmute.fit.event_management.service;
 
+import hcmute.fit.event_management.dto.EventDTO;
 import hcmute.fit.event_management.entity.Event;
 import org.springframework.data.domain.Example;
 import org.springframework.data.domain.Sort;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 import java.util.Optional;
 
 public interface IEventService {
-    List<Event> findAll();
 
-    List<Event> findAllById(Iterable<Integer> integers);
 
-    <S extends Event> List<S> saveAll(Iterable<S> entities);
+    List<EventDTO> getAllEvents(int accountId);
 
-    long count();
+    EventDTO getEventById(int id);
 
-    void deleteById(Integer integer);
+    boolean addEvent(MultipartFile image, EventDTO eventDTO);
 
-    <S extends Event> S save(S entity);
+    boolean deleteEvent(int eventId);
 
-    List<Event> findAll(Sort sort);
+    boolean updateEvent(MultipartFile image, EventDTO eventDTO);
 
-    <S extends Event> Optional<S> findOne(Example<S> example);
+    boolean addMc(int eventId, int mcId);
+
+    List<EventDTO> getAllEventByEmp(int empId);
+
+    String getListAttendeeByEventId(int eventId);
+
+    String addAttendee(int eventId, MultipartFile attendee);
 }

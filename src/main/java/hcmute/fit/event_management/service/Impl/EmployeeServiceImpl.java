@@ -1,77 +1,115 @@
 package hcmute.fit.event_management.service.Impl;
 
-import hcmute.fit.event_management.entity.Employee;
-import hcmute.fit.event_management.repository.EmployeeRepository;
+import hcmute.fit.event_management.dto.EmployeeDTO;
+import hcmute.fit.event_management.dto.TeamDTO;
+import hcmute.fit.event_management.entity.*;
+import hcmute.fit.event_management.repository.*;
 import hcmute.fit.event_management.service.IEmployeeService;
+import hcmute.fit.event_management.service.ITeamService;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Example;
-import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 @Service
 public class EmployeeServiceImpl implements IEmployeeService {
     @Autowired
     private EmployeeRepository employeeRepository;
 
+    @Autowired
+    private TeamEmployeeRepository teamEmployeeRepository;
+    @Autowired
+    private SubtaskRepository subtaskRepository;
+
+
+
     public EmployeeServiceImpl(EmployeeRepository employeeRepository) {
         this.employeeRepository = employeeRepository;
     }
 
+
+
     @Override
-    public List<Employee> findAll() {
-        return employeeRepository.findAll();
+    public List<EmployeeDTO> getEmployeeByTeamId(int teamId) {
+        List<TeamEmployee> teamEmployees = teamEmployeeRepository.findByTeamId(teamId);
+        List<EmployeeDTO> employeeDTOs = new ArrayList<EmployeeDTO>();
+        for (TeamEmployee teamEmployee : teamEmployees) {
+            Employee employee = employeeRepository.findById(teamEmployee.getEmployee().getId()).get();
+            EmployeeDTO employeeDTO = new EmployeeDTO();
+            BeanUtils.copyProperties(employee, employeeDTO);
+            employeeDTO.setTeamId(teamId);
+
+            employeeDTOs.add(employeeDTO);
+        }
+        return employeeDTOs;
+    }
+    @Override
+    public Boolean updateProfile(int empId, EmployeeDTO employeeDTO) {
+        Optional<Employee> empOpt = employeeRepository.findById(empId);
+        if (empOpt.isPresent()) {
+            Employee employee = empOpt.get();
+            employee.setPhone(employeeDTO.getPhone());
+            employee.setAddress(employeeDTO.getAddress());
+            employeeRepository.save(employee);
+            return true;
+        }
+        return false;
+    }
+    @Override
+    public Optional<Employee> findById(Integer integer) {
+        return employeeRepository.findById(integer);
     }
 
     @Override
-    public List<Employee> findAllById(Iterable<Integer> integers) {
-        return employeeRepository.findAllById(integers);
+    public List<EmployeeDTO> getEmployeesJoinTeam(int manId,int eventId) {
+
+        List<Employee> list = employeeRepository.getListMemTOTeam(manId,eventId);
+
+
+        List<EmployeeDTO> employeeDTOs = new ArrayList<>();
+        for (Employee employee : list) {
+
+                EmployeeDTO employeeDTO = new EmployeeDTO();
+                BeanUtils.copyProperties(employee, employeeDTO);
+                employeeDTOs.add(employeeDTO);
+
+        }
+        return employeeDTOs;
     }
 
-    @Override
-    public <S extends Employee> List<S> saveAll(Iterable<S> entities) {
-        return employeeRepository.saveAll(entities);
-    }
 
     @Override
-    public long count() {
-        return employeeRepository.count();
+    public List<EmployeeDTO> getEmployeeToAssignedSubTask(){
+        List<Employee> list = employeeRepository.findAll();
+        List<SubTask>  subTaskList =  subtaskRepository.findAll();
+        Set<Integer> listEmployeeIds = new HashSet<>();
+        for(SubTask subTask : subTaskList) {
+            listEmployeeIds.add(subTask.getEmployee().getId());
+        }
+        List<EmployeeDTO> employeeDTOs = new ArrayList<>();
+        for(Employee employee : list) {
+            if(!listEmployeeIds.contains(employee.getId())) {
+                EmployeeDTO employeeDTO = new EmployeeDTO();
+                BeanUtils.copyProperties(employee, employeeDTO);
+                employeeDTOs.add(employeeDTO);
+            }
+        }
+        return employeeDTOs;
+    }
+    @Override
+    public List<EmployeeDTO> findEligibleEmployees(int teamId) {
+        List<Employee> list = employeeRepository.findEmployeesWithoutSubtasksInTeam(teamId);
+        List<EmployeeDTO> employeeDTOs = new ArrayList<>();
+        for (Employee employee : list) {
+            EmployeeDTO employeeDTO = new EmployeeDTO();
+            BeanUtils.copyProperties(employee, employeeDTO);
+            employeeDTOs.add(employeeDTO);
+        }
+        return employeeDTOs;
     }
 
-    @Override
-    public void delete(Employee entity) {
-        employeeRepository.delete(entity);
-    }
 
-    @Override
-    public void deleteAll() {
-        employeeRepository.deleteAll();
-    }
 
-    @Override
-    public void deleteAllById(Iterable<? extends Integer> integers) {
-        employeeRepository.deleteAllById(integers);
-    }
 
-    @Override
-    public void deleteById(Integer integer) {
-        employeeRepository.deleteById(integer);
-    }
-
-    @Override
-    public <S extends Employee> S save(S entity) {
-        return employeeRepository.save(entity);
-    }
-
-    @Override
-    public List<Employee> findAll(Sort sort) {
-        return employeeRepository.findAll(sort);
-    }
-
-    @Override
-    public <S extends Employee> Optional<S> findOne(Example<S> example) {
-        return employeeRepository.findOne(example);
-    }
 }

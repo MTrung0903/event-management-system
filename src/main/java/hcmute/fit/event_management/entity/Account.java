@@ -4,10 +4,13 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Entity(name = "account")
+import java.util.List;
+
+@Entity
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@Table(name = "account")
 public class Account {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -17,16 +20,23 @@ public class Account {
     private String email;
     @Column(name = "password")
     private String password;
-    @Column(name = "role")
-    private String role;
     @Column(name = "is_active")
     private boolean isActive;
 
     @OneToOne(mappedBy = "account", cascade = CascadeType.ALL)
     @PrimaryKeyJoinColumn
     private Employee employee;
-
     @OneToOne(mappedBy = "account", cascade = CascadeType.ALL)
     @PrimaryKeyJoinColumn
     private Manager manager;
+    @OneToOne(mappedBy = "account", cascade = CascadeType.ALL)
+    @PrimaryKeyJoinColumn
+    private PasswordResetToken token;
+
+    @OneToMany(mappedBy = "account", cascade = CascadeType.ALL)
+    private List<AccountRole> listAccountRoles;
+
+    @OneToMany(mappedBy = "account", cascade = CascadeType.ALL)
+    private List<Notification> notifications;
+
 }

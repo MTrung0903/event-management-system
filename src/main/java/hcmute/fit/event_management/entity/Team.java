@@ -5,12 +5,14 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
 import java.util.Set;
 
-@Entity(name = "team")
+@Entity
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@Table(name = "team")
 public class Team {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,10 +25,10 @@ public class Team {
     @JoinColumn(name = "event_id")
     private Event event;
 
-    @OneToMany(mappedBy = "team")
-    private Set<Employee> listEmployees;
+    @OneToMany(mappedBy = "team", cascade = CascadeType.ALL)
+    private List<TeamEmployee> listTeamEmployees;
 
     @OneToMany(mappedBy = "team")
-    private Set<Task> listTasks;
+    private List<Task> listTasks;
 }
 

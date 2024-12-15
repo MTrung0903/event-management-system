@@ -1,30 +1,35 @@
 package hcmute.fit.event_management.service;
 
+import hcmute.fit.event_management.dto.SponsorDTO;
 import hcmute.fit.event_management.entity.Sponsor;
 import org.springframework.data.domain.Example;
 import org.springframework.data.domain.Sort;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 import java.util.Optional;
 
 public interface ISponsorService {
-    List<Sponsor> findAll();
 
-    List<Sponsor> findAllById(Iterable<Integer> integers);
+    List<SponsorDTO> getAllSponsors();
 
-    <S extends Sponsor> List<S> saveAll(Iterable<S> entities);
+    SponsorDTO getSponsorById(int id);
 
-    long count();
+    boolean addSponsor(MultipartFile sponsorLogo, SponsorDTO sponsorDTO);
 
-    void delete(Sponsor entity);
+    boolean updateSponsor(MultipartFile sponsorLogo, SponsorDTO sponsorDTO);
 
-    void deleteById(Integer integer);
+    boolean updateSponsor(SponsorDTO sponsorDTO);
 
-    Optional<Sponsor> findById(Integer integer);
+    boolean deleteSponsor(int id);
 
-    <S extends Sponsor> S save(S entity);
+    boolean addSponsorForEvent(int sponsorId, int eventId);
 
-    List<Sponsor> findAll(Sort sort);
+    boolean addNewSponsorForEvent(int eventId, MultipartFile logo, SponsorDTO sponsorDTO);
 
-    <S extends Sponsor> Optional<S> findOne(Example<S> example);
+    List<SponsorDTO> getAllSponsorByEventId(int eventId);
+
+    List<SponsorDTO> getSponsorForAddNew(int eventId);
+
+    boolean deleteSponsorEvent(int eventId, int sponsorId);
 }

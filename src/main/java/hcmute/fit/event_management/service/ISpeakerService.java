@@ -1,30 +1,23 @@
 package hcmute.fit.event_management.service;
 
+import hcmute.fit.event_management.dto.SpeakerDTO;
 import hcmute.fit.event_management.entity.Speaker;
 import org.springframework.data.domain.Example;
 import org.springframework.data.domain.Sort;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 import java.util.Optional;
 
 public interface ISpeakerService {
-    List<Speaker> findAll();
 
-    List<Speaker> findAllById(Iterable<Integer> integers);
+    List<SpeakerDTO> getAllSpeakers();
 
-    <S extends Speaker> List<S> saveAll(Iterable<S> entities);
+    SpeakerDTO getSpeakerById(int id);
 
-    void delete(Speaker entity);
+    boolean addSpeaker(MultipartFile imageSpeaker, SpeakerDTO speakerDTO);
 
-    long count();
+    boolean updateSpeaker(MultipartFile imageSpeaker, SpeakerDTO speakerDTO);
 
-    void deleteById(Integer integer);
-
-    <S extends Speaker> S save(S entity);
-
-    Optional<Speaker> findById(Integer integer);
-
-    List<Speaker> findAll(Sort sort);
-
-    <S extends Speaker> Optional<S> findOne(Example<S> example);
+    boolean deleteSpeaker(int id);
 }

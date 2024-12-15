@@ -1,5 +1,6 @@
 package hcmute.fit.event_management.service;
 
+import hcmute.fit.event_management.dto.ProviderServiceDTO;
 import hcmute.fit.event_management.entity.ProviderService;
 import org.springframework.data.domain.Example;
 import org.springframework.data.domain.Sort;
@@ -8,19 +9,19 @@ import java.util.List;
 import java.util.Optional;
 
 public interface IProviderService {
-    List<ProviderService> findAll(Sort sort);
 
-    List<ProviderService> findAll();
+    List<ProviderServiceDTO> getServiceProviders(int providerId);
 
-    List<ProviderService> findAllById(Iterable<Integer> integers);
+    ProviderServiceDTO findServiceById(int serviceId);
 
-    <S extends ProviderService> List<S> saveAll(Iterable<S> entities);
+    boolean addServiceProvider(ProviderServiceDTO serviceDTO);
 
-    long count();
+    public boolean updateServiceProvider(ProviderServiceDTO serviceDTO);
 
-    void deleteById(Integer integer);
+    boolean deleteServiceProvider(int serviceId);
 
-    Optional<ProviderService> findById(Integer integer);
+    List<ProviderServiceDTO> listServiceInEvent(int eventId, int providerId);
 
-    <S extends ProviderService> Optional<S> findOne(Example<S> example);
+
+    List<ProviderServiceDTO> listServiceNotInEvent(int eventId, int providerId);
 }

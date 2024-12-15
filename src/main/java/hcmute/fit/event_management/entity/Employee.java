@@ -5,12 +5,14 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
 import java.util.Set;
 
-@Entity(name = "employee")
+@Entity
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@Table(name = "employee")
 public class Employee {
     @Id
     @Column(name = "employee_id")
@@ -29,13 +31,13 @@ public class Employee {
     @JoinColumn(name = "employee_id")
     private Account account;
 
-    @ManyToOne
-    @JoinColumn(name = "team_id")
-    private Team team;
+    @OneToMany(mappedBy = "employee", cascade = CascadeType.ALL)
+    private List<TeamEmployee> listTeamEmployees;
+
     @ManyToOne
     @JoinColumn(name = "man_id")
     private Manager manager;
 
     @OneToMany(mappedBy = "employee")
-    private Set<SubTask> listSubTasks;
+    private List<SubTask> listSubTasks;
 }

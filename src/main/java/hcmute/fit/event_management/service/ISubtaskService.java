@@ -1,26 +1,37 @@
 package hcmute.fit.event_management.service;
 
+import hcmute.fit.event_management.dto.SubTaskDTO;
 import hcmute.fit.event_management.entity.SubTask;
 import org.springframework.data.domain.Example;
 import org.springframework.data.domain.Sort;
+import payload.Response;
 
 import java.util.List;
 import java.util.Optional;
 
 public interface ISubtaskService {
-    List<SubTask> findAll();
 
-    List<SubTask> findAllById(Iterable<Integer> integers);
+    List<SubTaskDTO> getAllSubtasksOfTask(int taskId);
 
-    <S extends SubTask> List<S> saveAll(Iterable<S> entities);
+    List<SubTaskDTO> listSubtaskFromEvent(int eventId);
 
-    void deleteById(Integer integer);
+    SubTaskDTO getSubtaskById(int subtaskId);
 
-    Optional<SubTask> findById(Integer integer);
+    Response addSubtask(int taskId, SubTaskDTO subtaskDTO);
 
-    <S extends SubTask> S save(S entity);
+    Response updateSubtask(int taskId, SubTaskDTO subtaskDTO);
 
-    List<SubTask> findAll(Sort sort);
+    boolean deleteSubtask(int subtaskId);
 
-    <S extends SubTask> Optional<S> findOne(Example<S> example);
+    boolean actionSubtask(int employeeId, int subtaskId, String action);
+
+    boolean assignedSubtask(int employeeId, int subtaskId);
+
+    boolean assignedUpdate(int subtaskId, int employeeId);
+
+    boolean changeStatus(int subtaskId, String status);
+
+    boolean changeEmployeeAssigned(int subtaskId, int employeeId);
+
+    List<SubTaskDTO> getListSubtaskByEmployeeId(int employeeId, int taskId);
 }

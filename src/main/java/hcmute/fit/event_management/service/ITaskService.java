@@ -1,30 +1,29 @@
 package hcmute.fit.event_management.service;
 
+import hcmute.fit.event_management.dto.TaskDTO;
 import hcmute.fit.event_management.entity.Task;
 import org.springframework.data.domain.Example;
 import org.springframework.data.domain.Sort;
+import payload.Response;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 public interface ITaskService {
-    List<Task> findAll();
 
-    List<Task> findAllById(Iterable<Integer> integers);
+    List<TaskDTO> getTasksOfEvent(int eventId);
 
-    <S extends Task> List<S> saveAll(Iterable<S> entities);
+    TaskDTO findTaskById(int subTaskId);
 
-    long count();
+    Response addTask(TaskDTO taskDTO);
 
-    void delete(Task entity);
+    boolean updateTask(TaskDTO taskDTO);
 
-    void deleteById(Integer integer);
+    Map<String, Object> deleteTask(int taskId);
 
-    Optional<Task> findById(Integer integer);
 
-    <S extends Task> S save(S entity);
+    boolean addTeamForTask(int taskId, int teamId);
 
-    List<Task> findAll(Sort sort);
-
-    <S extends Task> Optional<S> findOne(Example<S> example);
+    List<TaskDTO> getTasksNoTeam(int eventId);
 }

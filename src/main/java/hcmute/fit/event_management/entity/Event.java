@@ -6,29 +6,40 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.Date;
+import java.util.List;
 import java.util.Set;
 
-@Entity(name = "event")
+@Entity
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@Table(name = "event")
 public class Event {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "event_id")
-    private int evetID;
+    private int eventID;
     @Column(name = "event_name")
     private String eventName;
-    @Column(name = "event_desc")
+    @Column(name = "event_type")
+    private String eventType;
+    @Column(name = "event_location")
+    private String eventLocation;
+    @Column(name = "event_host")
+    private String eventHost;
+    @Column(name = "event_desc",columnDefinition = "TEXT")
     private String eventDescription;
     @Column(name = "event_image")
     private String eventImg;
-    @Column(name = "event_date")
-    private Date eventDate;
-    @Column(name = "eventlocation")
-    private String eventLocation;
-    @Column(name = "event_detail")
-    private String eventDetail;
+    @Column(name = "event_start")
+    private Date eventStart;
+    @Column(name = "event_end")
+    private Date eventEnd;
+    @Column(name = "event_status")
+    private String eventStatus;
+
+    @Column(name = "event_attendee")
+    private String eventAttendee;
 
     @ManyToOne
     @JoinColumn(name = "man_id")
@@ -37,18 +48,17 @@ public class Event {
     @JoinColumn(name = "mc_id")
     private Mc mc;
 
-    @OneToMany(mappedBy = "event", cascade = CascadeType.ALL)
-    private Set<DetailSection> listDetailSections;
-    @OneToMany(mappedBy = "event", cascade = CascadeType.ALL)
-    private Set<Invite> listInvites;
-    @OneToMany(mappedBy = "event", cascade = CascadeType.ALL)
-    private Set<ProviderEvent> listProviderEvents;
-    @OneToMany(mappedBy = "event", cascade = CascadeType.ALL)
-    private Set<Section> listSections;
-    @OneToMany(mappedBy = "event", cascade = CascadeType.ALL)
-    private Set<SponsorEvent> listSponsorEvents;
-    @OneToMany(mappedBy = "event", cascade = CascadeType.ALL)
-    private Set<Task> listTasks;
-    @OneToMany(mappedBy = "event", cascade = CascadeType.ALL)
-    private Set<Team> listTeams;
+
+    @OneToMany(mappedBy = "event", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Invite> listInvites;
+    @OneToMany(mappedBy = "event", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<ProviderEvent> listProviderEvents;
+    @OneToMany(mappedBy = "event", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Section> listSections;
+    @OneToMany(mappedBy = "event", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<SponsorEvent> listSponsorEvents;
+    @OneToMany(mappedBy = "event", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Task> listTasks;
+    @OneToMany(mappedBy = "event", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Team> listTeams;
 }

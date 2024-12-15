@@ -1,13 +1,15 @@
 package hcmute.fit.event_management.service.Impl;
 
+import hcmute.fit.event_management.dto.ManagerDTO;
+import hcmute.fit.event_management.entity.Employee;
 import hcmute.fit.event_management.entity.Manager;
 import hcmute.fit.event_management.repository.ManagerRepository;
 import hcmute.fit.event_management.service.IManagerService;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Example;
-import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -16,57 +18,35 @@ public class ManagerServiceImpl implements IManagerService {
     @Autowired
     private ManagerRepository managerRepository;
 
-    public ManagerServiceImpl(ManagerRepository managerRepository) {
-        this.managerRepository = managerRepository;
-    }
-
     @Override
-    public List<Manager> findAll() {
-        return managerRepository.findAll();
+    public List<ManagerDTO> findAllManager(){
+        List<Manager> managers = managerRepository.findAll();
+        System.out.println(managers.size());
+        List<ManagerDTO> managerDTOs = new ArrayList<>();
+        for (Manager manager : managers) {
+            ManagerDTO managerDTO = new ManagerDTO();
+            BeanUtils.copyProperties(manager, managerDTO);
+            managerDTOs.add(managerDTO);
+        }
+        return managerDTOs;
     }
-
-    @Override
-    public List<Manager> findAllById(Iterable<Integer> integers) {
-        return managerRepository.findAllById(integers);
-    }
-
-    @Override
-    public <S extends Manager> List<S> saveAll(Iterable<S> entities) {
-        return managerRepository.saveAll(entities);
-    }
-
-    @Override
-    public long count() {
-        return managerRepository.count();
-    }
-
-    @Override
-    public void deleteAllById(Iterable<? extends Integer> integers) {
-        managerRepository.deleteAllById(integers);
-    }
-
-    @Override
-    public <S extends Manager> S save(S entity) {
-        return managerRepository.save(entity);
-    }
-
     @Override
     public Optional<Manager> findById(Integer integer) {
         return managerRepository.findById(integer);
     }
-
     @Override
-    public void deleteById(Integer integer) {
-        managerRepository.deleteById(integer);
-    }
-
-    @Override
-    public <S extends Manager> Optional<S> findOne(Example<S> example) {
-        return managerRepository.findOne(example);
-    }
-
-    @Override
-    public List<Manager> findAll(Sort sort) {
-        return managerRepository.findAll(sort);
+    public Boolean updateProfile(int manId, ManagerDTO managerDTO) {
+        List<Manager> managers = managerRepository.findByPhone(managerDTO.getPhone());
+        if (managers.isEmpty()) {
+            Optional<Manager> manOpt = managerRepository.findById(manId);
+            if (manOpt.isPresent()) {
+                Manager man = manOpt.get();
+                man.setPhone(managerDTO.getPhone());
+                man.setAddress(managerDTO.getAddress());
+                managerRepository.save(man);
+                return true;
+            }
+        }
+        return false;
     }
 }

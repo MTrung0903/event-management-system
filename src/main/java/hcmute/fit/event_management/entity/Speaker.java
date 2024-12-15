@@ -5,17 +5,21 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
 import java.util.Set;
 
-@Entity(name = "speaker")
+@Entity
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@Table(name = "speaker")
 public class Speaker {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "speaker_id")
     private int id;
+    @Column(name = "image")
+    private String image;
     @Column(name = "speaker_name")
     private String name;
     @Column(name = "speaker_email")
@@ -26,9 +30,8 @@ public class Speaker {
     private String phone;
     @Column(name = "speaker_address")
     private String address;
-    @Column(name = "speaker_esc")
+    @Column(name = "speaker_desc")
     private String description;
 
-    @OneToMany(mappedBy = "speaker")
-    private Set<DetailSection> listDetailSections;
+
 }
