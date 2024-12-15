@@ -201,18 +201,18 @@ public class TeamServiceImpl implements ITeamService {
         try {
             if (teamRepository.findById(teamId).isPresent() && employeeRepository.findById(employeeId).isPresent()) {
                 TeamEmployee teamEmployee = teamEmployeeRepository.findByTeamIdAndEmployee(teamId, employeeId);
-                List<SubTask> list = subtaskRepository.findByEmployeeId(employeeId);
+                List<SubTask> list = subtaskRepository.findSubTasksByTeamAndEmployee(teamId,employeeId);
                 if (list == null || list.isEmpty()) {
                     teamEmployeeRepository.delete(teamEmployee);
                     response.put("status", "success");
                     response.put("message", "Employee deleted successfully!");
                 } else {
                     response.put("status", "failed");
-                    response.put("message", "Cannot delete employee while they are assigned to subtasks.");
+                    response.put("message", "Không thể xóa các nhân viên đang thực hiện nhiệm vụ");
                 }
             } else {
                 response.put("status", "failed");
-                response.put("message", "Team or Employee not found.");
+                response.put("message", "Không tìm thấy nhóm.");
             }
         } catch (Exception e) {
             System.out.println("Delete member from team failed: " + e.getMessage());

@@ -56,7 +56,9 @@ public class TeamController {
     @DeleteMapping("/{teamId}/del/{employeeId}")
     public ResponseEntity<?> deleteEmployee(@PathVariable int teamId, @PathVariable int employeeId){
         Map<String, Object> response = teamService.deleteMemberFromTeam(teamId, employeeId);
-        return new ResponseEntity<>(response, HttpStatus.OK);
+        Response response1 = new Response();
+        response1.setData(response);
+        return new ResponseEntity<>(response1, HttpStatus.OK);
     }
     @GetMapping("/{teamId}/listassigned")
     public ResponseEntity<?> findEmplloyeeToAssignedSubtask(@PathVariable int teamId) {
