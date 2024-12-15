@@ -24,7 +24,6 @@ public class ProviderController {
     @Autowired
     private IProviderService providerService;
 
-
     @GetMapping("")
     public ResponseEntity<?> getAllProviders() {
         List<ProviderDTO> listProvider = providerImpl.getAllProviders();

@@ -10,6 +10,7 @@ import hcmute.fit.event_management.repository.SubtaskRepository;
 import hcmute.fit.event_management.repository.TaskRepository;
 import hcmute.fit.event_management.repository.TeamRepository;
 import hcmute.fit.event_management.service.ITaskService;
+import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -37,38 +38,27 @@ public class TaskServiceImpl implements ITaskService {
 
     @Override
     public void changeStatusTask(int taskId) {
-        boolean allDone = true;
-        boolean hasDoing = false;
         List<SubTask> list = subtaskRepository.findByTaskId(taskId);
+        if(!list.isEmpty()){
+            boolean allDone = list.stream().allMatch(subTask -> subTask.getStatus().equals("done"));
+            boolean hasDoing = list.stream().anyMatch(subTask -> subTask.getStatus().equals("doing"));
 
-        for (SubTask subTask : list) {
-            if(subTask.getStatus().equals("doing")) {
-                hasDoing = true;
-                break; 
-            } else if(!subTask.getStatus().equals("done")) {
-                allDone = false;
+            Task task = taskRepository.findById(taskId).orElseThrow(() -> new EntityNotFoundException("Task not found"));
+
+            if (allDone) {
+                task.setTaskStatus("done");
+            } else if (hasDoing) {
+                task.setTaskStatus("doing");
             }
+
+            taskRepository.save(task);
         }
-
-        Task task = taskRepository.findById(taskId).get();
-
-        if(allDone) {
-            task.setTaskStatus("done");
-        } else if(hasDoing) {
-            task.setTaskStatus("doing");
-        }else {
-            task.setTaskStatus("to do");
-        }
-
-        taskRepository.save(task);
     }
     @Override
     public List<TaskDTO> getTasksOfEvent(int eventId) {
         List<Task> tasks = taskRepository.findByEventId(eventId);
         List<TaskDTO> taskDTOs = new ArrayList<>();
-        for (Task t : tasks) {
-            changeStatusTask(t.getTaskId());
-        }
+
         for (Task task : tasks) {
             changeStatusTask(task.getTaskId());
             TaskDTO taskDTO = new TaskDTO();

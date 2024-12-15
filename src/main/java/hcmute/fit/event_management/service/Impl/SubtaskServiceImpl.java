@@ -28,7 +28,35 @@ public class SubtaskServiceImpl implements ISubtaskService {
 
     @Autowired
     private IEventService eventService;
+    public void changeStatusTask(int taskId) {
+        boolean allDone = true;
+        boolean hasDoing = false;
+        List<SubTask> list = subtaskRepository.findByTaskId(taskId);
+        if(!list.isEmpty()){
+            for (SubTask subTask : list) {
+                if(subTask.getStatus().equals("doing")) {
+                    hasDoing = true;
+                    break;
+                } else if(!subTask.getStatus().equals("done")) {
+                    allDone = false;
+                }
+            }
+        }else{
+            allDone = false;
+        }
 
+        Task task = taskRepository.findById(taskId).get();
+
+        if(allDone) {
+            task.setTaskStatus("done");
+        } else if(hasDoing) {
+            task.setTaskStatus("doing");
+        }else {
+            task.setTaskStatus("to do");
+        }
+
+        taskRepository.save(task);
+    }
     public SubtaskServiceImpl(SubtaskRepository subtaskRepository) {
         this.subtaskRepository = subtaskRepository;
     }
@@ -147,6 +175,7 @@ public class SubtaskServiceImpl implements ISubtaskService {
                         subtaskRepository.save(tmp);
                         isSuccess = true;
                         response.setMsg("Cập nhật subtask thành công");
+                        changeStatusTask(taskId);
                     } else {
                         response.setMsg("Không thể cập nhật deadlined vượt quá deadlined của task");
                     }
