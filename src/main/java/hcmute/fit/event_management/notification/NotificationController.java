@@ -22,7 +22,7 @@ public class NotificationController {
 
     @Autowired
     INotification notificationService;
-    // /app/private
+
     @MessageMapping("/private")
     public void sendToSpecificUser(@Payload NotificationDTO notificationDTO) {
         String message = notificationDTO.getMessage();
