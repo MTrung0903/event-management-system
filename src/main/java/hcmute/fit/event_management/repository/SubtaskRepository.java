@@ -27,9 +27,8 @@ public interface SubtaskRepository extends JpaRepository<SubTask, Integer> {
     @Query("SELECT st FROM SubTask st " +
             "JOIN st.task t " +
             "JOIN t.team tm " +
-            "JOIN tm.listTeamEmployees te " +
-            "WHERE tm.teamId = :teamId " +
-            "AND te.employee.id = :employeeId")
+            "WHERE tm.teamId = :teamId AND st.employee.id = :employeeId")
     List<SubTask> findSubTasksByTeamAndEmployee(@Param("teamId") int teamId,
                                                 @Param("employeeId") int employeeId);
+
 }
