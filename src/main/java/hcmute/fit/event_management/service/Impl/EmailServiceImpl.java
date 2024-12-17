@@ -5,7 +5,6 @@ import hcmute.fit.event_management.service.EmailService;
 import jakarta.mail.MessagingException;
 import jakarta.mail.internet.MimeMessage;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 
 import org.springframework.mail.javamail.MimeMessageHelper;
@@ -38,5 +37,15 @@ public class EmailServiceImpl implements EmailService {
         } catch (MessagingException e) {
             System.err.println("Failed to send email: " + e.getMessage());
         }
+    }
+    @Override
+    public void sendAccountEmail(String to, String email, String password) {
+        String subject = "Thông tin tài khoản:";
+        String content =  "<p>Đăng nhập tài khoản với thông tin sau:</p>"
+                + "<p>"+
+                "Username: " + email +  " | "  +
+                "Password: " + password +
+                "</p>";
+        sendHtmlEmail(to, subject, content);
     }
 }

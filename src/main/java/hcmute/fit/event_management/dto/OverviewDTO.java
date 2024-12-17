@@ -14,7 +14,7 @@ public class OverviewDTO {
     private int totalDevices;
     private int totalEmployees;
     private int[] cntCompleted;
-    private int[] cntCancel;
+    private int[] cntIncoming;
     private int[] cntSponsor;
     private List<EventDTO> listEvent;
 }
