@@ -115,10 +115,9 @@ public class TaskServiceImpl implements ITaskService {
         try{
             Optional<Event> event = eventRepository.findById(taskDTO.getEventId());
             if(event.isPresent()){
-                Date startEvent = event.get().getEventStart();
-                Date endEvent = event.get().getEventEnd();
+
                 Date date = formatter.parse(taskDTO.getTaskDl().trim());
-                if(true){
+
                     Task task = new Task();
                     task.setTaskName(taskDTO.getTaskName());
                     task.setTaskDesc(taskDTO.getTaskDesc());
@@ -138,9 +137,6 @@ public class TaskServiceImpl implements ITaskService {
                     taskRepository.save(task);
                     isSuccess = true;
                     response.setMsg("Tạo task thành công");
-                }else {
-                    response.setMsg("Không thể tạo task có thời hạn vượt quá ngày diễn ra sự kiện");
-                }
 
             }
         } catch (Exception e) {

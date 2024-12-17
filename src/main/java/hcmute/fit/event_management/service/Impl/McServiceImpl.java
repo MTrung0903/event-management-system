@@ -23,7 +23,8 @@ public class McServiceImpl implements IMcService {
     @Autowired
     private McRepository mcRepository;
 
-
+    @Autowired
+    private EventRepository eventRepository;
 
     @Autowired
     private IFileService fileService;
@@ -98,10 +99,16 @@ public class McServiceImpl implements IMcService {
         boolean isSucess = false;
         try{
             Optional<Mc> mc = mcRepository.findById(mcId);
-            if(mc.isPresent()){
-                mcRepository.deleteById(mcId);
-                isSucess = true;
+            List<Event> list = eventRepository.findByMcId(mcId);
+            if(!list.isEmpty()){
+                for(Event e : list){
+                    e.setMc(null);
+                    eventRepository.save(e);
+                }
+
             }
+            mcRepository.deleteById(mcId);
+            isSucess = true;
 
         } catch (Exception e) {
             System.out.println("Delete MC failed" + e.getMessage());
