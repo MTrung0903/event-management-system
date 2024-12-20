@@ -49,6 +49,13 @@ public class SpeakerController {
         response.setData(speakerService.updateSpeaker(imageSpeaker,speaker));
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
+    @PutMapping("/updateNoImage")
+    public ResponseEntity<?> updateSpeaker(
+                                           @ModelAttribute SpeakerDTO speaker) {
+        Response response = new Response();
+        response.setData(speakerService.updateSpeakerNoImage(speaker));
+        return new ResponseEntity<>(response, HttpStatus.OK);
+    }
     @DeleteMapping("/{id}")
     public ResponseEntity<?> deleteSpeaker(@PathVariable int id) {
         Response response = new Response();

@@ -18,6 +18,7 @@ public interface ISpeakerService {
     boolean addSpeaker(MultipartFile imageSpeaker, SpeakerDTO speakerDTO);
 
     boolean updateSpeaker(MultipartFile imageSpeaker, SpeakerDTO speakerDTO);
+    boolean updateSpeakerNoImage( SpeakerDTO speakerDTO);
 
     boolean deleteSpeaker(int id);
 }

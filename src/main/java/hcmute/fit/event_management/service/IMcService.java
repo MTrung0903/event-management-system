@@ -16,6 +16,7 @@ public interface IMcService {
     boolean addMc(MultipartFile image,McDTO mcDto);
 
     boolean updateMc(MultipartFile image, McDTO mcDto);
+    boolean updateMcNoImage(McDTO mcDto);
 
     boolean deleteMc(Integer mcId);
 

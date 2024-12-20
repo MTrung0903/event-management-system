@@ -131,6 +131,32 @@ public class SponsorServiceImpl implements ISponsorService {
         return isSuccess;
     }
     @Override
+    public boolean updateSponsorNoLogo( SponsorDTO sponsorDTO) {
+        boolean isSuccess = false;
+
+            try{
+                if(sponsorRepository.findById(sponsorDTO.getId()).isPresent()
+                        &&sponsorShipRepository.findById(sponsorDTO.getSponsorshipId()).isPresent()){
+                    Sponsor sponsor = sponsorRepository.findById(sponsorDTO.getId()).get();
+                    sponsor.setName(sponsorDTO.getName());
+                    sponsor.setContact(sponsorDTO.getContact());
+                    sponsor.setEmail(sponsorDTO.getEmail());
+                    sponsor.setPhone(sponsorDTO.getPhone());
+                    sponsor.setWebsite(sponsorDTO.getWebsite());
+                    sponsor.setAddress(sponsorDTO.getAddress());
+                    sponsor.setSponsorship(sponsorShipRepository.findById(sponsorDTO.getSponsorshipId()).get());
+                    sponsorRepository.save(sponsor);
+                    isSuccess = true;
+                }
+            }
+            catch(Exception e){
+                System.out.println("update sponsor failed"+ e.getMessage());
+            }
+
+
+        return isSuccess;
+    }
+    @Override
     public boolean updateSponsor(SponsorDTO sponsorDTO) {
         boolean isSuccess = false;
 

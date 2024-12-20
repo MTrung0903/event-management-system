@@ -104,6 +104,32 @@ public class SpeakerServiceImpl implements ISpeakerService {
         return isSuccess;
     }
     @Override
+    public boolean updateSpeakerNoImage(SpeakerDTO speakerDTO){
+        boolean isSuccess = false;
+
+            try{
+                if(speakerRepository.findById(speakerDTO.getId()).isPresent()){
+                    Speaker speaker = speakerRepository.findById(speakerDTO.getId()).get();
+
+                    speaker.setName(speakerDTO.getName());
+                    speaker.setEmail(speakerDTO.getEmail());
+                    speaker.setTitle(speakerDTO.getTitle());
+                    speaker.setPhone(speakerDTO.getPhone());
+                    speaker.setAddress(speakerDTO.getAddress());
+                    speaker.setDescription(speakerDTO.getDescription());
+                    speakerRepository.save(speaker);
+                    isSuccess = true;
+                }else
+                    throw new Exception("Speaker not found");
+
+            } catch (Exception e) {
+                System.out.println("add speaker failed" + e.getMessage());
+            }
+
+
+        return isSuccess;
+    }
+    @Override
     public boolean deleteSpeaker(int id){
         boolean isSuccess = false;
         try

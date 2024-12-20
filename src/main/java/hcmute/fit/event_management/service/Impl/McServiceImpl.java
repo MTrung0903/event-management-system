@@ -95,6 +95,27 @@ public class McServiceImpl implements IMcService {
         return isSucess;
     }
     @Override
+    public boolean updateMcNoImage(McDTO mcDto){
+        boolean isSucess = false;
+
+
+            try{
+                Optional<Mc> mc = mcRepository.findById(mcDto.getMcID());
+                if(mc.isPresent()){
+                    Mc newMc = mc.get();
+                    BeanUtils.copyProperties(mcDto,newMc);
+                    mcRepository.save(newMc);
+                    isSucess = true;
+                }
+
+            } catch (Exception e) {
+                System.out.println("Update MC failed" + e.getMessage());
+            }
+
+
+        return isSucess;
+    }
+    @Override
     public boolean deleteMc(Integer mcId){
         boolean isSucess = false;
         try{

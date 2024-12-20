@@ -18,6 +18,7 @@ public interface ISponsorService {
     boolean addSponsor(MultipartFile sponsorLogo, SponsorDTO sponsorDTO);
 
     boolean updateSponsor(MultipartFile sponsorLogo, SponsorDTO sponsorDTO);
+    boolean updateSponsorNoLogo( SponsorDTO sponsorDTO);
 
     boolean updateSponsor(SponsorDTO sponsorDTO);
 

@@ -50,6 +50,13 @@ public class McController {
         response.setData(mcService.updateMc(imageMc,mcDto));
         return ResponseEntity.ok(response);
     }
+    @PutMapping("/updateNoImage")
+    public ResponseEntity<?> updateMc(
+                                      @ModelAttribute McDTO mcDto){
+        Response response = new Response();
+        response.setData(mcService.updateMcNoImage(mcDto));
+        return ResponseEntity.ok(response);
+    }
     @DeleteMapping("/{mcId}")
     public ResponseEntity<?> deleteMC(@PathVariable int mcId) {
         Response response = new Response();
